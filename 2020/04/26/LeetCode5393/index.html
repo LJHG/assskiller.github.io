@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Leetcode199 二叉树右视图(DFS) | assskiller&#39;s blog</title>
+  <title>可获得最大点数（乱用DP=炸内存） | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开始在个人博客写一写leetcode题解，有tag功能归档还挺方便的，而且还可以水一水github contribution，美滋滋。(反正没人看，随便乱写一写) 题目描述：给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。 示例:12345678910输入: [1,2,3,null,5,null,4]输出: [1, 3, 4]解释:   1">
+  <meta name="description" content="题目描述：几张卡牌 排成一行，每张卡牌都有一个对应的点数。点数由整数数组 cardPoints 给出。 每次行动，你可以从行的开头或者末尾拿一张卡牌，最终你必须正好拿 k 张卡牌。 你的点数就是你拿到手中的所有卡牌的点数之和。 给你一个整数数组 cardPoints 和整数 k，请你返回可以获得的最大点数。 示例：123456789101112131415161718192021222324252">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode199 二叉树右视图(DFS)">
-<meta property="og:url" content="http://yoursite.com/2020/04/22/Leetcode199/index.html">
+<meta property="og:title" content="可获得最大点数（乱用DP&#x3D;炸内存）">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/LeetCode5393/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
-<meta property="og:description" content="开始在个人博客写一写leetcode题解，有tag功能归档还挺方便的，而且还可以水一水github contribution，美滋滋。(反正没人看，随便乱写一写) 题目描述：给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。 示例:12345678910输入: [1,2,3,null,5,null,4]输出: [1, 3, 4]解释:   1">
+<meta property="og:description" content="题目描述：几张卡牌 排成一行，每张卡牌都有一个对应的点数。点数由整数数组 cardPoints 给出。 每次行动，你可以从行的开头或者末尾拿一张卡牌，最终你必须正好拿 k 张卡牌。 你的点数就是你拿到手中的所有卡牌的点数之和。 给你一个整数数组 cardPoints 和整数 k，请你返回可以获得的最大点数。 示例：123456789101112131415161718192021222324252">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-22T12:20:57.000Z">
-<meta property="article:modified_time" content="2020-04-22T12:42:49.202Z">
+<meta property="article:published_time" content="2020-04-26T05:41:36.000Z">
+<meta property="article:modified_time" content="2020-04-26T06:26:18.213Z">
 <meta property="article:author" content="assskiller">
-<meta property="article:tag" content="DFS">
+<meta property="article:tag" content="周赛186">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="后缀和">
+<meta property="article:tag" content="不要乱用dp">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -149,7 +152,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Leetcode199" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LeetCode5393" class="article article-type-post " itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -157,25 +160,38 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Leetcode199 二叉树右视图(DFS)
+      可获得最大点数（乱用DP=炸内存）
     </h1>
   
 
         
-        <a href="/2020/04/22/Leetcode199/" class="archive-article-date">
-  	<time datetime="2020-04-22T12:20:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
+        <a href="/2020/04/26/LeetCode5393/" class="archive-article-date">
+  	<time datetime="2020-04-26T05:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>开始在个人博客写一写leetcode题解，有tag功能归档还挺方便的，而且还可以水一水github contribution，美滋滋。(反正没人看，随便乱写一写)</p>
-<h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,null,5,null,4]</span><br><span class="line">输出: [1, 3, 4]</span><br><span class="line">解释:</span><br><span class="line"></span><br><span class="line">   1            &lt;---</span><br><span class="line"> &#x2F;   \</span><br><span class="line">2     3         &lt;---</span><br><span class="line"> \     \</span><br><span class="line">  5     4       &lt;---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>几张卡牌 排成一行，每张卡牌都有一个对应的点数。点数由整数数组 cardPoints 给出。</p>
+<p>每次行动，你可以从行的开头或者末尾拿一张卡牌，最终你必须正好拿 k 张卡牌。</p>
+<p>你的点数就是你拿到手中的所有卡牌的点数之和。</p>
+<p>给你一个整数数组 cardPoints 和整数 k，请你返回可以获得的最大点数。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [1,2,3,4,5,6,1], k &#x3D; 3</span><br><span class="line">输出：12</span><br><span class="line">解释：第一次行动，不管拿哪张牌，你的点数总是 1 。但是，先拿最右边的卡牌将会最大化你的可获得点数。最优策略是拿右边的三张牌，最终点数为 1 + 6 + 5 &#x3D; 12 。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [2,2,2], k &#x3D; 2</span><br><span class="line">输出：4</span><br><span class="line">解释：无论你拿起哪两张卡牌，可获得的点数总是 4 。</span><br><span class="line">示例 3：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [9,7,7,9,7,7,9], k &#x3D; 7</span><br><span class="line">输出：55</span><br><span class="line">解释：你必须拿起所有卡牌，可以获得的点数为所有卡牌的点数之和。</span><br><span class="line">示例 4：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [1,1000,1], k &#x3D; 1</span><br><span class="line">输出：1</span><br><span class="line">解释：你无法拿到中间那张卡牌，所以可以获得的最大点数为 1 。 </span><br><span class="line">示例 5：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [1,79,80,1,1,1,200,1], k &#x3D; 3</span><br><span class="line">输出：202</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;&#x3D; cardPoints.length &lt;&#x3D; 10^5</span><br><span class="line">1 &lt;&#x3D; cardPoints[i] &lt;&#x3D; 10^4</span><br><span class="line">1 &lt;&#x3D; k &lt;&#x3D; cardPoints.length</span><br></pre></td></tr></table></figure>
 
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>使用DFS优先遍历右子树，再遍历左子树，同时记录一个当前走到的最大深度，如果当前访问的位置没有到最大深度，那么就不把val加入到结果中，如果当前位置大于了最大深度，那么久加入ans</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> currentDepth;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addTreeRightToAns</span><span class="params">(TreeNode* node, <span class="keyword">int</span> depth)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(depth &gt; currentDepth)</span><br><span class="line">        &#123;</span><br><span class="line">            currentDepth = depth;</span><br><span class="line">            ans.push_back(node-&gt;val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node-&gt;right != <span class="literal">NULL</span>)</span><br><span class="line">            addTreeRightToAns(node-&gt;right,depth+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(node-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">            addTreeRightToAns(node-&gt;left,depth+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        currentDepth = <span class="number">0</span>;</span><br><span class="line">        addTreeRightToAns(root,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>最近看到什么题都想用dp，然后都无一例外的。。。炸内存超时了，笑死。  </p>
+<p>先来展示一下正确姿势，可以叫做前缀和后缀和，也可以不用刻意去求前缀和后缀和，总之就是前默认全部取左边，然后左边减一个，右边加一个，然后求出最大的sum就可以了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxScore</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; cardPoints, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先全部拿左边的，然后左边放一个，右边加一个，求最大值</span></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++) sum += cardPoints[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> length = cardPoints.size();</span><br><span class="line">        <span class="keyword">int</span> leftLength =k;</span><br><span class="line">        <span class="keyword">int</span> max=sum;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum -= cardPoints[leftLength<span class="number">-1</span>];</span><br><span class="line">            sum += cardPoints[length-i<span class="number">-1</span>];</span><br><span class="line">            leftLength--;</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; max)</span><br><span class="line">               max = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<br/>
+<br/>
+
+<p>再来展示一下错误示范，当我看到这道题时，第一反应就是，ok，给了个区间，ok,有一个动态变化的k，ok可以dp了，于是就直接搞了个三维dp。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxScore</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; cardPoints, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">100</span>][<span class="number">100</span>][<span class="number">1000</span>]; <span class="comment">// dp[i][j][k]表示 从indexi到indexj 剩余天数为k能拿的最大值</span></span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> length = cardPoints.size();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> d=<span class="number">1</span>; d&lt;=k; d++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;length;j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(d==<span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        dp[i][j][<span class="number">1</span>] = max(cardPoints[i],cardPoints[j]); </span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(j<span class="number">-1</span> &gt;= <span class="number">0</span>)</span><br><span class="line">                            dp[i][j][d]  = max(dp[i+<span class="number">1</span>][j][d<span class="number">-1</span>]+cardPoints[i], dp[i][j<span class="number">-1</span>][d<span class="number">-1</span>] +cardPoints[j]);</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            dp[i][j][d] = cardPoints[j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][length<span class="number">-1</span>][k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>以后别这么搞了，233</p>
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/maximum-points-you-can-obtain-from-cards/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-points-you-can-obtain-from-cards/</a></p>
+
       
 
       
@@ -188,7 +204,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">周赛186</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">后缀和</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">不要乱用dp</a>
         		</li>
       		
 		</ul>
@@ -244,7 +272,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/22/Leetcode199/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/26/LeetCode5393/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -258,18 +286,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/22/Leetcode445/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/26/LeetCode5394/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Leetcode445 两数相加(Stack)
+          对角线遍历---内存开到爆怎么办？用vector吧
         
       </div>
     </a>
   
   
-    <a href="/2020/04/16/%E5%A4%A7%E8%87%B4%E5%BC%84%E5%BE%97%E5%B7%AE%E4%B8%8D%E5%A4%9A%E4%BA%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">大致弄得差不多了</div>
+    <a href="/2020/04/24/countInversion/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">逆序对</div>
       <i class="icon-circle-right"></i>
     </a>
   

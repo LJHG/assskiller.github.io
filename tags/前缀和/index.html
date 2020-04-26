@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Leetcode199 二叉树右视图(DFS) | assskiller&#39;s blog</title>
+  <title>Tag: 前缀和 | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="开始在个人博客写一写leetcode题解，有tag功能归档还挺方便的，而且还可以水一水github contribution，美滋滋。(反正没人看，随便乱写一写) 题目描述：给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。 示例:12345678910输入: [1,2,3,null,5,null,4]输出: [1, 3, 4]解释:   1">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode199 二叉树右视图(DFS)">
-<meta property="og:url" content="http://yoursite.com/2020/04/22/Leetcode199/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="assskiller&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/%E5%89%8D%E7%BC%80%E5%92%8C/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
-<meta property="og:description" content="开始在个人博客写一写leetcode题解，有tag功能归档还挺方便的，而且还可以水一水github contribution，美滋滋。(反正没人看，随便乱写一写) 题目描述：给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。 示例:12345678910输入: [1,2,3,null,5,null,4]输出: [1, 3, 4]解释:   1">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-22T12:20:57.000Z">
-<meta property="article:modified_time" content="2020-04-22T12:42:49.202Z">
 <meta property="article:author" content="assskiller">
-<meta property="article:tag" content="DFS">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -149,185 +144,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Leetcode199" class="article article-type-post " itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Leetcode199 二叉树右视图(DFS)
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/04/26/LeetCode5393/" class="archive-article-date">
+  	<time datetime="2020-04-26T05:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/04/26/LeetCode5393/">可获得最大点数（乱用DP=炸内存）</a>
     </h1>
   
 
-        
-        <a href="/2020/04/22/Leetcode199/" class="archive-article-date">
-  	<time datetime="2020-04-22T12:20:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开始在个人博客写一写leetcode题解，有tag功能归档还挺方便的，而且还可以水一水github contribution，美滋滋。(反正没人看，随便乱写一写)</p>
-<h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。</p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,null,5,null,4]</span><br><span class="line">输出: [1, 3, 4]</span><br><span class="line">解释:</span><br><span class="line"></span><br><span class="line">   1            &lt;---</span><br><span class="line"> &#x2F;   \</span><br><span class="line">2     3         &lt;---</span><br><span class="line"> \     \</span><br><span class="line">  5     4       &lt;---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>使用DFS优先遍历右子树，再遍历左子树，同时记录一个当前走到的最大深度，如果当前访问的位置没有到最大深度，那么就不把val加入到结果中，如果当前位置大于了最大深度，那么久加入ans</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> currentDepth;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addTreeRightToAns</span><span class="params">(TreeNode* node, <span class="keyword">int</span> depth)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(depth &gt; currentDepth)</span><br><span class="line">        &#123;</span><br><span class="line">            currentDepth = depth;</span><br><span class="line">            ans.push_back(node-&gt;val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node-&gt;right != <span class="literal">NULL</span>)</span><br><span class="line">            addTreeRightToAns(node-&gt;right,depth+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(node-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">            addTreeRightToAns(node-&gt;left,depth+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        currentDepth = <span class="number">0</span>;</span><br><span class="line">        addTreeRightToAns(root,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">周赛186</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">后缀和</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">不要乱用dp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/22/Leetcode199/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/04/22/Leetcode445/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Leetcode445 两数相加(Stack)
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/16/%E5%A4%A7%E8%87%B4%E5%BC%84%E5%BE%97%E5%B7%AE%E4%B8%8D%E5%A4%9A%E4%BA%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">大致弄得差不多了</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
+    
   
-
-  
-
-   <!-- gittalk -->
-   
-    <div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
-
-<script>
-var gitalk = new Gitalk({
-  clientID: '2c04f14529126544e89f',
-  clientSecret: 'dfce82ff98fbf1681ebe3a36fd886d8f34a53bac',
-  repo: 'assskiller.github.io',
-  owner: 'assskiller',
-  admin: ['assskiller'],
-  id: md5(window.location.pathname),
-  distractionFreeMode: true
-})
-
-gitalk.render('gitalk-container')
-</script>
-
-  
-  <!--  -->
-
-  
-
 
           </div>
         </div>
@@ -351,9 +234,9 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
