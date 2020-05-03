@@ -6,25 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>逆序对 | assskiller&#39;s blog</title>
+  <title>Tag: two pointers | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目描述：在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。 示例：123示例 1:输入: [7,5,6,4]输出: 5  解题思路:这道题用了两种解法，归并排序和树状数组 归并排序看题解之前完全没想到可以用归并排序来做，看了过后发现这么做简直太妙了。总之就是在归并排序的并阶段来计算逆序对，维护一个变量叫做currentAd">
-<meta property="og:type" content="article">
-<meta property="og:title" content="逆序对">
-<meta property="og:url" content="http://yoursite.com/2020/04/24/countInversion/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="assskiller&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/two-pointers/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
-<meta property="og:description" content="题目描述：在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。 示例：123示例 1:输入: [7,5,6,4]输出: 5  解题思路:这道题用了两种解法，归并排序和树状数组 归并排序看题解之前完全没想到可以用归并排序来做，看了过后发现这么做简直太妙了。总之就是在归并排序的并阶段来计算逆序对，维护一个变量叫做currentAd">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-24T12:30:04.000Z">
-<meta property="article:modified_time" content="2020-04-24T12:42:34.228Z">
 <meta property="article:author" content="assskiller">
-<meta property="article:tag" content="树状数组">
-<meta property="article:tag" content="bit">
-<meta property="article:tag" content="归并排序">
-<meta property="article:tag" content="MergeSort">
-<meta property="article:tag" content="逆序对">
-<meta property="article:tag" content="二分查找">
-<meta property="article:tag" content="离散化">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -155,221 +144,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-countInversion" class="article article-type-post " itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      逆序对
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/05/03/LeetCode5402/" class="archive-article-date">
+  	<time datetime="2020-05-03T09:13:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/03/LeetCode5402/">绝对值差不超过限制的最长连续子数组---LeetCode5402</a>
     </h1>
   
 
-        
-        <a href="/2020/04/24/countInversion/" class="archive-article-date">
-  	<time datetime="2020-04-24T12:30:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入: [7,5,6,4]</span><br><span class="line">输出: 5</span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这道题用了两种解法，归并排序和树状数组</p>
-<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>看题解之前完全没想到可以用归并排序来做，看了过后发现这么做简直太妙了。<br>总之就是在归并排序的并阶段来计算逆序对，维护一个变量叫做currentAdd，用来保存当前要并的右半部分已经处理过的个数，也就是说，左边还没有加入的，每当加入，逆序对就会增加currentAdd这么多<br>顺便还复习了一下归并排序，总之就是，先直接调归并来将左右两边先排好，然后再将这一次的来并起来，并好后，要把并好的结果赋给原数组。  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span>(r-l == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//先求左右两边中先求出来的逆序对</span></span><br><span class="line">        <span class="keyword">int</span> middle = (l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> reversePairNum = MergeSort(l,middle,nums) + MergeSort(middle+<span class="number">1</span>,r,nums);</span><br><span class="line">        <span class="comment">//当左右两边的nums都排好序了，可以计算组合时产生的逆序对</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; temp;</span><br><span class="line">        <span class="keyword">int</span> lPointer = l;</span><br><span class="line">        <span class="keyword">int</span> rPointer = middle+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> currentAdd = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!(lPointer&gt;middle &amp;&amp; rPointer&gt;r))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(lPointer &gt; middle)</span><br><span class="line">            &#123;</span><br><span class="line">               temp.push_back(nums[rPointer]);</span><br><span class="line">               rPointer ++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(rPointer &gt; r)</span><br><span class="line">            &#123;</span><br><span class="line">                reversePairNum += currentAdd;</span><br><span class="line">                temp.push_back(nums[lPointer]);</span><br><span class="line">                lPointer++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[lPointer] &gt; nums[rPointer] )</span><br><span class="line">                &#123;</span><br><span class="line">                    currentAdd++;</span><br><span class="line">                    temp.push_back(nums[rPointer]);</span><br><span class="line">                    rPointer++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    reversePairNum += currentAdd;</span><br><span class="line">                    temp.push_back(nums[lPointer]);</span><br><span class="line">                    lPointer++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将num变成排序后的num</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;temp.size();i++)</span><br><span class="line">            nums[l+i] = temp[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> reversePairNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> MergeSort(<span class="number">0</span>,nums.size()<span class="number">-1</span>,nums);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<br/>
-<br/>
-<br/>
-
-<h3 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h3><p>以为这辈子都见不到树状数组了，没想到过了一年多又见面了，不过这次没这么头疼了哈哈哈，不过树状数组这种方法真的太难想了，估计真的碰到这种题我也不会知道可以用树状数组来解，除非是赤裸裸的单点更新+区间查询<br>就是一般的树状数组<br>ps:我写的树状数组的update函数是 +=这个值，不是 =这个值，被坑惨了。<br>如果要求逆序对的话，把数值的大小作为树状数组的下标就好了<br>这样，对原数组从后向前update树状数组，且每次加入都求一下当前的sum，就可以了<br>需要注意的是，直接这么搞不行，如果原数组中有特别大的数，或者负数，作为树状数组的下标不科学，所以需要对原数组做处理，即排序后，用排序后的位置来代替自己的数值来作为树状数组的下标，即用相对位置来代替数值，相对位置用二分查找来找(直接从头到尾遍历找还会超时)。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> c[<span class="number">50002</span>];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> pos,<span class="keyword">int</span> changeValue,<span class="keyword">int</span> n)</span> <span class="comment">//单点修改</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=pos;i&lt;=n;i+=lowbit(i))</span><br><span class="line">        &#123;</span><br><span class="line">            c[i] += changeValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> pos)</span> <span class="comment">// 查询从 1~pos的值</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=pos;i&gt;=<span class="number">1</span>;i-=lowbit(i))</span><br><span class="line">        &#123;</span><br><span class="line">            ans += c[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//一定要用二分查找，顺序查找会tle</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">binarySerach</span><span class="params">(<span class="keyword">int</span> value, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//nums is a sorted array</span></span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = length<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle = (left+right)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right)</span><br><span class="line">        &#123;</span><br><span class="line">            middle = (left + right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(value &gt; nums[middle])</span><br><span class="line">            &#123;</span><br><span class="line">                left = middle +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (value &lt; nums[middle])</span><br><span class="line">            &#123;</span><br><span class="line">                right = middle;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums[left] == value)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortedNums = nums;</span><br><span class="line">        <span class="comment">//将nums排序并存为一个新的数组，数的大小就可以由位置来体现，解决了数为负数以及数很大的问题</span></span><br><span class="line">        sort(sortedNums.begin(),sortedNums.end());</span><br><span class="line">        <span class="built_in">memset</span>(c,<span class="number">0</span>,<span class="keyword">sizeof</span>(c));</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=length<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> index = binarySerach(nums[i],sortedNums)+<span class="number">1</span>; <span class="comment">//这里加个1，防止为0</span></span><br><span class="line">            ans += sum(index<span class="number">-1</span>);</span><br><span class="line">            update(index,<span class="number">1</span>,<span class="number">50002</span>); <span class="comment">//艹啊，这里的第二个参数是增量，不是改变的量，debug了半天，晕</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/</a><br><a href="https://blog.csdn.net/bestsort/article/details/80796531" target="_blank" rel="noopener">一个讲树状数组很好的博客</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">树状数组</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">滑动窗口</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bit</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">归并排序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MergeSort</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">逆序对</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分查找</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">离散化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">two pointers</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/24/countInversion/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/04/26/LeetCode5393/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          可获得最大点数（乱用DP=炸内存）
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/23/LeetCode05/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">LeetCode05</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
+    
   
-
-  
-
-   <!-- gittalk -->
-   
-    <div id="gitalk-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
-
-<script>
-var gitalk = new Gitalk({
-  clientID: '2c04f14529126544e89f',
-  clientSecret: 'dfce82ff98fbf1681ebe3a36fd886d8f34a53bac',
-  repo: 'assskiller.github.io',
-  owner: 'assskiller',
-  admin: ['assskiller'],
-  id: md5(window.location.pathname),
-  distractionFreeMode: true
-})
-
-gitalk.render('gitalk-container')
-</script>
-
-  
-  <!--  -->
-
-  
-
 
           </div>
         </div>
@@ -393,9 +234,9 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
