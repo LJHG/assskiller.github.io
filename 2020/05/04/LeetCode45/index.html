@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>工具 | assskiller&#39;s blog</title>
+  <title>跳跃游戏---LeetCode45 | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="click me">
-<meta property="og:type" content="website">
-<meta property="og:title" content="工具">
-<meta property="og:url" content="http://yoursite.com/tools/index.html">
+  <meta name="description" content="题目描述：给定一个非负整数数组，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。你的目标是使用最少的跳跃次数到达数组的最后一个位置。 示例：12345678输入: [2,3,1,1,4]输出: 2解释: 跳到最后一个位置的最小跳跃数是 2。     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。说明:假设你总是可以到达数组的最">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跳跃游戏---LeetCode45">
+<meta property="og:url" content="http://yoursite.com/2020/05/04/LeetCode45/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
-<meta property="og:description" content="click me">
+<meta property="og:description" content="题目描述：给定一个非负整数数组，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。你的目标是使用最少的跳跃次数到达数组的最后一个位置。 示例：12345678输入: [2,3,1,1,4]输出: 2解释: 跳到最后一个位置的最小跳跃数是 2。     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。说明:假设你总是可以到达数组的最">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-13T07:41:16.000Z">
-<meta property="article:modified_time" content="2020-04-16T14:09:24.579Z">
+<meta property="article:published_time" content="2020-05-04T06:34:35.000Z">
+<meta property="article:modified_time" content="2020-05-04T06:44:25.247Z">
 <meta property="article:author" content="assskiller">
+<meta property="article:tag" content="dp">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="贪心">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -148,7 +151,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-LeetCode45" class="article article-type-post " itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -156,30 +159,35 @@
         
   
     <h1 class="article-title" itemprop="name">
-      工具
+      跳跃游戏---LeetCode45
     </h1>
   
 
         
-        <a href="/tools/index.html" class="archive-article-date">
-  	<time datetime="2020-04-13T07:41:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
+        <a href="/2020/05/04/LeetCode45/" class="archive-article-date">
+  	<time datetime="2020-05-04T06:34:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个非负整数数组，你最初位于数组的第一个位置。<br>数组中的每个元素代表你在该位置可以跳跃的最大长度。<br>你的目标是使用最少的跳跃次数到达数组的最后一个位置。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,3,1,1,4]</span><br><span class="line">输出: 2</span><br><span class="line">解释: 跳到最后一个位置的最小跳跃数是 2。</span><br><span class="line">     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。</span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">假设你总是可以到达数组的最后一个位置。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<script type="text/javascript" src="/js/test.js"></script>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这道题给两个解题思路，一个是贪心，一个是dp。</p>
+<a id="more"></a>
 
-<div>
-    <span id="ccc">click me</span>
-</div>
-
-
+<h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h3><p>贪心的策略是每次的选择要使得未来能够跳的最远，其实也很好理解，因为未来能够跳的最远，那么也可以跳的很近，也就是说，未来能够跳的最远的选择其实是包括了跳的近的选择的。证明差不多就是这个思路。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;length<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//选择一个未来能够跳的最远的点</span></span><br><span class="line">            ans++;</span><br><span class="line">            <span class="keyword">int</span> max =<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> maxj = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=nums[i];j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//如果这次就能直接跳到终点，那么就直接返回</span></span><br><span class="line">                <span class="keyword">if</span>(i+j &gt;= length<span class="number">-1</span>)</span><br><span class="line">                    <span class="keyword">return</span> ans;</span><br><span class="line">                <span class="comment">//i+j+nums[i+j]是未来能够跳到最远的Index</span></span><br><span class="line">                <span class="keyword">if</span>(i+j+nums[i+j] &gt; max)</span><br><span class="line">                &#123;</span><br><span class="line">                    max = i+j+nums[i+j];</span><br><span class="line">                    maxj  = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            i += maxj;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
+<br/>
+
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>dp的思路很简单，就是从后往前推，dp[i]表示从Index i 到最后的最小跳数。不过这道题直接这么搞会超时，所以加了一个same数组。same[i]表示Index为i位置往后包括自己跳到重点答案相同的个数，这样就没有必要为了相同的答案遍历很多次，但是有点难想到，因为最开始我并没有分析到超时是因为有很多相同的答案，还是看了评论区才知道的。<br>ps： memset不能用于赋值为1，所以这里用的循环赋值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">100000</span>]; <span class="comment">//dp[i]表示从index为i的位置跳到最后需要的最小跳跃次数</span></span><br><span class="line">        <span class="keyword">int</span> same[<span class="number">100000</span>];<span class="comment">//same[i]表示Index为i位置往后包括自己跳到重点答案相同的个数</span></span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++) </span><br><span class="line">        &#123;</span><br><span class="line">            dp[i]=<span class="number">0</span>;</span><br><span class="line">            same[i]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=length<span class="number">-2</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = <span class="number">99999</span>;</span><br><span class="line">            <span class="comment">//加一个剪枝，如果当前能够直接跳到终点，那么就直接赋值并continue</span></span><br><span class="line">            <span class="keyword">if</span>(i+nums[i] &gt;= length<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                dp[i] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=nums[i];j+=same[i+j])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//cout&lt;&lt;"当前Index为："&lt;&lt;i&lt;&lt;" 跳的长度为"&lt;&lt;j&lt;&lt;endl;</span></span><br><span class="line">                temp = min(temp,dp[i+j]+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            dp[i] = temp;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] == dp[i+<span class="number">1</span>])</span><br><span class="line">                same[i] = same[i+<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/jump-game-ii/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/jump-game-ii/</a></p>
 
       
 
@@ -188,6 +196,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -238,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/tools/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/04/LeetCode45/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -250,6 +277,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/03/LeetCode5402/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">绝对值差不超过限制的最长连续子数组---LeetCode5402</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -326,7 +363,7 @@ gitalk.render('gitalk-container')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
