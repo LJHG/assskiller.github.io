@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.assskiller.cn">
-  <title>Tag: 不要乱用dp | assskiller&#39;s blog</title>
+  <title>最低票价---LeetCode983(简单dp) | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="assskiller&#39;s blog">
-<meta property="og:url" content="http://www.assskiller.cn/tags/%E4%B8%8D%E8%A6%81%E4%B9%B1%E7%94%A8dp/index.html">
+  <meta name="description" content="题目描述：在一个火车旅行很受欢迎的国度，你提前一年计划了一些火车旅行。在接下来的一年里，你要旅行的日子将以一个名为 days 的数组给出。每一项是一个从 1 到 365 的整数。 火车票有三种不同的销售方式： 一张为期一天的通行证售价为 costs[0] 美元；一张为期七天的通行证售价为 costs[1] 美元；一张为期三十天的通行证售价为 costs[2] 美元。通行证允许数天无限制的旅行。 例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最低票价---LeetCode983(简单dp)">
+<meta property="og:url" content="http://www.assskiller.cn/2020/05/06/LeetCode983/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
+<meta property="og:description" content="题目描述：在一个火车旅行很受欢迎的国度，你提前一年计划了一些火车旅行。在接下来的一年里，你要旅行的日子将以一个名为 days 的数组给出。每一项是一个从 1 到 365 的整数。 火车票有三种不同的销售方式： 一张为期一天的通行证售价为 costs[0] 美元；一张为期七天的通行证售价为 costs[1] 美元；一张为期三十天的通行证售价为 costs[2] 美元。通行证允许数天无限制的旅行。 例">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-06T07:13:13.000Z">
+<meta property="article:modified_time" content="2020-05-06T07:17:01.130Z">
 <meta property="article:author" content="assskiller">
+<meta property="article:tag" content="dp">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -144,73 +149,191 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode983" class="article article-type-post " itemscope itemprop="blogPost">
+
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/LeetCode5393/" class="archive-article-date">
-  	<time datetime="2020-04-26T05:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/LeetCode5393/">可获得最大点数（乱用DP=炸内存）</a>
+    <h1 class="article-title" itemprop="name">
+      最低票价---LeetCode983(简单dp)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/06/LeetCode983/" class="archive-article-date">
+  	<time datetime="2020-05-06T07:13:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>在一个火车旅行很受欢迎的国度，你提前一年计划了一些火车旅行。在接下来的一年里，你要旅行的日子将以一个名为 days 的数组给出。每一项是一个从 1 到 365 的整数。</p>
+<p>火车票有三种不同的销售方式：</p>
+<p>一张为期一天的通行证售价为 costs[0] 美元；<br>一张为期七天的通行证售价为 costs[1] 美元；<br>一张为期三十天的通行证售价为 costs[2] 美元。<br>通行证允许数天无限制的旅行。 例如，如果我们在第 2 天获得一张为期 7 天的通行证，那么我们可以连着旅行 7 天：第 2 天、第 3 天、第 4 天、第 5 天、第 6 天、第 7 天和第 8 天。</p>
+<p>返回你想要完成在给定的列表 days 中列出的每一天的旅行所需要的最低消费。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line">输入：days &#x3D; [1,4,6,7,8,20], costs &#x3D; [2,7,15]</span><br><span class="line">输出：11</span><br><span class="line">解释： </span><br><span class="line">例如，这里有一种购买通行证的方法，可以让你完成你的旅行计划：</span><br><span class="line">在第 1 天，你花了 costs[0] &#x3D; $2 买了一张为期 1 天的通行证，它将在第 1 天生效。</span><br><span class="line">在第 3 天，你花了 costs[1] &#x3D; $7 买了一张为期 7 天的通行证，它将在第 3, 4, ..., 9 天生效。</span><br><span class="line">在第 20 天，你花了 costs[0] &#x3D; $2 买了一张为期 1 天的通行证，它将在第 20 天生效。</span><br><span class="line">你总共花了 $11，并完成了你计划的每一天旅行。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：days &#x3D; [1,2,3,4,5,6,7,8,9,10,30,31], costs &#x3D; [2,7,15]</span><br><span class="line">输出：17</span><br><span class="line">解释：</span><br><span class="line">例如，这里有一种购买通行证的方法，可以让你完成你的旅行计划： </span><br><span class="line">在第 1 天，你花了 costs[2] &#x3D; $15 买了一张为期 30 天的通行证，它将在第 1, 2, ..., 30 天生效。</span><br><span class="line">在第 31 天，你花了 costs[0] &#x3D; $2 买了一张为期 1 天的通行证，它将在第 31 天生效。 </span><br><span class="line">你总共花了 $17，并完成了你计划的每一天旅行。</span><br><span class="line"> </span><br><span class="line">提示：</span><br><span class="line">1 &lt;&#x3D; days.length &lt;&#x3D; 365</span><br><span class="line">1 &lt;&#x3D; days[i] &lt;&#x3D; 365</span><br><span class="line">days 按顺序严格递增</span><br><span class="line">costs.length &#x3D;&#x3D; 3</span><br><span class="line">1 &lt;&#x3D; costs[i] &lt;&#x3D; 1000</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>对每一个days里存在的天数进行dp，并在那一天进行买票（这里我默认只在days里有的天数买票，没有去考虑在其它天买票的情况，不知道有没有问题），并求出这一天买票cost最小的情况。当对某一天买了某一种票过后，在范围内的都不用买票，往后遍历，直到遇到第一个dp[k]不是0的，加上就是当前票的花费情况。(说的不清楚，看代码更清楚)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mincostTickets</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; days, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; costs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">1000</span>]; <span class="comment">//dp[i]表示从第i天开始买票到最后的最小花费</span></span><br><span class="line">        <span class="keyword">int</span> daysLength = days.size();</span><br><span class="line">        <span class="keyword">int</span> costsLength = costs.size();</span><br><span class="line"></span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="comment">//把最后一个先初始化了，没想到会有7天比1天便宜的情况，三个要求最小</span></span><br><span class="line">        dp[days[daysLength<span class="number">-1</span>]] = min(min(costs[<span class="number">0</span>],costs[<span class="number">1</span>]),costs[<span class="number">2</span>]);</span><br><span class="line">        <span class="comment">//倒着dp</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=daysLength<span class="number">-2</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//遍历三种取值，取花费最小的</span></span><br><span class="line">            <span class="keyword">int</span> minCost = <span class="number">999999</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">3</span>;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> cost = costs[j];</span><br><span class="line">                <span class="comment">//如果days[i]+通行证天数 内的，就不用算钱，超过的就要加</span></span><br><span class="line">                <span class="keyword">if</span>(j==<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> flag= <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=days[i]+<span class="number">1</span>;k&lt;=days[daysLength<span class="number">-1</span>];k++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(dp[k] != <span class="number">0</span>)</span><br><span class="line">                        &#123;</span><br><span class="line">                            cost += dp[k];</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                        </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(j == <span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> flag= <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=days[i]+<span class="number">7</span>;k&lt;=days[daysLength<span class="number">-1</span>];k++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(dp[k] != <span class="number">0</span>)</span><br><span class="line">                        &#123;</span><br><span class="line">                            cost += dp[k];</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">int</span> flag= <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=days[i]+<span class="number">30</span>;k&lt;=days[daysLength<span class="number">-1</span>];k++)</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(dp[k] != <span class="number">0</span>)</span><br><span class="line">                        &#123;</span><br><span class="line">                            cost += dp[k];</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(cost &lt; minCost)</span><br><span class="line">                    minCost = cost;</span><br><span class="line">            &#125;</span><br><span class="line">            dp[days[i]] = minCost;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// for(int i=0;i&lt;daysLength;i++)</span></span><br><span class="line">        <span class="comment">// &#123;</span></span><br><span class="line">        <span class="comment">//     cout&lt;&lt;dp[days[i]]&lt;&lt;" ";</span></span><br><span class="line">        <span class="comment">// &#125;</span></span><br><span class="line">        <span class="keyword">return</span> dp[days[<span class="number">0</span>]];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/minimum-cost-for-tickets/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/minimum-cost-for-tickets/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">周赛186</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">后缀和</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">不要乱用dp</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.assskiller.cn/2020/05/06/LeetCode983/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/05/06/LeetCode98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          验证二叉搜索树---LeetCode98
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/05/04/LeetCode45/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">跳跃游戏---LeetCode45</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
   
+
+  
+
+   <!-- gittalk -->
+   
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  clientID: '2c04f14529126544e89f',
+  clientSecret: 'dfce82ff98fbf1681ebe3a36fd886d8f34a53bac',
+  repo: 'assskiller.github.io',
+  owner: 'assskiller',
+  admin: ['assskiller'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+
+  
+  <!--  -->
+
+  
+
 
           </div>
         </div>
@@ -234,9 +357,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
