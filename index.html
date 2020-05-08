@@ -146,6 +146,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-spring-boot-maven-plugin-error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/08/spring-boot-maven-plugin-error/">spring-boot-maven-plugin爆红</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/08/spring-boot-maven-plugin-error/" class="archive-article-date">
+  	<time datetime="2020-05-08T10:18:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题来源居然是maven的settings没配好，要重新装一下阿里的源，之前我装那个居然有问题，服了。  </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>          </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+
+<p>xml没高亮是什么鬼</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">maven</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/08/spring-boot-maven-plugin-error/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-LeetCode221" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -926,101 +1011,6 @@
 
 
   
-    <article id="post-LeetCode1095" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/LeetCode1095/">山顶数组中查找目标值(二分法) --LeetCode1095</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/29/LeetCode1095/" class="archive-article-date">
-  	<time datetime="2020-04-29T09:14:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>（这是一个 交互式问题 ）</p>
-<p>给你一个 山脉数组 mountainArr，请你返回能够使得 mountainArr.get(index) 等于 target 最小 的下标 index 值。</p>
-<p>如果不存在这样的下标 index，就请返回 -1。</p>
-<p>何为山脉数组？如果数组 A 是一个山脉数组的话，那它满足如下条件：</p>
-<p>首先，A.length &gt;= 3</p>
-<p>其次，在 0 &lt; i &lt; A.length - 1 条件下，存在 i 使得：</p>
-<p>A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i]<br>A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1]</p>
-<p>你将 不能直接访问该山脉数组，必须通过 MountainArray 接口来获取数据：</p>
-<p>MountainArray.get(k) - 会返回数组中索引为k 的元素（下标从 0 开始）<br>MountainArray.length() - 会返回该数组的长度</p>
-<p>注意：</p>
-<p>对 MountainArray.get 发起超过 100 次调用的提交将被视为错误答案。此外，任何试图规避判题系统的解决方案都将会导致比赛资格被取消。</p>
-<p>为了帮助大家更好地理解交互式问题，我们准备了一个样例 “答案”：<a href="https://leetcode-cn.com/playground/RKhe3ave，请注意这" target="_blank" rel="noopener">https://leetcode-cn.com/playground/RKhe3ave，请注意这</a> 不是一个正确答案。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：array &#x3D; [1,2,3,4,5,3,1], target &#x3D; 3</span><br><span class="line">输出：2</span><br><span class="line">解释：3 在数组中出现了两次，下标分别为 2 和 5，我们返回最小的下标 2。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：array &#x3D; [0,1,2,4,2,1], target &#x3D; 3</span><br><span class="line">输出：-1</span><br><span class="line">解释：3 在数组中没有出现，返回 -1。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">3 &lt;&#x3D; mountain_arr.length() &lt;&#x3D; 10000</span><br><span class="line">0 &lt;&#x3D; target &lt;&#x3D; 10^9</span><br><span class="line">0 &lt;&#x3D; mountain_arr.get(index) &lt;&#x3D; 10^9</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;find-in-mountain-array</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这道题不能直接从头到尾遍历，因为题目说请求index的数据过多会报错，所以明显只能二分。<br>先通过二分找出山顶位置，然后在山顶位置前二分找出第一个答案，山顶位置后找出第二个答案就可以了。<br>注意山顶前的排序是从小到大，山顶后的排序是从大到小，两个的二分是反着来的。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * // This is the MountainArray's API interface.</span></span><br><span class="line"><span class="comment"> * // You should not implement it, or speculate about its implementation</span></span><br><span class="line"><span class="comment"> * class MountainArray &#123;</span></span><br><span class="line"><span class="comment"> *   public:</span></span><br><span class="line"><span class="comment"> *     int get(int index);</span></span><br><span class="line"><span class="comment"> *     int length();</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySerach</span><span class="params">(MountainArray &amp;mountainArr, <span class="keyword">int</span> target, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = start;</span><br><span class="line">    <span class="keyword">int</span> right = end;</span><br><span class="line">    <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        middle = (left+right) /<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(mountainArr.get(middle) == target)</span><br><span class="line">            <span class="keyword">return</span> middle;</span><br><span class="line">        <span class="keyword">if</span>(target &lt; mountainArr.get(middle))</span><br><span class="line">        &#123;</span><br><span class="line">            right = middle <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            left = middle+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">reverseBinarySerach</span><span class="params">(MountainArray &amp;mountainArr, <span class="keyword">int</span> target, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = start;</span><br><span class="line">    <span class="keyword">int</span> right = end;</span><br><span class="line">    <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        middle = (left+right) /<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(mountainArr.get(middle) == target)</span><br><span class="line">            <span class="keyword">return</span> middle;</span><br><span class="line">        <span class="keyword">if</span>(target &lt; mountainArr.get(middle))</span><br><span class="line">        &#123;</span><br><span class="line">            left = middle+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            right = middle <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findInMountainArray</span><span class="params">(<span class="keyword">int</span> target, MountainArray &amp;mountainArr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = mountainArr.length();</span><br><span class="line">        <span class="comment">//find moutain top</span></span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">1</span>; <span class="comment">//山顶不会出现在0或者length-1</span></span><br><span class="line">        <span class="keyword">int</span> right = length <span class="number">-2</span>;</span><br><span class="line">        <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> moutainTopIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//left =1  right = 2 middle = 1</span></span><br><span class="line">            middle = (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="comment">//山顶不会出现在0或者length-1</span></span><br><span class="line">            <span class="keyword">int</span> curLeft = mountainArr.get(middle<span class="number">-1</span>);</span><br><span class="line">            <span class="keyword">int</span> cur = mountainArr.get(middle);</span><br><span class="line">            <span class="keyword">int</span> curRight = mountainArr.get(middle+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(cur &gt; curLeft &amp;&amp; cur &gt; curRight)</span><br><span class="line">            &#123;</span><br><span class="line">                moutainTopIndex = middle;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(curLeft &lt; cur &amp;&amp; cur &lt; curRight)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//左边山</span></span><br><span class="line">                left = middle +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(curLeft &gt; cur &amp;&amp; cur &gt; curRight)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">///右边山</span></span><br><span class="line">                right = middle <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"length: "</span>&lt;&lt;length&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"山顶的index是： "</span>&lt;&lt;moutainTopIndex&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//找到山顶的index后，分两边二分查找</span></span><br><span class="line">        <span class="keyword">int</span> leftAnsIndex = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> rightAnsIndex = <span class="number">-1</span>;</span><br><span class="line">        leftAnsIndex = binarySerach(mountainArr,target,<span class="number">0</span>,moutainTopIndex);</span><br><span class="line">        rightAnsIndex = reverseBinarySerach(mountainArr,target,moutainTopIndex+<span class="number">1</span>,length<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;leftAnsIndex&lt;&lt;<span class="string">" "</span>&lt;&lt;rightAnsIndex;</span><br><span class="line">        <span class="keyword">if</span>(leftAnsIndex != <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">return</span> leftAnsIndex;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(rightAnsIndex != <span class="number">-1</span>)</span><br><span class="line">                <span class="keyword">return</span> rightAnsIndex;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/find-in-mountain-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-in-mountain-array/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BinarySerach</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/29/LeetCode1095/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &gt;</a>
@@ -1293,6 +1283,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
             
             <div class="clearfix"></div>
