@@ -146,6 +146,108 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/LeetCode05/">LeetCode05</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/23/LeetCode05/" class="archive-article-date">
+  	<time datetime="2020-04-23T13:10:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line">输入: &quot;babad&quot;</span><br><span class="line">输出: &quot;bab&quot;</span><br><span class="line">注意: &quot;aba&quot; 也是一个有效答案。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入: &quot;cbbd&quot;</span><br><span class="line">输出: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这里给三个解题思路，分别是中心展开，dp，和马拉车  </p>
+<h3 id="中心展开"><a href="#中心展开" class="headerlink" title="中心展开"></a>中心展开</h3><p>暴力对每一个位置进行展开看回文，为了避免偶回文，对字符串做了预处理</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//对s进行处理，避免偶回文的情况出现</span></span><br><span class="line">       <span class="built_in">string</span> newS = <span class="string">"#"</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           newS += s[i];</span><br><span class="line">           newS += <span class="string">'#'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       s = newS;</span><br><span class="line">       <span class="keyword">int</span> length = s.length();</span><br><span class="line">       <span class="built_in">string</span> ans=<span class="string">""</span>;</span><br><span class="line">       <span class="keyword">int</span> maxLength = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="built_in">string</span> pre=<span class="string">""</span>;</span><br><span class="line">           <span class="keyword">char</span> middle = s[i];</span><br><span class="line">           <span class="built_in">string</span> back = <span class="string">""</span>;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; i+j&lt;length &amp;&amp; i-j&gt;=<span class="number">0</span>; j++)</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">if</span>(s[i-j] == s[i+j])</span><br><span class="line">               &#123;</span><br><span class="line">                   pre += s[i-j];</span><br><span class="line">                   back += s[i+j];</span><br><span class="line">               &#125;           </span><br><span class="line">               <span class="keyword">else</span></span><br><span class="line">               &#123;</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//pre需要reverse一下</span></span><br><span class="line">            <span class="built_in">std</span>::reverse(pre.begin(),pre.end());</span><br><span class="line">            <span class="built_in">string</span> tmpAns = pre + middle + back;</span><br><span class="line">            <span class="keyword">int</span> tmpLength = tmpAns.length();</span><br><span class="line">            <span class="keyword">if</span>(tmpLength &gt; maxLength)</span><br><span class="line">            &#123;</span><br><span class="line">                ans = tmpAns;</span><br><span class="line">                maxLength = tmpLength;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//把输出结果中的#去掉</span></span><br><span class="line">       <span class="built_in">string</span> realAns = <span class="string">""</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;ans.length();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(ans[i]==<span class="string">'#'</span>)</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">continue</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span>&#123;</span><br><span class="line">               realAns += ans[i];</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> realAns;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<br/>
+<br/>
+<br/> 
+
+<h3 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h3><p>先初始化所有一回文和二回文的情况，然后再通过动态规划求出所有三回文直到length回文的情况<br>递推公式 dp[i][j] == dp[i+1][j-1] ==1 &amp;&amp; s[i]==s[j]<br>注意两层循环，表示回文串长度的循环要放外面，不然就不对，因为这样可能在index为0时，会错过长度为4的回文，因为后面还没弄过。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//dp法</span></span><br><span class="line">        <span class="keyword">int</span> start =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">1000</span>][<span class="number">1000</span>]; <span class="comment">//dp[i][j]==1代表在s中(i,j)位置的是一个回文字串</span></span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="comment">//初始化所有一回文和二回文的情况</span></span><br><span class="line">        <span class="keyword">int</span> length = s.length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i][i] =<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(end-start &lt;= <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                start =i;</span><br><span class="line">                end =i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i+<span class="number">1</span> &lt;length &amp;&amp; s[i] == s[i+<span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                dp[i][i+<span class="number">1</span>] =<span class="number">1</span>;</span><br><span class="line">                start =i;</span><br><span class="line">                end = i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//从3回文开始，一直找到length回文</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">2</span>; l&lt;length ;l++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i+l&lt;length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> j = i+l;</span><br><span class="line">                dp[i][j] = dp[i+<span class="number">1</span>][j<span class="number">-1</span>] &amp;&amp; s[i]==s[j];</span><br><span class="line">                <span class="keyword">if</span>(dp[i][j] ==<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    start=i;</span><br><span class="line">                    end=j;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//根据start end 求结果 注意 substr第一个参数是位置，第二个参数是长度</span></span><br><span class="line">        <span class="keyword">return</span> s.substr(start,end-start+<span class="number">1</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br/>
+<br/>
+<br/> 
+
+<h3 id="马拉车算法"><a href="#马拉车算法" class="headerlink" title="马拉车算法"></a>马拉车算法</h3><p>在这里贴一个讲马拉车讲的很好的B站视频：<br><a href="https://www.bilibili.com/video/BV1ft4y117a4" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1ft4y117a4</a>  </p>
+<p>马拉车算法和中心展开其实很像，只不过很好地利用了回文串的对称性来避免重复计算<br>对字符串预处理是为了让全部都变成奇回文串的情况<br>马拉车算法维护了一个最右回文子串，当对一个字符串从左到右进行遍历求d[i]时，如果i在最右回文子串中，就可以利用对称性来为d[i]初始化一个值，然后再中心展开，不然就直接中心展开。<br>最后得出结果时，可以发现，最终的回文串长度就是d[i]-1，最终的最长回文串在原始字符串中的起始index，就是修改后字符串中，(d[i]最大的index - d[i])/2  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">tarStringInfo</span>&#123;</span></span><br><span class="line">        <span class="keyword">int</span> index; <span class="comment">//最长回文子串的开始位置</span></span><br><span class="line">        <span class="keyword">int</span> length; <span class="comment">//最长回文子串的长度 </span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">preMake</span><span class="params">(<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//先对s做预处理</span></span><br><span class="line">        <span class="built_in">string</span> newS=<span class="string">"@#"</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            newS += s[i];</span><br><span class="line">            newS += <span class="string">'#'</span>;	</span><br><span class="line">        &#125;</span><br><span class="line">        newS += <span class="string">"$"</span>;</span><br><span class="line">        <span class="keyword">return</span> newS;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">tarStringInfo <span class="title">Manacher</span><span class="params">(<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        s = preMake(s);</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">0</span>; <span class="comment">//最右回文子串的右边界 </span></span><br><span class="line">        <span class="keyword">int</span> middle = <span class="number">0</span>; <span class="comment">// 最右回文子串的中心</span></span><br><span class="line">        <span class="keyword">int</span> maxDis =<span class="number">0</span>;  <span class="comment">//记录最大di </span></span><br><span class="line">        <span class="keyword">int</span> maxIndex=<span class="number">0</span>; <span class="comment">//最大di的index </span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; d; <span class="comment">//d数组</span></span><br><span class="line">        <span class="keyword">int</span> length = s.length();</span><br><span class="line">        d.push_back(<span class="number">0</span>); <span class="comment">//@对应位置的回文半径是0 </span></span><br><span class="line">        d.push_back(<span class="number">1</span>); <span class="comment">//第一个字符对应的回文半径必定是1</span></span><br><span class="line">        right =<span class="number">1</span>;</span><br><span class="line">        middle =<span class="number">1</span>; </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            d.push_back(<span class="number">1</span>); <span class="comment">//不管怎样，先push一个1 </span></span><br><span class="line">            <span class="keyword">if</span>(i&lt;=right) <span class="comment">//在最右回文子串内，利用对称初始化一个值 </span></span><br><span class="line">            &#123;</span><br><span class="line">                d[i] = min(d[<span class="number">2</span>*middle-i],right-i+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//暴力扩张</span></span><br><span class="line">            <span class="keyword">int</span> l = d[i];</span><br><span class="line">            <span class="keyword">while</span>(s[i+l] == s[i-l] &amp;&amp; i-l&gt;=<span class="number">1</span> &amp;&amp; i+l &lt; length<span class="number">-1</span> )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i+l] == s[i-l])</span><br><span class="line">                &#123;</span><br><span class="line">                    d[i]++;</span><br><span class="line">                &#125;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(d[i] &gt; maxDis)</span><br><span class="line">            &#123;</span><br><span class="line">                maxDis = d[i];</span><br><span class="line">                maxIndex=i;</span><br><span class="line">            &#125;</span><br><span class="line">            right = i + d[i] <span class="number">-1</span>;</span><br><span class="line">            middle =i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//对应回原字符串，回文长度就是d[i]-1，回文开始的位置就是 (index-d[i])/2 </span></span><br><span class="line">        tarStringInfo ans;</span><br><span class="line">        ans.length = maxDis <span class="number">-1</span>;</span><br><span class="line">        ans.index = (maxIndex - maxDis)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> ans;	 </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        tarStringInfo ans = Manacher(s);</span><br><span class="line">        <span class="keyword">return</span> s.substr(ans.index,ans.length);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-palindromic-substring/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">回文串</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">马拉车算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/23/LeetCode05/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-Leetcode-coins" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -708,6 +810,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">二分</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BinarySerach</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">回文串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">dp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">马拉车算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">链表找环</a>
               </li>
              
@@ -721,22 +847,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">list</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">dp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">回文串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">马拉车算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -756,18 +866,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">树</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">邻接表</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
               </li>
              
@@ -784,11 +882,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">二分</a>
+                <a href="javascript:void(0)" class="js-tag color2">树</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">牛顿迭代法</a>
+                <a href="javascript:void(0)" class="js-tag color5">双dfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dfs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">邻接表</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -808,7 +914,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">双dfs</a>
+                <a href="javascript:void(0)" class="js-tag color1">牛顿迭代法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -832,15 +938,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">two pointers</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">背包问题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BinarySerach</a>
+                <a href="javascript:void(0)" class="js-tag color4">STL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">two pointers</a>
+                <a href="javascript:void(0)" class="js-tag color1">Stack</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -872,11 +982,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">STL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Stack</a>
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -892,7 +998,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+                <a href="javascript:void(0)" class="js-tag color4">快速幂</a>
               </li>
             
             <div class="clearfix"></div>

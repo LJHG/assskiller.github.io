@@ -6,23 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.assskiller.cn">
-  <title>验证二叉搜索树---LeetCode98 | assskiller&#39;s blog</title>
+  <title>Pow(x,n)---LeetCode50(快速幂) | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目描述：给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：节点的左子树只包含小于当前节点的数。节点的右子树只包含大于当前节点的数。所有左子树和右子树自身必须也是二叉搜索树。 示例：123456789101112131415161718示例 1:输入:    2   &#x2F; \  1   3输出: true示例 2:输入:    5   &#x2F; \  1">
+  <meta name="description" content="题目描述：实现 pow(x, n) ，即计算 x 的 n 次幂函数。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="验证二叉搜索树---LeetCode98">
-<meta property="og:url" content="http://www.assskiller.cn/2020/05/06/LeetCode98/index.html">
+<meta property="og:title" content="Pow(x,n)---LeetCode50(快速幂)">
+<meta property="og:url" content="http://www.assskiller.cn/2020/05/11/LeetCode50/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
-<meta property="og:description" content="题目描述：给定一个二叉树，判断其是否是一个有效的二叉搜索树。假设一个二叉搜索树具有如下特征：节点的左子树只包含小于当前节点的数。节点的右子树只包含大于当前节点的数。所有左子树和右子树自身必须也是二叉搜索树。 示例：123456789101112131415161718示例 1:输入:    2   &#x2F; \  1   3输出: true示例 2:输入:    5   &#x2F; \  1">
+<meta property="og:description" content="题目描述：实现 pow(x, n) ，即计算 x 的 n 次幂函数。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-06T08:22:13.000Z">
-<meta property="article:modified_time" content="2020-05-06T09:00:23.065Z">
+<meta property="article:published_time" content="2020-05-11T06:32:42.000Z">
+<meta property="article:modified_time" content="2020-05-11T06:37:22.038Z">
 <meta property="article:author" content="assskiller">
-<meta property="article:tag" content="二叉树">
-<meta property="article:tag" content="tree">
-<meta property="article:tag" content="BST">
-<meta property="article:tag" content="DFS">
-<meta property="article:tag" content="中序遍历">
+<meta property="article:tag" content="快速幂">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -153,7 +149,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-LeetCode98" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LeetCode50" class="article article-type-post " itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -161,38 +157,27 @@
         
   
     <h1 class="article-title" itemprop="name">
-      验证二叉搜索树---LeetCode98
+      Pow(x,n)---LeetCode50(快速幂)
     </h1>
   
 
         
-        <a href="/2020/05/06/LeetCode98/" class="archive-article-date">
-  	<time datetime="2020-05-06T08:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+        <a href="/2020/05/11/LeetCode50/" class="archive-article-date">
+  	<time datetime="2020-05-11T06:32:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。<br>假设一个二叉搜索树具有如下特征：<br>节点的左子树只包含小于当前节点的数。<br>节点的右子树只包含大于当前节点的数。<br>所有左子树和右子树自身必须也是二叉搜索树。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入:</span><br><span class="line">    2</span><br><span class="line">   &#x2F; \</span><br><span class="line">  1   3</span><br><span class="line">输出: true</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">输入:</span><br><span class="line">    5</span><br><span class="line">   &#x2F; \</span><br><span class="line">  1   4</span><br><span class="line">     &#x2F; \</span><br><span class="line">    3   6</span><br><span class="line">输出: false</span><br><span class="line">解释: 输入为: [5,1,4,null,null,3,6]。</span><br><span class="line">     根节点的值为 5 ，但是其右子节点值为 4 。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>实现 pow(x, n) ，即计算 x 的 n 次幂函数。</p>
 <a id="more"></a>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这里给两个解题思路，一个是递归(dfs),另一个是中序遍历</p>
-<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>要写好DFS,就要明确知道二叉搜索树的定义，二叉搜索树就是一棵树，他的左子树上的数字都比根节点小，右子树上的数组都比根节点大。<br>所以在确定如何进行dfs时，可以这样想：当拿到一个节点时，只需要判断自己的上下界来看自己是否满足要求：</p>
-<ol>
-<li>如果是左子树，那么上界就是根节点的值，下界就是根节点的下界。</li>
-<li>如果是右子树，那么下界就是根节点的值，上界就是根节点的上界。<br>把这些捋明白了，就很好写了。</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">judgeCurrentNode</span><span class="params">(TreeNode* root,<span class="keyword">long</span> <span class="keyword">long</span>  upper, <span class="keyword">long</span> <span class="keyword">long</span>  lower)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val &gt;= upper || root-&gt;val &lt;= lower) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> judgeCurrentNode(root-&gt;left,root-&gt;val,lower)&amp;&amp;judgeCurrentNode(root-&gt;right,upper,root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> judgeCurrentNode(root,LONG_MAX,LONG_MIN);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入: 2.00000, 10</span><br><span class="line">输出: 1024.00000</span><br></pre></td></tr></table></figure>
 
-<br/>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>就是快速幂。快速幂的核心思想就是，通过把指数减半，底数平方来使得循环次数尽可能减少。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//如果指数为奇数，底数与结果相乘。然后底数 = 底数*底数 ，指数 = 指数/2。这里其实是拿了一个底数^1与结果相乘，后面的当成偶指数情况变换。</span></span><br><span class="line"><span class="comment">//如果指数为偶数，直接 底数 = 底数*底数 ，指数 = 指数/2</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">fastPow</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">long</span> <span class="keyword">long</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> res =<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)<span class="comment">//如果n为奇数</span></span><br><span class="line">        &#123;</span><br><span class="line">            res = res*x;</span><br><span class="line">        &#125;</span><br><span class="line">        x = x*x;</span><br><span class="line">        n = n&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><p>对树进行中序遍历，如果不是递增，就return false</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> min = LONG_MIN;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//中序遍历</span></span><br><span class="line">        <span class="keyword">bool</span> leftOk = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">bool</span> rightOk = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">//左</span></span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">            leftOk=isValidBST(root-&gt;left);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            leftOk = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//中</span></span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val &gt; min)   </span><br><span class="line">            min = root-&gt;val;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//右</span></span><br><span class="line">        <span class="keyword">if</span>(root-&gt;right != <span class="literal">NULL</span>) </span><br><span class="line">            rightOk=isValidBST(root-&gt;right);</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            rightOk = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> leftOk&amp;&amp;rightOk;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/validate-binary-search-tree/</a></p>
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/powx-n/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/powx-n/</a><br><a href="https://blog.csdn.net/qq_19782019/article/details/85621386" target="_blank" rel="noopener">一个讲快速幂讲的很好的博客</a></p>
 
       
 
@@ -206,23 +191,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tree</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BST</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">中序遍历</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">快速幂</a>
         		</li>
       		
 		</ul>
@@ -278,7 +247,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://www.assskiller.cn/2020/05/06/LeetCode98/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.assskiller.cn/2020/05/11/LeetCode50/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -292,18 +261,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/07/LeetCode572/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          另一个树的子树---LeetCode572
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/06/LeetCode983/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">最低票价---LeetCode983(简单dp)</div>
+    <a href="/2020/05/10/LeetCode5406/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">收集树上所有苹果---LeetCode5406(碰见树就GG)</div>
       <i class="icon-circle-right"></i>
     </a>
   
