@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.assskiller.cn">
-  <title>First Blog | assskiller&#39;s blog</title>
+  <title>找和为k连续子数组---LeetCode560(前缀和+哈希优化) | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一篇博客">
+  <meta name="description" content="题目描述：给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。 示例：1234567示例 1 :输入:nums &#x3D; [1,1,1], k &#x3D; 2输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。说明 :数组的长度为 [1, 20,000]。数组中元素的范围是 [-1000, 1000] ，且整数 k 的范围是 [-1e7, 1e7]。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="First Blog">
-<meta property="og:url" content="http://www.assskiller.cn/2020/04/15/First-Blog/index.html">
+<meta property="og:title" content="找和为k连续子数组---LeetCode560(前缀和+哈希优化)">
+<meta property="og:url" content="http://www.assskiller.cn/2020/05/15/LeetCode560/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
-<meta property="og:description" content="第一篇博客">
+<meta property="og:description" content="题目描述：给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。 示例：1234567示例 1 :输入:nums &#x3D; [1,1,1], k &#x3D; 2输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。说明 :数组的长度为 [1, 20,000]。数组中元素的范围是 [-1000, 1000] ，且整数 k 的范围是 [-1e7, 1e7]。">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-15T07:41:16.000Z">
-<meta property="article:modified_time" content="2020-04-15T07:42:46.121Z">
+<meta property="article:published_time" content="2020-05-15T09:07:05.000Z">
+<meta property="article:modified_time" content="2020-05-15T09:20:17.958Z">
 <meta property="article:author" content="assskiller">
+<meta property="article:tag" content="前缀和">
+<meta property="article:tag" content="prefix">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -148,7 +150,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-First-Blog" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-LeetCode560" class="article article-type-post " itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -156,20 +158,33 @@
         
   
     <h1 class="article-title" itemprop="name">
-      First Blog
+      找和为k连续子数组---LeetCode560(前缀和+哈希优化)
     </h1>
   
 
         
-        <a href="/2020/04/15/First-Blog/" class="archive-article-date">
-  	<time datetime="2020-04-15T07:41:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
+        <a href="/2020/05/15/LeetCode560/" class="archive-article-date">
+  	<time datetime="2020-05-15T09:07:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>第一篇博客</p>
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">示例 1 :</span><br><span class="line">输入:nums &#x3D; [1,1,1], k &#x3D; 2</span><br><span class="line">输出: 2 , [1,1] 与 [1,1] 为两种不同的情况。</span><br><span class="line"></span><br><span class="line">说明 :</span><br><span class="line">数组的长度为 [1, 20,000]。</span><br><span class="line">数组中元素的范围是 [-1000, 1000] ，且整数 k 的范围是 [-1e7, 1e7]。</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这道题一看就是前缀和，但是没有想到前缀和还可以加上哈希表再优化。<br>这里贴三种做法：暴力，前缀和，前缀和+哈希表优化</p>
+<h3 id="暴力"><a href="#暴力" class="headerlink" title="暴力"></a>暴力</h3><p>暴力法要注意可以通过sum的累加来让它不那么暴力，当然一步到位的还是前缀和。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> start = <span class="number">0</span>; start &lt; nums.size(); ++start) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> end = start; end &gt;= <span class="number">0</span>; --end) &#123;</span><br><span class="line">                sum += nums[end];</span><br><span class="line">                <span class="keyword">if</span> (sum == k) &#123;</span><br><span class="line">                    count++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h3><p>一开始想到的就是这个方法，抱着试一试的心态就直接过了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//前缀和？</span></span><br><span class="line">        <span class="keyword">int</span> prefix[<span class="number">20050</span>];</span><br><span class="line">        prefix[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            prefix[i] = prefix[i<span class="number">-1</span>] + nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&gt;=<span class="number">0</span>;j--)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//求i 到 j的和</span></span><br><span class="line">                <span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span>(j<span class="number">-1</span> &gt;= <span class="number">0</span>) temp=prefix[i] - prefix[j<span class="number">-1</span>];</span><br><span class="line">                <span class="keyword">else</span> temp = prefix[i];</span><br><span class="line">                <span class="keyword">if</span>(temp == k) ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="前缀和-哈希表"><a href="#前缀和-哈希表" class="headerlink" title="前缀和+哈希表"></a>前缀和+哈希表</h3><p>这个真的没想到了，首先，用这种方法都不用事先把前缀和求出来，因为他是一步一步推上去的。<br>同时，这里这个m[i]的意思是，当前前缀和为i的数量有几个。<br>解释得更清楚一些：<br>目标是找出 prefix[i] - prefix[j-1] == k<br>经过移项可以得到 prefix[i] - k == prefix[j-1]<br>所以要找出<strong>index为i时，子数组和为k</strong>，就是要找出<strong>i之前前缀和为prefix[i]-k</strong>的情况，而这里的prefix[i]就直接使用sum来代替了。<br>ps：需要设置一个m[0]=1，即表示初始化前缀和为0的数量为1。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; m; <span class="comment">// m[i]代表前缀和为i的个数</span></span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        m[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += nums[i];</span><br><span class="line">            ans += m[sum-k];</span><br><span class="line">            m[sum]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/subarray-sum-equals-k/</a></p>
 
       
 
@@ -178,6 +193,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">prefix</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -228,7 +258,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://www.assskiller.cn/2020/04/15/First-Blog/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.assskiller.cn/2020/05/15/LeetCode560/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -242,18 +272,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/16/%E5%A4%A7%E8%87%B4%E5%BC%84%E5%BE%97%E5%B7%AE%E4%B8%8D%E5%A4%9A%E4%BA%86/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          大致弄得差不多了
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/05/13/LeetCode102/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">二叉树层序遍历----LeetCode102</div>
       <i class="icon-circle-right"></i>
     </a>
   
