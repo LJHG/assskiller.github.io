@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.assskiller.cn">
-  <title>Tag: STL | assskiller&#39;s blog</title>
+  <title>从前序与中序遍历序列构造二叉树---LeetCode105 | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="assskiller&#39;s blog">
-<meta property="og:url" content="http://www.assskiller.cn/tags/STL/index.html">
+  <meta name="description" content="题目描述：根据一棵树的前序遍历与中序遍历构造二叉树。注意:你可以假设树中没有重复的元素。 示例：1234567891011例如，给出前序遍历 preorder &#x3D; [3,9,20,15,7]中序遍历 inorder &#x3D; [9,3,15,20,7]返回如下的二叉树：    3   &#x2F; \  9  20    &#x2F;  \   15   7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从前序与中序遍历序列构造二叉树---LeetCode105">
+<meta property="og:url" content="http://www.assskiller.cn/2020/05/22/LeetCode105/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
+<meta property="og:description" content="题目描述：根据一棵树的前序遍历与中序遍历构造二叉树。注意:你可以假设树中没有重复的元素。 示例：1234567891011例如，给出前序遍历 preorder &#x3D; [3,9,20,15,7]中序遍历 inorder &#x3D; [9,3,15,20,7]返回如下的二叉树：    3   &#x2F; \  9  20    &#x2F;  \   15   7">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-22T06:53:04.000Z">
+<meta property="article:modified_time" content="2020-05-22T07:02:23.985Z">
 <meta property="article:author" content="assskiller">
+<meta property="article:tag" content="树">
+<meta property="article:tag" content="递归">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -144,65 +150,191 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode105" class="article article-type-post " itemscope itemprop="blogPost">
+
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/22/Leetcode445/" class="archive-article-date">
-  	<time datetime="2020-04-22T12:32:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/22/Leetcode445/">Leetcode445 两数相加(Stack)</a>
+    <h1 class="article-title" itemprop="name">
+      从前序与中序遍历序列构造二叉树---LeetCode105
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/22/LeetCode105/" class="archive-article-date">
+  	<time datetime="2020-05-22T06:53:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>根据一棵树的前序遍历与中序遍历构造二叉树。<br>注意:<br>你可以假设树中没有重复的元素。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">例如，给出</span><br><span class="line">前序遍历 preorder &#x3D; [3,9,20,15,7]</span><br><span class="line">中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br><span class="line"></span><br><span class="line">返回如下的二叉树：</span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这道题主要就是用递归的方法来做，先在中序遍历中找到根，然后就可以知道左子树和右子树的数量，然后就可以在前序遍历中找到左子树和右子树，根据新的左子树前序遍历和中序遍历 以及 右子树前序遍历和中序遍历，继续往下构建树，思想很简单，其实写起来还是有点复杂的。<br>这道题还有一个迭代的做法，我有点没看懂，就不写了。  </p>
+<h3 id="优化前的递归"><a href="#优化前的递归" class="headerlink" title="优化前的递归"></a>优化前的递归</h3><p>优化前我是在每次递归时都去构建了新的vector来作为参数传下去，所以有点慢。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder,TreeNode* root)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//前序遍历的第一个元素是根，通过在中序遍历中找到根可以判断出左子树和右子树的个数</span></span><br><span class="line">        <span class="comment">//根据左子树和右子树的个数可以在前序遍历中找到左儿子和右儿子</span></span><br><span class="line">        <span class="keyword">int</span> preLength = preorder.size();</span><br><span class="line">        <span class="keyword">int</span> inLength = inorder.size();</span><br><span class="line">        <span class="comment">//如果当前只有一个元素 或者说没有root，直接返回</span></span><br><span class="line">        <span class="keyword">if</span>(preLength == <span class="number">1</span> || root==<span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;inLength;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(inorder[i] != preorder[<span class="number">0</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                 cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(cnt == <span class="number">0</span>)</span><br><span class="line">            root-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            root-&gt;left = <span class="keyword">new</span> TreeNode(preorder[<span class="number">1</span>]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>( cnt+<span class="number">1</span> == inLength)</span><br><span class="line">            root-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            root-&gt;right = <span class="keyword">new</span> TreeNode(preorder[<span class="number">1</span>+cnt]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//构建新的left 和 right的vector</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; leftPre;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; leftIn;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rightPre;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rightIn;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;preLength;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(temp &lt; cnt)</span><br><span class="line">            &#123;</span><br><span class="line">                leftPre.push_back(preorder[i]);</span><br><span class="line">                temp++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                rightPre.push_back(preorder[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;inLength;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(temp &lt; cnt)</span><br><span class="line">            &#123;</span><br><span class="line">                leftIn.push_back(inorder[i]);</span><br><span class="line">                temp++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (temp == cnt)</span><br><span class="line">            &#123;</span><br><span class="line">                temp++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                rightIn.push_back(inorder[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//打印当前的vector</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"这里是左子树的前序: [";</span></span><br><span class="line">        <span class="comment">// for(int i=0;i&lt;leftPre.size();i++) cout&lt;&lt;leftPre[i]&lt;&lt;" ";</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"] "&lt;&lt;endl;</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"这里是左子树的中序: [";</span></span><br><span class="line">        <span class="comment">// for(int i=0;i&lt;leftIn.size();i++) cout&lt;&lt;leftIn[i]&lt;&lt;" ";</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"] "&lt;&lt;endl;</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"这里是右子树的前序: [";</span></span><br><span class="line">        <span class="comment">// for(int i=0;i&lt;rightPre.size();i++) cout&lt;&lt;rightPre[i]&lt;&lt;" ";</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"] "&lt;&lt;endl;</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"这里是右子树的中序: [";</span></span><br><span class="line">        <span class="comment">// for(int i=0;i&lt;rightIn.size();i++) cout&lt;&lt;rightIn[i]&lt;&lt;" ";</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"] "&lt;&lt;endl;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"*********************"&lt;&lt;endl;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        helper(leftPre,leftIn,root-&gt;left);</span><br><span class="line">        helper(rightPre,rightIn,root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">if</span>(preorder.size() == <span class="number">0</span> ) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(preorder[<span class="number">0</span>]);</span><br><span class="line">        helper(preorder,inorder,root);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</br>
+
+<h3 id="优化后的递归"><a href="#优化后的递归" class="headerlink" title="优化后的递归"></a>优化后的递归</h3><p>但是其实不用每次都去构建vector，只需要把对应的左边和右边的index记录一下就可以了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; preOrder;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; inOrder;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode* root,<span class="keyword">int</span> preLeftIndex,<span class="keyword">int</span> preRightIndex,<span class="keyword">int</span> inLeftIndex,<span class="keyword">int</span> inRightIndex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//在中序遍历中寻找root</span></span><br><span class="line">        <span class="keyword">if</span>(preRightIndex-preLeftIndex == <span class="number">0</span> || root == <span class="literal">NULL</span> ) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=inLeftIndex ;i&lt;=inRightIndex;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(inOrder[i] != root-&gt;val)</span><br><span class="line">            &#123;</span><br><span class="line">                cnt++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//确定左子树和右子树的根</span></span><br><span class="line">        <span class="keyword">if</span>(cnt == <span class="number">0</span>)</span><br><span class="line">            root-&gt;left = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            root-&gt;left = <span class="keyword">new</span> TreeNode(preOrder[preLeftIndex+<span class="number">1</span>]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(cnt +<span class="number">1</span> == inRightIndex-inLeftIndex +<span class="number">1</span>) <span class="comment">//如果cnt+1就是length</span></span><br><span class="line">            root-&gt;right = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            root-&gt;right = <span class="keyword">new</span> TreeNode(preOrder[preLeftIndex+<span class="number">1</span>+cnt]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//建立左子树和右子树</span></span><br><span class="line">        helper(root-&gt;left,preLeftIndex+<span class="number">1</span>,preLeftIndex+cnt,inLeftIndex,inLeftIndex+cnt<span class="number">-1</span>);</span><br><span class="line">        helper(root-&gt;right,preLeftIndex+cnt+<span class="number">1</span>,preRightIndex,inLeftIndex+cnt+<span class="number">1</span>,inRightIndex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//存一下，递归懒得传参</span></span><br><span class="line">        <span class="keyword">if</span>(preorder.size() == <span class="number">0</span> ) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        preOrder = preorder;</span><br><span class="line">        inOrder = inorder;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(preOrder[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">int</span> length = preorder.size();</span><br><span class="line">        helper(root,<span class="number">0</span>,length<span class="number">-1</span>,<span class="number">0</span>,length<span class="number">-1</span>);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure> 
+
+
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">树</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Stack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">递归</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.assskiller.cn/2020/05/22/LeetCode105/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/20/LeetCode1371/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">每个元音包含偶数次的最长子字符串---LeetCode1371(前缀和+哈希优化+状态压缩)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
   
+
+  
+
+   <!-- gittalk -->
+   
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  clientID: '2c04f14529126544e89f',
+  clientSecret: 'dfce82ff98fbf1681ebe3a36fd886d8f34a53bac',
+  repo: 'assskiller.github.io',
+  owner: 'assskiller',
+  admin: ['assskiller'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+
+  
+  <!--  -->
+
+  
+
 
           </div>
         </div>
@@ -226,9 +358,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
