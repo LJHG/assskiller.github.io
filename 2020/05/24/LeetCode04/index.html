@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.assskiller.cn">
-  <title>Archives: 2020/5 | assskiller&#39;s blog</title>
+  <title>寻找两个正序数组的中位数---LeetCode04(噩梦级边界判断) | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="assskiller&#39;s blog">
-<meta property="og:url" content="http://www.assskiller.cn/archives/2020/05/page/3/index.html">
+  <meta name="description" content="题目描述：给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。你可以假设 nums1 和 nums2 不会同时为空。 示例：123456789示例 1:nums1 &#x3D; [1, 3]nums2 &#x3D; [2]则中位数是 2.0示例 2:nums1 &#x3D; [1,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="寻找两个正序数组的中位数---LeetCode04(噩梦级边界判断)">
+<meta property="og:url" content="http://www.assskiller.cn/2020/05/24/LeetCode04/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
+<meta property="og:description" content="题目描述：给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。你可以假设 nums1 和 nums2 不会同时为空。 示例：123456789示例 1:nums1 &#x3D; [1, 3]nums2 &#x3D; [2]则中位数是 2.0示例 2:nums1 &#x3D; [1,">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-24T05:35:56.000Z">
+<meta property="article:modified_time" content="2020-05-24T05:53:23.990Z">
 <meta property="article:author" content="assskiller">
+<meta property="article:tag" content="二分">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -144,169 +149,179 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode04" class="article article-type-post " itemscope itemprop="blogPost">
+
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      寻找两个正序数组的中位数---LeetCode04(噩梦级边界判断)
+    </h1>
+  
+
+        
+        <a href="/2020/05/24/LeetCode04/" class="archive-article-date">
+  	<time datetime="2020-05-24T05:35:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。<br>请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。<br>你可以假设 nums1 和 nums2 不会同时为空。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">nums1 &#x3D; [1, 3]</span><br><span class="line">nums2 &#x3D; [2]</span><br><span class="line">则中位数是 2.0</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">nums1 &#x3D; [1, 2]</span><br><span class="line">nums2 &#x3D; [3, 4]</span><br><span class="line">则中位数是 (2 + 3)&#x2F;2 &#x3D; 2.5</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h2><p>这道题首先可以看到复杂度是O(log(m + n))，所以一般用的像归并，以及双指针的方法就不行了。这道题一看就是二分，但是一开始我也没看懂怎么二分，最后就直接看题解了。<br>这道题首先要把问题进行一个转换，要找到中位数实际上就是要找到第k个数，这里的k是 (length1+length2+1)/2 和 (length1+length2+2)/2，这里之所以要取两个k是因为奇数个数的中位数和偶数个数的中位数可以通过这种方法来进行一个统一。在奇数的情况下，(length1+length2+1)/2和(length1+length2+2)/2是相同的，在偶数的情况下，(length1+length2+1)/2和(length1+length2+2)/2就是中间的那两个数。所以两个加起来除以2就是最终答案。<br>知道了这道题的本质就是找到第k个数后，就可以开始二分了。这道题的二分非常巧妙，就是拿两个数组的第k/2个数进行比较，小的那个数组的第k/2个数以及前面的全部数都不可能是第k个数了，所以就把前面舍去(就是更新offset)，然后更新k，最后就相当于两个新的数组，找到新的第k个数(递归)。(这里面涉及了非常多的边界判定，说不清楚了，具体的见注释吧。)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findKSmallestNum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> offset1,<span class="keyword">int</span> offset2,<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length1 = nums1.size();</span><br><span class="line">        <span class="keyword">int</span> length2 = nums2.size();</span><br><span class="line">        <span class="comment">//如果数组为空，那么就直接返回</span></span><br><span class="line">        <span class="keyword">if</span>(offset1 &gt;= length1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> nums2[offset2+k<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(offset2 &gt;= length2)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> nums1[offset1+k<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果数组越界，取越界数组的最后一个元素来和另一个的k/2来比</span></span><br><span class="line">        <span class="keyword">if</span>(offset1 + k/<span class="number">2</span> <span class="number">-1</span>  &gt;= length1)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//如果越界的最后一个更小</span></span><br><span class="line">            <span class="keyword">if</span>(nums1[length1<span class="number">-1</span>] &lt; nums2[offset2 + k/<span class="number">2</span> <span class="number">-1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                k = k - (length1-offset1);</span><br><span class="line">                <span class="keyword">return</span> nums2[offset2+k<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                offset2 += k/<span class="number">2</span>;</span><br><span class="line">                k -= k/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span> findKSmallestNum(nums1,nums2,offset1,offset2,k);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(offset2 + k/<span class="number">2</span> <span class="number">-1</span> &gt;= length2)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums2[length2<span class="number">-1</span>] &lt; nums1[offset1 + k/<span class="number">2</span> <span class="number">-1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//如果越界的最后一个更小</span></span><br><span class="line">                k = k - (length2-offset2);</span><br><span class="line">                <span class="keyword">return</span> nums1[offset1+k<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                offset1 += k/<span class="number">2</span>;</span><br><span class="line">                k -= k/<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">return</span> findKSmallestNum(nums1,nums2,offset1,offset2,k);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果k为1，直接返回两个数组的开头两个的最小的那个</span></span><br><span class="line">        <span class="keyword">if</span>(k==<span class="number">1</span>) <span class="keyword">return</span> min(nums1[offset1],nums2[offset2]);</span><br><span class="line">        <span class="comment">//比较两个数组的k/2</span></span><br><span class="line">        <span class="keyword">if</span>(nums1[k/<span class="number">2</span>+offset1<span class="number">-1</span>] &lt; nums2[k/<span class="number">2</span>+offset2<span class="number">-1</span>])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//nums1前面都不是第k小</span></span><br><span class="line">            offset1 += k/<span class="number">2</span>;</span><br><span class="line">            k -= k/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            offset2 += k/<span class="number">2</span>;</span><br><span class="line">            k -= k/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> findKSmallestNum(nums1,nums2,offset1,offset2,k);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//寻找第k小的数就是拿两个数组的k/2相比，小的那个数组的第k/2包括前面的都不可能是第k小的，然后把k -= k/2,再从新的数组开始找</span></span><br><span class="line">        <span class="keyword">int</span> length1 = nums1.size();</span><br><span class="line">        <span class="keyword">int</span> length2 = nums2.size();</span><br><span class="line">        <span class="keyword">int</span> offset1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> offset2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> k1 = (length1+length2+<span class="number">1</span>) /<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> k2 = (length1+length2+<span class="number">2</span>) /<span class="number">2</span>;</span><br><span class="line">        <span class="comment">// cout&lt;&lt;"k1:"&lt;&lt;k1&lt;&lt;endl;</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;"k2:"&lt;&lt;k2&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">int</span> a = findKSmallestNum(nums1,nums2,<span class="number">0</span>,<span class="number">0</span>,k1);</span><br><span class="line">        <span class="keyword">int</span> b = findKSmallestNum(nums1,nums2,<span class="number">0</span>,<span class="number">0</span>,k2);</span><br><span class="line">        <span class="comment">// cout&lt;&lt;a&lt;&lt;endl;</span></span><br><span class="line">        <span class="comment">// cout&lt;&lt;b&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">return</span> ((<span class="keyword">double</span>)a+ (<span class="keyword">double</span>)b)/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h2><p><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/median-of-two-sorted-arrays/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/03/LeetCode5402/" class="archive-article-date">
-  	<time datetime="2020-05-03T09:13:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/03/LeetCode5402/">绝对值差不超过限制的最长连续子数组---LeetCode5402</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">滑动窗口</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">two pointers</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.assskiller.cn/2020/05/24/LeetCode04/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/03/LeetCode5400/" class="archive-article-date">
-  	<time datetime="2020-05-03T07:52:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/22/LeetCode105/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从前序与中序遍历序列构造二叉树---LeetCode105</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/03/LeetCode5400/">旅行终点站---LeetCode5400</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集合</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">出度入度</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/LeetCode03/" class="archive-article-date">
-  	<time datetime="2020-05-02T12:59:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/LeetCode03/">无重复最长子串---LeetCode03</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">滑动窗口</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/05/page/2/">&lt; Prev</a><a class="page-number" href="/archives/2020/05/">1</a><a class="page-number" href="/archives/2020/05/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
+   <!-- gittalk -->
+   
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  clientID: '2c04f14529126544e89f',
+  clientSecret: 'dfce82ff98fbf1681ebe3a36fd886d8f34a53bac',
+  repo: 'assskiller.github.io',
+  owner: 'assskiller',
+  admin: ['assskiller'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+
   
+  <!--  -->
+
   
+
 
           </div>
         </div>
@@ -330,8 +345,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
