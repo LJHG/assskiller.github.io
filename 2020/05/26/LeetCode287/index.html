@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.assskiller.cn">
-  <title>Tag: 字符串数组 | assskiller&#39;s blog</title>
+  <title>寻找重复数---LeetCode287(快慢指针) | assskiller&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="assskiller&#39;s blog">
-<meta property="og:url" content="http://www.assskiller.cn/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84/index.html">
+  <meta name="description" content="题目描述：给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。 示例：123456789101112示例 1:输入: [1,3,4,2,2]输出: 2示例 2:输入: [3,1,3,4,2]输出: 3说明：不能更改原数组（假设数组是只读的）。只能使用额外的 O(1) 的空间。时间复">
+<meta property="og:type" content="article">
+<meta property="og:title" content="寻找重复数---LeetCode287(快慢指针)">
+<meta property="og:url" content="http://www.assskiller.cn/2020/05/26/LeetCode287/index.html">
 <meta property="og:site_name" content="assskiller&#39;s blog">
+<meta property="og:description" content="题目描述：给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。 示例：123456789101112示例 1:输入: [1,3,4,2,2]输出: 2示例 2:输入: [3,1,3,4,2]输出: 3说明：不能更改原数组（假设数组是只读的）。只能使用额外的 O(1) 的空间。时间复">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-26T07:57:34.000Z">
+<meta property="article:modified_time" content="2020-05-26T08:06:01.579Z">
 <meta property="article:author" content="assskiller">
+<meta property="article:tag" content="快慢指针法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
@@ -144,61 +149,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-LeetCode287" class="article article-type-post " itemscope itemprop="blogPost">
+
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/17/LeetCode5413/" class="archive-article-date">
-  	<time datetime="2020-05-17T13:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/17/LeetCode5413/">重新排列句子中的单词---LeetCode5413(在排序时长度相同的保持相对位置不变)</a>
+    <h1 class="article-title" itemprop="name">
+      寻找重复数---LeetCode287(快慢指针)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/26/LeetCode287/" class="archive-article-date">
+  	<time datetime="2020-05-26T07:57:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入: [1,3,4,2,2]</span><br><span class="line">输出: 2</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">输入: [3,1,3,4,2]</span><br><span class="line">输出: 3</span><br><span class="line">说明：</span><br><span class="line">不能更改原数组（假设数组是只读的）。</span><br><span class="line">只能使用额外的 O(1) 的空间。</span><br><span class="line">时间复杂度小于 O(n2) 。</span><br><span class="line">数组中只有一个重复的数字，但它可能不止重复出现一次。</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+
+
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h2><p>这道题一看就是快慢指针，但是这道题要涉及到快慢指针找到环的入口的问题。<br>先给出结论，要找到环的入口（重复的节点），需要在相遇后，slow从起点开始，fast从相遇点开始继续走，两个指针都每次走一格，相遇时的点就是环的入口。<br><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/solution/xun-zhao-zhong-fu-shu-by-leetcode-solution/" target="_blank" rel="noopener">具体证明去看leetcode官方题解  </a><br>同时要注意快慢指针的模板写法，最开始是把<strong>快指针和慢指针初始化为0</strong>，然后<strong>使用一个do while循环来找相遇点</strong>。<br>以及要记住快慢指针的前提是<strong>链表</strong>，所以如果要把数组转换为一个链表，使用 <strong>slow = nums[slow]</strong> 这种方式就可以了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findDuplicate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//快慢指针</span></span><br><span class="line">       <span class="keyword">int</span> length = nums.size();</span><br><span class="line">       <span class="keyword">int</span> slow = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> fast = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">do</span>&#123;</span><br><span class="line">           slow = nums[slow];</span><br><span class="line">           fast = nums[nums[fast]];</span><br><span class="line">       &#125;<span class="keyword">while</span>(slow != fast);</span><br><span class="line">       slow = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(slow == fast)</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">return</span> slow;</span><br><span class="line">           &#125;</span><br><span class="line">           slow = nums[slow];</span><br><span class="line">           fast = nums[fast];</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h2><p><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-the-duplicate-number/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">字符串数组</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">快慢指针法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.assskiller.cn/2020/05/26/LeetCode287/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/26/LeetCode1458/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">两个子序列的最大点积---LeetCode1458(双序列dp)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
   
+
+  
+
+   <!-- gittalk -->
+   
+    <div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+var gitalk = new Gitalk({
+  clientID: '2c04f14529126544e89f',
+  clientSecret: 'dfce82ff98fbf1681ebe3a36fd886d8f34a53bac',
+  repo: 'assskiller.github.io',
+  owner: 'assskiller',
+  admin: ['assskiller'],
+  id: md5(window.location.pathname),
+  distractionFreeMode: true
+})
+
+gitalk.render('gitalk-container')
+</script>
+
+  
+  <!--  -->
+
+  
+
 
           </div>
         </div>
@@ -222,9 +346,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
