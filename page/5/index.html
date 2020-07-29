@@ -146,6 +146,730 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LeetCode5394" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/LeetCode5394/">对角线遍历---内存开到爆怎么办？用vector吧</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/26/LeetCode5394/" class="archive-article-date">
+  	<time datetime="2020-04-26T06:13:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给你一个列表 nums ，里面每一个元素都是一个整数列表。请你依照下面各图的规则，按顺序返回 nums 中对角线上的整数。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">输出：[1,4,2,7,5,3,8,6,9]</span><br><span class="line">输入：nums &#x3D; [[1,2,3],[4],[5,6,7],[8],[9,10,11]]</span><br><span class="line">输出：[1,4,2,5,3,8,6,9,7,10,11]</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>思路就是正常遍历，然后把值加入到对应的对角线数组(vector)里面去<br>思路对是对了，但是最开始我是直接开的二维数组，然后数据最大是1e5，开二维爆的很彻底，于是稍微缩小一点，结果就越界了，然后就GG了。<br>先展示错误示范：  </p>
+<p>我这里ans开的二维数组，大小怎么改都改不好。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">findDiagonalOrder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//又是栈溢出，= =我人晕了</span></span><br><span class="line">        <span class="keyword">int</span> ans[<span class="number">99999</span>][<span class="number">200</span>]; <span class="comment">//ans[i][j]表示 第i层对角线的第n个元素</span></span><br><span class="line">        <span class="keyword">int</span> maxIndex[<span class="number">10000</span>]; <span class="comment">//表示第i条对角线装的最大元素</span></span><br><span class="line">        <span class="built_in">memset</span>(ans,<span class="number">0</span>,<span class="keyword">sizeof</span>(ans));</span><br><span class="line">        <span class="built_in">memset</span>(maxIndex,<span class="number">-1</span>,<span class="keyword">sizeof</span>(maxIndex));</span><br><span class="line">        <span class="keyword">int</span> endMax =<span class="number">0</span> ;</span><br><span class="line">        <span class="keyword">int</span> outerLength = nums.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;outerLength;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> length = nums[i].size();</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;length;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                maxIndex[i+<span class="number">1</span>+j]++;</span><br><span class="line">                </span><br><span class="line">                ans[i+<span class="number">1</span>+j][maxIndex[i+<span class="number">1</span>+j]] = nums[i][j];</span><br><span class="line">                <span class="keyword">if</span>(i+<span class="number">1</span>+j &gt; endMax)</span><br><span class="line">                    endMax = i+<span class="number">1</span>+j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ansV;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;endMax&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=endMax;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> eeaaa=maxIndex[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= eeaaa;j&gt;=<span class="number">0</span>;j--)</span><br><span class="line">            &#123;</span><br><span class="line">                ansV.push_back(ans[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ansV;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<br/>
+<br/>
+
+<p>再来看正确示范:<br>既然直接开二维数组会爆，那就开vector数组吧<br>可以看到，我只是把ans给改成了vector数组，其它什么都没干，就过了，vector yyds。<br>其实这里的maxIndex都可以不要了，因为vector自带长度信息，懒得删了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxN = <span class="number">1e5</span> + <span class="number">50</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">findDiagonalOrder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans[maxN*<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> maxIndex[maxN]; <span class="comment">//表示第i条对角线装的最大元素</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;maxN*<span class="number">2</span>;i++) ans[i].clear(); </span><br><span class="line">        <span class="built_in">memset</span>(maxIndex,<span class="number">-1</span>,<span class="keyword">sizeof</span>(maxIndex));</span><br><span class="line">        <span class="keyword">int</span> endMax =<span class="number">0</span> ;</span><br><span class="line">        <span class="keyword">int</span> outerLength = nums.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;outerLength;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> length = nums[i].size();</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;length;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                maxIndex[i+<span class="number">1</span>+j]++;</span><br><span class="line">                </span><br><span class="line">                ans[i+<span class="number">1</span>+j].push_back(nums[i][j]);</span><br><span class="line">                <span class="keyword">if</span>(i+<span class="number">1</span>+j &gt; endMax)</span><br><span class="line">                    endMax = i+<span class="number">1</span>+j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ansV;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=endMax;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> eeaaa=maxIndex[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= eeaaa;j&gt;=<span class="number">0</span>;j--)</span><br><span class="line">            &#123;</span><br><span class="line">                ansV.push_back(ans[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ansV;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/diagonal-traverse-ii/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/diagonal-traverse-ii/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">周赛186</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">栈溢出</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数组越界</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/26/LeetCode5394/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-LeetCode5393" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/LeetCode5393/">可获得最大点数（乱用DP=炸内存）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/26/LeetCode5393/" class="archive-article-date">
+  	<time datetime="2020-04-26T05:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>几张卡牌 排成一行，每张卡牌都有一个对应的点数。点数由整数数组 cardPoints 给出。</p>
+<p>每次行动，你可以从行的开头或者末尾拿一张卡牌，最终你必须正好拿 k 张卡牌。</p>
+<p>你的点数就是你拿到手中的所有卡牌的点数之和。</p>
+<p>给你一个整数数组 cardPoints 和整数 k，请你返回可以获得的最大点数。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [1,2,3,4,5,6,1], k &#x3D; 3</span><br><span class="line">输出：12</span><br><span class="line">解释：第一次行动，不管拿哪张牌，你的点数总是 1 。但是，先拿最右边的卡牌将会最大化你的可获得点数。最优策略是拿右边的三张牌，最终点数为 1 + 6 + 5 &#x3D; 12 。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [2,2,2], k &#x3D; 2</span><br><span class="line">输出：4</span><br><span class="line">解释：无论你拿起哪两张卡牌，可获得的点数总是 4 。</span><br><span class="line">示例 3：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [9,7,7,9,7,7,9], k &#x3D; 7</span><br><span class="line">输出：55</span><br><span class="line">解释：你必须拿起所有卡牌，可以获得的点数为所有卡牌的点数之和。</span><br><span class="line">示例 4：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [1,1000,1], k &#x3D; 1</span><br><span class="line">输出：1</span><br><span class="line">解释：你无法拿到中间那张卡牌，所以可以获得的最大点数为 1 。 </span><br><span class="line">示例 5：</span><br><span class="line"></span><br><span class="line">输入：cardPoints &#x3D; [1,79,80,1,1,1,200,1], k &#x3D; 3</span><br><span class="line">输出：202</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">1 &lt;&#x3D; cardPoints.length &lt;&#x3D; 10^5</span><br><span class="line">1 &lt;&#x3D; cardPoints[i] &lt;&#x3D; 10^4</span><br><span class="line">1 &lt;&#x3D; k &lt;&#x3D; cardPoints.length</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>最近看到什么题都想用dp，然后都无一例外的。。。炸内存超时了，笑死。  </p>
+<p>先来展示一下正确姿势，可以叫做前缀和后缀和，也可以不用刻意去求前缀和后缀和，总之就是前默认全部取左边，然后左边减一个，右边加一个，然后求出最大的sum就可以了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxScore</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; cardPoints, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//先全部拿左边的，然后左边放一个，右边加一个，求最大值</span></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++) sum += cardPoints[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> length = cardPoints.size();</span><br><span class="line">        <span class="keyword">int</span> leftLength =k;</span><br><span class="line">        <span class="keyword">int</span> max=sum;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            sum -= cardPoints[leftLength<span class="number">-1</span>];</span><br><span class="line">            sum += cardPoints[length-i<span class="number">-1</span>];</span><br><span class="line">            leftLength--;</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; max)</span><br><span class="line">               max = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<br/>
+<br/>
+
+<p>再来展示一下错误示范，当我看到这道题时，第一反应就是，ok，给了个区间，ok,有一个动态变化的k，ok可以dp了，于是就直接搞了个三维dp。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxScore</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; cardPoints, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">100</span>][<span class="number">100</span>][<span class="number">1000</span>]; <span class="comment">// dp[i][j][k]表示 从indexi到indexj 剩余天数为k能拿的最大值</span></span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> length = cardPoints.size();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> d=<span class="number">1</span>; d&lt;=k; d++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;length;j++)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(d==<span class="number">1</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        dp[i][j][<span class="number">1</span>] = max(cardPoints[i],cardPoints[j]); </span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="keyword">if</span>(j<span class="number">-1</span> &gt;= <span class="number">0</span>)</span><br><span class="line">                            dp[i][j][d]  = max(dp[i+<span class="number">1</span>][j][d<span class="number">-1</span>]+cardPoints[i], dp[i][j<span class="number">-1</span>][d<span class="number">-1</span>] +cardPoints[j]);</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            dp[i][j][d] = cardPoints[j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][length<span class="number">-1</span>][k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>以后别这么搞了，233</p>
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/maximum-points-you-can-obtain-from-cards/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/maximum-points-you-can-obtain-from-cards/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">周赛186</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">后缀和</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">不要乱用dp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/26/LeetCode5393/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-countInversion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/24/countInversion/">逆序对</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/24/countInversion/" class="archive-article-date">
+  	<time datetime="2020-04-24T12:30:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入: [7,5,6,4]</span><br><span class="line">输出: 5</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这道题用了两种解法，归并排序和树状数组</p>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p>看题解之前完全没想到可以用归并排序来做，看了过后发现这么做简直太妙了。<br>总之就是在归并排序的并阶段来计算逆序对，维护一个变量叫做currentAdd，用来保存当前要并的右半部分已经处理过的个数，也就是说，左边还没有加入的，每当加入，逆序对就会增加currentAdd这么多<br>顺便还复习了一下归并排序，总之就是，先直接调归并来将左右两边先排好，然后再将这一次的来并起来，并好后，要把并好的结果赋给原数组。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">MergeSort</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span>(r-l == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//先求左右两边中先求出来的逆序对</span></span><br><span class="line">        <span class="keyword">int</span> middle = (l+r)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> reversePairNum = MergeSort(l,middle,nums) + MergeSort(middle+<span class="number">1</span>,r,nums);</span><br><span class="line">        <span class="comment">//当左右两边的nums都排好序了，可以计算组合时产生的逆序对</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; temp;</span><br><span class="line">        <span class="keyword">int</span> lPointer = l;</span><br><span class="line">        <span class="keyword">int</span> rPointer = middle+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> currentAdd = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!(lPointer&gt;middle &amp;&amp; rPointer&gt;r))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(lPointer &gt; middle)</span><br><span class="line">            &#123;</span><br><span class="line">               temp.push_back(nums[rPointer]);</span><br><span class="line">               rPointer ++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(rPointer &gt; r)</span><br><span class="line">            &#123;</span><br><span class="line">                reversePairNum += currentAdd;</span><br><span class="line">                temp.push_back(nums[lPointer]);</span><br><span class="line">                lPointer++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[lPointer] &gt; nums[rPointer] )</span><br><span class="line">                &#123;</span><br><span class="line">                    currentAdd++;</span><br><span class="line">                    temp.push_back(nums[rPointer]);</span><br><span class="line">                    rPointer++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    reversePairNum += currentAdd;</span><br><span class="line">                    temp.push_back(nums[lPointer]);</span><br><span class="line">                    lPointer++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">           </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将num变成排序后的num</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;temp.size();i++)</span><br><span class="line">            nums[l+i] = temp[i];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> reversePairNum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> MergeSort(<span class="number">0</span>,nums.size()<span class="number">-1</span>,nums);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<br/>
+<br/>
+<br/>
+
+<h3 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h3><p>以为这辈子都见不到树状数组了，没想到过了一年多又见面了，不过这次没这么头疼了哈哈哈，不过树状数组这种方法真的太难想了，估计真的碰到这种题我也不会知道可以用树状数组来解，除非是赤裸裸的单点更新+区间查询<br>就是一般的树状数组<br>ps:我写的树状数组的update函数是 +=这个值，不是 =这个值，被坑惨了。<br>如果要求逆序对的话，把数值的大小作为树状数组的下标就好了<br>这样，对原数组从后向前update树状数组，且每次加入都求一下当前的sum，就可以了<br>需要注意的是，直接这么搞不行，如果原数组中有特别大的数，或者负数，作为树状数组的下标不科学，所以需要对原数组做处理，即排序后，用排序后的位置来代替自己的数值来作为树状数组的下标，即用相对位置来代替数值，相对位置用二分查找来找(直接从头到尾遍历找还会超时)。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> c[<span class="number">50002</span>];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> pos,<span class="keyword">int</span> changeValue,<span class="keyword">int</span> n)</span> <span class="comment">//单点修改</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=pos;i&lt;=n;i+=lowbit(i))</span><br><span class="line">        &#123;</span><br><span class="line">            c[i] += changeValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> pos)</span> <span class="comment">// 查询从 1~pos的值</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=pos;i&gt;=<span class="number">1</span>;i-=lowbit(i))</span><br><span class="line">        &#123;</span><br><span class="line">            ans += c[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//一定要用二分查找，顺序查找会tle</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">binarySerach</span><span class="params">(<span class="keyword">int</span> value, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//nums is a sorted array</span></span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = length<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> middle = (left+right)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(left&lt;right)</span><br><span class="line">        &#123;</span><br><span class="line">            middle = (left + right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(value &gt; nums[middle])</span><br><span class="line">            &#123;</span><br><span class="line">                left = middle +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (value &lt; nums[middle])</span><br><span class="line">            &#123;</span><br><span class="line">                right = middle;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> middle;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums[left] == value)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">reversePairs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortedNums = nums;</span><br><span class="line">        <span class="comment">//将nums排序并存为一个新的数组，数的大小就可以由位置来体现，解决了数为负数以及数很大的问题</span></span><br><span class="line">        sort(sortedNums.begin(),sortedNums.end());</span><br><span class="line">        <span class="built_in">memset</span>(c,<span class="number">0</span>,<span class="keyword">sizeof</span>(c));</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=length<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> index = binarySerach(nums[i],sortedNums)+<span class="number">1</span>; <span class="comment">//这里加个1，防止为0</span></span><br><span class="line">            ans += sum(index<span class="number">-1</span>);</span><br><span class="line">            update(index,<span class="number">1</span>,<span class="number">50002</span>); <span class="comment">//艹啊，这里的第二个参数是增量，不是改变的量，debug了半天，晕</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/shu-zu-zhong-de-ni-xu-dui-lcof/</a><br><a href="https://blog.csdn.net/bestsort/article/details/80796531" target="_blank" rel="noopener">一个讲树状数组很好的博客</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">树状数组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bit</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">归并排序</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MergeSort</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">逆序对</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">二分查找</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">离散化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/24/countInversion/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-LeetCode05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/LeetCode05/">LeetCode05</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/23/LeetCode05/" class="archive-article-date">
+  	<time datetime="2020-04-23T13:10:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line">输入: &quot;babad&quot;</span><br><span class="line">输出: &quot;bab&quot;</span><br><span class="line">注意: &quot;aba&quot; 也是一个有效答案。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入: &quot;cbbd&quot;</span><br><span class="line">输出: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这里给三个解题思路，分别是中心展开，dp，和马拉车  </p>
+<h3 id="中心展开"><a href="#中心展开" class="headerlink" title="中心展开"></a>中心展开</h3><p>暴力对每一个位置进行展开看回文，为了避免偶回文，对字符串做了预处理</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//对s进行处理，避免偶回文的情况出现</span></span><br><span class="line">       <span class="built_in">string</span> newS = <span class="string">"#"</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           newS += s[i];</span><br><span class="line">           newS += <span class="string">'#'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       s = newS;</span><br><span class="line">       <span class="keyword">int</span> length = s.length();</span><br><span class="line">       <span class="built_in">string</span> ans=<span class="string">""</span>;</span><br><span class="line">       <span class="keyword">int</span> maxLength = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="built_in">string</span> pre=<span class="string">""</span>;</span><br><span class="line">           <span class="keyword">char</span> middle = s[i];</span><br><span class="line">           <span class="built_in">string</span> back = <span class="string">""</span>;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; i+j&lt;length &amp;&amp; i-j&gt;=<span class="number">0</span>; j++)</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">if</span>(s[i-j] == s[i+j])</span><br><span class="line">               &#123;</span><br><span class="line">                   pre += s[i-j];</span><br><span class="line">                   back += s[i+j];</span><br><span class="line">               &#125;           </span><br><span class="line">               <span class="keyword">else</span></span><br><span class="line">               &#123;</span><br><span class="line">                   <span class="keyword">break</span>;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//pre需要reverse一下</span></span><br><span class="line">            <span class="built_in">std</span>::reverse(pre.begin(),pre.end());</span><br><span class="line">            <span class="built_in">string</span> tmpAns = pre + middle + back;</span><br><span class="line">            <span class="keyword">int</span> tmpLength = tmpAns.length();</span><br><span class="line">            <span class="keyword">if</span>(tmpLength &gt; maxLength)</span><br><span class="line">            &#123;</span><br><span class="line">                ans = tmpAns;</span><br><span class="line">                maxLength = tmpLength;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//把输出结果中的#去掉</span></span><br><span class="line">       <span class="built_in">string</span> realAns = <span class="string">""</span>;</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;ans.length();i++)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="keyword">if</span>(ans[i]==<span class="string">'#'</span>)</span><br><span class="line">           &#123;</span><br><span class="line">               <span class="keyword">continue</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">else</span>&#123;</span><br><span class="line">               realAns += ans[i];</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> realAns;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<br/>
+<br/>
+<br/> 
+
+<h3 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h3><p>先初始化所有一回文和二回文的情况，然后再通过动态规划求出所有三回文直到length回文的情况<br>递推公式 dp[i][j] = dp[i+1][j-1] ==1 &amp;&amp; s[i]==s[j]<br>注意两层循环，表示回文串长度的循环要放外面，不然就不对，因为这样可能在index为0时，会错过长度为4的回文，因为后面还没弄过。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//dp法</span></span><br><span class="line">        <span class="keyword">int</span> start =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> end =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">1000</span>][<span class="number">1000</span>]; <span class="comment">//dp[i][j]==1代表在s中(i,j)位置的是一个回文字串</span></span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="comment">//初始化所有一回文和二回文的情况</span></span><br><span class="line">        <span class="keyword">int</span> length = s.length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i][i] =<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(end-start &lt;= <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                start =i;</span><br><span class="line">                end =i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i+<span class="number">1</span> &lt;length &amp;&amp; s[i] == s[i+<span class="number">1</span>])</span><br><span class="line">            &#123;</span><br><span class="line">                dp[i][i+<span class="number">1</span>] =<span class="number">1</span>;</span><br><span class="line">                start =i;</span><br><span class="line">                end = i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//从3回文开始，一直找到length回文</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">2</span>; l&lt;length ;l++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i+l&lt;length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> j = i+l;</span><br><span class="line">                dp[i][j] = dp[i+<span class="number">1</span>][j<span class="number">-1</span>] &amp;&amp; s[i]==s[j];</span><br><span class="line">                <span class="keyword">if</span>(dp[i][j] ==<span class="number">1</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    start=i;</span><br><span class="line">                    end=j;</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//根据start end 求结果 注意 substr第一个参数是位置，第二个参数是长度</span></span><br><span class="line">        <span class="keyword">return</span> s.substr(start,end-start+<span class="number">1</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<br/>
+<br/>
+<br/> 
+
+<h3 id="马拉车算法"><a href="#马拉车算法" class="headerlink" title="马拉车算法"></a>马拉车算法</h3><p>在这里贴一个讲马拉车讲的很好的B站视频：<br><a href="https://www.bilibili.com/video/BV1ft4y117a4" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1ft4y117a4</a>  </p>
+<p>马拉车算法和中心展开其实很像，只不过很好地利用了回文串的对称性来避免重复计算<br>对字符串预处理是为了让全部都变成奇回文串的情况<br>马拉车算法维护了一个最右回文子串，当对一个字符串从左到右进行遍历求d[i]时，如果i在最右回文子串中，就可以利用对称性来为d[i]初始化一个值，然后再中心展开，不然就直接中心展开。<br>最后得出结果时，可以发现，最终的回文串长度就是d[i]-1，最终的最长回文串在原始字符串中的起始index，就是修改后字符串中，(d[i]最大的index - d[i])/2  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">tarStringInfo</span>&#123;</span></span><br><span class="line">        <span class="keyword">int</span> index; <span class="comment">//最长回文子串的开始位置</span></span><br><span class="line">        <span class="keyword">int</span> length; <span class="comment">//最长回文子串的长度 </span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">preMake</span><span class="params">(<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//先对s做预处理</span></span><br><span class="line">        <span class="built_in">string</span> newS=<span class="string">"@#"</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            newS += s[i];</span><br><span class="line">            newS += <span class="string">'#'</span>;	</span><br><span class="line">        &#125;</span><br><span class="line">        newS += <span class="string">"$"</span>;</span><br><span class="line">        <span class="keyword">return</span> newS;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">tarStringInfo <span class="title">Manacher</span><span class="params">(<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        s = preMake(s);</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">0</span>; <span class="comment">//最右回文子串的右边界 </span></span><br><span class="line">        <span class="keyword">int</span> middle = <span class="number">0</span>; <span class="comment">// 最右回文子串的中心</span></span><br><span class="line">        <span class="keyword">int</span> maxDis =<span class="number">0</span>;  <span class="comment">//记录最大di </span></span><br><span class="line">        <span class="keyword">int</span> maxIndex=<span class="number">0</span>; <span class="comment">//最大di的index </span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; d; <span class="comment">//d数组</span></span><br><span class="line">        <span class="keyword">int</span> length = s.length();</span><br><span class="line">        d.push_back(<span class="number">0</span>); <span class="comment">//@对应位置的回文半径是0 </span></span><br><span class="line">        d.push_back(<span class="number">1</span>); <span class="comment">//第一个字符对应的回文半径必定是1</span></span><br><span class="line">        right =<span class="number">1</span>;</span><br><span class="line">        middle =<span class="number">1</span>; </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            d.push_back(<span class="number">1</span>); <span class="comment">//不管怎样，先push一个1 </span></span><br><span class="line">            <span class="keyword">if</span>(i&lt;=right) <span class="comment">//在最右回文子串内，利用对称初始化一个值 </span></span><br><span class="line">            &#123;</span><br><span class="line">                d[i] = min(d[<span class="number">2</span>*middle-i],right-i+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//暴力扩张</span></span><br><span class="line">            <span class="keyword">int</span> l = d[i];</span><br><span class="line">            <span class="keyword">while</span>(s[i+l] == s[i-l] &amp;&amp; i-l&gt;=<span class="number">1</span> &amp;&amp; i+l &lt; length<span class="number">-1</span> )</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i+l] == s[i-l])</span><br><span class="line">                &#123;</span><br><span class="line">                    d[i]++;</span><br><span class="line">                &#125;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(d[i] &gt; maxDis)</span><br><span class="line">            &#123;</span><br><span class="line">                maxDis = d[i];</span><br><span class="line">                maxIndex=i;</span><br><span class="line">            &#125;</span><br><span class="line">            right = i + d[i] <span class="number">-1</span>;</span><br><span class="line">            middle =i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//对应回原字符串，回文长度就是d[i]-1，回文开始的位置就是 (index-d[i])/2 </span></span><br><span class="line">        tarStringInfo ans;</span><br><span class="line">        ans.length = maxDis <span class="number">-1</span>;</span><br><span class="line">        ans.index = (maxIndex - maxDis)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> ans;	 </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        tarStringInfo ans = Manacher(s);</span><br><span class="line">        <span class="keyword">return</span> s.substr(ans.index,ans.length);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/longest-palindromic-substring/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">回文串</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">马拉车算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/23/LeetCode05/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Leetcode-coins" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/Leetcode-coins/">Leetcode_coins</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/23/Leetcode-coins/" class="archive-article-date">
+  	<time datetime="2020-04-23T07:12:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>硬币。给定数量不限的硬币，币值为25分、10分、5分和1分，编写代码计算n分有几种表示法。(结果可能会很大，你需要将结果模上1000000007)</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">示例1:</span><br><span class="line"></span><br><span class="line"> 输入: n &#x3D; 5</span><br><span class="line"> 输出：2</span><br><span class="line"> 解释: 有两种方式可以凑成总金额:</span><br><span class="line">5&#x3D;5</span><br><span class="line">5&#x3D;1+1+1+1+1</span><br><span class="line">示例2:</span><br><span class="line"></span><br><span class="line"> 输入: n &#x3D; 10</span><br><span class="line"> 输出：4</span><br><span class="line"> 解释: 有四种方式可以凑成总金额:</span><br><span class="line">10&#x3D;10</span><br><span class="line">10&#x3D;5+5</span><br><span class="line">10&#x3D;5+1+1+1+1+1</span><br><span class="line">10&#x3D;1+1+1+1+1+1+1+1+1+1</span><br><span class="line">说明：</span><br><span class="line"></span><br><span class="line">注意:</span><br><span class="line"></span><br><span class="line">你可以假设：</span><br><span class="line"></span><br><span class="line">0 &lt;&#x3D; n (总金额) &lt;&#x3D; 1000000</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>一下就能看出来是dp,要注意的是两层循环应该谁写外面。<br>最开始写的是 1~n的循环在外面，然后每一层循环里分别取不同的硬币来相加，但是这样有可能会重复，比如当n=6时，选硬币1 + dp[5] 和 选硬币5 + dp[1] 是包含重复结果的，因为dp[5]中已经包含了硬币5这一种情况。<br>解决方法就是在选硬币1时，不要去考虑更高面值的硬币，实际就是把两层循环换一下即可（妙啊）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">waysToChange</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">1000001</span>];<span class="comment">//dp[i]表示当钱为i是的选择数</span></span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="keyword">int</span> coins[<span class="number">4</span>] = &#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">25</span>&#125;;</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=coins[i];j&lt;=n;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                dp[j]  = (dp[j] + dp[j-coins[i]]) %<span class="number">1000000007</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/coin-lcci/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/coin-lcci/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">背包问题</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/23/Leetcode-coins/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Leetcode445" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/22/Leetcode445/">Leetcode445 两数相加(Stack)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/22/Leetcode445/" class="archive-article-date">
+  	<time datetime="2020-04-22T12:32:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给你两个 非空 链表来代表两个非负整数。数字最高位位于链表开始位置。它们的每个节点只存储一位数字。将这两数相加会返回一个新的链表。</p>
+<p>你可以假设除了数字 0 之外，这两个数字都不会以零开头。</p>
+<p>进阶： </p>
+<p>如果输入链表不能修改该如何处理？换句话说，你不能对列表中的节点进行翻转。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：(7 -&gt; 2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">输出：7 -&gt; 8 -&gt; 0 -&gt; 7</span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>看到这种需要倒过来加的，就去用Stack</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//使用栈</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        ListNode* ans = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s1;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; s2;</span><br><span class="line">        <span class="keyword">while</span>(l1 != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            s1.push(l1-&gt;val);</span><br><span class="line">            l1 = l1 -&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(l2 != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            s2.push(l2-&gt;val);</span><br><span class="line">            l2 = l2 -&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!s1.empty() || !s2.empty() || c!=<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> add1 = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> add2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(!s1.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                add1 += s1.top();</span><br><span class="line">                s1.pop();</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">if</span>(!s2.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                add2 += s2.top();</span><br><span class="line">                s2.pop();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">int</span> sum = add1 +add2 + c;</span><br><span class="line">            c = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(sum&gt;=<span class="number">10</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                c++;</span><br><span class="line">                sum -= <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            ListNode* tmpNode  =<span class="keyword">new</span> ListNode();</span><br><span class="line">            tmpNode-&gt;val = sum;</span><br><span class="line">            tmpNode-&gt;next = ans;</span><br><span class="line">            ans = tmpNode;</span><br><span class="line">        &#125;  </span><br><span class="line">    <span class="keyword">return</span> ans;        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">STL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Stack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/22/Leetcode445/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Leetcode199" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/22/Leetcode199/">Leetcode199 二叉树右视图(DFS)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/22/Leetcode199/" class="archive-article-date">
+  	<time datetime="2020-04-22T12:20:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>开始在个人博客写一写leetcode题解，有tag功能归档还挺方便的，而且还可以水一水github contribution，美滋滋。(反正没人看，随便乱写一写)</p>
+<h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一棵二叉树，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。</p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,null,5,null,4]</span><br><span class="line">输出: [1, 3, 4]</span><br><span class="line">解释:</span><br><span class="line"></span><br><span class="line">   1            &lt;---</span><br><span class="line"> &#x2F;   \</span><br><span class="line">2     3         &lt;---</span><br><span class="line"> \     \</span><br><span class="line">  5     4       &lt;---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>使用DFS优先遍历右子树，再遍历左子树，同时记录一个当前走到的最大深度，如果当前访问的位置没有到最大深度，那么就不把val加入到结果中，如果当前位置大于了最大深度，那么久加入ans</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> currentDepth;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addTreeRightToAns</span><span class="params">(TreeNode* node, <span class="keyword">int</span> depth)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(depth &gt; currentDepth)</span><br><span class="line">        &#123;</span><br><span class="line">            currentDepth = depth;</span><br><span class="line">            ans.push_back(node-&gt;val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(node-&gt;right != <span class="literal">NULL</span>)</span><br><span class="line">            addTreeRightToAns(node-&gt;right,depth+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(node-&gt;left != <span class="literal">NULL</span>)</span><br><span class="line">            addTreeRightToAns(node-&gt;left,depth+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> ans;</span><br><span class="line">        currentDepth = <span class="number">0</span>;</span><br><span class="line">        addTreeRightToAns(root,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/22/Leetcode199/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-大致弄得差不多了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/16/%E5%A4%A7%E8%87%B4%E5%BC%84%E5%BE%97%E5%B7%AE%E4%B8%8D%E5%A4%9A%E4%BA%86/">大致弄得差不多了</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/16/%E5%A4%A7%E8%87%B4%E5%BC%84%E5%BE%97%E5%B7%AE%E4%B8%8D%E5%A4%9A%E4%BA%86/" class="archive-article-date">
+  	<time datetime="2020-04-16T15:23:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>终于部署完了，奥里给。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/16/%E5%A4%A7%E8%87%B4%E5%BC%84%E5%BE%97%E5%B7%AE%E4%B8%8D%E5%A4%9A%E4%BA%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-First-Blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
@@ -640,6 +1364,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">stack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">记录路径</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">二叉搜索树</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">状态压缩</a>
               </li>
             
             <div class="clearfix"></div>
