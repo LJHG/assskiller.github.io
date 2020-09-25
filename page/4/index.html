@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.assskiller.cn">
-  <title>assskiller&#39;s blog</title>
+  <title>LJH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="assskiller&#39;s blog">
+<meta property="og:title" content="LJH&#39;s blog">
 <meta property="og:url" content="http://www.assskiller.cn/page/4/index.html">
-<meta property="og:site_name" content="assskiller&#39;s blog">
+<meta property="og:site_name" content="LJH&#39;s blog">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="assskiller">
+<meta property="article:author" content="LJH">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="assskiller&#39;s blog" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="LJH&#39;s blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -46,7 +46,7 @@
 			<img src="/img/mona.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">assskiller</a></h1>
+		  <h1 class="header-author"><a href="/">LJH</a></h1>
 		</hgroup>
 		
 
@@ -100,7 +100,7 @@
 				<img src="/img/mona.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">assskiller</h1>
+			  <h1 class="header-author js-header-author">LJH</h1>
 			</hgroup>
 			
 			
@@ -146,7 +146,7 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-LeetCode98" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode312" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -154,198 +154,23 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/LeetCode98/">验证二叉搜索树---LeetCode98</a>
+      <a class="article-title" href="/2020/07/19/LeetCode312/">戳气球---LeetCode312(dp)</a>
     </h1>
   
 
         
-        <a href="/2020/05/06/LeetCode98/" class="archive-article-date">
-  	<time datetime="2020-05-06T08:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+        <a href="/2020/07/19/LeetCode312/" class="archive-article-date">
+  	<time datetime="2020-07-19T03:30:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个二叉树，判断其是否是一个有效的二叉搜索树。<br>假设一个二叉搜索树具有如下特征：<br>节点的左子树只包含小于当前节点的数。<br>节点的右子树只包含大于当前节点的数。<br>所有左子树和右子树自身必须也是二叉搜索树。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入:</span><br><span class="line">    2</span><br><span class="line">   &#x2F; \</span><br><span class="line">  1   3</span><br><span class="line">输出: true</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">输入:</span><br><span class="line">    5</span><br><span class="line">   &#x2F; \</span><br><span class="line">  1   4</span><br><span class="line">     &#x2F; \</span><br><span class="line">    3   6</span><br><span class="line">输出: false</span><br><span class="line">解释: 输入为: [5,1,4,null,null,3,6]。</span><br><span class="line">     根节点的值为 5 ，但是其右子节点值为 4 。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>有 n 个气球，编号为0 到 n-1，每个气球上都标有一个数字，这些数字存在数组 nums 中。<br>现在要求你戳破所有的气球。如果你戳破气球 i ，就可以获得 nums[left] * nums[i] * nums[right] 个硬币。 这里的 left 和 right 代表和 i 相邻的两个气球的序号。注意当你戳破了气球 i 后，气球 left 和气球 right 就变成了相邻的气球。<br>求所能获得硬币的最大数量。<br>说明:<br>你可以假设 nums[-1] = nums[n] = 1，但注意它们不是真实存在的所以并不能被戳破。<br>0 ≤ n ≤ 500, 0 ≤ nums[i] ≤ 100</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,1,5,8]</span><br><span class="line">输出: 167 </span><br><span class="line">解释: nums &#x3D; [3,1,5,8] --&gt; [3,5,8] --&gt;   [3,8]   --&gt;  [8]  --&gt; []</span><br><span class="line">     coins &#x3D;  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   &#x3D; 167</span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2020/05/06/LeetCode98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">tree</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BST</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">中序遍历</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/LeetCode98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-LeetCode983" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/LeetCode983/">最低票价---LeetCode983(简单dp)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/06/LeetCode983/" class="archive-article-date">
-  	<time datetime="2020-05-06T07:13:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>在一个火车旅行很受欢迎的国度，你提前一年计划了一些火车旅行。在接下来的一年里，你要旅行的日子将以一个名为 days 的数组给出。每一项是一个从 1 到 365 的整数。</p>
-<p>火车票有三种不同的销售方式：</p>
-<p>一张为期一天的通行证售价为 costs[0] 美元；<br>一张为期七天的通行证售价为 costs[1] 美元；<br>一张为期三十天的通行证售价为 costs[2] 美元。<br>通行证允许数天无限制的旅行。 例如，如果我们在第 2 天获得一张为期 7 天的通行证，那么我们可以连着旅行 7 天：第 2 天、第 3 天、第 4 天、第 5 天、第 6 天、第 7 天和第 8 天。</p>
-<p>返回你想要完成在给定的列表 days 中列出的每一天的旅行所需要的最低消费。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line">输入：days &#x3D; [1,4,6,7,8,20], costs &#x3D; [2,7,15]</span><br><span class="line">输出：11</span><br><span class="line">解释： </span><br><span class="line">例如，这里有一种购买通行证的方法，可以让你完成你的旅行计划：</span><br><span class="line">在第 1 天，你花了 costs[0] &#x3D; $2 买了一张为期 1 天的通行证，它将在第 1 天生效。</span><br><span class="line">在第 3 天，你花了 costs[1] &#x3D; $7 买了一张为期 7 天的通行证，它将在第 3, 4, ..., 9 天生效。</span><br><span class="line">在第 20 天，你花了 costs[0] &#x3D; $2 买了一张为期 1 天的通行证，它将在第 20 天生效。</span><br><span class="line">你总共花了 $11，并完成了你计划的每一天旅行。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：days &#x3D; [1,2,3,4,5,6,7,8,9,10,30,31], costs &#x3D; [2,7,15]</span><br><span class="line">输出：17</span><br><span class="line">解释：</span><br><span class="line">例如，这里有一种购买通行证的方法，可以让你完成你的旅行计划： </span><br><span class="line">在第 1 天，你花了 costs[2] &#x3D; $15 买了一张为期 30 天的通行证，它将在第 1, 2, ..., 30 天生效。</span><br><span class="line">在第 31 天，你花了 costs[0] &#x3D; $2 买了一张为期 1 天的通行证，它将在第 31 天生效。 </span><br><span class="line">你总共花了 $17，并完成了你计划的每一天旅行。</span><br><span class="line"> </span><br><span class="line">提示：</span><br><span class="line">1 &lt;&#x3D; days.length &lt;&#x3D; 365</span><br><span class="line">1 &lt;&#x3D; days[i] &lt;&#x3D; 365</span><br><span class="line">days 按顺序严格递增</span><br><span class="line">costs.length &#x3D;&#x3D; 3</span><br><span class="line">1 &lt;&#x3D; costs[i] &lt;&#x3D; 1000</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/05/06/LeetCode983/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">dp</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/LeetCode983/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-LeetCode45" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/04/LeetCode45/">跳跃游戏---LeetCode45</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/04/LeetCode45/" class="archive-article-date">
-  	<time datetime="2020-05-04T06:34:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个非负整数数组，你最初位于数组的第一个位置。<br>数组中的每个元素代表你在该位置可以跳跃的最大长度。<br>你的目标是使用最少的跳跃次数到达数组的最后一个位置。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,3,1,1,4]</span><br><span class="line">输出: 2</span><br><span class="line">解释: 跳到最后一个位置的最小跳跃数是 2。</span><br><span class="line">     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。</span><br><span class="line">说明:</span><br><span class="line"></span><br><span class="line">假设你总是可以到达数组的最后一个位置。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这道题给两个解题思路，一个是贪心，一个是dp。</p>
-        
-          <a class="article-more-a" href="/2020/05/04/LeetCode45/#more">more >></a>
+          <a class="article-more-a" href="/2020/07/19/LeetCode312/#more">more >></a>
         
       
 
@@ -365,10 +190,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态规划</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">贪心</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -377,7 +198,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/04/LeetCode45/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/07/19/LeetCode312/">展开全文 >></a>
         </p>
       
 
@@ -406,7 +227,7 @@
 
 
   
-    <article id="post-LeetCode5402" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode84" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -414,24 +235,24 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/03/LeetCode5402/">绝对值差不超过限制的最长连续子数组---LeetCode5402</a>
+      <a class="article-title" href="/2020/05/30/LeetCode84/">柱状图中最大的矩形---LeetCode84(单调栈)</a>
     </h1>
   
 
         
-        <a href="/2020/05/03/LeetCode5402/" class="archive-article-date">
-  	<time datetime="2020-05-03T09:13:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
+        <a href="/2020/05/30/LeetCode84/" class="archive-article-date">
+  	<time datetime="2020-05-30T03:49:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给你一个整数数组 nums ，和一个表示限制的整数 limit，请你返回最长连续子数组的长度，该子数组中的任意两个元素之间的绝对差必须小于或者等于 limit 。</p>
-<p>如果不存在满足条件的子数组，则返回 0 。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line">    输入：nums &#x3D; [8,2,4,7], limit &#x3D; 4</span><br><span class="line">    输出：2 </span><br><span class="line">    解释：所有子数组如下：</span><br><span class="line">    [8] 最大绝对差 |8-8| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">    [8,2] 最大绝对差 |8-2| &#x3D; 6 &gt; 4. </span><br><span class="line">    [8,2,4] 最大绝对差 |8-2| &#x3D; 6 &gt; 4.</span><br><span class="line">    [8,2,4,7] 最大绝对差 |8-2| &#x3D; 6 &gt; 4.</span><br><span class="line">    [2] 最大绝对差 |2-2| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">    [2,4] 最大绝对差 |2-4| &#x3D; 2 &lt;&#x3D; 4.</span><br><span class="line">    [2,4,7] 最大绝对差 |2-7| &#x3D; 5 &gt; 4.</span><br><span class="line">    [4] 最大绝对差 |4-4| &#x3D; 0 &lt;&#x3D; 4.</span><br><span class="line">    [4,7] 最大绝对差 |4-7| &#x3D; 3 &lt;&#x3D; 4.</span><br><span class="line">    [7] 最大绝对差 |7-7| &#x3D; 0 &lt;&#x3D; 4. </span><br><span class="line">    因此，满足题意的最长子数组的长度为 2 。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">    输入：nums &#x3D; [10,1,2,4,7,2], limit &#x3D; 5</span><br><span class="line">    输出：4 </span><br><span class="line">    解释：满足题意的最长子数组是 [2,4,7,2]，其最大绝对差 |2-7| &#x3D; 5 &lt;&#x3D; 5 。</span><br><span class="line"></span><br><span class="line">示例 3：</span><br><span class="line">    输入：nums &#x3D; [4,2,2,2,4,4,2,2], limit &#x3D; 0</span><br><span class="line">    输出：3</span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line">    1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5</span><br><span class="line">    1 &lt;&#x3D; nums[i] &lt;&#x3D; 10^9</span><br><span class="line">    0 &lt;&#x3D; limit &lt;&#x3D; 10^9</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。<br>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p><img src="/images/leetcode84.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,1,5,6,2,3]</span><br><span class="line">输出: 10</span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2020/05/03/LeetCode5402/#more">more >></a>
+          <a class="article-more-a" href="/2020/05/30/LeetCode84/#more">more >></a>
         
       
 
@@ -445,19 +266,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">滑动窗口</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">单调栈</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">two pointers</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">stack</a>
         		</li>
       		
 		</ul>
@@ -467,7 +280,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/03/LeetCode5402/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/30/LeetCode84/">展开全文 >></a>
         </p>
       
 
@@ -496,7 +309,7 @@
 
 
   
-    <article id="post-LeetCode5400" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode974" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -504,24 +317,23 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/03/LeetCode5400/">旅行终点站---LeetCode5400</a>
+      <a class="article-title" href="/2020/05/27/LeetCode974/">和可被 K 整除的子数组---LeetCode974(我数学不太好)</a>
     </h1>
   
 
         
-        <a href="/2020/05/03/LeetCode5400/" class="archive-article-date">
-  	<time datetime="2020-05-03T07:52:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
+        <a href="/2020/05/27/LeetCode974/" class="archive-article-date">
+  	<time datetime="2020-05-27T07:47:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给你一份旅游线路图，该线路图中的旅行线路用数组 paths 表示，其中 paths[i] = [cityAi, cityBi] 表示该线路将会从 cityAi 直接前往 cityBi 。请你找出这次旅行的终点站，即没有任何可以通往其他城市的线路的城市。</p>
-<p>题目数据保证线路图会形成一条不存在循环的线路，因此只会有一个旅行终点站。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line">输入：paths &#x3D; [[&quot;London&quot;,&quot;New York&quot;],[&quot;New York&quot;,&quot;Lima&quot;],[&quot;Lima&quot;,&quot;Sao Paulo&quot;]]</span><br><span class="line">输出：&quot;Sao Paulo&quot; </span><br><span class="line">解释：从 &quot;London&quot; 出发，最后抵达终点站 &quot;Sao Paulo&quot; 。本次旅行的路线是 &quot;London&quot; -&gt; &quot;New York&quot; -&gt; &quot;Lima&quot; -&gt; &quot;Sao Paulo&quot; 。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：paths &#x3D; [[&quot;B&quot;,&quot;C&quot;],[&quot;D&quot;,&quot;B&quot;],[&quot;C&quot;,&quot;A&quot;]]</span><br><span class="line">输出：&quot;A&quot;</span><br><span class="line">解释：所有可能的线路是：</span><br><span class="line">&quot;D&quot; -&gt; &quot;B&quot; -&gt; &quot;C&quot; -&gt; &quot;A&quot;. </span><br><span class="line">&quot;B&quot; -&gt; &quot;C&quot; -&gt; &quot;A&quot;. </span><br><span class="line">&quot;C&quot; -&gt; &quot;A&quot;. </span><br><span class="line">&quot;A&quot;. </span><br><span class="line">显然，旅行终点站是 &quot;A&quot; 。</span><br><span class="line"></span><br><span class="line">示例 3：</span><br><span class="line">输入：paths &#x3D; [[&quot;A&quot;,&quot;Z&quot;]]</span><br><span class="line">输出：&quot;Z&quot;</span><br><span class="line"> </span><br><span class="line">提示：</span><br><span class="line">1 &lt;&#x3D; paths.length &lt;&#x3D; 100</span><br><span class="line">paths[i].length &#x3D;&#x3D; 2</span><br><span class="line">1 &lt;&#x3D; cityAi.length, cityBi.length &lt;&#x3D; 10</span><br><span class="line">cityAi !&#x3D; cityBi</span><br><span class="line">所有字符串均由大小写英文字母和空格字符组成。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定一个整数数组 A，返回其中元素之和可被 K 整除的（连续、非空）子数组的数目。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">输入：A &#x3D; [4,5,0,-2,-3,1], K &#x3D; 5</span><br><span class="line">输出：7</span><br><span class="line">解释：</span><br><span class="line">有 7 个子数组满足其元素之和可被 K &#x3D; 5 整除：</span><br><span class="line">[4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]</span><br><span class="line"> </span><br><span class="line">提示：</span><br><span class="line">1 &lt;&#x3D; A.length &lt;&#x3D; 30000</span><br><span class="line">-10000 &lt;&#x3D; A[i] &lt;&#x3D; 10000</span><br><span class="line">2 &lt;&#x3D; K &lt;&#x3D; 10000</span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2020/05/03/LeetCode5400/#more">more >></a>
+          <a class="article-more-a" href="/2020/05/27/LeetCode974/#more">more >></a>
         
       
 
@@ -535,19 +347,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集合</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">set</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">出度入度</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">哈希优化</a>
         		</li>
       		
 		</ul>
@@ -557,7 +361,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/03/LeetCode5400/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/27/LeetCode974/">展开全文 >></a>
         </p>
       
 
@@ -586,7 +390,7 @@
 
 
   
-    <article id="post-LeetCode03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode287" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -594,23 +398,23 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/02/LeetCode03/">无重复最长子串---LeetCode03</a>
+      <a class="article-title" href="/2020/05/26/LeetCode287/">寻找重复数---LeetCode287(快慢指针)</a>
     </h1>
   
 
         
-        <a href="/2020/05/02/LeetCode03/" class="archive-article-date">
-  	<time datetime="2020-05-02T12:59:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
+        <a href="/2020/05/26/LeetCode287/" class="archive-article-date">
+  	<time datetime="2020-05-26T07:57:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">    输入: &quot;abcabcbb&quot;</span><br><span class="line">    输出: 3 </span><br><span class="line">    解释: 因为无重复字符的最长子串是 &quot;abc&quot;，所以其长度为 3。</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">    输入: &quot;bbbbb&quot;</span><br><span class="line">    输出: 1</span><br><span class="line">    解释: 因为无重复字符的最长子串是 &quot;b&quot;，所以其长度为 1。</span><br><span class="line"></span><br><span class="line">示例 3:</span><br><span class="line">    输入: &quot;pwwkew&quot;</span><br><span class="line">    输出: 3</span><br><span class="line">    解释: 因为无重复字符的最长子串是 &quot;wke&quot;，所以其长度为 3。</span><br><span class="line">         请注意，你的答案必须是 子串 的长度，&quot;pwke&quot; 是一个子序列，不是子串。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定一个包含 n + 1 个整数的数组 nums，其数字都在 1 到 n 之间（包括 1 和 n），可知至少存在一个重复的整数。假设只有一个重复的整数，找出这个重复的数。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入: [1,3,4,2,2]</span><br><span class="line">输出: 2</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">输入: [3,1,3,4,2]</span><br><span class="line">输出: 3</span><br><span class="line">说明：</span><br><span class="line">不能更改原数组（假设数组是只读的）。</span><br><span class="line">只能使用额外的 O(1) 的空间。</span><br><span class="line">时间复杂度小于 O(n2) 。</span><br><span class="line">数组中只有一个重复的数字，但它可能不止重复出现一次。</span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2020/05/02/LeetCode03/#more">more >></a>
+          <a class="article-more-a" href="/2020/05/26/LeetCode287/#more">more >></a>
         
       
 
@@ -624,11 +428,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">滑动窗口</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">双指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">快慢指针法</a>
         		</li>
       		
 		</ul>
@@ -638,7 +438,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/02/LeetCode03/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/26/LeetCode287/">展开全文 >></a>
         </p>
       
 
@@ -667,7 +467,7 @@
 
 
   
-    <article id="post-LeetCode202" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode1458" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -675,36 +475,23 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/30/LeetCode202/">快乐数---LeetCode202判断链表环</a>
+      <a class="article-title" href="/2020/05/26/LeetCode1458/">两个子序列的最大点积---LeetCode1458(双序列dp)</a>
     </h1>
   
 
         
-        <a href="/2020/04/30/LeetCode202/" class="archive-article-date">
-  	<time datetime="2020-04-30T03:31:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+        <a href="/2020/05/26/LeetCode1458/" class="archive-article-date">
+  	<time datetime="2020-05-25T16:16:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>编写一个算法来判断一个数 n 是不是快乐数。</p>
-<p>「快乐数」定义为：对于一个正整数，每一次将该数替换为它每个位置上的数字的平方和，然后重复这个过程直到这个数变为 1，也可能是 无限循环 但始终变不到 1。如果 可以变为  1，那么这个数就是快乐数。</p>
-<p>如果 n 是快乐数就返回 True ；不是，则返回 False 。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：19</span><br><span class="line">输出：true</span><br><span class="line">解释：</span><br><span class="line">1^2 + 9^2 &#x3D; 82</span><br><span class="line">8^2 + 2^2 &#x3D; 68</span><br><span class="line">6^2 + 8^2 &#x3D; 100</span><br><span class="line">1^2 + 0^2 + 0^2 &#x3D; 1</span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这里给两个解题思路，一个是暴力法，一个是快慢指针法</p>
-<h3 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a>暴力法</h3><p>使用的方法就是用一个数组来存储已经走过的数据，如果再次访问，那么必定存在环。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> flag[<span class="number">1000</span>];</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappyFunc</span><span class="params">(<span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(num != <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//cout&lt;&lt;num&lt;&lt;" ";</span></span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(num != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                sum += (num%<span class="number">10</span>)*(num%<span class="number">10</span>);</span><br><span class="line">                num /= <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//cout&lt;&lt;endl;</span></span><br><span class="line">            num = sum;</span><br><span class="line">            <span class="keyword">if</span>(flag[sum]==<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            flag[sum] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;           </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//memset(flag,0,sizeof(flag));</span></span><br><span class="line">        <span class="keyword">return</span> isHappyFunc(n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<br/>
-<br/>
-
-<h3 id="快慢指针法"><a href="#快慢指针法" class="headerlink" title="快慢指针法"></a>快慢指针法</h3><p>快慢指针法也叫做弗洛伊德的龟兔法，可以用来判断链表中是否存在环，时间复杂度为O(n)。这道题实际上就是判断是否存在环。<br><img src="/images/Floyed'sR&T.png" alt="图示"><br>快指针每次移动两格，慢指针每次移动一格，如果存在环，即无线循环，那么快慢指针必定会相遇，return false, 否则快指针会先到达1，return true。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">squareSum</span><span class="params">(<span class="keyword">int</span> num)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(num != <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            sum += (num%<span class="number">10</span>)*(num%<span class="number">10</span>);</span><br><span class="line">            num /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">       <span class="comment">//快慢指针法</span></span><br><span class="line">       <span class="keyword">int</span> fast = n;</span><br><span class="line">       <span class="keyword">int</span> slow = n;</span><br><span class="line">       <span class="keyword">do</span>&#123;</span><br><span class="line">            fast = squareSum(fast);</span><br><span class="line">            fast = squareSum(fast);</span><br><span class="line">            slow = squareSum(slow);</span><br><span class="line">            <span class="keyword">if</span>(fast == <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">       &#125;<span class="keyword">while</span>(fast != slow);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/happy-number/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/happy-number/</a></p>
-
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给你两个数组 nums1 和 nums2 。<br>请你返回 nums1 和 nums2 中两个长度相同的 非空 子序列的最大点积。<br>数组的非空子序列是通过删除原数组中某些元素（可能一个也不删除）后剩余数字组成的序列，但不能改变数字间相对顺序。比方说，[2,3,5] 是 [1,2,3,4,5] 的一个子序列而 [1,5,3] 不是。</p>
+        
+          <a class="article-more-a" href="/2020/05/26/LeetCode1458/#more">more >></a>
+        
       
 
       
@@ -717,11 +504,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">链表找环</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">快慢指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">双序列dp</a>
         		</li>
       		
 		</ul>
@@ -731,7 +514,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/LeetCode202/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/26/LeetCode1458/">展开全文 >></a>
         </p>
       
 
@@ -760,7 +543,7 @@
 
 
   
-    <article id="post-LeetCode1095" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-LeetCode146" class="article article-type-post  article-index" itemscope itemprop="blogPost">
 
   <div class="article-inner">
     
@@ -768,213 +551,24 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/LeetCode1095/">山顶数组中查找目标值(二分法) --LeetCode1095</a>
+      <a class="article-title" href="/2020/05/25/LeetCode146/">LRU缓存机制---LeetCode146(链表好像变香了)</a>
     </h1>
   
 
         
-        <a href="/2020/04/29/LeetCode1095/" class="archive-article-date">
-  	<time datetime="2020-04-29T09:14:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
+        <a href="/2020/05/25/LeetCode146/" class="archive-article-date">
+  	<time datetime="2020-05-25T13:43:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>（这是一个 交互式问题 ）</p>
-<p>给你一个 山脉数组 mountainArr，请你返回能够使得 mountainArr.get(index) 等于 target 最小 的下标 index 值。</p>
-<p>如果不存在这样的下标 index，就请返回 -1。</p>
-<p>何为山脉数组？如果数组 A 是一个山脉数组的话，那它满足如下条件：</p>
-<p>首先，A.length &gt;= 3</p>
-<p>其次，在 0 &lt; i &lt; A.length - 1 条件下，存在 i 使得：</p>
-<p>A[0] &lt; A[1] &lt; … A[i-1] &lt; A[i]<br>A[i] &gt; A[i+1] &gt; … &gt; A[A.length - 1]</p>
-<p>你将 不能直接访问该山脉数组，必须通过 MountainArray 接口来获取数据：</p>
-<p>MountainArray.get(k) - 会返回数组中索引为k 的元素（下标从 0 开始）<br>MountainArray.length() - 会返回该数组的长度</p>
-<p>注意：</p>
-<p>对 MountainArray.get 发起超过 100 次调用的提交将被视为错误答案。此外，任何试图规避判题系统的解决方案都将会导致比赛资格被取消。</p>
-<p>为了帮助大家更好地理解交互式问题，我们准备了一个样例 “答案”：<a href="https://leetcode-cn.com/playground/RKhe3ave，请注意这" target="_blank" rel="noopener">https://leetcode-cn.com/playground/RKhe3ave，请注意这</a> 不是一个正确答案。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：array &#x3D; [1,2,3,4,5,3,1], target &#x3D; 3</span><br><span class="line">输出：2</span><br><span class="line">解释：3 在数组中出现了两次，下标分别为 2 和 5，我们返回最小的下标 2。</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：array &#x3D; [0,1,2,4,2,1], target &#x3D; 3</span><br><span class="line">输出：-1</span><br><span class="line">解释：3 在数组中没有出现，返回 -1。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line"></span><br><span class="line">3 &lt;&#x3D; mountain_arr.length() &lt;&#x3D; 10000</span><br><span class="line">0 &lt;&#x3D; target &lt;&#x3D; 10^9</span><br><span class="line">0 &lt;&#x3D; mountain_arr.get(index) &lt;&#x3D; 10^9</span><br><span class="line"></span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;find-in-mountain-array</span><br><span class="line">著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>这道题不能直接从头到尾遍历，因为题目说请求index的数据过多会报错，所以明显只能二分。<br>先通过二分找出山顶位置，然后在山顶位置前二分找出第一个答案，山顶位置后找出第二个答案就可以了。<br>注意山顶前的排序是从小到大，山顶后的排序是从大到小，两个的二分是反着来的。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * // This is the MountainArray's API interface.</span></span><br><span class="line"><span class="comment"> * // You should not implement it, or speculate about its implementation</span></span><br><span class="line"><span class="comment"> * class MountainArray &#123;</span></span><br><span class="line"><span class="comment"> *   public:</span></span><br><span class="line"><span class="comment"> *     int get(int index);</span></span><br><span class="line"><span class="comment"> *     int length();</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySerach</span><span class="params">(MountainArray &amp;mountainArr, <span class="keyword">int</span> target, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = start;</span><br><span class="line">    <span class="keyword">int</span> right = end;</span><br><span class="line">    <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        middle = (left+right) /<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(mountainArr.get(middle) == target)</span><br><span class="line">            <span class="keyword">return</span> middle;</span><br><span class="line">        <span class="keyword">if</span>(target &lt; mountainArr.get(middle))</span><br><span class="line">        &#123;</span><br><span class="line">            right = middle <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            left = middle+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">reverseBinarySerach</span><span class="params">(MountainArray &amp;mountainArr, <span class="keyword">int</span> target, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = start;</span><br><span class="line">    <span class="keyword">int</span> right = end;</span><br><span class="line">    <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt;= right)</span><br><span class="line">    &#123;</span><br><span class="line">        middle = (left+right) /<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(mountainArr.get(middle) == target)</span><br><span class="line">            <span class="keyword">return</span> middle;</span><br><span class="line">        <span class="keyword">if</span>(target &lt; mountainArr.get(middle))</span><br><span class="line">        &#123;</span><br><span class="line">            left = middle+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            right = middle <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findInMountainArray</span><span class="params">(<span class="keyword">int</span> target, MountainArray &amp;mountainArr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = mountainArr.length();</span><br><span class="line">        <span class="comment">//find moutain top</span></span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">1</span>; <span class="comment">//山顶不会出现在0或者length-1</span></span><br><span class="line">        <span class="keyword">int</span> right = length <span class="number">-2</span>;</span><br><span class="line">        <span class="keyword">int</span> middle = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> moutainTopIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//left =1  right = 2 middle = 1</span></span><br><span class="line">            middle = (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="comment">//山顶不会出现在0或者length-1</span></span><br><span class="line">            <span class="keyword">int</span> curLeft = mountainArr.get(middle<span class="number">-1</span>);</span><br><span class="line">            <span class="keyword">int</span> cur = mountainArr.get(middle);</span><br><span class="line">            <span class="keyword">int</span> curRight = mountainArr.get(middle+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(cur &gt; curLeft &amp;&amp; cur &gt; curRight)</span><br><span class="line">            &#123;</span><br><span class="line">                moutainTopIndex = middle;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(curLeft &lt; cur &amp;&amp; cur &lt; curRight)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//左边山</span></span><br><span class="line">                left = middle +<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(curLeft &gt; cur &amp;&amp; cur &gt; curRight)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">///右边山</span></span><br><span class="line">                right = middle <span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"length: "</span>&lt;&lt;length&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"山顶的index是： "</span>&lt;&lt;moutainTopIndex&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//找到山顶的index后，分两边二分查找</span></span><br><span class="line">        <span class="keyword">int</span> leftAnsIndex = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> rightAnsIndex = <span class="number">-1</span>;</span><br><span class="line">        leftAnsIndex = binarySerach(mountainArr,target,<span class="number">0</span>,moutainTopIndex);</span><br><span class="line">        rightAnsIndex = reverseBinarySerach(mountainArr,target,moutainTopIndex+<span class="number">1</span>,length<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;leftAnsIndex&lt;&lt;<span class="string">" "</span>&lt;&lt;rightAnsIndex;</span><br><span class="line">        <span class="keyword">if</span>(leftAnsIndex != <span class="number">-1</span>)</span><br><span class="line">            <span class="keyword">return</span> leftAnsIndex;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(rightAnsIndex != <span class="number">-1</span>)</span><br><span class="line">                <span class="keyword">return</span> rightAnsIndex;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/find-in-mountain-array/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/find-in-mountain-array/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">BinarySerach</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/29/LeetCode1095/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。<br>获取数据 get(key) - 如果密钥 (key) 存在于缓存中，则获取密钥的值（总是正数），否则返回 -1。<br>写入数据 put(key, value) - 如果密钥已经存在，则变更其数据值；如果密钥不存在，则插入该组「密钥/数据值」。当缓存容量达到上限时，它应该在写入新数据之前删除最久未使用的数据值，从而为新的数据值留出空间。<br>进阶:<br>你是否可以在 O(1) 时间复杂度内完成这两种操作？</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LRUCache cache &#x3D; new LRUCache( 2 &#x2F;* 缓存容量 *&#x2F; );</span><br><span class="line">cache.put(1, 1);</span><br><span class="line">cache.put(2, 2);</span><br><span class="line">cache.get(1);       &#x2F;&#x2F; 返回  1</span><br><span class="line">cache.put(3, 3);    &#x2F;&#x2F; 该操作会使得密钥 2 作废</span><br><span class="line">cache.get(2);       &#x2F;&#x2F; 返回 -1 (未找到)</span><br><span class="line">cache.put(4, 4);    &#x2F;&#x2F; 该操作会使得密钥 1 作废</span><br><span class="line">cache.get(1);       &#x2F;&#x2F; 返回 -1 (未找到)</span><br><span class="line">cache.get(3);       &#x2F;&#x2F; 返回  3</span><br><span class="line">cache.get(4);       &#x2F;&#x2F; 返回  4</span><br></pre></td></tr></table></figure>
         
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
+          <a class="article-more-a" href="/2020/05/25/LeetCode146/#more">more >></a>
         
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-LeetCode-m56" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/28/LeetCode-m56/">使用xor来找只出现了一次的数字---LeetCode-m56</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/28/LeetCode-m56/" class="archive-article-date">
-  	<time datetime="2020-04-28T09:16:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>一个整型数组 nums 里除两个数字之外，其他数字都出现了两次。请写程序找出这两个只出现一次的数字。要求时间复杂度是O(n)，空间复杂度是O(1)。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line"></span><br><span class="line">输入：nums &#x3D; [4,1,4,6]</span><br><span class="line">输出：[1,6] 或 [6,1]</span><br><span class="line">示例 2：</span><br><span class="line"></span><br><span class="line">输入：nums &#x3D; [1,2,10,4,1,4,3,3]</span><br><span class="line">输出：[2,10] 或 [10,2]</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">限制：</span><br><span class="line"></span><br><span class="line">2 &lt;&#x3D; nums &lt;&#x3D; 10000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>给两个解法，一个是排序后找只出现了一次的，还有一个是用亦或运算，其实应该还可以用哈希映射来做，但空间复杂度有点高。这道题和joma那个视频不是很像吗2333。</p>
-<h3 id="排序后找只出现了一次的"><a href="#排序后找只出现了一次的" class="headerlink" title="排序后找只出现了一次的"></a>排序后找只出现了一次的</h3><p>排序后如果出现了两次的会相邻，根据这个特性，遍历一次就可以找出只出现了一次的</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">singleNumbers</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        sort(nums.begin(),nums.end());</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i == nums.size()<span class="number">-1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i] != nums[i<span class="number">-1</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    ans.push_back(nums[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i] == nums[i+<span class="number">1</span>])</span><br><span class="line">                &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    ans.push_back(nums[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<br/>
-<br/>
-
-<h3 id="采用xor来做"><a href="#采用xor来做" class="headerlink" title="采用xor来做"></a>采用xor来做</h3><p>只出现过一次的数字，可以通过亦或找出来，但是这里有两个数字，所以找出来的结果是两个结果的抑或，所以需要将两个结果分开，分成两组，然后分别亦或找出结果。而要区别这两个结果，这两个数可以通过亦或结果里的1来区分，这里取最低位的1。<br>注意与运算和==运算的优先级，与要加括号。  </p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">singleNumbers</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">int</span> xorResult = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> length = nums.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">            xorResult ^= nums[i];</span><br><span class="line">        <span class="comment">//这里计算出来的xorResult是那两个不同的数抑或出来的结果，下面要找出这两个数</span></span><br><span class="line">        <span class="comment">//这两个数可以通过亦或结果里的1来区分，这里取最低位的1</span></span><br><span class="line">        <span class="keyword">int</span> diff= lowbit(xorResult);</span><br><span class="line">        <span class="keyword">int</span> ans1 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//这里与要加括号，优先级的问题</span></span><br><span class="line">            <span class="keyword">if</span>( (diff &amp; nums[i]) == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ans1 ^= nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                ans2 ^= nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans.push_back(ans1);</span><br><span class="line">        ans.push_back(ans2);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">位运算</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">亦或</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/28/LeetCode-m56/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-LeetCode23" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/LeetCode23/">合并K个排序链表</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/26/LeetCode23/" class="archive-article-date">
-  	<time datetime="2020-04-26T07:36:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。</p>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  1-&gt;4-&gt;5,</span><br><span class="line">  1-&gt;3-&gt;4,</span><br><span class="line">  2-&gt;6</span><br><span class="line">]</span><br><span class="line">输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure>
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><p>贴一个最简单粗暴的方法，就是比然后插，主要记录一下链表操作方法，其实这一道题我感觉我像搞了两个头节点一样，有点奇怪，也没想好怎么优化</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">        ListNode* currentNode[<span class="number">10000</span>];</span><br><span class="line">        <span class="keyword">int</span> length = lists.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++) currentNode[i] = lists[i];</span><br><span class="line">        ListNode* head = <span class="keyword">new</span> ListNode;</span><br><span class="line">        ListNode* minNode =<span class="keyword">new</span> ListNode;</span><br><span class="line">        head-&gt;val = <span class="number">0</span>;</span><br><span class="line">        head-&gt;next = minNode;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> flag =<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> minVal = <span class="number">99999</span>;</span><br><span class="line">            <span class="keyword">int</span> minIndex = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(currentNode[i] != <span class="literal">NULL</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    flag =<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">if</span>(currentNode[i]-&gt;val &lt; minVal)</span><br><span class="line">                    &#123;</span><br><span class="line">                        minVal = currentNode[i]-&gt;val;</span><br><span class="line">                        minIndex = i;</span><br><span class="line">                    &#125;      </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                minNode = <span class="literal">NULL</span>;</span><br><span class="line">                <span class="keyword">return</span> head-&gt;next-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                ListNode* newNode= <span class="keyword">new</span> ListNode;</span><br><span class="line">                newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">                newNode-&gt;val = minVal;</span><br><span class="line">                currentNode[minIndex] = currentNode[minIndex]-&gt;next;</span><br><span class="line">                <span class="comment">//minNode-&gt;val = minVal;</span></span><br><span class="line">                minNode-&gt;next = newNode;</span><br><span class="line">                minNode = newNode;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<h3 id="题目链接："><a href="#题目链接：" class="headerlink" title="题目链接："></a>题目链接：</h3><p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/merge-k-sorted-lists/</a></p>
-
       
 
       
@@ -991,7 +585,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">list</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">哈希</a>
         		</li>
       		
 		</ul>
@@ -1001,7 +595,312 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/LeetCode23/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/25/LeetCode146/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-LeetCode04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/24/LeetCode04/">寻找两个正序数组的中位数---LeetCode04(噩梦级边界判断)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/24/LeetCode04/" class="archive-article-date">
+  	<time datetime="2020-05-24T05:35:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。<br>请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。<br>你可以假设 nums1 和 nums2 不会同时为空。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">nums1 &#x3D; [1, 3]</span><br><span class="line">nums2 &#x3D; [2]</span><br><span class="line">则中位数是 2.0</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">nums1 &#x3D; [1, 2]</span><br><span class="line">nums2 &#x3D; [3, 4]</span><br><span class="line">则中位数是 (2 + 3)&#x2F;2 &#x3D; 2.5</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/05/24/LeetCode04/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/24/LeetCode04/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-LeetCode105" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/22/LeetCode105/">从前序与中序遍历序列构造二叉树---LeetCode105</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/22/LeetCode105/" class="archive-article-date">
+  	<time datetime="2020-05-22T06:53:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>根据一棵树的前序遍历与中序遍历构造二叉树。<br>注意:<br>你可以假设树中没有重复的元素。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">例如，给出</span><br><span class="line">前序遍历 preorder &#x3D; [3,9,20,15,7]</span><br><span class="line">中序遍历 inorder &#x3D; [9,3,15,20,7]</span><br><span class="line"></span><br><span class="line">返回如下的二叉树：</span><br><span class="line">    3</span><br><span class="line">   &#x2F; \</span><br><span class="line">  9  20</span><br><span class="line">    &#x2F;  \</span><br><span class="line">   15   7</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/05/22/LeetCode105/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">树</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">递归</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/22/LeetCode105/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-LeetCode1371" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/20/LeetCode1371/">每个元音包含偶数次的最长子字符串---LeetCode1371(前缀和+哈希优化+状态压缩)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/20/LeetCode1371/" class="archive-article-date">
+  	<time datetime="2020-05-20T09:20:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h2><p>给你一个字符串 s ，请你返回满足以下条件的最长子字符串的长度：每个元音字母，即 ‘a’，’e’，’i’，’o’，’u’ ，在子字符串中都恰好出现了偶数次。</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">示例 1：</span><br><span class="line">输入：s &#x3D; &quot;eleetminicoworoep&quot;</span><br><span class="line">输出：13</span><br><span class="line">解释：最长子字符串是 &quot;leetminicowor&quot; ，它包含 e，i，o 各 2 个，以及 0 个 a，u 。</span><br><span class="line"></span><br><span class="line">示例 2：</span><br><span class="line">输入：s &#x3D; &quot;leetcodeisgreat&quot;</span><br><span class="line">输出：5</span><br><span class="line">解释：最长子字符串是 &quot;leetc&quot; ，其中包含 2 个 e 。</span><br><span class="line"></span><br><span class="line">示例 3：</span><br><span class="line">输入：s &#x3D; &quot;bcbcbc&quot;</span><br><span class="line">输出：6</span><br><span class="line">解释：这个示例中，字符串 &quot;bcbcbc&quot; 本身就是最长的，因为所有的元音 a，e，i，o，u 都出现了 0 次。</span><br><span class="line"></span><br><span class="line">提示：</span><br><span class="line">1 &lt;&#x3D; s.length &lt;&#x3D; 5 x 10^5</span><br><span class="line">s 只包含小写英文字母。</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/05/20/LeetCode1371/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">前缀和</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">状压</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/20/LeetCode1371/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-LeetCode152" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/18/LeetCode152/">乘积最大子数组---LeetCode152(不会真的有人以为是前缀和吧)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/18/LeetCode152/" class="archive-article-date">
+  	<time datetime="2020-05-18T05:39:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给你一个整数数组 nums ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">示例 1:</span><br><span class="line">输入: [2,3,-2,4]</span><br><span class="line">输出: 6</span><br><span class="line">解释: 子数组 [2,3] 有最大乘积 6。</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">输入: [-2,0,-1]</span><br><span class="line">输出: 0</span><br><span class="line">解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2020/05/18/LeetCode152/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/18/LeetCode152/">展开全文 >></a>
         </p>
       
 
@@ -1032,7 +931,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&lt; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &gt;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&lt; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">Next &gt;</a>
     </nav>
   
 
@@ -1044,7 +943,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 assskiller
+    		&copy; 2020 LJH
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1402,6 +1301,78 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">状态压缩</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">马拉车</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排列组合</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回溯</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">优先队列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">堆</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">剪枝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">去重</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博弈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">全排列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">哈希去重</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">暴力</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">组合</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">并查集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">连通</a>
               </li>
             
             <div class="clearfix"></div>
