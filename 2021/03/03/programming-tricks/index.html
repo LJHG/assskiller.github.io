@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://www.assskiller.cn">
   <title>一些编程小技巧 | LJH&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录一些平时遇到的小技巧">
+  <meta name="description" content="记录一些平时遇到的小技巧与注意事项">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一些编程小技巧">
 <meta property="og:url" content="http://www.assskiller.cn/2021/03/03/programming-tricks/index.html">
 <meta property="og:site_name" content="LJH&#39;s blog">
-<meta property="og:description" content="记录一些平时遇到的小技巧">
+<meta property="og:description" content="记录一些平时遇到的小技巧与注意事项">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-03T03:11:57.000Z">
-<meta property="article:modified_time" content="2021-03-03T03:15:55.012Z">
+<meta property="article:modified_time" content="2021-09-13T11:00:37.417Z">
 <meta property="article:author" content="LJH">
 <meta property="article:tag" content="tricks">
 <meta name="twitter:card" content="summary">
@@ -170,11 +170,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>记录一些平时遇到的小技巧</p>
+        <p>记录一些平时遇到的小技巧与注意事项</p>
 <a id="more"></a>
 
 <h2 id="求二进制1的个数"><a href="#求二进制1的个数" class="headerlink" title="求二进制1的个数"></a>求二进制1的个数</h2><p>x &amp;= x-1 可以消去x最右边的1，所以求二进制1的个数可以这样求：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">countOnes</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(x&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        x &amp;= x<span class="number">-1</span>;</span><br><span class="line">        cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="python函数传参的问题"><a href="#python函数传参的问题" class="headerlink" title="python函数传参的问题"></a>python函数传参的问题</h2><ol>
+<li><p>Python不允许程序员选择采用传值还是传引用。Python参数传递采用的肯定是“传对象引用”的方式。实际上，这种方式相当于传值和传引用的一种综合。如果函数收到的是一个可变对象（比如字典或者列表）的引用，就能修改对象的原始值——相当于通过“传引用”来传递对象。如果函数收到的是一个不可变对象（比如数字、字符或者元组）的引用，就不能直接修改原始对象——相当于通过“传值”来传递对象。</p>
+</li>
+<li><p>当人们复制列表或字典时，就复制了对象列表的引用同，如果改变引用的值，则修改了原始的参数。</p>
+</li>
+<li><p>为了简化内存管理，Python通过引用计数 机制实现自动垃圾回收功能，Python中的每个对象都有一个引用计数，用来计数该对象在不同场所分别被引用了多少次。每当引用一次Python对象，相应的引用计数就增1，每当消毁一次Python对象，则相应的引用就减1，只有当引用计数为零时，才真正从内存中删除Python对象。<br>(转载自<a href="https://blog.csdn.net/liuxiao214/article/details/81673093" target="_blank" rel="noopener">此处</a>)</p>
+</li>
+</ol>
+<p>举例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">aa</span><span class="params">(test)</span>:</span></span><br><span class="line">    test.append(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">k = [<span class="number">1</span>]</span><br><span class="line">aa(k)</span><br><span class="line">print(k)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bb</span><span class="params">(test)</span>:</span></span><br><span class="line">    test = <span class="number">2</span></span><br><span class="line">bb(k)</span><br><span class="line">print(k)</span><br></pre></td></tr></table></figure>
+<p>此处两次的输出都是[1,2]。第一个对列表进行了操作，当作是引用传递的话外部当然应该改变。第二个直接进行了赋值，就当作值传递，所以外部不会发生改变。</p>
+
       
 
       
