@@ -9,7 +9,7 @@ function publish_to()
     cd ../${repo_name}
     git add -A
     git commit -a -m 'update from gitbook'
-    git push
+    git push --set-upstream origin master
 }
 
 publish_to mywebsite
