@@ -9,11 +9,9 @@ function publish_to()
     cd ../${repo_name}
     git add -A
     git commit -a -m 'update from gitbook'
-    git push --set-upstream origin master
+    git push
 }
 
-publish_to mywebsite
-# publish_to LJHG.github.io
+publish_to mysite
 
 rm -rf ../tmp_mysite
-# ssh cwh@cweihang.io "cd mysite;git pull"
