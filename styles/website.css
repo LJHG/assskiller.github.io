@@ -1,0 +1,10 @@
+img{
+    /* width: 1600px;
+    height: 300px; */
+    /* border: 100px dashed #ccc;
+    display: table-cell; 
+    vertical-align: middle;
+    text-align: center; */
+    display: block;
+    margin:100px auto;
+}
