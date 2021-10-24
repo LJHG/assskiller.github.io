@@ -7,10 +7,9 @@
 
 
 ## 实现细节
+详细代码请见：[详细代码](https://github.com/LJHG/GAMES101-assignments)
 
 实现了main.cpp中的**get_model_matrix**, **get_rotation**, **get_projection_matrix**函数。
-
-[详细代码](https://github.com/LJHG/GAMES101-assignments)
 
 其中每一个的实现基本都能在下面的相关知识找到对应，无非就是把矩阵用代码写出来了而已。
 
