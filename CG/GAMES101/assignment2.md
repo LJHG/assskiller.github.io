@@ -2,9 +2,29 @@
 
 ## 运行结果
 
-<img src="https://gitee.com/ljh112233/whatisthis/raw/master//static/image-20211024135139652.png" alt="image-20211024135139652" style="zoom:50%;" />
+<img src="https://gitee.com/ljh112233/whatisthis/raw/master/static/image-20211111141108332.png" alt="image-20211111141108332" style="zoom: 25%;" />
+
+
+
+### 关于三角形为什么会倒过来
+
+在作业1中我提到，把近平面和远平面取负号，可以把三角形正过来。
+
+**但是**如此会让三角形的前后位置不太对劲(正确的应该是**绿色在前，蓝色在后**)
+
+```cpp
+float n = -zNear;
+float f = -zFar;
+```
+
+取负号后的结果如图：
+
+<img src="https://gitee.com/ljh112233/whatisthis/raw/master/static/image-20211111142017089.png" alt="image-20211111142017089" style="zoom:50%;" />
+
+
 
 ## 实现细节
+
 [详细代码](https://github.com/LJHG/GAMES101-assignments)
 我认为这次的assignment的重点有三个：
 
