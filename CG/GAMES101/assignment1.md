@@ -3,10 +3,12 @@
 
 ## 运行结果
 
+关于三角形颠倒的解决方法，请见 [结果出现上下颠倒，怎么办？只加一个负号即可 – 计算机图形学与混合现实研讨会 (games-cn.org)](http://games-cn.org/forums/topic/结果出现上下颠倒，怎么办？只加一个负号即可/)
+
 <img src="https://gitee.com/ljh112233/whatisthis/raw/master//static/image-20211024134106868.png" alt="image-20211024134106868" style="zoom: 50%;" />
 
-
 ## 实现细节
+
 详细代码请见：[详细代码](https://github.com/LJHG/GAMES101-assignments)
 
 实现了main.cpp中的**get_model_matrix**, **get_rotation**, **get_projection_matrix**函数。

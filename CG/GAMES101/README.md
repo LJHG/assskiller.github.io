@@ -2,4 +2,4 @@
 
 * [Assignment1](assignment1.md)
 * [Assignment2](assignment2.md)
-
+* [Assignment3](assignment3.md)
