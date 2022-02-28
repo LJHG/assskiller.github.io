@@ -1695,27 +1695,27 @@
 <h2 id="2-&#x5B9E;&#x73B0;&#x7EC6;&#x8282;">2. &#x5B9E;&#x73B0;&#x7EC6;&#x8282;</h2>
 <p><a href="https://github.com/LJHG/GAMES101-assignments" target="_blank">&#x8BE6;&#x7EC6;&#x4EE3;&#x7801;</a></p>
 <p>&#x8FD9;&#x6B21;&#x4F5C;&#x4E1A;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5199;&#x4E00;&#x4E2A;&#x9012;&#x5F52;&#x7A0B;&#x5E8F;&#x5C31;&#x80FD;&#x5B9E;&#x73B0;&#x529F;&#x80FD;&#xFF0C;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
-<pre><code class="lang-python">cv::Point2f recursive_bezier(const std::vector&lt;cv::Point2f&gt; &amp;control_points, float t) 
-{
-    // TODO: Implement de Castelja<span class="hljs-string">u&apos;s algorithm
-    //&#x5F53;&#x70B9;&#x6570;&#x91CF;&#x4E3A;1&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;
-    if(control_points.size() == 1){
-        return control_points[0];
+<pre><code class="lang-cpp">cv::<span class="hljs-function">Point2f <span class="hljs-title">recursive_bezier</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;cv::Point2f&gt; &amp;control_points, <span class="hljs-keyword">float</span> t)</span> 
+</span>{
+    <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Implement de Casteljau&apos;s algorithm</span>
+    <span class="hljs-comment">//&#x5F53;&#x70B9;&#x6570;&#x91CF;&#x4E3A;1&#x65F6;&#xFF0C;&#x8FD4;&#x56DE;</span>
+    <span class="hljs-keyword">if</span>(control_points.size() == <span class="hljs-number">1</span>){
+        <span class="hljs-keyword">return</span> control_points[<span class="hljs-number">0</span>];
     }
-    std::vector&lt;cv::Point2f&gt; new_control_points; new_control_points.clear();
-    cv::Point2f prev_point = control_points[0];
-    for(int i=1;i&lt;control_points.size();i++){
-        new_control_points.push_back(prev_point*(1-t) + control_points[i]*t);
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;cv::Point2f&gt; new_control_points; new_control_points.clear();
+    cv::Point2f prev_point = control_points[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;control_points.size();i++){
+        new_control_points.push_back(prev_point*(<span class="hljs-number">1</span>-t) + control_points[i]*t);
         prev_point = control_points[i];
     }
-    return recursive_bezier(new_control_points,t);
+    <span class="hljs-keyword">return</span> recursive_bezier(new_control_points,t);
 }
 
-void bezier(const std::vector&lt;cv::Point2f&gt; &amp;control_points, cv::Mat &amp;window) 
-{
-    // TODO: Iterate through all t = 0 to t = 1 with small steps, and call de Casteljau&apos;</span>s 
-    // recursive Bezier algorithm.
-    <span class="hljs-keyword">for</span>(float t = <span class="hljs-number">0</span>; t &lt; <span class="hljs-number">1</span>; t += <span class="hljs-number">0.001</span>){
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bezier</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;cv::Point2f&gt; &amp;control_points, cv::Mat &amp;window)</span> 
+</span>{
+    <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Iterate through all t = 0 to t = 1 with small steps, and call de Casteljau&apos;s </span>
+    <span class="hljs-comment">// recursive Bezier algorithm.</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">float</span> t = <span class="hljs-number">0</span>; t &lt; <span class="hljs-number">1</span>; t += <span class="hljs-number">0.001</span>){
         cv::Point2f point = recursive_bezier(control_points, t);
         window.at&lt;cv::Vec3b&gt;(point.y, point.x)[<span class="hljs-number">1</span>] = <span class="hljs-number">255</span>;
     } 
@@ -1764,7 +1764,7 @@ void bezier(const std::vector&lt;cv::Point2f&gt; &amp;control_points, cv::Mat &a
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Assignment4","level":"1.5.1.4","depth":3,"next":{"title":"后端开发","level":"1.6","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[]},"previous":{"title":"Assignment3","level":"1.5.1.3","depth":3,"path":"CG/GAMES101/assignment3.md","ref":"CG/GAMES101/assignment3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"CG/GAMES101/assignment4.md","mtime":"2022-02-28T14:08:27.413Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-28T14:11:44.693Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Assignment4","level":"1.5.1.4","depth":3,"next":{"title":"后端开发","level":"1.6","depth":1,"path":"backend/README.md","ref":"backend/README.md","articles":[]},"previous":{"title":"Assignment3","level":"1.5.1.3","depth":3,"path":"CG/GAMES101/assignment3.md","ref":"CG/GAMES101/assignment3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"CG/GAMES101/assignment4.md","mtime":"2022-02-28T14:15:10.509Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-28T14:16:09.895Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -12,7 +12,7 @@
 
 这次作业比较简单，写一个递归程序就能实现功能，具体如下所示：
 
-```python
+```cpp
 cv::Point2f recursive_bezier(const std::vector<cv::Point2f> &control_points, float t) 
 {
     // TODO: Implement de Casteljau's algorithm
