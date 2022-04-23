@@ -1,4 +1,4 @@
-img{
+img {
     /* width: 1600px;
     height: 300px; */
     /* border: 100px dashed #ccc;
@@ -6,5 +6,18 @@ img{
     vertical-align: middle;
     text-align: center; */
     display: block;
-    margin:100px auto;
+    margin: 100px auto;
+}
+
+.social-icons {
+    padding: 12px 0
+}
+
+.social-icons a:not(:last-of-type) {
+    margin-inline-end: 12px
+}
+
+.social-icons a svg {
+    height: 26px;
+    width: 26px
 }
