@@ -1,10 +1,8 @@
-from asyncio.proactor_events import _ProactorWritePipeTransport
-from dataclasses import dataclass
-from fileinput import filename
 import os
-from importlib_metadata import files
-import pandas as pd
-from tabulate import tabulate
+import re
+import json
+
+from numpy import true_divide
 
 def getAllFiles():
     '''
@@ -67,26 +65,117 @@ def listString2list(listStr):
         item = item.replace(" ","")
         l.append(item)
     return l
+
+def dateParse(date):
+    # 输入一个date 形式可能有很多种
+    # 形式1: yyyy-mm-dd xx:xx:xx
+    # 目前也只有形式1
+    pattern = "[2][0][0-9][0-9]-[0-9][0-9]-[0-9][0-9]"
+    parseDate = re.search(pattern, date, flags=0)
+    return parseDate.group()
+
+def isYear(year):
+    # 判断一个year是不是20xx -> 毕竟活不到21xx了
+    if(re.match("20[0-9][0-9]", year) != None): #其实这个有bug，如果是2022222也是对的，不过无所谓了。。。
+        return True
+    else:
+        return False
+
+class ArchiveArticle:
+    def __init__(self, title, url, date) -> None:
+        self.title = title
+        self.url = url
+        self.date = date
+
+
+class ArchiveList:
+    def __init__(self) -> None:
+        self.archiveList = [] # [ArchiveArticle1, ArchiveArticle2...]
     
+    def addItem(self, title, url, date):
+        _title = title
+        _url = url
+        _date = date
+
+        # 把日期解析为规定格式
+        if(date != None):
+            _date = dateParse(date)
+        else:
+            _date = "未指定日期"
+
+        if(_title == None and _url == None):
+            raise
+        # 如果没有设定标题，那么把标题设置为文件名
+        if(_title == None):   
+            _title = url.split("/")[-1].split(".")[0]
+        
+        # 如果路径表示该文件是一个readme文件，那么就不添加了
+        if(url.split("/")[-1] == "README.md" or url.split("/")[-1] == "readme.md"):
+            return 
+        
+        # 将url的.md 转换为.html
+        _url = _url[0:-3] + ".html"
+        self.archiveList.append(ArchiveArticle(_title,_url,_date))
+    
+    def printAll(self):
+        for item in self.archiveList:
+            print("")
+            print(item.title)
+            print(item.url)
+            print(item.date)
+            print("")
+    
+    def deleteSpecificItem(self):
+        delete_urls=[".//archive.html",
+                    ".//SUMMARY.html",
+                    "./algorithms/java/spring-boot-maven-plugin-error.html"
+                    ]
+        # 先求出对应的idx
+        delete_idxs = []
+        for idx, item in enumerate(self.archiveList):
+            if(item.url in delete_urls):
+                delete_idxs.append(idx)
+        #对索引进行逆序，然后删除元素
+        delete_idxs.reverse()
+        for idx in delete_idxs:
+            self.archiveList.pop(idx)
+        return
+    
+    def sortByDate(self):
+        # print(self.archiveList)
+        self.archiveList.sort(key=lambda x:x.date, reverse=True)
+        # print(self.archiveList)
+
+    def writeJsonToFile(self,fileName):
+        # 删除特定项
+        self.deleteSpecificItem()
+
+        # 对日期进行排序
+        self.sortByDate()
+
+        
+        # 将文章按年份分开
+        # 其实这一部分归档也可以交给js做
+        yearArchives = {} # {"2021":[], "2020":[], "未归档":[]}
+        for item in self.archiveList:
+            year = item.date[0:4]
+            if(isYear(year) == False):
+                year = "未归档"
+            if(year not in yearArchives.keys()):
+                yearArchives[year] = []
+            yearArchives[year].append(item.__dict__)
+        with open(fileName, 'w') as f:
+            json.dump(yearArchives, f,ensure_ascii=False)
+        
+
+
 if __name__ == '__main__':
     fileNames = getAllFiles()
-    undatedFiles = []
-    datedFiles = []
+    archiveList = ArchiveList()
     for fileName in fileNames:
         headers = readHeaders(fileName)
-        if(headers.get('date') == None):
-            undatedFiles.append(fileName)
-        else:
-            datedFiles.append(fileName)
-    
-    print(undatedFiles)
-    print(datedFiles)
-        # if(headers.get('title') == None or headers.get('tags') == None):
-        #     continue
-        # title = headers['title'].replace(" ","")
-        # tags = listString2list(headers['tags'])
-        # date = headers["date"]
-        # print(title)
-        # print(date)
+        archiveList.addItem(headers.get("title"),fileName,headers.get("date"))
+    archiveList.writeJsonToFile("./archive.json")
+
 
     

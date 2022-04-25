@@ -21,3 +21,159 @@ img {
     height: 26px;
     width: 26px
 }
+
+
+/* archive */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #222;
+}
+
+a {
+  outline: none;
+}
+
+code {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.header {
+  padding: 20px 0;
+  position: relative;
+  background: #f5f5f5;
+  border-bottom: 1px solid #eaeaea;
+}
+
+
+.content {
+  max-width: 700px;
+  margin: 40px auto 10px;
+  padding: 0 15px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.archive {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1.3em;
+  text-align: center;
+  color: #111;
+}
+
+.archive-title {
+  font-size: 32px ;
+  margin-top: 60px !important;
+}
+
+.archive-item {
+  margin: 5px 0 15px;
+  padding: 0;
+}
+
+.article-tag {
+  margin-left: 3px;
+  padding: 2px 10px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #9EABB3;
+  border: #E3E9ED 1px solid;
+  transition: color 0.3s ease;
+}
+
+.archive-item-date {
+  color: #ccc;
+  font-size: 14px;
+  padding: 5px 0;
+  margin-top: 5px;
+  display: block;
+}
+
+.archive-item-link {
+  display: inline-block;
+  text-decoration: none !important;
+  font-size: 21px;
+  font-weight: normal;
+  color: #222 !important;
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.archive-item-link:hover {
+  border-bottom-color: #222;
+}
+
+@media (min-width: 600px) {
+  .content {
+    font-size: 19px;
+    line-height: 1.8;
+  }
+
+  .archive {
+    text-align: left;
+  }
+
+  .archive-title {
+    font-size: 38px !important;
+  }
+
+  .archive-item-date {
+    font-size: 19px;
+    text-align: right;
+    float: right;
+  }
+
+  .archive-item-link {
+    text-overflow: ellipsis;
+    max-width: calc(100% - 120px);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .article-title {
+    font-size: 42px;
+  }
+
+  .article-duration {
+    font-size: 12px;
+  }
+
+}
+
+@media print {
+  .header, .footer {
+    display: none;
+  }
+  .article-content a {
+    box-shadow: none;
+  }
+}
+
