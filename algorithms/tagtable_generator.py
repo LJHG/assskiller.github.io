@@ -1,7 +1,4 @@
 import os
-from importlib_metadata import files
-import pandas as pd
-from tabulate import tabulate
 
 def getAllFiles():
     '''

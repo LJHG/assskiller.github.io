@@ -2,8 +2,6 @@ import os
 import re
 import json
 
-from numpy import true_divide
-
 def getAllFiles():
     '''
         获取当前文件夹下所有的markdown文件
