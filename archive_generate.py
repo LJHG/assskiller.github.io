@@ -2,6 +2,8 @@ import os
 import re
 import json
 
+from matplotlib.pyplot import pink
+
 def getAllFiles():
     '''
         获取当前文件夹下所有的markdown文件
@@ -144,26 +146,36 @@ class ArchiveList:
         self.archiveList.sort(key=lambda x:x.date, reverse=True)
         # print(self.archiveList)
 
-    def writeJsonToFile(self,fileName):
+    def writeJsonToFile(self,postsArchiveFilename, algorithmArchiveFilename):
+        # 生成两个json文件，一个用来存一般的博文，另一个存题解
         # 删除特定项
         self.deleteSpecificItem()
 
         # 对日期进行排序
         self.sortByDate()
 
-        
         # 将文章按年份分开
         # 其实这一部分归档也可以交给js做
-        yearArchives = {} # {"2021":[], "2020":[], "未归档":[]}
+        postsYearArchives = {} # {"2021":[], "2020":[], "未归档":[]}
+        algorithmYearArchives = {}
         for item in self.archiveList:
             year = item.date[0:4]
             if(isYear(year) == False):
                 year = "未归档"
-            if(year not in yearArchives.keys()):
-                yearArchives[year] = []
-            yearArchives[year].append(item.__dict__)
-        with open(fileName, 'w') as f:
-            json.dump(yearArchives, f,ensure_ascii=False)
+            
+            if(item.__dict__['url'][0:11] == './algorithm'):
+                if(year not in algorithmYearArchives.keys()):
+                    algorithmYearArchives[year] = []
+                algorithmYearArchives[year].append(item.__dict__)
+            else:
+                if(year not in postsYearArchives.keys()):
+                    postsYearArchives[year] = []
+                postsYearArchives[year].append(item.__dict__)
+
+        with open(postsArchiveFilename, 'w') as f:
+            json.dump(postsYearArchives, f,ensure_ascii=False)
+        with open(algorithmArchiveFilename, 'w') as f:
+            json.dump(algorithmYearArchives, f,ensure_ascii=False)
         
 
 
@@ -173,7 +185,7 @@ if __name__ == '__main__':
     for fileName in fileNames:
         headers = readHeaders(fileName)
         archiveList.addItem(headers.get("title"),fileName,headers.get("date"))
-    archiveList.writeJsonToFile("./archive.json")
+    archiveList.writeJsonToFile("./postsArchive.json", "./algorithmArchive.json")
 
 
     
