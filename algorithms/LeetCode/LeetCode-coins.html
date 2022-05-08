@@ -1,0 +1,1829 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>LeetCodejz-coins · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="LeetCode-weekly205.html" />
+    
+    
+    <link rel="prev" href="LeetCode-LCP13.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://www.ljhblog.top" target="_blank" class="custom-link">主页</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/LJHG" target="_blank" class="custom-link">GitHub</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../archive.html">
+            
+                <a href="../../archive.html">
+            
+                    
+                    归档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../CG/">
+            
+                <a href="../../CG/">
+            
+                    
+                    计算机图形学
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../CG/GAMES101/">
+            
+                <a href="../../CG/GAMES101/">
+            
+                    
+                    GAMES101
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../../CG/GAMES101/assignment1.html">
+            
+                <a href="../../CG/GAMES101/assignment1.html">
+            
+                    
+                    Assignment1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../../CG/GAMES101/assignment2.html">
+            
+                <a href="../../CG/GAMES101/assignment2.html">
+            
+                    
+                    Assignment2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../../CG/GAMES101/assignment3.html">
+            
+                <a href="../../CG/GAMES101/assignment3.html">
+            
+                    
+                    Assignment3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../../CG/GAMES101/assignment4.html">
+            
+                <a href="../../CG/GAMES101/assignment4.html">
+            
+                    
+                    Assignment4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.5" data-path="../../CG/GAMES101/assignment5.html">
+            
+                <a href="../../CG/GAMES101/assignment5.html">
+            
+                    
+                    Assignment5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.6" data-path="../../CG/GAMES101/assignment6.html">
+            
+                <a href="../../CG/GAMES101/assignment6.html">
+            
+                    
+                    Assignment6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.7" data-path="../../CG/GAMES101/assignment7.html">
+            
+                <a href="../../CG/GAMES101/assignment7.html">
+            
+                    
+                    Assignment7
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../CG/GAMES202/">
+            
+                <a href="../../CG/GAMES202/">
+            
+                    
+                    GAMES202
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../../CG/GAMES202/assignment1.html">
+            
+                <a href="../../CG/GAMES202/assignment1.html">
+            
+                    
+                    Assignment1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../CG/OpenGL/">
+            
+                <a href="../../CG/OpenGL/">
+            
+                    
+                    OpenGL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../../CG/OpenGL/assimp_material.html">
+            
+                <a href="../../CG/OpenGL/assimp_material.html">
+            
+                    
+                    使用assimp读取没有贴图的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../MLDLRL/">
+            
+                <a href="../../MLDLRL/">
+            
+                    
+                    ML/DL/RL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../MLDLRL/ML/">
+            
+                <a href="../../MLDLRL/ML/">
+            
+                    
+                    机器学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../MLDLRL/ML/knn-distance-computing.html">
+            
+                <a href="../../MLDLRL/ML/knn-distance-computing.html">
+            
+                    
+                    KNN计算的三种姿势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../../MLDLRL/ML/scatter_onehot.html">
+            
+                <a href="../../MLDLRL/ML/scatter_onehot.html">
+            
+                    
+                    用scatter函数计算onehot
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../MLDLRL/DL/">
+            
+                <a href="../../MLDLRL/DL/">
+            
+                    
+                    深度学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../MLDLRL/DL/batch-and-speed.html">
+            
+                <a href="../../MLDLRL/DL/batch-and-speed.html">
+            
+                    
+                    batch与并行计算速度的讨论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../MLDLRL/DL/bnndemo.html">
+            
+                <a href="../../MLDLRL/DL/bnndemo.html">
+            
+                    
+                    使用larq对BNN从训练到部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../MLDLRL/RL/">
+            
+                <a href="../../MLDLRL/RL/">
+            
+                    
+                    强化学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../../MLDLRL/RL/value&policy_iteration.html">
+            
+                <a href="../../MLDLRL/RL/value&policy_iteration.html">
+            
+                    
+                    value&policy iteration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../DistributedSys/">
+            
+                <a href="../../DistributedSys/">
+            
+                    
+                    分布式系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../DistributedSys/mit6.824/readme.html">
+            
+                <a href="../../DistributedSys/mit6.824/readme.html">
+            
+                    
+                    MIT6.824
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../DistributedSys/mit6.824/lab1.html">
+            
+                <a href="../../DistributedSys/mit6.824/lab1.html">
+            
+                    
+                    lab1-mapreduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../Debug/readme.html">
+            
+                <a href="../../Debug/readme.html">
+            
+                    
+                    Debug日常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../Debug/pybind内存泄漏.html">
+            
+                <a href="../../Debug/pybind内存泄漏.html">
+            
+                    
+                    pybind内存泄漏
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../折腾/readme.html">
+            
+                <a href="../../折腾/readme.html">
+            
+                    
+                    折腾
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../折腾/blog-archive.html">
+            
+                <a href="../../折腾/blog-archive.html">
+            
+                    
+                    给博客加了个归档页
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../tag_table.html">
+            
+                <a href="../tag_table.html">
+            
+                    
+                    tag汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    LeetCode
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="LeetCode03.html">
+            
+                <a href="LeetCode03.html">
+            
+                    
+                    LeetCode03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="LeetCode04.html">
+            
+                <a href="LeetCode04.html">
+            
+                    
+                    LeetCode04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="LeetCode05.html">
+            
+                <a href="LeetCode05.html">
+            
+                    
+                    LeetCode05
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.4" data-path="LeetCode23.html">
+            
+                <a href="LeetCode23.html">
+            
+                    
+                    LeetCode23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.5" data-path="LeetCode25.html">
+            
+                <a href="LeetCode25.html">
+            
+                    
+                    LeetCode25
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.6" data-path="LeetCode31.html">
+            
+                <a href="LeetCode31.html">
+            
+                    
+                    LeetCode31
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.7" data-path="LeetCode37.html">
+            
+                <a href="LeetCode37.html">
+            
+                    
+                    LeetCode37
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.8" data-path="LeetCode39.html">
+            
+                <a href="LeetCode39.html">
+            
+                    
+                    LeetCode39
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.9" data-path="LeetCode40.html">
+            
+                <a href="LeetCode40.html">
+            
+                    
+                    LeetCode40
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.10" data-path="LeetCode45.html">
+            
+                <a href="LeetCode45.html">
+            
+                    
+                    LeetCode45
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.11" data-path="LeetCode47.html">
+            
+                <a href="LeetCode47.html">
+            
+                    
+                    LeetCode47
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.12" data-path="LeetCode50.html">
+            
+                <a href="LeetCode50.html">
+            
+                    
+                    LeetCode50
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.13" data-path="LeetCode51.html">
+            
+                <a href="LeetCode51.html">
+            
+                    
+                    LeetCode51
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.14" data-path="LeetCode60.html">
+            
+                <a href="LeetCode60.html">
+            
+                    
+                    LeetCode60
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.15" data-path="LeetCode69.html">
+            
+                <a href="LeetCode69.html">
+            
+                    
+                    LeetCode69
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.16" data-path="LeetCode77.html">
+            
+                <a href="LeetCode77.html">
+            
+                    
+                    LeetCode77
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.17" data-path="LeetCode84.html">
+            
+                <a href="LeetCode84.html">
+            
+                    
+                    LeetCode84
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.18" data-path="LeetCode94.html">
+            
+                <a href="LeetCode94.html">
+            
+                    
+                    LeetCode94
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.19" data-path="LeetCode95.html">
+            
+                <a href="LeetCode95.html">
+            
+                    
+                    LeetCode95
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.20" data-path="LeetCode98.html">
+            
+                <a href="LeetCode98.html">
+            
+                    
+                    LeetCode98
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.21" data-path="LeetCode102.html">
+            
+                <a href="LeetCode102.html">
+            
+                    
+                    LeetCode102
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.22" data-path="LeetCode105.html">
+            
+                <a href="LeetCode105.html">
+            
+                    
+                    LeetCode105
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.23" data-path="LeetCode109.html">
+            
+                <a href="LeetCode109.html">
+            
+                    
+                    LeetCode109
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.24" data-path="LeetCode110.html">
+            
+                <a href="LeetCode110.html">
+            
+                    
+                    LeetCode110
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.25" data-path="LeetCode134.html">
+            
+                <a href="LeetCode134.html">
+            
+                    
+                    LeetCode134
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.26" data-path="LeetCode144.html">
+            
+                <a href="LeetCode144.html">
+            
+                    
+                    LeetCode144
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.27" data-path="LeetCode146.html">
+            
+                <a href="LeetCode146.html">
+            
+                    
+                    LeetCode146
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.28" data-path="LeetCode152.html">
+            
+                <a href="LeetCode152.html">
+            
+                    
+                    LeetCode152
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.29" data-path="LeetCode167.html">
+            
+                <a href="LeetCode167.html">
+            
+                    
+                    LeetCode167
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.30" data-path="LeetCode199.html">
+            
+                <a href="LeetCode199.html">
+            
+                    
+                    LeetCode199
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.31" data-path="LeetCode202.html">
+            
+                <a href="LeetCode202.html">
+            
+                    
+                    LeetCode202
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.32" data-path="LeetCode210.html">
+            
+                <a href="LeetCode210.html">
+            
+                    
+                    LeetCode210
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.33" data-path="LeetCode214.html">
+            
+                <a href="LeetCode214.html">
+            
+                    
+                    LeetCode214
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.34" data-path="LeetCode216.html">
+            
+                <a href="LeetCode216.html">
+            
+                    
+                    LeetCode216
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.35" data-path="LeetCode221.html">
+            
+                <a href="LeetCode221.html">
+            
+                    
+                    LeetCode221
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.36" data-path="LeetCode287.html">
+            
+                <a href="LeetCode287.html">
+            
+                    
+                    LeetCode287
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.37" data-path="LeetCode312.html">
+            
+                <a href="LeetCode312.html">
+            
+                    
+                    LeetCode312
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.38" data-path="LeetCode347.html">
+            
+                <a href="LeetCode347.html">
+            
+                    
+                    LeetCode347
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.39" data-path="LeetCode410.html">
+            
+                <a href="LeetCode410.html">
+            
+                    
+                    LeetCode410
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.40" data-path="LeetCode417.html">
+            
+                <a href="LeetCode417.html">
+            
+                    
+                    LeetCode417
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.41" data-path="LeetCode427.html">
+            
+                <a href="LeetCode427.html">
+            
+                    
+                    LeetCode427
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.42" data-path="LeetCode433.html">
+            
+                <a href="LeetCode433.html">
+            
+                    
+                    LeetCode433
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.43" data-path="LeetCode445.html">
+            
+                <a href="LeetCode445.html">
+            
+                    
+                    LeetCode445
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.44" data-path="LeetCode486.html">
+            
+                <a href="LeetCode486.html">
+            
+                    
+                    LeetCode486
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.45" data-path="LeetCode491.html">
+            
+                <a href="LeetCode491.html">
+            
+                    
+                    LeetCode491
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.46" data-path="LeetCode538.html">
+            
+                <a href="LeetCode538.html">
+            
+                    
+                    LeetCode538
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.47" data-path="LeetCode560.html">
+            
+                <a href="LeetCode560.html">
+            
+                    
+                    LeetCode560
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.48" data-path="LeetCode572.html">
+            
+                <a href="LeetCode572.html">
+            
+                    
+                    LeetCode572
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.49" data-path="LeetCode679.html">
+            
+                <a href="LeetCode679.html">
+            
+                    
+                    LeetCode679
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.50" data-path="LeetCode780.html">
+            
+                <a href="LeetCode780.html">
+            
+                    
+                    LeetCode780
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.51" data-path="LeetCode974.html">
+            
+                <a href="LeetCode974.html">
+            
+                    
+                    LeetCode974
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.52" data-path="LeetCode983.html">
+            
+                <a href="LeetCode983.html">
+            
+                    
+                    LeetCode983
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.53" data-path="LeetCode1025.html">
+            
+                <a href="LeetCode1025.html">
+            
+                    
+                    LeetCode1025
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.54" data-path="LeetCode1095.html">
+            
+                <a href="LeetCode1095.html">
+            
+                    
+                    LeetCode1095
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.55" data-path="LeetCode1371.html">
+            
+                <a href="LeetCode1371.html">
+            
+                    
+                    LeetCode1371
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.56" data-path="LeetCode1458.html">
+            
+                <a href="LeetCode1458.html">
+            
+                    
+                    LeetCode1458
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.57" data-path="LeetCode1823.html">
+            
+                <a href="LeetCode1823.html">
+            
+                    
+                    LeetCode1823
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.58" data-path="LeetCode5393.html">
+            
+                <a href="LeetCode5393.html">
+            
+                    
+                    LeetCode5393
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.59" data-path="LeetCode5394.html">
+            
+                <a href="LeetCode5394.html">
+            
+                    
+                    LeetCode5394
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.60" data-path="LeetCode5400.html">
+            
+                <a href="LeetCode5400.html">
+            
+                    
+                    LeetCode5400
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.61" data-path="LeetCode5402.html">
+            
+                <a href="LeetCode5402.html">
+            
+                    
+                    LeetCode5402
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.62" data-path="LeetCode5406.html">
+            
+                <a href="LeetCode5406.html">
+            
+                    
+                    LeetCode5406
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.63" data-path="LeetCode5413.html">
+            
+                <a href="LeetCode5413.html">
+            
+                    
+                    LeetCode5413
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.64" data-path="LeetCode5414.html">
+            
+                <a href="LeetCode5414.html">
+            
+                    
+                    LeetCode5414
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.65" data-path="LeetCode5474.html">
+            
+                <a href="LeetCode5474.html">
+            
+                    
+                    LeetCode5474
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.66" data-path="LeetCode5476.html">
+            
+                <a href="LeetCode5476.html">
+            
+                    
+                    LeetCode5476
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.67" data-path="LeetCode5477.html">
+            
+                <a href="LeetCode5477.html">
+            
+                    
+                    LeetCode5477
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.68" data-path="LeetCode5480.html">
+            
+                <a href="LeetCode5480.html">
+            
+                    
+                    LeetCode5480
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.69" data-path="LeetCode5500.html">
+            
+                <a href="LeetCode5500.html">
+            
+                    
+                    LeetCode5500
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.70" data-path="LeetCode-jz11.html">
+            
+                <a href="LeetCode-jz11.html">
+            
+                    
+                    LeetCode-jz11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.71" data-path="LeetCode-jz51.html">
+            
+                <a href="LeetCode-jz51.html">
+            
+                    
+                    LeetCode-jz51
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.72" data-path="LeetCode-m56.html">
+            
+                <a href="LeetCode-m56.html">
+            
+                    
+                    LeetCode-m56
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.73" data-path="LeetCode-LCP13.html">
+            
+                <a href="LeetCode-LCP13.html">
+            
+                    
+                    LeetCode-LCP13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.2.74" data-path="LeetCode-coins.html">
+            
+                <a href="LeetCode-coins.html">
+            
+                    
+                    LeetCodejz-coins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.75" data-path="LeetCode-weekly205.html">
+            
+                <a href="LeetCode-weekly205.html">
+            
+                    
+                    LeetCode-weekly205
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.76" data-path="LeetCode-FallContest2020.html">
+            
+                <a href="LeetCode-FallContest2020.html">
+            
+                    
+                    LeetCode-FallContest2020
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >LeetCodejz-coins</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h3 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;</h3>
+<p>&#x786C;&#x5E01;&#x3002;&#x7ED9;&#x5B9A;&#x6570;&#x91CF;&#x4E0D;&#x9650;&#x7684;&#x786C;&#x5E01;&#xFF0C;&#x5E01;&#x503C;&#x4E3A;25&#x5206;&#x3001;10&#x5206;&#x3001;5&#x5206;&#x548C;1&#x5206;&#xFF0C;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x8BA1;&#x7B97;n&#x5206;&#x6709;&#x51E0;&#x79CD;&#x8868;&#x793A;&#x6CD5;&#x3002;(&#x7ED3;&#x679C;&#x53EF;&#x80FD;&#x4F1A;&#x5F88;&#x5927;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5C06;&#x7ED3;&#x679C;&#x6A21;&#x4E0A;1000000007)</p>
+<h3 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h3>
+<pre><code class="lang-cpp">&#x793A;&#x4F8B;<span class="hljs-number">1</span>:
+
+ &#x8F93;&#x5165;: n = <span class="hljs-number">5</span>
+ &#x8F93;&#x51FA;&#xFF1A;<span class="hljs-number">2</span>
+ &#x89E3;&#x91CA;: &#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x51D1;&#x6210;&#x603B;&#x91D1;&#x989D;:
+<span class="hljs-number">5</span>=<span class="hljs-number">5</span>
+<span class="hljs-number">5</span>=<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>
+&#x793A;&#x4F8B;<span class="hljs-number">2</span>:
+
+ &#x8F93;&#x5165;: n = <span class="hljs-number">10</span>
+ &#x8F93;&#x51FA;&#xFF1A;<span class="hljs-number">4</span>
+ &#x89E3;&#x91CA;: &#x6709;&#x56DB;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x51D1;&#x6210;&#x603B;&#x91D1;&#x989D;:
+<span class="hljs-number">10</span>=<span class="hljs-number">10</span>
+<span class="hljs-number">10</span>=<span class="hljs-number">5</span>+<span class="hljs-number">5</span>
+<span class="hljs-number">10</span>=<span class="hljs-number">5</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>
+<span class="hljs-number">10</span>=<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>
+&#x8BF4;&#x660E;&#xFF1A;
+
+&#x6CE8;&#x610F;:
+
+&#x4F60;&#x53EF;&#x4EE5;&#x5047;&#x8BBE;&#xFF1A;
+
+<span class="hljs-number">0</span> &lt;= n (&#x603B;&#x91D1;&#x989D;) &lt;= <span class="hljs-number">1000000</span>
+</code></pre>
+<h3 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;:</h3>
+<p>&#x4E00;&#x4E0B;&#x5C31;&#x80FD;&#x770B;&#x51FA;&#x6765;&#x662F;dp,&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x4E24;&#x5C42;&#x5FAA;&#x73AF;&#x5E94;&#x8BE5;&#x8C01;&#x5199;&#x5916;&#x9762;&#x3002;<br>&#x6700;&#x5F00;&#x59CB;&#x5199;&#x7684;&#x662F; 1~n&#x7684;&#x5FAA;&#x73AF;&#x5728;&#x5916;&#x9762;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x4E00;&#x5C42;&#x5FAA;&#x73AF;&#x91CC;&#x5206;&#x522B;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x786C;&#x5E01;&#x6765;&#x76F8;&#x52A0;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x91CD;&#x590D;&#xFF0C;&#x6BD4;&#x5982;&#x5F53;n=6&#x65F6;&#xFF0C;&#x9009;&#x786C;&#x5E01;1 + dp[5] &#x548C; &#x9009;&#x786C;&#x5E01;5 + dp[1] &#x662F;&#x5305;&#x542B;&#x91CD;&#x590D;&#x7ED3;&#x679C;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;dp[5]&#x4E2D;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x4E86;&#x786C;&#x5E01;5&#x8FD9;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x3002;<br>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x5728;&#x9009;&#x786C;&#x5E01;1&#x65F6;&#xFF0C;&#x4E0D;&#x8981;&#x53BB;&#x8003;&#x8651;&#x66F4;&#x9AD8;&#x9762;&#x503C;&#x7684;&#x786C;&#x5E01;&#xFF0C;&#x5B9E;&#x9645;&#x5C31;&#x662F;&#x628A;&#x4E24;&#x5C42;&#x5FAA;&#x73AF;&#x6362;&#x4E00;&#x4E0B;&#x5373;&#x53EF;&#xFF08;&#x5999;&#x554A;&#xFF09;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">waysToChange</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">1000001</span>];<span class="hljs-comment">//dp[i]&#x8868;&#x793A;&#x5F53;&#x94B1;&#x4E3A;i&#x662F;&#x7684;&#x9009;&#x62E9;&#x6570;</span>
+        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
+        <span class="hljs-keyword">int</span> coins[<span class="hljs-number">4</span>] = {<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">10</span>,<span class="hljs-number">25</span>};
+        dp[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)
+        {
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=coins[i];j&lt;=n;j++)
+            {
+                dp[j]  = (dp[j] + dp[j-coins[i]]) %<span class="hljs-number">1000000007</span> ;
+            }
+        }
+        <span class="hljs-keyword">return</span> dp[n];
+    }
+};
+</code></pre>
+<h3 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;">&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;</h3>
+<p><a href="https://leetcode-cn.com/problems/coin-lcci/" target="_blank">https://leetcode-cn.com/problems/coin-lcci/</a></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="LeetCode-LCP13.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode-LCP13">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="LeetCode-weekly205.html" class="navigation navigation-next " aria-label="Next page: LeetCode-weekly205">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"LeetCodejz-coins","date":"2020-04-23T15:12:22.000Z","tags":["dp","背包问题"],"level":"1.8.2.74","depth":3,"next":{"title":"LeetCode-weekly205","level":"1.8.2.75","depth":3,"path":"algorithms/LeetCode/LeetCode-weekly205.md","ref":"./algorithms/LeetCode/LeetCode-weekly205.md","articles":[]},"previous":{"title":"LeetCode-LCP13","level":"1.8.2.73","depth":3,"path":"algorithms/LeetCode/LeetCode-LCP13.md","ref":"./algorithms/LeetCode/LeetCode-LCP13.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode-coins.md","mtime":"2022-03-13T08:40:21.213Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-08T05:29:03.708Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
