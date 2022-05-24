@@ -1715,12 +1715,19 @@
 <ol>
 <li>CommonUtils.cpp&#x3002;&#x7528;&#x6765;&#x5B58;&#x653E;&#x4E00;&#x4E9B;&#x901A;&#x7528;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x8BFB;&#x53D6;&#x56FE;&#x7247;&#x4E4B;&#x7C7B;&#x7684;&#x3002;</li>
 <li>MathUtils.cpp&#x3002;&#x7528;&#x6765;&#x5B58;&#x653E;&#x6570;&#x5B66;&#x76F8;&#x5173;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x8BA1;&#x7B97;MVP&#x77E9;&#x9635;&#xFF0C;&#x63D2;&#x503C;&#x7B49;&#x3002;</li>
-<li>Renderer.cpp&#x3002;&#x3002;&#x3002;&#x65E0;&#x89C6;&#x6389;&#xFF0C;&#x5199;&#x4E86;&#x4F46;&#x662F;&#x6211;&#x6CA1;&#x7528;&#x5B83;&#x3002;</li>
+<li>Renderer.cpp&#x3002;&#x6E32;&#x67D3;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#xFF0C;&#x7528;&#x6765;&#x7BA1;&#x7406;&#x6E32;&#x67D3;&#x7684;&#x7269;&#x4F53;&#xFF0C;&#x4FDD;&#x5B58;shader&#xFF0C;&#x4EE5;&#x53CA;&#x8C03;&#x7528;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x6E32;&#x67D3;&#x7B49;&#x3002;</li>
 <li>Shader.cpp&#x3002;&#x5B58;&#x653E;shader&#x4EE3;&#x7801;&#x3002;</li>
 <li>ShadingPipeline.cpp&#x3002;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x4EE3;&#x7801;&#xFF0C;&#x751F;&#x6210;&#x6E32;&#x67D3;&#x7ED3;&#x679C;&#x3002;</li>
 <li>Structure.cpp&#x3002;&#x5B9A;&#x4E49;vetex, frament &#x4EE5;&#x53CA; mesh&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;</li>
 <li>WindowApp.cpp&#x3002;SDL2&#x76F8;&#x5173;&#x51FD;&#x6570;&#x3002;</li>
 </ol>
+<blockquote>
+<p>&#x5173;&#x4E8E;Renderer.cpp&#x548C;ShadingPipeline.cpp&#x7684;&#x7EC4;&#x7EC7;&#x95EE;&#x9898;&#xFF1A;</p>
+<p>&#x6700;&#x5F00;&#x59CB;&#x6211;&#x662F;&#x628A;&#x6240;&#x6709;&#x7684;&#x4EE3;&#x7801;&#x90FD;&#x5199;&#x5230;ShadingPipeline.cpp&#x91CC;&#x7684;&#xFF0C;&#x4E5F;&#x80FD;&#x591F;&#x6E32;&#x67D3;&#xFF0C;&#x4E0D;&#x8FC7;&#x4E0D;&#x80FD;&#x518D;&#x8FDB;&#x884C;&#x66F4;&#x590D;&#x6742;&#x7684;&#x6E32;&#x67D3;&#x4E86;&#xFF0C;&#x6700;&#x591A;&#x5C31;&#x753B;&#x753B;&#x4E09;&#x89D2;&#x5F62;&#xFF0C;&#x4E0D;&#x7136;&#x7684;&#x8BDD;&#x51FD;&#x6570;&#x7684;&#x8BBE;&#x8BA1;&#x4F1A;&#x975E;&#x5E38;&#x4E11;&#x964B;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x628A;shader&#x7684;&#x521B;&#x5EFA;&#x4EA4;&#x7ED9;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x6765;&#x5904;&#x7406;&#xFF0C;&#x5C31;&#x975E;&#x5E38;&#x4E0D;&#x5408;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x628A;&#x5B83;&#x4EA4;&#x7ED9;&#x4E86;Renderer&#x6765;&#x7BA1;&#x7406;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x521D;&#x59CB;&#x5316;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x65F6;&#x518D;&#x7ED9;&#x5B83;&#x3002;</p>
+<p>&#x53C8;&#x6216;&#x8005;&#x9700;&#x8981;&#x7ED8;&#x5236;&#x5F88;&#x591A;&#x7269;&#x4F53;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5C06;&#x6240;&#x6709;&#x7684;&#x7269;&#x4F53;&#x5B58;&#x8FDB;&#x4E00;&#x4E2A;mesh&#x7684;vector&#xFF0C;&#x7136;&#x540E;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x753B;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x8C03;&#x7528;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x65F6;&#x662F;&#x76F4;&#x63A5;&#x7ED9;vertices&#x548C;indices&#xFF0C;&#x90A3;&#x4E48;mesh&#x7684;&#x7BA1;&#x7406;&#x4EA4;&#x7ED9;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x8FD9;&#x4E2A;&#x7C7B;&#x53C8;&#x663E;&#x5F97;&#x5F88;&#x4E0D;&#x5408;&#x7406;&#x4E86;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6700;&#x540E;&#x6211;&#x628A;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x8FD9;&#x4E2A;&#x7C7B;&#x91CC;&#x7684;&#x4E00;&#x4E9B;&#x51FD;&#x6570;&#x5206;&#x7ED9;&#x4E86;Renderer&#x8FD9;&#x4E2A;&#x7C7B;&#xFF0C;&#x8FD9;&#x6837;&#x867D;&#x7136;&#x611F;&#x89C9;&#x8C03;&#x6765;&#x8C03;&#x53BB;&#x7684;&#x66F4;&#x590D;&#x6742;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5E94;&#x8BE5;&#x5728;&#x7EC4;&#x7EC7;&#x4E0A;&#x662F;&#x66F4;&#x5408;&#x7406;&#x4E86;&#x3002;&#x3002;&#x3002;&#x5427;&#x1F914;</p>
+</blockquote>
 <h2 id="2-&#x5177;&#x4F53;&#x7EC6;&#x8282;">2. &#x5177;&#x4F53;&#x7EC6;&#x8282;</h2>
 <h3 id="21-&#x50CF;&#x7D20;&#x5C55;&#x793A;">2.1 &#x50CF;&#x7D20;&#x5C55;&#x793A;</h3>
 <p>&#x57FA;&#x672C;&#x4E0A;&#x53EF;&#x4EE5;&#x628A;&#x6E32;&#x67D3;&#x7684;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x62BD;&#x79BB;&#x4E3A; &#x751F;&#x6210;&#x50CF;&#x7D20;buffer -&gt; &#x663E;&#x793A;&#x50CF;&#x7D20;buffer&#x3002;&#x663E;&#x793A;&#x50CF;&#x7D20;buffer&#x8FD9;&#x4E2A;&#x90E8;&#x5206;&#x5C31;&#x4EA4;&#x7ED9;&#x4E86;SDL2&#x6765;&#x505A;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x6BCF;&#x4E00;&#x5E27;&#x7684;&#x65F6;&#x5019;&#x628A;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x6570;&#x7EC4;&#x4F20;&#x9012;&#x7ED9;SDL2&#x5C31;&#x53EF;&#x4EE5;&#x5C55;&#x793A;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x7684;&#x6E32;&#x67D3;&#x5668;&#x6240;&#x9700;&#x8981;&#x7684;&#x5C31;&#x662F;&#x5728;&#x6BCF;&#x4E00;&#x5E27;&#x751F;&#x6210;&#x51FA;&#x8FD9;&#x4E2A;&#x50CF;&#x7D20;&#x6570;&#x7EC4;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x8FD9;&#x91CC;&#x7684;&#x9009;&#x53D6;&#x662F;&#x975E;&#x5E38;&#x968F;&#x610F;&#x7684;&#xFF0C;&#x5728;GAMES101&#x91CC;&#x4F7F;&#x7528;&#x7684;opencv&#x6765;&#x628A;&#x7ED3;&#x679C;&#x5B58;&#x6210;&#x56FE;&#x7247;&#xFF0C;<a href="https://yangwc.com/2019/05/01/SoftRenderer-Rasterization/" target="_blank">&#x8FD9;&#x4F4D;&#x5927;&#x4F6C;&#x7684;&#x535A;&#x5BA2;</a>&#x4F7F;&#x7528;&#x4E86;qt&#x6765;&#x5C55;&#x793A;&#x7ED3;&#x679C;&#xFF0C;&#x540E;&#x6765;&#x4ED6;&#x540E;&#x7EED;&#x628A;&#x4EE3;&#x7801;&#x91CD;&#x6784;&#x4E86;&#xFF0C;&#x4E5F;&#x662F;&#x4F7F;&#x7528;&#x7684;SDL2&#x3002;</p>
@@ -1772,43 +1779,43 @@
 <p>&#x9996;&#x5148;&#x4F20;&#x5165;vertex data&#xFF0C; &#x7ECF;&#x8FC7;vertex shader&#x540E;&#x4F1A;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x91CC;&#x9762;&#x4F1A;&#x5305;&#x62EC;&#x7ECF;&#x8FC7;&#x5750;&#x6807;&#x53D8;&#x6362;&#x540E;&#x7684;&#x5750;&#x6807;&#xFF0C;&#x518D;&#x7ECF;&#x8FC7;&#x4E86;&#x89C6;&#x56FE;&#x53D8;&#x6362;(&#x6211;&#x4E0D;&#x662F;&#x5F88;&#x6E05;&#x695A;&#x89C6;&#x56FE;&#x53D8;&#x6362;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x5199;&#x5728;vertex shader&#x91CC;)&#x8FC7;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5149;&#x6805;&#x5316;&#x4E86;&#x3002;&#x5728;&#x8FDB;&#x884C;&#x5149;&#x6805;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x51B3;&#x5B9A;&#x6BCF;&#x4E00;&#x4E2A;&#x50CF;&#x7D20;&#x5E94;&#x8BE5;&#x7ED9;&#x4EC0;&#x4E48;&#x989C;&#x8272;&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x63D2;&#x503C;&#x6765;&#x63D2;&#x503C;&#x51FA;&#x90A3;&#x4E2A;&#x50CF;&#x7D20;&#x70B9;&#x7684;&#x4E16;&#x754C;&#x5750;&#x6807;&#xFF0C;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x7B49;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x5B83;&#x4F20;&#x7ED9;fragment shader&#xFF0C;&#x6700;&#x540E;&#x5F97;&#x5230;&#x989C;&#x8272;&#x3002;</p>
 <p>&#x8FD9;&#x91CC;&#x8981;&#x8BF4;&#x7684;&#x662F;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x5199;&#x7684;&#x4EE3;&#x7801;fragment shader&#x7684;&#x8F93;&#x5165;&#x6570;&#x636E;&#x662F;VertextOut&#xFF0C;&#x8FD9;&#x4E2A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x662F;vextex shader&#x8F93;&#x51FA;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;&#x901A;&#x8FC7;&#x5BF9;&#x4E0D;&#x540C;VertextOut&#x8FDB;&#x884C;&#x5DEE;&#x503C;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7684;VertextOut&#x6765;&#x4F5C;&#x4E3A;&#x7ED3;&#x679C;&#x7ED9;fragment shader&#xFF0C;&#x6240;&#x4EE5;&#x597D;&#x50CF;&#x4E5F;&#x6CA1;&#x6BDB;&#x75C5;&#x3002;&#x3002;&#x3002;</p>
 <p>&#x8FD9;&#x91CC;&#x5C55;&#x793A;&#x4E00;&#x4E0B;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">void</span> ShadingPipeline::shade(<span class="hljs-keyword">int</span> shadingMode, <span class="hljs-keyword">int</span> rasterizingMode) {
-     <span class="hljs-comment">//according to indices, every 3 indices organize as a triangle, len(indices) could be greater than len(_vertices)</span>
-     <span class="hljs-keyword">if</span>(shadingMode == SIMPLE_SHADER){
-         shader = <span class="hljs-keyword">new</span> SimpleShader();
-     }
-     VertexData v1,v2,v3;
-     VertexOutData v1o,v2o,v3o;
-     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;indices.size()/<span class="hljs-number">3</span>;i++){
-         v1 = vertices[indices[i*<span class="hljs-number">3</span>+<span class="hljs-number">0</span>]];
-         v2 = vertices[indices[i*<span class="hljs-number">3</span>+<span class="hljs-number">1</span>]];
-         v3 = vertices[indices[i*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>]];
-         <span class="hljs-comment">//vertex shader</span>
-         v1o = shader-&gt;vertexShader(v1);
-         v2o = shader-&gt;vertexShader(v2);
-         v3o = shader-&gt;vertexShader(v3);
+<pre><code class="lang-cpp"><span class="hljs-keyword">void</span> ShadingPipeline::shade(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;VertexData&gt;&amp; _vertices,
+                                <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt;&amp; _indices,
+                                <span class="hljs-keyword">int</span> rasterizingMode) {
+        <span class="hljs-comment">//according to indices, every 3 indices organize as a triangle, len(indices) could be greater than len(_vertices)</span>
 
-         <span class="hljs-comment">//view port transformation</span>
-         v1o.position = viewPortMatrix * v1o.position;
-         v2o.position = viewPortMatrix * v2o.position;
-         v3o.position = viewPortMatrix * v3o.position;
+        VertexData v1,v2,v3;
+        VertexOutData v1o,v2o,v3o;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;_indices.size()/<span class="hljs-number">3</span>;i++){
+            v1 = _vertices[_indices[i*<span class="hljs-number">3</span>+<span class="hljs-number">0</span>]];
+            v2 = _vertices[_indices[i*<span class="hljs-number">3</span>+<span class="hljs-number">1</span>]];
+            v3 = _vertices[_indices[i*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>]];
+            <span class="hljs-comment">//vertex shader</span>
+            v1o = shader-&gt;vertexShader(v1);
+            v2o = shader-&gt;vertexShader(v2);
+            v3o = shader-&gt;vertexShader(v3);
 
-         <span class="hljs-comment">//rasterization</span>
-         <span class="hljs-comment">// the triangle will appear upside down because it goes like &#x27A1;&#xFE0F; x &#x2B07;&#xFE0F; y, but never mind...</span>
-         <span class="hljs-keyword">if</span>(rasterizingMode == LINE){
-             <span class="hljs-comment">// BresenHam line drawing algorithm</span>
-             bresenhamLineRasterization(v1o,v2o);
-             bresenhamLineRasterization(v1o,v3o);
-             bresenhamLineRasterization(v3o,v2o);
-         }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(rasterizingMode == FILL){
-             <span class="hljs-comment">// bounding box inside triangle fill algorithm -&gt; games101 assignment2 and assignment3</span>
-             fillRasterization(v1o,v2o,v3o);
-         }
+            <span class="hljs-comment">//view port transformation</span>
+            v1o.position = viewPortMatrix * v1o.position;
+            v2o.position = viewPortMatrix * v2o.position;
+            v3o.position = viewPortMatrix * v3o.position;
 
-         <span class="hljs-comment">// double buffer</span>
-         swapBuffer();
-     }
-}
+            <span class="hljs-comment">//rasterization</span>
+            <span class="hljs-comment">// the triangle will appear upside down because it goes like &#x27A1;&#xFE0F; x &#x2B07;&#xFE0F; y, but never mind...</span>
+            <span class="hljs-keyword">if</span>(rasterizingMode == LINE){
+                <span class="hljs-comment">// BresenHam line drawing algorithm</span>
+                bresenhamLineRasterization(v1o,v2o);
+                bresenhamLineRasterization(v1o,v3o);
+                bresenhamLineRasterization(v3o,v2o);
+            }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(rasterizingMode == FILL){
+                <span class="hljs-comment">// bounding box inside triangle fill algorithm -&gt; games101 assignment2 and assignment3</span>
+                fillRasterization(v1o,v2o,v3o);
+            }
+
+            <span class="hljs-comment">// double buffer</span>
+            swapBuffer();
+        }
+   }
 </code></pre>
 <p>&#x56E0;&#x4E3A;&#x8FD9;&#x91CC;&#x662F;&#x76F4;&#x63A5;&#x753B;&#x4E09;&#x89D2;&#x5F62;&#xFF0C;&#x6211;&#x7684;vertex shader&#x91CC;&#x76F4;&#x63A5;&#x4F20;&#x9012;&#x6570;&#x636E;&#xFF0C;&#x540C;&#x65F6;fragment shader&#x4E5F;&#x662F;&#x76F4;&#x63A5;&#x4F20;&#x9012;&#x989C;&#x8272;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4F20;&#x7684;vertex data&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x7684;ndc&#x5750;&#x6807;&#xFF0C;&#x7ECF;&#x8FC7;&#x89C6;&#x56FE;&#x53D8;&#x5316;&#x8FC7;&#x540E;&#x5F97;&#x5230;&#x50CF;&#x7D20;&#x5750;&#x6807;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x5149;&#x6805;&#x5316;&#x4E86;&#x3002;</p>
 <p>&#x5176;&#x4E2D;&#xFF0C;&#x586B;&#x5145;&#x7684;&#x5149;&#x6805;&#x5316;&#x7B97;&#x6CD5;&#x957F;&#x8FD9;&#x6837;&#xFF1A;</p>
@@ -1892,7 +1899,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"(一) 渲染管线","date":"2022-05-24T16:52:48.000Z","tags":["MicroRenderer"],"level":"1.3.1.1","depth":3,"next":{"title":"GAMES101","level":"1.3.2","depth":2,"path":"CG/GAMES101/README.md","ref":"CG/GAMES101/README.md","articles":[{"title":"Assignment1","level":"1.3.2.1","depth":3,"path":"CG/GAMES101/assignment1.md","ref":"CG/GAMES101/assignment1.md","articles":[]},{"title":"Assignment2","level":"1.3.2.2","depth":3,"path":"CG/GAMES101/assignment2.md","ref":"CG/GAMES101/assignment2.md","articles":[]},{"title":"Assignment3","level":"1.3.2.3","depth":3,"path":"CG/GAMES101/assignment3.md","ref":"CG/GAMES101/assignment3.md","articles":[]},{"title":"Assignment4","level":"1.3.2.4","depth":3,"path":"CG/GAMES101/assignment4.md","ref":"CG/GAMES101/assignment4.md","articles":[]},{"title":"Assignment5","level":"1.3.2.5","depth":3,"path":"CG/GAMES101/assignment5.md","ref":"CG/GAMES101/assignment5.md","articles":[]},{"title":"Assignment6","level":"1.3.2.6","depth":3,"path":"CG/GAMES101/assignment6.md","ref":"CG/GAMES101/assignment6.md","articles":[]},{"title":"Assignment7","level":"1.3.2.7","depth":3,"path":"CG/GAMES101/assignment7.md","ref":"CG/GAMES101/assignment7.md","articles":[]}]},"previous":{"title":"MicroRenderer","level":"1.3.1","depth":2,"path":"CG/SoftRasterizer/README.md","ref":"CG/SoftRasterizer/README.md","articles":[{"title":"(一) 渲染管线","level":"1.3.1.1","depth":3,"path":"CG/SoftRasterizer/pipeline.md","ref":"CG/SoftRasterizer/pipeline.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"CG/SoftRasterizer/pipeline.md","mtime":"2022-05-24T09:46:20.900Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-24T09:48:04.760Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"(一) 渲染管线","date":"2022-05-24T16:52:48.000Z","tags":["MicroRenderer"],"level":"1.3.1.1","depth":3,"next":{"title":"GAMES101","level":"1.3.2","depth":2,"path":"CG/GAMES101/README.md","ref":"CG/GAMES101/README.md","articles":[{"title":"Assignment1","level":"1.3.2.1","depth":3,"path":"CG/GAMES101/assignment1.md","ref":"CG/GAMES101/assignment1.md","articles":[]},{"title":"Assignment2","level":"1.3.2.2","depth":3,"path":"CG/GAMES101/assignment2.md","ref":"CG/GAMES101/assignment2.md","articles":[]},{"title":"Assignment3","level":"1.3.2.3","depth":3,"path":"CG/GAMES101/assignment3.md","ref":"CG/GAMES101/assignment3.md","articles":[]},{"title":"Assignment4","level":"1.3.2.4","depth":3,"path":"CG/GAMES101/assignment4.md","ref":"CG/GAMES101/assignment4.md","articles":[]},{"title":"Assignment5","level":"1.3.2.5","depth":3,"path":"CG/GAMES101/assignment5.md","ref":"CG/GAMES101/assignment5.md","articles":[]},{"title":"Assignment6","level":"1.3.2.6","depth":3,"path":"CG/GAMES101/assignment6.md","ref":"CG/GAMES101/assignment6.md","articles":[]},{"title":"Assignment7","level":"1.3.2.7","depth":3,"path":"CG/GAMES101/assignment7.md","ref":"CG/GAMES101/assignment7.md","articles":[]}]},"previous":{"title":"MicroRenderer","level":"1.3.1","depth":2,"path":"CG/SoftRasterizer/README.md","ref":"CG/SoftRasterizer/README.md","articles":[{"title":"(一) 渲染管线","level":"1.3.1.1","depth":3,"path":"CG/SoftRasterizer/pipeline.md","ref":"CG/SoftRasterizer/pipeline.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"CG/SoftRasterizer/pipeline.md","mtime":"2022-05-24T14:37:28.829Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-05-24T14:38:09.275Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
