@@ -1,0 +1,2270 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>(三) 着色模型 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../styles/website.css">
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../GAMES101/" />
+    
+    
+    <link rel="prev" href="3d.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="http://www.ljhblog.top" target="_blank" class="custom-link">主页</a>
+        </li>
+    
+        
+        <li>
+            <a href="https://github.com/LJHG" target="_blank" class="custom-link">GitHub</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../archive.html">
+            
+                <a href="../../archive.html">
+            
+                    
+                    归档
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    计算机图形学
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    MicroRenderer
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="pipeline.html">
+            
+                <a href="pipeline.html">
+            
+                    
+                    (一) 渲染管线
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="3d.html">
+            
+                <a href="3d.html">
+            
+                    
+                    (二) 进入三维
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.1.3" data-path="shading.html">
+            
+                <a href="shading.html">
+            
+                    
+                    (三) 着色模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../GAMES101/">
+            
+                <a href="../GAMES101/">
+            
+                    
+                    GAMES101
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../GAMES101/assignment1.html">
+            
+                <a href="../GAMES101/assignment1.html">
+            
+                    
+                    Assignment1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../GAMES101/assignment2.html">
+            
+                <a href="../GAMES101/assignment2.html">
+            
+                    
+                    Assignment2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="../GAMES101/assignment3.html">
+            
+                <a href="../GAMES101/assignment3.html">
+            
+                    
+                    Assignment3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.4" data-path="../GAMES101/assignment4.html">
+            
+                <a href="../GAMES101/assignment4.html">
+            
+                    
+                    Assignment4
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.5" data-path="../GAMES101/assignment5.html">
+            
+                <a href="../GAMES101/assignment5.html">
+            
+                    
+                    Assignment5
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.6" data-path="../GAMES101/assignment6.html">
+            
+                <a href="../GAMES101/assignment6.html">
+            
+                    
+                    Assignment6
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.7" data-path="../GAMES101/assignment7.html">
+            
+                <a href="../GAMES101/assignment7.html">
+            
+                    
+                    Assignment7
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../GAMES202/">
+            
+                <a href="../GAMES202/">
+            
+                    
+                    GAMES202
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="../GAMES202/assignment1.html">
+            
+                <a href="../GAMES202/assignment1.html">
+            
+                    
+                    Assignment1
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../OpenGL/">
+            
+                <a href="../OpenGL/">
+            
+                    
+                    OpenGL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.4.1" data-path="../OpenGL/assimp_material.html">
+            
+                <a href="../OpenGL/assimp_material.html">
+            
+                    
+                    使用assimp读取没有贴图的模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../MLDLRL/">
+            
+                <a href="../../MLDLRL/">
+            
+                    
+                    ML/DL/RL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../MLDLRL/ML/">
+            
+                <a href="../../MLDLRL/ML/">
+            
+                    
+                    机器学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../MLDLRL/ML/knn-distance-computing.html">
+            
+                <a href="../../MLDLRL/ML/knn-distance-computing.html">
+            
+                    
+                    KNN计算的三种姿势
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../../MLDLRL/ML/scatter_onehot.html">
+            
+                <a href="../../MLDLRL/ML/scatter_onehot.html">
+            
+                    
+                    用scatter函数计算onehot
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../MLDLRL/DL/">
+            
+                <a href="../../MLDLRL/DL/">
+            
+                    
+                    深度学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../MLDLRL/DL/batch-and-speed.html">
+            
+                <a href="../../MLDLRL/DL/batch-and-speed.html">
+            
+                    
+                    batch与并行计算速度的讨论
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../MLDLRL/DL/bnndemo.html">
+            
+                <a href="../../MLDLRL/DL/bnndemo.html">
+            
+                    
+                    使用larq对BNN从训练到部署
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../MLDLRL/RL/">
+            
+                <a href="../../MLDLRL/RL/">
+            
+                    
+                    强化学习
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../../MLDLRL/RL/value&policy_iteration.html">
+            
+                <a href="../../MLDLRL/RL/value&policy_iteration.html">
+            
+                    
+                    value&policy iteration
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../DistributedSys/">
+            
+                <a href="../../DistributedSys/">
+            
+                    
+                    分布式系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../DistributedSys/mit6.824/readme.html">
+            
+                <a href="../../DistributedSys/mit6.824/readme.html">
+            
+                    
+                    MIT6.824
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../DistributedSys/mit6.824/lab1.html">
+            
+                <a href="../../DistributedSys/mit6.824/lab1.html">
+            
+                    
+                    lab1-mapreduce
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../Debug/readme.html">
+            
+                <a href="../../Debug/readme.html">
+            
+                    
+                    Debug日常
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../Debug/pybind内存泄漏.html">
+            
+                <a href="../../Debug/pybind内存泄漏.html">
+            
+                    
+                    pybind内存泄漏
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../折腾/readme.html">
+            
+                <a href="../../折腾/readme.html">
+            
+                    
+                    折腾
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../折腾/blog-archive.html">
+            
+                <a href="../../折腾/blog-archive.html">
+            
+                    
+                    给博客加了个归档页
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../algorithms/">
+            
+                <a href="../../algorithms/">
+            
+                    
+                    算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../algorithms/tag_table.html">
+            
+                <a href="../../algorithms/tag_table.html">
+            
+                    
+                    tag汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../algorithms/LeetCode/">
+            
+                <a href="../../algorithms/LeetCode/">
+            
+                    
+                    LeetCode
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../../algorithms/LeetCode/LeetCode03.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode03.html">
+            
+                    
+                    LeetCode03
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="../../algorithms/LeetCode/LeetCode04.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode04.html">
+            
+                    
+                    LeetCode04
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="../../algorithms/LeetCode/LeetCode05.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode05.html">
+            
+                    
+                    LeetCode05
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.4" data-path="../../algorithms/LeetCode/LeetCode23.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode23.html">
+            
+                    
+                    LeetCode23
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.5" data-path="../../algorithms/LeetCode/LeetCode25.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode25.html">
+            
+                    
+                    LeetCode25
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.6" data-path="../../algorithms/LeetCode/LeetCode31.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode31.html">
+            
+                    
+                    LeetCode31
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.7" data-path="../../algorithms/LeetCode/LeetCode37.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode37.html">
+            
+                    
+                    LeetCode37
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.8" data-path="../../algorithms/LeetCode/LeetCode39.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode39.html">
+            
+                    
+                    LeetCode39
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.9" data-path="../../algorithms/LeetCode/LeetCode40.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode40.html">
+            
+                    
+                    LeetCode40
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.10" data-path="../../algorithms/LeetCode/LeetCode45.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode45.html">
+            
+                    
+                    LeetCode45
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.11" data-path="../../algorithms/LeetCode/LeetCode47.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode47.html">
+            
+                    
+                    LeetCode47
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.12" data-path="../../algorithms/LeetCode/LeetCode50.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode50.html">
+            
+                    
+                    LeetCode50
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.13" data-path="../../algorithms/LeetCode/LeetCode51.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode51.html">
+            
+                    
+                    LeetCode51
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.14" data-path="../../algorithms/LeetCode/LeetCode60.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode60.html">
+            
+                    
+                    LeetCode60
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.15" data-path="../../algorithms/LeetCode/LeetCode69.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode69.html">
+            
+                    
+                    LeetCode69
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.16" data-path="../../algorithms/LeetCode/LeetCode77.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode77.html">
+            
+                    
+                    LeetCode77
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.17" data-path="../../algorithms/LeetCode/LeetCode84.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode84.html">
+            
+                    
+                    LeetCode84
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.18" data-path="../../algorithms/LeetCode/LeetCode94.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode94.html">
+            
+                    
+                    LeetCode94
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.19" data-path="../../algorithms/LeetCode/LeetCode95.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode95.html">
+            
+                    
+                    LeetCode95
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.20" data-path="../../algorithms/LeetCode/LeetCode98.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode98.html">
+            
+                    
+                    LeetCode98
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.21" data-path="../../algorithms/LeetCode/LeetCode102.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode102.html">
+            
+                    
+                    LeetCode102
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.22" data-path="../../algorithms/LeetCode/LeetCode105.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode105.html">
+            
+                    
+                    LeetCode105
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.23" data-path="../../algorithms/LeetCode/LeetCode109.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode109.html">
+            
+                    
+                    LeetCode109
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.24" data-path="../../algorithms/LeetCode/LeetCode110.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode110.html">
+            
+                    
+                    LeetCode110
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.25" data-path="../../algorithms/LeetCode/LeetCode134.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode134.html">
+            
+                    
+                    LeetCode134
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.26" data-path="../../algorithms/LeetCode/LeetCode144.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode144.html">
+            
+                    
+                    LeetCode144
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.27" data-path="../../algorithms/LeetCode/LeetCode146.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode146.html">
+            
+                    
+                    LeetCode146
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.28" data-path="../../algorithms/LeetCode/LeetCode152.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode152.html">
+            
+                    
+                    LeetCode152
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.29" data-path="../../algorithms/LeetCode/LeetCode167.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode167.html">
+            
+                    
+                    LeetCode167
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.30" data-path="../../algorithms/LeetCode/LeetCode199.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode199.html">
+            
+                    
+                    LeetCode199
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.31" data-path="../../algorithms/LeetCode/LeetCode202.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode202.html">
+            
+                    
+                    LeetCode202
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.32" data-path="../../algorithms/LeetCode/LeetCode210.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode210.html">
+            
+                    
+                    LeetCode210
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.33" data-path="../../algorithms/LeetCode/LeetCode214.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode214.html">
+            
+                    
+                    LeetCode214
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.34" data-path="../../algorithms/LeetCode/LeetCode216.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode216.html">
+            
+                    
+                    LeetCode216
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.35" data-path="../../algorithms/LeetCode/LeetCode221.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode221.html">
+            
+                    
+                    LeetCode221
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.36" data-path="../../algorithms/LeetCode/LeetCode287.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode287.html">
+            
+                    
+                    LeetCode287
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.37" data-path="../../algorithms/LeetCode/LeetCode312.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode312.html">
+            
+                    
+                    LeetCode312
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.38" data-path="../../algorithms/LeetCode/LeetCode347.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode347.html">
+            
+                    
+                    LeetCode347
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.39" data-path="../../algorithms/LeetCode/LeetCode410.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode410.html">
+            
+                    
+                    LeetCode410
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.40" data-path="../../algorithms/LeetCode/LeetCode417.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode417.html">
+            
+                    
+                    LeetCode417
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.41" data-path="../../algorithms/LeetCode/LeetCode427.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode427.html">
+            
+                    
+                    LeetCode427
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.42" data-path="../../algorithms/LeetCode/LeetCode433.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode433.html">
+            
+                    
+                    LeetCode433
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.43" data-path="../../algorithms/LeetCode/LeetCode445.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode445.html">
+            
+                    
+                    LeetCode445
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.44" data-path="../../algorithms/LeetCode/LeetCode486.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode486.html">
+            
+                    
+                    LeetCode486
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.45" data-path="../../algorithms/LeetCode/LeetCode491.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode491.html">
+            
+                    
+                    LeetCode491
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.46" data-path="../../algorithms/LeetCode/LeetCode538.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode538.html">
+            
+                    
+                    LeetCode538
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.47" data-path="../../algorithms/LeetCode/LeetCode560.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode560.html">
+            
+                    
+                    LeetCode560
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.48" data-path="../../algorithms/LeetCode/LeetCode572.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode572.html">
+            
+                    
+                    LeetCode572
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.49" data-path="../../algorithms/LeetCode/LeetCode679.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode679.html">
+            
+                    
+                    LeetCode679
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.50" data-path="../../algorithms/LeetCode/LeetCode780.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode780.html">
+            
+                    
+                    LeetCode780
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.51" data-path="../../algorithms/LeetCode/LeetCode974.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode974.html">
+            
+                    
+                    LeetCode974
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.52" data-path="../../algorithms/LeetCode/LeetCode983.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode983.html">
+            
+                    
+                    LeetCode983
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.53" data-path="../../algorithms/LeetCode/LeetCode1025.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode1025.html">
+            
+                    
+                    LeetCode1025
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.54" data-path="../../algorithms/LeetCode/LeetCode1095.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode1095.html">
+            
+                    
+                    LeetCode1095
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.55" data-path="../../algorithms/LeetCode/LeetCode1371.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode1371.html">
+            
+                    
+                    LeetCode1371
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.56" data-path="../../algorithms/LeetCode/LeetCode1458.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode1458.html">
+            
+                    
+                    LeetCode1458
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.57" data-path="../../algorithms/LeetCode/LeetCode1823.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode1823.html">
+            
+                    
+                    LeetCode1823
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.58" data-path="../../algorithms/LeetCode/LeetCode5393.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5393.html">
+            
+                    
+                    LeetCode5393
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.59" data-path="../../algorithms/LeetCode/LeetCode5394.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5394.html">
+            
+                    
+                    LeetCode5394
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.60" data-path="../../algorithms/LeetCode/LeetCode5400.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5400.html">
+            
+                    
+                    LeetCode5400
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.61" data-path="../../algorithms/LeetCode/LeetCode5402.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5402.html">
+            
+                    
+                    LeetCode5402
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.62" data-path="../../algorithms/LeetCode/LeetCode5406.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5406.html">
+            
+                    
+                    LeetCode5406
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.63" data-path="../../algorithms/LeetCode/LeetCode5413.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5413.html">
+            
+                    
+                    LeetCode5413
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.64" data-path="../../algorithms/LeetCode/LeetCode5414.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5414.html">
+            
+                    
+                    LeetCode5414
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.65" data-path="../../algorithms/LeetCode/LeetCode5474.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5474.html">
+            
+                    
+                    LeetCode5474
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.66" data-path="../../algorithms/LeetCode/LeetCode5476.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5476.html">
+            
+                    
+                    LeetCode5476
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.67" data-path="../../algorithms/LeetCode/LeetCode5477.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5477.html">
+            
+                    
+                    LeetCode5477
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.68" data-path="../../algorithms/LeetCode/LeetCode5480.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5480.html">
+            
+                    
+                    LeetCode5480
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.69" data-path="../../algorithms/LeetCode/LeetCode5500.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode5500.html">
+            
+                    
+                    LeetCode5500
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.70" data-path="../../algorithms/LeetCode/LeetCode-jz11.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode-jz11.html">
+            
+                    
+                    LeetCode-jz11
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.71" data-path="../../algorithms/LeetCode/LeetCode-jz51.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode-jz51.html">
+            
+                    
+                    LeetCode-jz51
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.72" data-path="../../algorithms/LeetCode/LeetCode-m56.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode-m56.html">
+            
+                    
+                    LeetCode-m56
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.73" data-path="../../algorithms/LeetCode/LeetCode-LCP13.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode-LCP13.html">
+            
+                    
+                    LeetCode-LCP13
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.74" data-path="../../algorithms/LeetCode/LeetCode-coins.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode-coins.html">
+            
+                    
+                    LeetCodejz-coins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.75" data-path="../../algorithms/LeetCode/LeetCode-weekly205.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode-weekly205.html">
+            
+                    
+                    LeetCode-weekly205
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.76" data-path="../../algorithms/LeetCode/LeetCode-FallContest2020.html">
+            
+                <a href="../../algorithms/LeetCode/LeetCode-FallContest2020.html">
+            
+                    
+                    LeetCode-FallContest2020
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >(三) 着色模型</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x8F6F;&#x5149;&#x6805;&#x5668;microrenderer&#x4E09;-&#x7740;&#x8272;&#x5668;">&#x8F6F;&#x5149;&#x6805;&#x5668;MicroRenderer(&#x4E09;) &#x7740;&#x8272;&#x5668;</h1>
+<p>&#x672C;&#x8282;&#x4F1A;&#x5BF9;&#x8F6F;&#x6E32;&#x67D3;&#x5668;&#x5269;&#x4E0B;&#x7684;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x62EC;&#xFF1A;</p>
+<ol>
+<li>&#x6A21;&#x578B;&#x52A0;&#x8F7D;</li>
+<li>&#x8D34;&#x56FE;uv&#x989C;&#x8272;&#x91C7;&#x6837;</li>
+<li>&#x66F4;&#x52A0;&#x590D;&#x6742;&#x7684;shader&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x672C;&#x9879;&#x76EE;&#x4E2D;&#x4E3B;&#x8981;&#x5B9E;&#x73B0;&#x4E86; Gouraud shader&#x4EE5;&#x53CA;Phong shader&#x3002;</li>
+</ol>
+<h2 id="1-&#x6A21;&#x578B;&#x52A0;&#x8F7D;">1. &#x6A21;&#x578B;&#x52A0;&#x8F7D;</h2>
+<p>&#x9996;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E0B;Mesh&#x8FD9;&#x4E2A;&#x7C7B;&#x90FD;&#x5305;&#x542B;&#x54EA;&#x4E9B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Mesh{
+<span class="hljs-keyword">public</span>:
+    Mesh();
+
+    <span class="hljs-comment">/** getter and setter for vertices and indices **/</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;VertexData&gt;&amp; getVertices();
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt;&amp; getIndices();
+    <span class="hljs-function">Material <span class="hljs-title">getMaterial</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-built_in">std</span>::<span class="hljs-function"><span class="hljs-built_in">string</span> <span class="hljs-title">getTextureUrl</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setVertices</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;VertexData&gt;&amp; _vertices)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setIndices</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt;&amp; _indices)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setMaterial</span><span class="hljs-params">(Material _material)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addVertex</span><span class="hljs-params">(VertexData v)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addIndex</span><span class="hljs-params">(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> idx)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setTextureUrl</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> _textureUrl)</span></span>;
+
+    <span class="hljs-comment">/** set model matrix **/</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setModelMatrix</span><span class="hljs-params">(<span class="hljs-keyword">const</span> glm::mat4&amp; m)</span></span>;
+    glm::<span class="hljs-function">mat4 <span class="hljs-title">getModelMatrix</span><span class="hljs-params">()</span></span>;
+
+
+    <span class="hljs-comment">/** quick create mesh functions **/</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">asTriangle</span><span class="hljs-params">(VertexData v1, VertexData v2, VertexData v3)</span></span>; <span class="hljs-comment">// read 3 vertices and as a triangle</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">asCube</span><span class="hljs-params">(glm::vec3 center, <span class="hljs-keyword">float</span> size, Material _material)</span></span>; <span class="hljs-comment">// use fot generate point light</span>
+
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;VertexData&gt; vertices;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt; indices;
+    Material material;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> textureUrl;
+    glm::mat4 modelMatrix;
+};
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x9996;&#x5148;&#x662F;&#x6700;&#x91CD;&#x8981;&#x7684;&#x9876;&#x70B9;&#x548C;&#x4E0B;&#x6807;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;vertices &#x548C; indices&#xFF0C;&#x8FD9;&#x5B58;&#x50A8;&#x4E86;&#x9876;&#x70B9;&#x7684;&#x4FE1;&#x606F;&#x4EE5;&#x53CA;&#x9876;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x8FDE;&#x63A5;&#x5173;&#x7CFB;&#x3002;&#x540C;&#x65F6;mesh&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x6750;&#x8D28;mateiral&#xFF0C;&#x5305;&#x542B;&#x4E86;ka, kd &#x4EE5;&#x53CA;ks&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x6211;&#x4EEC;&#x8BA4;&#x4E3A;&#x4E00;&#x4E2A;mesh&#x7684;&#x6750;&#x8D28;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#x3002;mesh&#x8FD8;&#x5305;&#x542B;&#x4E86;textureUrl&#x7528;&#x6765;&#x4FDD;&#x5B58;&#x8D34;&#x56FE;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;modelMatrix&#xFF0C;&#x6765;&#x5904;&#x7406;&#x6709;&#x7684;mesh&#x9700;&#x8981;&#x79FB;&#x52A8;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<p>&#x540C;&#x65F6;&#xFF0C;VertexData&#x7684;&#x6210;&#x5458;&#x4E3B;&#x8981;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">struct</span> VertexData{
+    glm::vec3 position;
+    glm::vec3 normal;
+    glm::vec4 color; <span class="hljs-comment">//&#x5982;&#x679C;&#x662F;Phong shader, &#x90A3;&#x4E48;&#x5C31;&#x4E0D;&#x4F7F;&#x7528;color&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x800C;&#x662F;&#x53BB;&#x67E5;&#x8BE2;&#x7EB9;&#x7406;&#x6216;&#x8005;&#x76F4;&#x63A5;&#x7528;&#x6750;&#x8D28;</span>
+    glm::vec2 textureCoord; <span class="hljs-comment">// &#x7EB9;&#x7406;&#x5750;&#x6807;</span>
+};
+</code></pre>
+<p>&#x5BF9;&#x4E8E;color&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x8FD9;&#x91CC;&#x8981;&#x52A0;&#x4EE5;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#x3002;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x5728;&#x4F7F;&#x7528; THREE_D_SHADER &#x7ED8;&#x5236;&#x4E09;&#x89D2;&#x5F62;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x7ED9;&#x9876;&#x70B9;&#x8D4B;&#x4E86;&#x989C;&#x8272;&#xFF0C;&#x540C;&#x65F6;vertex shader &#x548C; fragment shader &#x4E5F;&#x662F;&#x76F4;&#x63A5;&#x4F20;&#x9012;&#x989C;&#x8272;&#xFF0C;&#x90A3;&#x4E2A;&#x65F6;&#x5019;&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x4F7F;&#x7528;color&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x6765;&#x8FDB;&#x884C;&#x7ED8;&#x5236;&#x3002;</p>
+<p>&#x5728;&#x4F7F;&#x7528; Gouraud shader &#x6216;&#x8005; Phong shader&#x65F6;&#xFF0C;&#x9876;&#x70B9;&#x7684;&#x989C;&#x8272;&#x5C31;&#x4E0D;&#x4F1A;&#x88AB;&#x6307;&#x5B9A;&#x4E86;&#x3002;&#x6240;&#x4EE5;VertexData&#x8FD9;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x7684;color&#x5C5E;&#x6027;&#x5C31;&#x4E0D;&#x4F1A;&#x88AB;&#x7528;&#x5230;&#x4E86;&#x3002;&#x8FD9;&#x4E24;&#x4E2A;Shader&#x5177;&#x4F53;&#x600E;&#x4E48;&#x7740;&#x8272;&#x4F1A;&#x5728;&#x540E;&#x7EED;&#x8FDB;&#x884C;&#x8BF4;&#x660E;&#x3002;</p>
+<p>&#x4E0A;&#x9762;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;Mesh&#x7684;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x5DF2;&#x7ECF;&#x9610;&#x8FF0;&#x5B8C;&#x6BD5;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x8981;&#x5728;&#x52A0;&#x8F7D;obj&#x6A21;&#x578B;&#x65F6;&#x628A;&#x8FD9;&#x4E9B;&#x6210;&#x5458;&#x53D8;&#x91CF;&#x7ED9;&#x586B;&#x6EE1;&#x5C31;&#x884C;&#x4E86;&#x3002;</p>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x6A21;&#x578B;&#x52A0;&#x8F7D;&#x6211;&#x4F7F;&#x7528;&#x4E86;<a href="https://github.com/assimp/assimp" target="_blank">assimp</a>&#x8FD9;&#x4E2A;&#x6765;&#x8FDB;&#x884C;&#x5B9E;&#x73B0;&#x3002;&#x53EA;&#x8981;&#x7ED9;&#x5B9A;obj&#x7684;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4ECE;<strong>obj&#x91CC;&#x9762;&#x89E3;&#x6790;&#x51FA;&#x82E5;&#x5E72;&#x4E2A;mesh</strong>&#x3002;&#x8FD9;&#x91CC;&#x8981;&#x7A0D;&#x5FAE;&#x6CE8;&#x610F;&#x4E00;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;obj&#x6587;&#x4EF6;&#x91CC;&#x662F;&#x53EF;&#x4EE5;&#x5305;&#x62EC;&#x591A;&#x4E2A;mesh&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x80FD;&#x628A;&#x52A0;&#x8F7D;&#x6A21;&#x578B;&#x7684;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;Mesh&#x7C7B;&#x7684;&#x4E00;&#x4E2A;&#x6210;&#x5458;&#x51FD;&#x6570;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x5355;&#x72EC;&#x5728;&#x5916;&#x8FB9;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x52A0;&#x8F7D;&#x6A21;&#x578B;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x4E14;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x4E00;&#x4E2A;Mesh&#x7684;vector&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">static</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;Mesh&gt; loadObjModel(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> filepath)
+{
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;Mesh&gt; meshes;
+    Assimp::Importer import;
+    <span class="hljs-keyword">const</span> aiScene* scene = import.ReadFile(filepath, aiProcess_Triangulate | aiProcess_FlipUVs);
+    <span class="hljs-comment">// &#x5F02;&#x5E38;&#x5904;&#x7406;</span>
+    <span class="hljs-keyword">if</span> (!scene || scene-&gt;mFlags == AI_SCENE_FLAGS_INCOMPLETE || !scene-&gt;mRootNode)
+    {
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;&#x8BFB;&#x53D6;&#x6A21;&#x578B;&#x51FA;&#x73B0;&#x9519;&#x8BEF;: &quot;</span> &lt;&lt; import.GetErrorString() &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
+    }
+    <span class="hljs-comment">// &#x6A21;&#x578B;&#x6587;&#x4EF6;&#x76F8;&#x5BF9;&#x8DEF;&#x5F84;</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> rootPath = filepath.substr(<span class="hljs-number">0</span>, filepath.find_last_of(<span class="hljs-string">&apos;/&apos;</span>));
+
+    <span class="hljs-comment">// &#x5FAA;&#x73AF;&#x751F;&#x6210; mesh</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; scene-&gt;mNumMeshes; i++)
+    {
+        <span class="hljs-comment">// &#x521B;&#x5EFA;mesh</span>
+        Mesh mesh;
+
+        <span class="hljs-comment">// &#x83B7;&#x53D6; assimp &#x7684;&#x8BFB;&#x53D6;&#x5230;&#x7684; aiMesh &#x5BF9;&#x8C61;</span>
+        aiMesh* aiMesh = scene-&gt;mMeshes[i];
+
+        VertexData vertexData;
+        <span class="hljs-comment">// &#x6211;&#x4EEC;&#x5C06;&#x6570;&#x636E;&#x4F20;&#x9012;&#x7ED9;&#x6211;&#x4EEC;&#x81EA;&#x5B9A;&#x4E49;&#x7684;mesh</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; aiMesh-&gt;mNumVertices; j++)
+        {
+            <span class="hljs-comment">// &#x9876;&#x70B9;</span>
+            glm::vec3 vvv;
+            vvv.x = aiMesh-&gt;mVertices[j].x;
+            vvv.y = aiMesh-&gt;mVertices[j].y;
+            vvv.z = aiMesh-&gt;mVertices[j].z;
+            vertexData.position = vvv;
+
+            <span class="hljs-comment">// &#x6CD5;&#x7EBF;</span>
+            vvv.x = aiMesh-&gt;mNormals[j].x;
+            vvv.y = aiMesh-&gt;mNormals[j].y;
+            vvv.z = aiMesh-&gt;mNormals[j].z;
+            vertexData.normal = glm::normalize(vvv); <span class="hljs-comment">// &#x6CD5;&#x7EBF;&#x8BB0;&#x5F97;&#x8981;&#x5F52;&#x4E00;&#x5316;</span>
+
+            <span class="hljs-comment">// &#x7EB9;&#x7406;&#x5750;&#x6807;: &#x5982;&#x679C;&#x5B58;&#x5728;&#x5219;&#x52A0;&#x5165;&#x3002;assimp &#x9ED8;&#x8BA4;&#x53EF;&#x4EE5;&#x6709;&#x591A;&#x4E2A;&#x7EB9;&#x7406;&#x5750;&#x6807; &#x6211;&#x4EEC;&#x53D6;&#x7B2C;&#x4E00;&#x4E2A;&#xFF08;0&#xFF09;&#x5373;&#x53EF;</span>
+            glm::<span class="hljs-function">vec2 <span class="hljs-title">vv</span><span class="hljs-params">(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)</span></span>;
+            <span class="hljs-keyword">if</span> (aiMesh-&gt;mTextureCoords[<span class="hljs-number">0</span>])
+            {
+                vv.x = aiMesh-&gt;mTextureCoords[<span class="hljs-number">0</span>][j].x;
+                vv.y = aiMesh-&gt;mTextureCoords[<span class="hljs-number">0</span>][j].y;
+            }
+            vertexData.textureCoord = vv;
+            vertexData.color = glm::vec4(<span class="hljs-number">128</span>,<span class="hljs-number">128</span>,<span class="hljs-number">128</span>,<span class="hljs-number">0</span>); <span class="hljs-comment">//&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x989C;&#x8272;&#x3002;&#x3002;</span>
+            mesh.addVertex(vertexData);
+        }
+
+        <span class="hljs-comment">// &#x4F20;&#x9012;&#x9762;&#x7247;&#x7D22;&#x5F15;</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; aiMesh-&gt;mNumFaces; j++)
+        {
+            aiFace face = aiMesh-&gt;mFaces[j];
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>; k &lt; face.mNumIndices; k++)
+            {
+                mesh.addIndex(face.mIndices[k]);
+            }
+        }
+
+        <span class="hljs-comment">// &#x8BFB;&#x53D6;&#x6750;&#x8D28;&#x548C;&#x8D34;&#x56FE;</span>
+        <span class="hljs-keyword">if</span>(aiMesh-&gt;mMaterialIndex &gt;= <span class="hljs-number">0</span>){
+            aiMaterial *material = scene-&gt;mMaterials[aiMesh-&gt;mMaterialIndex];
+            <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x53EA;&#x8003;&#x8651;&#x6F2B;&#x53CD;&#x5C04;&#x8D34;&#x56FE;&#x4E86;&#xFF0C;&#x6682;&#x65F6;&#x5148;&#x4E0D;&#x53BB;&#x7BA1;&#x955C;&#x9762;&#x53CD;&#x5C04;&#x8D34;&#x56FE;</span>
+            <span class="hljs-keyword">if</span>(material-&gt;GetTextureCount(aiTextureType_DIFFUSE) == <span class="hljs-number">0</span>){
+                <span class="hljs-comment">//&#x6CA1;&#x6709;&#x6F2B;&#x53CD;&#x5C04;&#x8D34;&#x56FE;&#xFF0C;&#x76F4;&#x63A5;&#x8BFB;&#x53D6; ka kd ks</span>
+                <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;do not has texture, read material&quot;</span>&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+                aiColor3D color;
+                material-&gt;Get(AI_MATKEY_COLOR_AMBIENT, color);
+                glm::vec3 ka = glm::vec3(color.r,color.g, color.b);
+                material-&gt;Get(AI_MATKEY_COLOR_DIFFUSE, color);
+                glm::vec3 kd = glm::vec3(color.r,color.g, color.b);
+                material-&gt;Get(AI_MATKEY_COLOR_SPECULAR, color);
+                glm::vec3 ks = glm::vec3(color.r,color.g, color.b);
+                mesh.setMaterial(Material(ka,kd,ks,<span class="hljs-number">16.0f</span>)); <span class="hljs-comment">// set shininess at 16.0f...</span>
+            }
+            <span class="hljs-keyword">else</span>{
+                <span class="hljs-comment">//&#x6709;&#x6F2B;&#x53CD;&#x5C04;&#x8D34;&#x56FE;&#xFF0C;&#x8BB0;&#x5F55; ka ,ks&#xFF0C;&#x5E76;&#x4E14;&#x628A;&#x8D34;&#x56FE;&#x8DEF;&#x5F84;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;</span>
+                <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;has texture&quot;</span>&lt;&lt;<span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+                aiColor3D color;
+                material-&gt;Get(AI_MATKEY_COLOR_AMBIENT, color);
+                glm::vec3 ka = glm::vec3(color.r,color.g, color.b);
+                glm::vec3 kd = glm::vec3(<span class="hljs-number">0.0f</span>,<span class="hljs-number">0.0f</span>, <span class="hljs-number">0.0f</span>);
+                material-&gt;Get(AI_MATKEY_COLOR_SPECULAR, color);
+                glm::vec3 ks = glm::vec3(color.r,color.g, color.b);
+                mesh.setMaterial(Material(ka,kd,ks,<span class="hljs-number">16.0f</span>)); <span class="hljs-comment">// set shininess at 16.0f...</span>
+                <span class="hljs-comment">// &#x8D34;&#x56FE;&#x8DEF;&#x5F84;</span>
+                aiString _textureUrl;
+                material-&gt;GetTexture(aiTextureType_DIFFUSE,<span class="hljs-number">0</span>,&amp;_textureUrl);
+                mesh.setTextureUrl(rootPath + <span class="hljs-string">&quot;/&quot;</span> + _textureUrl.C_Str());
+            }
+        }
+
+
+        <span class="hljs-comment">// add mesh</span>
+        meshes.push_back(mesh);
+    }
+
+    <span class="hljs-keyword">return</span> meshes;
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x8981;&#x7A0D;&#x5FAE;&#x8BF4;&#x4E00;&#x4E0B;&#x5173;&#x4E8E;&#x6750;&#x8D28;&#x548C;&#x8D34;&#x56FE;&#x7684;&#x5904;&#x7406;&#x3002;&#x6709;&#x7684;obj&#x6587;&#x4EF6;&#x662F;&#x6CA1;&#x6709;&#x8D34;&#x56FE;&#x7684;&#xFF0C;&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x5C31;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x6A21;&#x578B;&#x7684;&#x6750;&#x8D28;ka kd ks&#x5373;&#x53EF;&#xFF0C;&#x6A21;&#x578B;&#x7684;&#x6750;&#x8D28;&#x8DEF;&#x5F84;&#x4E0D;&#x9700;&#x8981;&#x53BB;&#x5355;&#x72EC;&#x8BBE;&#x7F6E;&#x4E86;&#xFF0C;&#x4E0D;&#x53BB;&#x8BBE;&#x7F6E;&#x4F1A;&#x9ED8;&#x8BA4;&#x8BBE;&#x7F6E;&#x4E3A;none&#x3002;&#x5982;&#x679C;obj&#x6587;&#x4EF6;&#x6709;&#x8D34;&#x56FE;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x628A;kd&#x8FD9;&#x4E00;&#x9879;&#x7ED9;&#x8BBE;&#x7F6E;&#x4E3A;&#x5168;0&#xFF0C;&#x5E76;&#x4E14;&#x4E3A;mesh&#x8BBE;&#x7F6E;&#x6750;&#x8D28;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;&#x540E;&#x7EED;&#x8BFB;&#x53D6;&#x5230;&#x8D34;&#x56FE;&#x7684;&#x989C;&#x8272;&#x540E;&#x518D;&#x628A;&#x989C;&#x8272;&#x8D4B;&#x503C;&#x7ED9;kd&#x3002;</p>
+<blockquote>
+<p>&#x8FD9;&#x91CC;&#x4E4B;&#x6240;&#x4EE5;&#x8FD9;&#x6837;&#x505A;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x53EA;&#x8003;&#x8651;&#x4E86;&#x6F2B;&#x53CD;&#x5C04;&#x8D34;&#x56FE;&#xFF0C;&#x5176;&#x5B9E;&#x6709;&#x7684;&#x65F6;&#x5019;&#x8FD8;&#x4F1A;&#x6709;&#x955C;&#x9762;&#x53CD;&#x5C04;&#x8D34;&#x56FE;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x5148;&#x4E0D;&#x7BA1;&#x8FD9;&#x4E9B;&#x4E86;&#x3002;&#x5728;&#x53EA;&#x8003;&#x8651;&#x6F2B;&#x53CD;&#x5C04;&#x8D34;&#x56FE;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5728;&#x8D34;&#x56FE;&#x4E0A;&#x989C;&#x8272;&#x53BB;&#x66FF;&#x4EE3;&#x6750;&#x8D28;&#x7684;kd&#x8FD9;&#x4E00;&#x9879;&#x3002;</p>
+</blockquote>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x6A21;&#x578B;&#x7684;&#x52A0;&#x8F7D;&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#x3002;</p>
+<h2 id="2-&#x8D34;&#x56FE;uv&#x989C;&#x8272;&#x91C7;&#x6837;">2. &#x8D34;&#x56FE;uv&#x989C;&#x8272;&#x91C7;&#x6837;</h2>
+<p>&#x521A;&#x521A;&#x5728;&#x8BFB;&#x53D6;&#x6A21;&#x578B;&#x65F6;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5728;Mesh&#x91CC;&#x9762;&#x62FF;&#x5230;&#x4E86;&#x8D34;&#x56FE;&#x7684;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x3002;&#x6839;&#x636E;&#x9876;&#x70B9;&#x7684;&#x7EB9;&#x7406;&#x5750;&#x6807;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x8D34;&#x56FE;&#x4E0A;&#x53BB;&#x62FF;&#x5230;&#x989C;&#x8272;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x8D4B;&#x7ED9;kd&#xFF0C;&#x8FDB;&#x884C;&#x7740;&#x8272;&#x3002;</p>
+<p>&#x5728;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <a href="https://github.com/nothings/stb/blob/master/stb_image.h" target="_blank">stb_image.h</a> &#x8FD9;&#x4E2A;&#x5934;&#x6587;&#x4EF6;&#x6765;&#x8FDB;&#x884C;&#x56FE;&#x7247;&#x7684;&#x8BFB;&#x53D6;&#x3002;</p>
+<pre><code class="lang-cpp">Image CommonUtils::loadImage(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> url) {
+    <span class="hljs-keyword">int</span> width,height,channel;
+    <span class="hljs-keyword">uint8_t</span>* rgb_image = stbi_load(url.c_str(), &amp;width, &amp;height, &amp;channel, <span class="hljs-number">3</span>);
+    <span class="hljs-function">Image <span class="hljs-title">image</span><span class="hljs-params">(rgb_image,width,height,channel)</span></span>;
+    <span class="hljs-keyword">return</span> image;
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x8BFB;&#x53D6;&#x6765;&#x7684;&#x56FE;&#x7247;&#x4F1A;&#x88AB;&#x4FDD;&#x5B58;&#x5728;&#x4E00;&#x4E2A; char* &#x7684;&#x6570;&#x7EC4;&#x91CC;&#x3002;&#x56FE;&#x7247;&#x7684;&#x4FDD;&#x5B58;&#x683C;&#x5F0F;&#x662F;RGBRGBRGB...&#x5DE6;&#x4E0A;&#x89D2;&#x5BF9;&#x5E94;index 0&#xFF0C;&#x53F3;&#x4E0B;&#x89D2;&#x5BF9;&#x5E94; index &#x6700;&#x5927;&#xFF0C;&#x540C;&#x65F6;&#x989C;&#x8272;&#x6309;&#x884C;&#x5B58;&#x50A8;&#x3002;&#x6BD4;&#x5982;&#x8BF4;&#x7B2C;&#x4E00;&#x884C;&#x7684;index&#x5BF9;&#x5E94; 0&#xFF0C;1&#xFF0C;2&#xFF0C;3&#xFF0C;4&#xFF0C;&#x7B2C;&#x4E8C;&#x884C;&#x5BF9;&#x5E94; 5&#xFF0C;6&#xFF0C;7&#xFF0C;8&#xFF0C;9&#x3002;&#x8FD9;&#x975E;&#x5E38;&#x7684;&#x91CD;&#x8981;&#xFF0C;&#x8FD9;&#x5F71;&#x54CD;&#x5230;&#x540E;&#x9762;&#x989C;&#x8272;&#x91C7;&#x6837;&#x662F;&#x5426;&#x5BF9;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x540E;&#x7EED;&#x5728;&#x7740;&#x8272;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x518D;&#x6B21;&#x628A;mesh&#x7684;&#x8D34;&#x56FE;&#x8DEF;&#x5F84;&#x4F20;&#x9012;&#x7ED9;shader&#xFF0C;&#x5E76;&#x4E14;&#x5728;shader&#x91CC;&#x628A;&#x8D34;&#x56FE;&#x8BFB;&#x53D6;&#x5230;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x5F00;&#x59CB;&#x8FDB;&#x884C;&#x989C;&#x8272;&#x7684;&#x91C7;&#x6837;&#x4E86;&#x3002;</p>
+<p>&#x6211;&#x8FD9;&#x91CC;&#x65F6;&#x76F4;&#x63A5;&#x628A;&#x989C;&#x8272;&#x91C7;&#x6837;&#x5199;&#x5728;&#x4E86;shader&#x91CC;&#xFF0C;&#x6CA1;&#x6709;&#x5355;&#x72EC;&#x518D;&#x53BB;&#x5C01;&#x88C5;&#x51FD;&#x6570;&#x4E86;&#xFF0C;&#x5927;&#x6982;&#x957F;&#x8FD9;&#x6837;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">if</span>(textureUrl != <span class="hljs-string">&quot;none&quot;</span>){
+    <span class="hljs-keyword">int</span> xIdx = v.textureCoord[<span class="hljs-number">0</span>] * texture.width;
+    <span class="hljs-keyword">int</span> yIdx = (<span class="hljs-number">1</span>-v.textureCoord[<span class="hljs-number">1</span>]) * texture.height;
+    <span class="hljs-keyword">int</span> idx = (yIdx * texture.width + xIdx)*<span class="hljs-number">3</span>;
+    kd = glm::vec3(texture.pixels[idx+<span class="hljs-number">0</span>]/<span class="hljs-number">255.0f</span>,
+                   texture.pixels[idx+<span class="hljs-number">1</span>]/<span class="hljs-number">255.0f</span>,
+                   texture.pixels[idx+<span class="hljs-number">2</span>]/<span class="hljs-number">255.0f</span>);
+}
+</code></pre>
+<p>&#x56E0;&#x4E3A;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x662F;&#x5728;(0,1)&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x5206;&#x522B;&#x4E58;&#x4E0A;&#x4E00;&#x4E2A;&#x5BBD;&#x5EA6;&#x548C;&#x9AD8;&#x5EA6;&#xFF0C;&#x518D;&#x7ECF;&#x8FC7;&#x628A;float -&gt; int&#xFF0C;&#x76F4;&#x63A5;&#x5411;&#x4E0B;&#x53D6;&#x6574;&#x5F97;&#x5230;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x3002;</p>
+<blockquote>
+<p>&#x5173;&#x4E8E;&#x8FD9;&#x91CC;&#x4E3A;&#x4EC0;&#x4E48;&#x662F; (1-v.textureCoord[1])&#xFF0C;&#x662F;&#x56E0;&#x4E3A;uv&#x5750;&#x6807;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;(0,0)&#x5728;&#x5DE6;&#x4E0B;&#x89D2;&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x8BFB;&#x53D6;&#x7684;&#x56FE;&#x7247;&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;(0,0)&#x5728;&#x5DE6;&#x4E0A;&#x89D2;&#xFF0C;&#x6240;&#x4EE5;&#x5728;y&#x5206;&#x91CF;&#x7684;&#x5904;&#x7406;&#x4E0A;&#x8981;&#x8FD9;&#x6837;&#x505A;&#x3002;</p>
+</blockquote>
+<p>&#x540C;&#x65F6;&#xFF0C;&#x5728;&#x8BA1;&#x7B97;&#x5BF9;&#x5E94;&#x50CF;&#x7D20;&#x7684;index&#x7684;&#x65F6;&#x5019;&#x8BB0;&#x5F97;&#x8981;&#x4E58;&#x4E0A;&#x4E00;&#x4E2A;3&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x901A;&#x9053;&#x6570;&#x3002;</p>
+<blockquote>
+<p>tips&#xFF1A;&#x8981;&#x5B9E;&#x73B0;&#x66F4;&#x7CBE;&#x7EC6;&#x7684;&#x91C7;&#x6837;&#x7EB9;&#x7406;&#x5750;&#x6807;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x505A;&#x53CC;&#x7EBF;&#x6027;&#x63D2;&#x503C;&#x6216;&#x8005;&#x4E09;&#x7EBF;&#x6027;&#x63D2;&#x503C;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x4E0D;&#x5F04;&#x4E86;&#x3002;</p>
+</blockquote>
+<h2 id="3-shader&#x7F16;&#x5199;">3. shader&#x7F16;&#x5199;</h2>
+<p>&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x7740;&#x8272;&#x9891;&#x7387;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7F16;&#x5199;&#x4E0D;&#x540C;&#x7684;shader&#x3002;</p>
+<p>&#x5728;Blinn-Phong&#x7740;&#x8272;&#x6A21;&#x578B;&#x4E2D;&#xFF0C;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x7740;&#x8272;&#x9891;&#x7387;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E09;&#x4E2A;shader&#xFF1A;</p>
+<ol>
+<li>Flat shader&#xFF0C;&#x8BA1;&#x7B97;&#x4E09;&#x89D2;&#x5F62;&#x7684;&#x6CD5;&#x7EBF;&#xFF0C;&#x4E3A;&#x4E09;&#x89D2;&#x5F62;&#x8FDB;&#x884C;&#x7740;&#x8272;&#x3002;</li>
+<li>Gouraud shader, &#x4E3A;&#x6BCF;&#x4E2A;&#x9876;&#x70B9;&#x8BA1;&#x7B97;&#x6CD5;&#x7EBF;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x6BCF;&#x4E2A;&#x9876;&#x70B9;&#x7684;&#x989C;&#x8272;&#x7136;&#x540E;&#x63D2;&#x503C;&#x51FA;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x7684;&#x989C;&#x8272;&#x3002;</li>
+<li>Phong shader&#xFF0C;&#x4E3A;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x63D2;&#x503C;&#x51FA;&#x6CD5;&#x7EBF;&#xFF0C;&#x76F4;&#x63A5;&#x4E3A;&#x6BCF;&#x4E2A;&#x50CF;&#x7D20;&#x8BA1;&#x7B97;&#x7740;&#x8272;&#x3002;</li>
+</ol>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4EC5;&#x4EC5;&#x5B9E;&#x73B0;&#x4E0B;&#x9762;&#x4E24;&#x4E2A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;Gouraud shader&#x4EE5;&#x53CA;Phong shader&#x3002;</p>
+<h3 id="&#x5199;&#x5728;&#x4E4B;&#x524D;">&#x5199;&#x5728;&#x4E4B;&#x524D;</h3>
+<p>&#x5173;&#x4E8E;&#x5404;&#x79CD;&#x7C7B;&#x7684;&#x8BBE;&#x8BA1;&#x662F;&#x975E;&#x5E38;&#x591A;&#x7684;&#xFF0C;&#x6211;&#x8FD9;&#x91CC;&#x5BF9;&#x4E0E;shader&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x8BBE;&#x8BA1;&#x53EF;&#x80FD;&#x4E0D;&#x662F;&#x975E;&#x5E38;&#x4F18;&#x96C5;&#xFF0C;&#x4F46;&#x662F;&#x57FA;&#x672C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x529F;&#x80FD;&#x3002;&#x4E0D;&#x8FC7;&#x5728;&#x8FD9;&#x91CC;&#x8FD8;&#x662F;&#x7A0D;&#x5FAE;&#x9610;&#x8FF0;&#x4E00;&#x4E0B;shader&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x8DEF;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x6E32;&#x67D3;&#x662F;&#x4EA4;&#x7ED9;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x6765;&#x505A;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> ShadingPipeline {
+<span class="hljs-keyword">public</span>:
+    ShadingPipeline(<span class="hljs-keyword">int</span> _width,<span class="hljs-keyword">int</span> _height,Shader* _shader);
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">shade</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;VertexData&gt;&amp; _vertices,
+               <span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>&gt;&amp; _indices,
+               <span class="hljs-keyword">int</span> rasterizingMode)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">clearBuffer</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">uint8_t</span>* getResult();
+    Shader* shader; 
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-keyword">int</span> width;
+    <span class="hljs-keyword">int</span> height;
+    <span class="hljs-keyword">uint8_t</span>* image;
+    <span class="hljs-keyword">float</span>* zBuffer;
+    glm::mat4 viewPortMatrix;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">bresenhamLineRasterization</span><span class="hljs-params">(VertexOutData&amp; from, VertexOutData&amp; to)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fillRasterization</span><span class="hljs-params">(VertexOutData&amp; v1, VertexOutData&amp; v2, VertexOutData&amp; v3)</span></span>;
+};
+</code></pre>
+<p>&#x6BCF;&#x4E00;&#x4E2A;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x6709;&#x4E00;&#x4E2A;Shader&#x53D8;&#x91CF;&#xFF0C;Shader&#x53D8;&#x91CF;&#x8D1F;&#x8D23;&#x63D0;&#x4F9B;vertexShader&#x4EE5;&#x53CA;fragmentShader&#x5728;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x91CC;&#x8FDB;&#x884C;&#x8C03;&#x7528;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x5176;&#x5B9E;&#x8BBE;&#x8BA1;&#x5F97;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x8FD9;&#x91CC;&#x7ED9;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x7684;Shader&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x662F;Shader&#x7684;&#x57FA;&#x7C7B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5982;&#x679C;&#x540E;&#x7EED;&#x6211;&#x5199;&#x7684;&#x4E00;&#x4E2A;Shader&#x7C7B;&#x7EE7;&#x627F;&#x4E86;&#x8FD9;&#x4E2A;&#x57FA;&#x7C7B;&#xFF0C;&#x5E76;&#x4E14;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E9B;&#x53D8;&#x91CF;&#x4EE5;&#x53CA;&#x51FD;&#x6570;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x91CC;&#x4E5F;&#x8FD8;&#x662F;&#x62FF;&#x4E0D;&#x5230;&#x7684;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6CA1;&#x6709;&#x529E;&#x6CD5;&#xFF0C;&#x6211;&#x5C31;&#x53EA;&#x597D;&#x5728;Shader&#x7684;&#x57FA;&#x7C7B;&#x91CC;&#x628A;&#x6240;&#x6709;&#x53EF;&#x80FD;&#x7528;&#x5230;&#x7684;&#x53D8;&#x91CF;&#x4EE5;&#x53CA;&#x51FD;&#x6570;&#x5148;&#x5B9A;&#x4E49;&#x597D;&#xFF0C;&#x7136;&#x540E;&#x5728;Shader&#x57FA;&#x7C7B;&#x7684;&#x7EE7;&#x627F;&#x5B50;&#x7C7B;&#x91CC;&#x53EA;&#x9700;&#x8981;&#x53BB;&#x5B9E;&#x73B0; vertexShader &#x4EE5;&#x53CA; fragmentShader&#x8FD9;&#x4E24;&#x4E2A;&#x57FA;&#x51FD;&#x6570;&#x5373;&#x53EF;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Shader {
+<span class="hljs-keyword">public</span>:
+    Shader() = <span class="hljs-keyword">default</span>;
+    <span class="hljs-function"><span class="hljs-keyword">virtual</span> VertexOutData <span class="hljs-title">vertexShader</span><span class="hljs-params">(VertexData&amp; v)</span>  </span>{VertexOutData _v; <span class="hljs-keyword">return</span> _v;}; <span class="hljs-comment">//meaningless implementation</span>
+    <span class="hljs-keyword">virtual</span> glm::<span class="hljs-function">vec4 <span class="hljs-title">fragmentShader</span><span class="hljs-params">(VertexOutData&amp; v)</span> </span>{glm::vec4 r; <span class="hljs-keyword">return</span> r;}; <span class="hljs-comment">//meaningless implementation</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setModelMatrix</span><span class="hljs-params">(glm::mat4 matrix)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setViewMatrix</span><span class="hljs-params">(glm::mat4 matrix)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setProjectionMatrix</span><span class="hljs-params">(glm::mat4 matrix)</span></span>;
+
+    <span class="hljs-comment">//Gouraud and phong shader needed</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setMaterial</span><span class="hljs-params">(Material _material)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setEyePos</span><span class="hljs-params">(glm::vec3 _eyePos)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addDirectionLight</span><span class="hljs-params">(DirectionLight* light)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addPointLight</span><span class="hljs-params">(PointLight* light)</span></span>;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setTexture</span><span class="hljs-params">(<span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> _textureUrl)</span></span>;
+
+<span class="hljs-keyword">protected</span>:
+    glm::mat4 modelMatrix;
+    glm::mat4 viewMatrix;
+    glm::mat4 projectionMatrix;
+
+    <span class="hljs-comment">//Gouraud and phong shader needed</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> textureUrl;
+    Image texture;
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;DirectionLight*&gt; directionLights; <span class="hljs-comment">// multiple lights</span>
+    <span class="hljs-built_in">std</span>::<span class="hljs-built_in">vector</span>&lt;PointLight*&gt; pointLights;
+    Material material;
+    glm::vec3 eyePos;
+};
+</code></pre>
+<p>&#x6BD4;&#x5982;&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x7684;&#x5F88;&#x591A;&#x53D8;&#x91CF;&#xFF0C;&#x4F8B;&#x5982; material, eyepos&#x4EC0;&#x4E48;&#x7684;&#xFF0C;&#x5728; THREE_D_SHADER &#x91CC;&#x662F;&#x5B8C;&#x5168;&#x7528;&#x4E0D;&#x5230;&#x7684;&#x3002;</p>
+<h3 id="31-gouraud-shader">3.1 Gouraud shader</h3>
+<p>&#x9996;&#x5148;&#x8981;&#x4E3A;shader&#x6DFB;&#x52A0;&#x5149;&#x6E90;&#xFF0C;&#x4ECE;&#x4E0A;&#x9762;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;shader&#x91CC;&#x6709;&#x4E24;&#x4E2A;vector&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x5B58;&#x653E;&#x5E73;&#x884C;&#x5149;&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x5B58;&#x653E;&#x70B9;&#x5149;&#x6E90;&#x3002;&#x901A;&#x8FC7;&#x8C03;&#x7528; <code>addDirectionLight</code> &#x4EE5;&#x53CA; <code>addPointLight</code>&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4E3A;shader&#x6DFB;&#x52A0;&#x5149;&#x6E90;&#x3002;</p>
+<blockquote>
+<p> &#x5728;&#x4F7F;&#x7528;Blinn-Phong&#x7740;&#x8272;&#x6A21;&#x578B;&#x65F6;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x6DFB;&#x52A0;&#x5149;&#x6E90;&#xFF0C;&#x56E0;&#x4E3A;&#x989C;&#x8272;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5149;&#x4E0E;&#x6750;&#x8D28;&#x4F5C;&#x7528;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+</blockquote>
+<p>&#x7B80;&#x5355;&#x5C55;&#x793A;&#x4E00;&#x4E0B;&#x5149;&#x6E90;&#x7684;&#x4EE3;&#x7801;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Light{
+<span class="hljs-keyword">public</span>:
+    glm::vec3 ambient;
+    glm::vec3 diffuse;
+    glm::vec3 specular;
+
+};
+
+<span class="hljs-keyword">class</span> DirectionLight : <span class="hljs-keyword">public</span> Light{
+<span class="hljs-keyword">public</span>:
+    DirectionLight(glm::vec3 _ambient, glm::vec3 _diffuse, glm::vec3 _specular, glm::vec3 _direction);
+    glm::vec3 direction;
+};
+
+<span class="hljs-keyword">class</span> PointLight : <span class="hljs-keyword">public</span> Light{
+<span class="hljs-keyword">public</span>:
+    PointLight(glm::vec3 _ambient, glm::vec3 _diffuse, glm::vec3 _specular, glm::vec3 _position);
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setLightPos</span><span class="hljs-params">(glm::vec3 _position)</span></span>;
+    glm::vec3 position;
+};
+</code></pre>
+<p>&#x7136;&#x540E;&#x5C31;&#x662F; Gouraud shader &#x5BF9;&#x4E8E;&#x81EA;&#x5DF1;&#x7684;vertex shader&#x4EE5;&#x53CA;fragment shader&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x4E86;&#xFF0C;&#x5177;&#x4F53;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-cpp">VertexOutData GouraudShader::vertexShader(VertexData &amp;v) {
+    VertexOutData vod;
+    vod.position = glm::vec4(v.position,1.0f);
+    vod.position = projectionMatrix * viewMatrix * modelMatrix * vod.position; //mvp transformation
+    vod.normal = v.normal;
+
+    // &#x8BA1;&#x7B97;&#x7740;&#x8272;
+    glm::vec3 ka = material.ka;
+    glm::vec3 kd = material.kd;
+    if(textureUrl != &quot;none&quot;){
+        int xIdx = v.textureCoord[0] * texture.width;
+        int yIdx = (1-v.textureCoord[1]) * texture.height;
+        int idx = (yIdx * texture.width + xIdx)*3;
+        kd = glm::vec3(texture.pixels[idx+0]/255.0f,
+                       texture.pixels[idx+1]/255.0f,
+                       texture.pixels[idx+2]/255.0f);
+    }
+    glm::vec3 ks = material.ks;
+
+    glm::vec3 color(0.0f,0.0f,0.0f);
+
+    //directional lights
+    for(const auto&amp; light:directionLights){
+        glm::vec3 lightDir = glm::normalize(-light-&gt;direction); // pos -&gt; light
+        glm::vec3 viewDir = glm::normalize(eyePos - v.position); // pos -&gt; view
+        glm::vec3 half = glm::normalize(lightDir + viewDir); // &#x534A;&#x7A0B;&#x5411;&#x91CF;
+        glm::vec3 L_a = light-&gt;ambient * kd;
+        glm::vec3 L_d = light-&gt;diffuse * kd * std::max(0.0f,glm::dot(v.normal,lightDir));
+        glm::vec3 L_s = light-&gt;specular * ks * pow(std::max(0.0f,glm::dot(v.normal,half)),material.shininess);
+
+
+        color += (L_a + L_d + L_s)*255.0f;
+    }
+
+    //point lights
+    for(const auto&amp; light:pointLights){
+        glm::vec3 lightDir = glm::normalize(light-&gt;position - v.position); // pos -&gt; light
+        glm::vec3 viewDir = glm::normalize(eyePos - v.position); // pos -&gt; view
+        glm::vec3 half = glm::normalize(lightDir + viewDir); // &#x534A;&#x7A0B;&#x5411;&#x91CF;
+
+        float distance = MathUtils::calPoint2PointSquareDistance(v.position,light-&gt;position);
+
+        glm::vec3 L_d = light-&gt;diffuse * kd * std::max(0.0f,glm::dot(v.normal,lightDir));
+        glm::vec3 L_s = light-&gt;specular * ks * pow(std::max(0.0f,glm::dot(v.normal,half)),material.shininess);
+
+
+        color += (L_d/distance + L_s/distance)*255.0f;
+    }
+
+
+    color = glm::vec3(std::min(color[0],255.0f), std::min(color[1],255.0f),std::min(color[2],255.0f));
+
+    vod.color = glm::vec4(color,1.0f);
+
+    return vod;
+}
+
+glm::vec4 GouraudShader::fragmentShader(VertexOutData &amp;v) {
+    return v.color;
+}
+</code></pre>
+<p>&#x5177;&#x4F53;&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x8BF4;&#x7684;&#xFF0C;&#x5173;&#x4E8E;Blinn-Phong&#x7740;&#x8272;&#x6A21;&#x578B;&#x7684;&#x539F;&#x7406;&#x53EF;&#x4EE5;&#x770B;&#x4E00;&#x4E0B;<a href="https://www.ljhblog.top/CG/GAMES101/assignment3.html" target="_blank">&#x8FD9;&#x91CC;</a>&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F; Gouraud shader &#x7684;&#x4E3B;&#x8981;&#x4EE3;&#x7801;&#x90E8;&#x5206;&#x662F;&#x5728; vertexShader&#xFF0C;&#x800C;fragmentShader&#x5C31;&#x76F4;&#x63A5;&#x4F20;&#x9012;&#x989C;&#x8272;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x6700;&#x540E;&#x5B9E;&#x73B0;&#x51FA;&#x6765;&#x7684;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="https://raw.githubusercontent.com/ljhgpp/whatisthis/main/static/202206011450942.gif" alt="1"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5730;&#x9762;&#x6CA1;&#x6709;&#x88AB;&#x7167;&#x4EAE;&#xFF0C;&#x56E0;&#x4E3A;&#x70B9;&#x5149;&#x6E90;&#x91CC;&#x5730;&#x677F;&#x7684;&#x56DB;&#x4E2A;&#x9876;&#x70B9;&#x592A;&#x8FDC;&#x4E86;&#xFF0C;&#x70B9;&#x5149;&#x6E90;&#x5BF9;&#x4E8E;&#x56DB;&#x4E2A;&#x9876;&#x70B9;&#x7684;&#x989C;&#x8272;&#x8D21;&#x732E;&#x4E0D;&#x5927;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/ljhgpp/whatisthis/main/static/202206011452620.gif" alt="2"></p>
+<p>&#x52A0;&#x8F7D;&#x7EB9;&#x7406;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Gouraud shader&#x7684;&#x6548;&#x679C;&#x4E5F;&#x4E0D;&#x662F;&#x5F88;&#x597D;&#xFF0C;&#x56E0;&#x4E3A;&#x7B49;&#x4E8E;&#x8BF4;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x90FD;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x63D2;&#x503C;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x62FF;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x53BB;&#x67E5;&#x8BE2;&#xFF0C;&#x6548;&#x679C;&#x80AF;&#x5B9A;&#x4E0D;&#x4F1A;&#x7279;&#x522B;&#x597D;&#x3002;</p>
+<h3 id="32-phong-shader">3.2 Phong shader</h3>
+<p>&#x5BF9;&#x4E8E;Phong shader&#xFF0C;&#x5176;&#x5B9E;&#x57FA;&#x672C;&#x4E0A;&#x5C31;&#x662F;&#x628A; Gouraud shader &#x7684;vertex shader&#x642C;&#x5230;&#x4E86;fragment shader&#x4E2D;&#x53BB;&#x3002;</p>
+<blockquote>
+<p>&#x7A0D;&#x5FAE;&#x63D0;&#x4E00;&#x4E0B;&#xFF0C;&#x5728;&#x628A;&#x4E16;&#x754C;&#x5750;&#x6807;&#xFF0C;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x7B49;&#x4F20;&#x9012;&#x7ED9;fragment shader&#x4E4B;&#x524D;&#x662F;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x63D2;&#x503C;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x8FD8;&#x662F;&#x9009;&#x62E9;&#x4E86;&#x4F7F;&#x7528;&#x4E86;&#x4E8C;&#x7EF4;&#x7684;&#x4E2D;&#x5FC3;&#x5750;&#x6807;&#x63D2;&#x503C;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x4E00;&#x70B9;&#x95EE;&#x9898;&#x3002;</p>
+</blockquote>
+<p>shader&#x7684;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-cpp">VertexOutData PhongShader::vertexShader(VertexData &amp;v) {
+    VertexOutData vod;
+    vod.position = glm::vec4(v.position,1.0f);
+    vod.position = projectionMatrix * viewMatrix * modelMatrix * vod.position; //mvp transformation
+    vod.worldPos = modelMatrix * glm::vec4(v.position,1.0f);  // vec3 = vec4...
+    vod.normal = v.normal;
+    vod.textureCoord = v.textureCoord;
+
+    return vod;
+}
+
+glm::vec4 PhongShader::fragmentShader(VertexOutData &amp;v) {
+    // &#x8BA1;&#x7B97;&#x7740;&#x8272;
+    glm::vec3 ka = material.ka;
+    glm::vec3 kd = material.kd;
+    if(textureUrl != &quot;none&quot;){
+        int xIdx = v.textureCoord[0] * texture.width;
+        int yIdx = (1-v.textureCoord[1]) * texture.height;
+        int idx = (yIdx * texture.width + xIdx)*3;
+        kd = glm::vec3(texture.pixels[idx+0]/255.0f,
+                       texture.pixels[idx+1]/255.0f,
+                       texture.pixels[idx+2]/255.0f);
+    }
+    glm::vec3 ks = material.ks;
+
+    glm::vec3 color(0.0f,0.0f,0.0f);
+
+    //directional lights
+    for(const auto&amp; light:directionLights){
+        glm::vec3 lightDir = glm::normalize(-light-&gt;direction); // pos -&gt; light
+        glm::vec3 viewDir = glm::normalize(eyePos - v.worldPos); // pos -&gt; view
+        glm::vec3 half = glm::normalize(lightDir + viewDir); // &#x534A;&#x7A0B;&#x5411;&#x91CF;
+        glm::vec3 L_a = light-&gt;ambient * kd;
+        glm::vec3 L_d = light-&gt;diffuse * kd * std::max(0.0f,glm::dot(v.normal,lightDir));
+        glm::vec3 L_s = light-&gt;specular * ks * pow(std::max(0.0f,glm::dot(v.normal,half)),material.shininess);
+
+
+        color += (L_a + L_d + L_s)*255.0f;
+    }
+
+    //point lights
+    for(const auto&amp; light:pointLights){
+        glm::vec3 lightDir = glm::normalize(light-&gt;position - v.worldPos); // pos -&gt; light
+        glm::vec3 viewDir = glm::normalize(eyePos - v.worldPos); // pos -&gt; view
+        glm::vec3 half = glm::normalize(lightDir + viewDir); // &#x534A;&#x7A0B;&#x5411;&#x91CF;
+
+        float distance = MathUtils::calPoint2PointSquareDistance(v.worldPos,light-&gt;position);
+
+        glm::vec3 L_d = light-&gt;diffuse * kd * std::max(0.0f,glm::dot(v.normal,lightDir));
+        glm::vec3 L_s = light-&gt;specular * ks * pow(std::max(0.0f,glm::dot(v.normal,half)),material.shininess);
+
+
+        color += (L_d/distance + L_s/distance)*255.0f;
+    }
+
+
+    color = glm::vec3(std::min(color[0],255.0f), std::min(color[1],255.0f),std::min(color[2],255.0f));
+
+
+
+    return glm::vec4(color,1.0f);
+}
+</code></pre>
+<p>&#x6700;&#x540E;&#x5B9E;&#x73B0;&#x51FA;&#x6765;&#x7684;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="https://raw.githubusercontent.com/ljhgpp/whatisthis/main/static/202206011457405.gif" alt="phong_shading"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5730;&#x9762;&#x6709;&#x660E;&#x663E;&#x7684;&#x5149;&#x7167;&#x53CD;&#x5C04;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x73B0;&#x5728;&#x662F;&#x9010;&#x50CF;&#x7D20;&#x7740;&#x8272;&#x4E86;&#x3002;</p>
+<p><img src="https://raw.githubusercontent.com/ljhgpp/whatisthis/main/static/202206011459984.gif" alt="rock"></p>
+<p>&#x540C;&#x65F6;&#xFF0C;&#x77F3;&#x5934;&#x7684;&#x7EB9;&#x7406;&#x4E5F;&#x66F4;&#x52A0;&#x6E05;&#x695A;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x73B0;&#x5728;&#x662F;&#x628A;&#x7EB9;&#x7406;&#x5750;&#x6807;&#x63D2;&#x503C;&#x540E;&#x518D;&#x53BB;&#x67E5;&#x8BE2;&#x989C;&#x8272;&#x3002;</p>
+<h2 id="4-&#x6700;&#x540E;">4. &#x6700;&#x540E;</h2>
+<p>&#x76EE;&#x524D;&#x8FD9;&#x4E2A;&#x8F6F;&#x6E32;&#x67D3;&#x5668;&#x5DEE;&#x4E0D;&#x591A;&#x5C31;&#x5B9E;&#x73B0;&#x8FD9;&#x4E48;&#x591A;&#x4E86;&#xFF0C;&#x4E0D;&#x4F1A;&#x518D;&#x6DFB;&#x52A0;&#x4F8B;&#x5982;PCF&#xFF0C;PCSS&#x8FD9;&#x4E9B;&#x65B0;&#x529F;&#x80FD;&#x4E86;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x89E6;&#x53CA;&#x5230;&#x6211;&#x7684;&#x77E5;&#x8BC6;&#x76F2;&#x533A;&#x4E86;&#x3002;&#x540C;&#x65F6;&#x73B0;&#x5728;&#x8DD1;&#x4E00;&#x4E2A;Phong shader&#x5DF2;&#x7ECF;&#x975E;&#x5E38;&#x5361;&#x4E86;&#xFF0C;&#x611F;&#x89C9;&#x4E00;&#x79D2;&#x53EA;&#x6709;5&#x5E27;&#x5427;&#xFF0C;&#x5F53;&#x7136;&#x8FD9;&#x548C;&#x6211;&#x5199;&#x7684;&#x4E0D;&#x597D;&#x4E5F;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x671F;&#x95F4;&#x57FA;&#x672C;&#x4E0A;&#x6CA1;&#x8003;&#x8651;&#x6027;&#x80FD;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x8D8A;&#x5199;&#x5230;&#x540E;&#x9762;&#x8D8A;&#x653E;&#x98DE;&#x81EA;&#x6211;&#xFF0C;&#x7136;&#x540E;&#x7ED3;&#x6784;&#x4E5F;&#x5F00;&#x59CB;&#x6BD4;&#x8F83;&#x6DF7;&#x4E71;&#x4E86;&#x3002;&#x3002;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x4E00;&#x8DEF;&#x628A;&#x4E00;&#x4E2A;&#x8F6F;&#x6E32;&#x67D3;&#x5668;&#x4ECE;&#x5934;&#x5230;&#x5C3E;&#x5B9E;&#x73B0;&#x6536;&#x83B7;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x8BA9;&#x6211;&#x66F4;&#x52A0;&#x6E05;&#x695A;&#x5730;&#x7406;&#x89E3;&#x4E86;&#x6E32;&#x67D3;&#x7BA1;&#x7EBF;&#x7684;&#x8FD0;&#x4F5C;&#x6D41;&#x7A0B;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#x8BE5;&#x505A;mvp&#x53D8;&#x6362;&#xFF0C;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#x5E94;&#x8BE5;&#x505A;&#x63D2;&#x503C;&#x7B49;&#x7B49;&#x3002;&#x3002;&#x3002;&#x867D;&#x7136;&#x6709;&#x7684;&#x5730;&#x65B9;&#x6211;&#x7684;&#x4EE3;&#x7801;&#x67B6;&#x6784;&#x548C;&#x5B9E;&#x9645;&#x7684;&#x786C;&#x4EF6;&#x5B9E;&#x73B0;&#x533A;&#x522B;&#x4F1A;&#x5F88;&#x5927;&#xFF0C;&#x4E0D;&#x8FC7;&#x6211;&#x611F;&#x89C9;&#x57FA;&#x672C;&#x4E0A;&#x5E94;&#x8BE5;&#x4E5F;&#x5DEE;&#x4E0D;&#x5927;&#x662F;&#x8FD9;&#x4E48;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#x5427;&#x3002;&#x3002;&#x3002;</p>
+<p>&#x603B;&#x4E4B;&#x6682;&#x65F6;&#x5148;&#x8FD9;&#x6837;&#x5427;&#x3002;&#x3002;&#x3002;&#x1F913;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="3d.html" class="navigation navigation-prev " aria-label="Previous page: (二) 进入三维">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../GAMES101/" class="navigation navigation-next " aria-label="Next page: GAMES101">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"(三) 着色模型","date":"2022-06-01T12:06:00.000Z","tags":["MicroRenderer"],"level":"1.3.1.3","depth":3,"next":{"title":"GAMES101","level":"1.3.2","depth":2,"path":"CG/GAMES101/README.md","ref":"CG/GAMES101/README.md","articles":[{"title":"Assignment1","level":"1.3.2.1","depth":3,"path":"CG/GAMES101/assignment1.md","ref":"CG/GAMES101/assignment1.md","articles":[]},{"title":"Assignment2","level":"1.3.2.2","depth":3,"path":"CG/GAMES101/assignment2.md","ref":"CG/GAMES101/assignment2.md","articles":[]},{"title":"Assignment3","level":"1.3.2.3","depth":3,"path":"CG/GAMES101/assignment3.md","ref":"CG/GAMES101/assignment3.md","articles":[]},{"title":"Assignment4","level":"1.3.2.4","depth":3,"path":"CG/GAMES101/assignment4.md","ref":"CG/GAMES101/assignment4.md","articles":[]},{"title":"Assignment5","level":"1.3.2.5","depth":3,"path":"CG/GAMES101/assignment5.md","ref":"CG/GAMES101/assignment5.md","articles":[]},{"title":"Assignment6","level":"1.3.2.6","depth":3,"path":"CG/GAMES101/assignment6.md","ref":"CG/GAMES101/assignment6.md","articles":[]},{"title":"Assignment7","level":"1.3.2.7","depth":3,"path":"CG/GAMES101/assignment7.md","ref":"CG/GAMES101/assignment7.md","articles":[]}]},"previous":{"title":"(二) 进入三维","level":"1.3.1.2","depth":3,"path":"CG/SoftRasterizer/3d.md","ref":"CG/SoftRasterizer/3d.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"CG/SoftRasterizer/shading.md","mtime":"2022-06-01T07:06:30.741Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-06-01T07:15:02.722Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
