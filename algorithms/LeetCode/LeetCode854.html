@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>LeetCode39 · GitBook</title>
+        <title>LeetCode854 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="LeetCode40.html" />
+    <link rel="next" href="LeetCode974.html" />
     
     
-    <link rel="prev" href="LeetCode37.html" />
+    <link rel="prev" href="LeetCode780.html" />
     
 
     </head>
@@ -838,7 +838,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2.8" data-path="LeetCode39.html">
+        <li class="chapter " data-level="1.9.2.8" data-path="LeetCode39.html">
             
                 <a href="LeetCode39.html">
             
@@ -1397,7 +1397,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.51" data-path="LeetCode854.html">
+        <li class="chapter active" data-level="1.9.2.51" data-path="LeetCode854.html">
             
                 <a href="LeetCode854.html">
             
@@ -1801,7 +1801,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >LeetCode39</a>
+        <a href="../.." >LeetCode854</a>
     </h1>
 </div>
 
@@ -1816,124 +1816,123 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;</h2>
-<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x65E0;&#x91CD;&#x590D;&#x5143;&#x7D20;&#x7684;&#x6570;&#x7EC4; candidates &#x548C;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x6570; target &#xFF0C;&#x627E;&#x51FA; candidates &#x4E2D;&#x6240;&#x6709;&#x53EF;&#x4EE5;&#x4F7F;&#x6570;&#x5B57;&#x548C;&#x4E3A; target &#x7684;&#x7EC4;&#x5408;&#x3002;
-candidates &#x4E2D;&#x7684;&#x6570;&#x5B57;&#x53EF;&#x4EE5;&#x65E0;&#x9650;&#x5236;&#x91CD;&#x590D;&#x88AB;&#x9009;&#x53D6;&#x3002;
-&#x8BF4;&#x660E;&#xFF1A;
-&#x6240;&#x6709;&#x6570;&#x5B57;&#xFF08;&#x5305;&#x62EC; target&#xFF09;&#x90FD;&#x662F;&#x6B63;&#x6574;&#x6570;&#x3002;
-&#x89E3;&#x96C6;&#x4E0D;&#x80FD;&#x5305;&#x542B;&#x91CD;&#x590D;&#x7684;&#x7EC4;&#x5408;&#x3002; </p>
-<!-- more -->
-<h2 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h2>
-<pre><code class="lang-cpp">&#x793A;&#x4F8B; <span class="hljs-number">1</span>&#xFF1A;
-&#x8F93;&#x5165;&#xFF1A;candidates = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>], target = <span class="hljs-number">7</span>,
-&#x6240;&#x6C42;&#x89E3;&#x96C6;&#x4E3A;&#xFF1A;
-[
-  [<span class="hljs-number">7</span>],
-  [<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
-]
-
-&#x793A;&#x4F8B; <span class="hljs-number">2</span>&#xFF1A;
-&#x8F93;&#x5165;&#xFF1A;candidates = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>], target = <span class="hljs-number">8</span>,
-&#x6240;&#x6C42;&#x89E3;&#x96C6;&#x4E3A;&#xFF1A;
-[
-  [<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],
-  [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>],
-  [<span class="hljs-number">3</span>,<span class="hljs-number">5</span>]
-]
-</code></pre>
-<h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;:</h2>
-<p>&#x8FD9;&#x9053;&#x9898;&#x7684;&#x91CD;&#x70B9;&#x5C31;&#x662F;&#x5728;&#x4E8E;&#x53EF;&#x91CD;&#x590D;&#x5427;&#xFF0C;&#x9664;&#x4E86;&#x8FD9;&#x4E2A;&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x8BF4;&#x7684;&#x3002;  </p>
-<h3 id="&#x9519;&#x8BEF;&#x793A;&#x8303;">&#x9519;&#x8BEF;&#x793A;&#x8303;</h3>
-<p>&#x6700;&#x5F00;&#x59CB;&#x6211;&#x6CA1;&#x770B;&#x5230;&#x53EF;&#x91CD;&#x590D;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x65E0;&#x91CD;&#x590D;&#x7248;&#x672C;&#x7684;&#xFF0C;&#x540E;&#x6765;&#x5C06;&#x5176;&#x6539;&#x4E3A;&#x4E86;&#x53EF;&#x4EE5;&#x6709;&#x91CD;&#x590D;&#x5143;&#x7D20;&#x7248;&#x672C;&#xFF0C;&#x53EF;&#x4EE5;&#x89C1;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;
-&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6211;&#x5728;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x8BE5;&#x5143;&#x7D20;&#x91CC;&#x9762;&#x5199;&#x4E86;&#x4E24;&#x4E2A;dfs(&#x5176;&#x5B9E;&#x662F;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;),&#x7C97;&#x7565;&#x4E00;&#x60F3;&#xFF0C;&#x9009;&#x62E9;&#x8BE5;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x53BB;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x53BB;&#x561B;&#xFF1B;&#x4E0D;&#x9009;&#x62E9;&#x8BE5;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x53BB;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x3002;&#x3002;&#x3002;&#x3002;&#x6CA1;&#x6BDB;&#x75C5;&#x3002;<br>&#x786E;&#x5B9E;&#x6CA1;&#x6BDB;&#x75C5;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x5199;&#x5C31;&#x4F1A;&#x6709;&#x91CD;&#x590D;&#x5143;&#x7D20;(&#x8FD9;&#x91CC;&#x4E0D;&#x8FC7;&#x591A;&#x89E3;&#x91CA;&#xFF0C;&#x7A0D;&#x5FAE;&#x753B;&#x4E00;&#x4E2A;&#x56FE;&#x5C31;&#x5F88;&#x6E05;&#x695A;&#x4E86;)&#x3002;<br>&#x6CA1;&#x529E;&#x6CD5;&#xFF0C;&#x53EA;&#x597D;&#x52A0;&#x4E00;&#x4E2A;set&#x53BB;&#x91CD;&#xFF0C;&#x9669;&#x8FC7;&#x3002;  </p>
+                                <h1 id="&#x7528;bfs&#x89E3;&#x51B3;&#x4EA4;&#x6362;&#x95EE;&#x9898;---leetcode854bfs">&#x7528;BFS&#x89E3;&#x51B3;&#x4EA4;&#x6362;&#x95EE;&#x9898;---LeetCode854(BFS)</h1>
+<blockquote>
+<p>&#x65E5;&#x671F;: 2022-09-21</p>
+</blockquote>
+<h2 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;</h2>
+<p>&#x5BF9;&#x4E8E;&#x67D0;&#x4E9B;&#x975E;&#x8D1F;&#x6574;&#x6570; k &#xFF0C;&#x5982;&#x679C;&#x4EA4;&#x6362; s1 &#x4E2D;&#x4E24;&#x4E2A;&#x5B57;&#x6BCD;&#x7684;&#x4F4D;&#x7F6E;&#x6070;&#x597D; k &#x6B21;&#xFF0C;&#x80FD;&#x591F;&#x4F7F;&#x7ED3;&#x679C;&#x5B57;&#x7B26;&#x4E32;&#x7B49;&#x4E8E; s2 &#xFF0C;&#x5219;&#x8BA4;&#x4E3A;&#x5B57;&#x7B26;&#x4E32; s1 &#x548C; s2 &#x7684; &#x76F8;&#x4F3C;&#x5EA6;&#x4E3A; k &#x3002;</p>
+<p>&#x7ED9;&#x4F60;&#x4E24;&#x4E2A;&#x5B57;&#x6BCD;&#x5F02;&#x4F4D;&#x8BCD; s1 &#x548C; s2 &#xFF0C;&#x8FD4;&#x56DE; s1 &#x548C; s2 &#x7684;&#x76F8;&#x4F3C;&#x5EA6; k &#x7684;&#x6700;&#x5C0F;&#x503C;&#x3002;</p>
+<h2 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h2>
+<p>&#x793A;&#x4F8B; 1&#xFF1A;</p>
+<p>&#x8F93;&#x5165;&#xFF1A;s1 = &quot;ab&quot;, s2 = &quot;ba&quot;
+&#x8F93;&#x51FA;&#xFF1A;1
+&#x793A;&#x4F8B; 2&#xFF1A;</p>
+<p>&#x8F93;&#x5165;&#xFF1A;s1 = &quot;abc&quot;, s2 = &quot;bca&quot;
+&#x8F93;&#x51FA;&#xFF1A;2</p>
+<h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h2>
+<p>&#x597D;&#x4E45;&#x6CA1;&#x6709;&#x505A;&#x8FC7;&#x8FD9;&#x4E48;&#x96BE;&#x7684;&#x9898;&#x4E86;&#x3002;&#x3002;&#x3002;&#x662F;&#x6211;&#x592A;&#x83DC;&#x3002;</p>
+<p>&#x8FD9;&#x9053;&#x9898;&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x7528;bfs&#x6765;&#x505A;&#x66B4;&#x529B;&#x641C;&#x7D22;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;unordered_set&#x6765;&#x8BB0;&#x5F55;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x8FC7;&#x7684;&#x5E8F;&#x5217;&#xFF0C;&#x5982;&#x679C;&#x5904;&#x7406;&#x8FC7;&#x4E86;&#x5C31;&#x76F4;&#x63A5;&#x526A;&#x679D;&#xFF0C;&#x770B;&#x8D77;&#x6765;&#x5F88;&#x7B80;&#x5355;&#x4F46;&#x662F;&#x5176;&#x5B9E;&#x5199;&#x8D77;&#x6765;&#x8FD8;&#x633A;&#x9EBB;&#x70E6;&#x7684;&#x3002;&#x3002;&#x3002;&#x800C;&#x4E14;&#x5BF9;&#x4E8E;&#x4E00;&#x9053;bfs&#x7684;&#x9898;&#x6765;&#x8BF4;&#xFF0C;&#x8FD9;&#x9053;&#x9898;&#x6709;&#x4E00;&#x4E9B;&#x975E;&#x4E3B;&#x6D41;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x5B8C;&#x6574;&#x7684;&#x4EE3;&#x7801;&#x5728;&#x8FD9;&#x91CC;&#xFF1A;</p>
 <pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
 <span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; ans;
-    <span class="hljs-keyword">int</span> len;
-    <span class="hljs-keyword">int</span> Target;
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; record;
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; candidates,<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> sum)</span></span>{
-        <span class="hljs-keyword">if</span>(pos &gt;= len){
-            <span class="hljs-keyword">if</span>(sum == Target){
-                ans.push_back(record);
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; next(<span class="hljs-built_in">string</span>&amp; s1, <span class="hljs-built_in">string</span>&amp; s2){
+        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; nexts;
+        <span class="hljs-keyword">int</span> len = s1.size();
+        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;len;i++){
+            <span class="hljs-keyword">if</span>(s1[i] != s2[i]){
+                <span class="hljs-keyword">break</span>;
             }
-            <span class="hljs-keyword">return</span>;
         }
-        <span class="hljs-keyword">if</span>(sum == Target) {
-            ans.push_back(record);
-            <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;len;j++){
+            <span class="hljs-keyword">if</span>(s1[i] == s2[j]){
+                swap(s1[i],s1[j]);
+                nexts.push_back(s1);
+                swap(s1[i],s1[j]);
+            }
         }
-        <span class="hljs-keyword">if</span>(sum &gt; Target){
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-comment">//&#x4E0D;&#x9009;&#x62E9;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
-        dfs(candidates,pos+<span class="hljs-number">1</span>,sum);
-
-        <span class="hljs-comment">//&#x9009;&#x62E9;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
-        record.push_back(candidates[pos]);
-        dfs(candidates,pos+<span class="hljs-number">1</span>,sum+candidates[pos]);
-        dfs(candidates,pos,sum+candidates[pos]);
-        record.pop_back();
+        <span class="hljs-keyword">return</span> nexts;
     }
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; combinationSum(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; candidates, <span class="hljs-keyword">int</span> target) {
-        record.clear();
-        len = candidates.size();
-        Target = target;
-        dfs(candidates,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);
-        <span class="hljs-comment">//&#x62D9;&#x52A3;&#x7684;&#x53BB;&#x91CD;</span>
-        <span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; s;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> x:ans){
-            s.insert(x);
+
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">kSimilarity</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s1, <span class="hljs-built_in">string</span> s2)</span> </span>{
+        <span class="hljs-built_in">queue</span>&lt;<span class="hljs-built_in">string</span>&gt; q;
+        <span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; vis;
+        q.push(s1);
+        vis.insert(s1);
+        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>){
+            <span class="hljs-keyword">int</span> len = q.size();
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>; i&lt;len;i++){
+                <span class="hljs-built_in">string</span> curString = q.front();
+                q.pop();
+                <span class="hljs-keyword">if</span>(curString == s2){
+                    <span class="hljs-keyword">return</span> ans;
+                }
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span>&amp; x:next(curString,s2)){
+                    <span class="hljs-keyword">if</span>(!vis.count(x)){ <span class="hljs-comment">//&#x8FD8;&#x6CA1;&#x627E;&#x8FC7;</span>
+                        vis.insert(x);
+                        q.push(x);
+                    }
+                }
+            }
+            ans += <span class="hljs-number">1</span>;
         }
-        ans.clear();
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> x:s){
-            ans.push_back(x);
-        }
-        <span class="hljs-keyword">return</span> ans;
     }
 };
 </code></pre>
-<h3 id="&#x6B63;&#x786E;&#x793A;&#x8303;">&#x6B63;&#x786E;&#x793A;&#x8303;</h3>
-<p>&#x518D;&#x8F6C;&#x800C;&#x4E00;&#x60F3;(&#x4E00;&#x770B;&#x9898;&#x89E3;)&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E0D;&#x9009;&#x8BE5;&#x5143;&#x7D20;-&gt;&#x53BB;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF1B;&#x9009;&#x62E9;&#x8BE5;&#x5143;&#x7D20;-&gt;&#x539F;&#x5730;&#x4E0D;&#x52A8;&#x3002;&#x4E0D;&#x5C31;&#x884C;&#x4E86;&#x4E48;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x3002;&#x77AC;&#x95F4;&#x611F;&#x89C9;&#x81EA;&#x5DF1;&#x662F;&#x4E2A;zz&#x3002;  </p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; ans;
-    <span class="hljs-keyword">int</span> len;
-    <span class="hljs-keyword">int</span> Target;
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; record;
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; candidates,<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> sum)</span></span>{
-        <span class="hljs-keyword">if</span>(pos &gt;= len){
-            <span class="hljs-keyword">if</span>(sum == Target){
-                ans.push_back(record);
+<h3 id="&#x6211;&#x4E0D;&#x5C0F;&#x5FC3;&#x5199;&#x6210;&#x53CC;&#x91CD;&#x5FAA;&#x73AF;&#x4E86;">&#x6211;&#x4E0D;&#x5C0F;&#x5FC3;&#x5199;&#x6210;&#x53CC;&#x91CD;&#x5FAA;&#x73AF;&#x4E86;</h3>
+<p>&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;next&#x51FD;&#x6570;&#x6765;&#x5224;&#x65AD;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x524D;&#x9762;&#x6709;&#x4E00;&#x5B9A;&#x957F;&#x5EA6;&#x5DF2;&#x7ECF;&#x5339;&#x914D;&#x597D;&#x7684;&#x5B57;&#x7B26;&#x4E32;<code>s1</code>&#xFF0C;&#x5B83;&#x540E;&#x7EED;&#x5141;&#x8BB8;&#x8FDB;&#x884C;&#x54EA;&#x4E9B;&#x53D8;&#x6362;&#x6765;&#x4F7F;&#x5F97;&#x5B83;&#x80FD;&#x591F;&#x66F4;&#x4E3A;&#x63A5;&#x8FD1;<code>s2</code>&#x3002;</p>
+<p>&#x4E0A;&#x9762;&#x7684;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x662F;&#x6CA1;&#x6709;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E4B;&#x524D;&#x6211;&#x5199;&#x7684;&#x662F;&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x5199;&#x6CD5;&#xFF0C;&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x4F1A;&#x76F4;&#x63A5;tle&#xFF0C;&#x4E5F;&#x6BD4;&#x8F83;&#x50BB;&#x903C;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; next(<span class="hljs-built_in">string</span>&amp; s1, <span class="hljs-built_in">string</span>&amp; s2){
+        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; nexts;
+        <span class="hljs-keyword">int</span> len = s1.size();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++){
+            <span class="hljs-keyword">if</span>(s1[i] == s2[i]){
+                <span class="hljs-keyword">continue</span>;
             }
-            <span class="hljs-keyword">return</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;len;j++){
+                <span class="hljs-keyword">if</span>(s1[i] == s2[j]){
+                    swap(s1[i],s1[j]);
+                    nexts.push_back(s1);
+                    swap(s1[i],s1[j]);
+                }
+            }
         }
-        <span class="hljs-keyword">if</span>(sum == Target) {
-            ans.push_back(record);
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-keyword">if</span>(sum &gt; Target){
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-comment">//&#x4E0D;&#x9009;&#x62E9;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
-        dfs(candidates,pos+<span class="hljs-number">1</span>,sum);
-
-        <span class="hljs-comment">//&#x9009;&#x62E9;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
-        record.push_back(candidates[pos]);
-        dfs(candidates,pos,sum+candidates[pos]);
-        record.pop_back();
+        <span class="hljs-keyword">return</span> nexts;
     }
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; combinationSum(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; candidates, <span class="hljs-keyword">int</span> target) {
-        record.clear();
-        len = candidates.size();
-        Target = target;
-        dfs(candidates,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);
-        <span class="hljs-keyword">return</span> ans;
-    }
-};
 </code></pre>
-<h2 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;">&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;</h2>
-<p><a href="https://leetcode-cn.com/problems/combination-sum/" target="_blank">https://leetcode-cn.com/problems/combination-sum/</a></p>
+<p>&#x8FD9;&#x79CD;&#x5199;&#x6CD5;&#x662F;&#x76F4;&#x63A5;&#x5957;&#x4E86;&#x4E24;&#x5C42;&#x5FAA;&#x73AF;(&#x1F645;&#x200D;&#x2642;&#xFE0F;)&#xFF0C;&#x8FD9;&#x76F8;&#x5F53;&#x4E8E;&#x662F;&#x628A;i&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x540E;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E5F;&#x62FF;&#x8FDB;&#x6765;&#x5904;&#x7406;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x662F;&#x4E0D;&#x5BF9;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x4F60;&#x9996;&#x5148;&#x5F97;&#x4FDD;&#x8BC1;i&#x8FD9;&#x4E2A;&#x4F4D;&#x7F6E;&#x5339;&#x914D;&#x597D;&#x4E86;&#x3002;</p>
+<h3 id="for&#x5FAA;&#x73AF;&#x7684;&#x5751;&#x70B9;">for&#x5FAA;&#x73AF;&#x7684;&#x5751;&#x70B9;</h3>
+<p>&#x8FD9;&#x4E2A;&#x5B8C;&#x5168;&#x662F;&#x6211;&#x7684;&#x95EE;&#x9898;&#x4E86;&#xFF0C;&#x5F53;&#x7136;&#x4E5F;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x9053;&#x9898;&#x7684;BFS&#x6BD4;&#x8F83;&#x975E;&#x4E3B;&#x6D41;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;BFS&#x90FD;&#x662F;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">while</span>(!q.empty()){
+    <span class="hljs-comment">// some code</span>
+}
+</code></pre>
+<p>&#x4F46;&#x662F;&#x8FD9;&#x9053;&#x9898;&#x4E0D;&#x884C;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x6CA1;&#x6709;&#x5E26;&#x7740;ans&#x53BB;dfs&#x3002;&#x5982;&#x679C;&#x7528;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x53BB;&#x5B58;ans&#x7684;&#x8BDD;&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x53EF;&#x4EE5;&#x5199;&#x6210;&#x4E0A;&#x9762;&#x7684;&#x90A3;&#x79CD;&#x5199;&#x6CD5;&#x3002;</p>
+<p>&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x6211;&#x5C31;&#x662F;&#x76F4;&#x63A5;ans++&#x4E86;&#xFF0C;&#x56E0;&#x6B64;&#x5199;&#x6CD5;&#x5C31;&#x53D8;&#x6210;&#x4E86;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>){
+    <span class="hljs-keyword">for</span>(xxxxx){
+        xxx
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6B63;&#x786E;&#x7684;&#x5199;&#x6CD5;&#x662F;:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">int</span> len = q.size();
+<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>; i&lt;len;i++){
+</code></pre>
+<p>&#x4F46;&#x662F;&#x5982;&#x679C;&#x76F4;&#x63A5;&#x5199;&#x6210;&#x4E86;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>; i&lt;q.size();i++){
+</code></pre>
+<p>&#x5C31;&#x5BC4;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;q&#x7684;size&#x4E00;&#x76F4;&#x5728;&#x53D8;&#x3002;&#x4E00;&#x822C;&#x5F88;&#x5C11;&#x78B0;&#x5230;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x6240;&#x4EE5;&#x4E5F;&#x6CA1;&#x5F15;&#x8D77;&#x6211;&#x7684;&#x6CE8;&#x610F;&#xFF0C;&#x4ED4;&#x7EC6;&#x4E00;&#x60F3;&#x8FD9;&#x4E48;&#x5199;&#x5C31;&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x6B21;&#x5224;&#x65AD;&#x65F6;&#x90FD;&#x4F1A;&#x53BB;&#x8BFB;&#x53D6;q.size()&#xFF0C;&#x5F53;&#x7136;&#x5982;&#x679C;&#x4F60;&#x5199;&#x6210;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i =q.size(); i&gt;<span class="hljs-number">0</span>;i--){
+</code></pre>
+<p>&#x5C31;&#x6CA1;&#x95EE;&#x9898;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x521D;&#x59CB;&#x5316;&#x8FD9;&#x91CC;&#x53EA;&#x6709;&#x4E00;&#x6B21;&#x3002;</p>
+<p>&#x611F;&#x89C9;&#x8FD9;&#x79CD;&#x5751;&#x5199;&#x5728;&#x8FD9;&#x91CC;&#x6709;&#x70B9;&#x4FAE;&#x8FB1;&#x667A;&#x5546;&#xFF0C;&#x4E0D;&#x8FC7;&#x3002;&#x3002;&#x3002;&#x81F3;&#x5C11;&#x4E5F;&#x662F;&#x5751;&#x8FC7;&#x6211;&#x7684;&#x3002;&#x3002;&#x3002;&#x662F;&#x6211;&#x592A;&#x83DC;&#x3002;</p>
+<h2 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;">&#x9898;&#x76EE;&#x94FE;&#x63A5;</h2>
+<p><a href="https://leetcode.cn/problems/k-similar-strings/" target="_blank">854. &#x76F8;&#x4F3C;&#x5EA6;&#x4E3A; K &#x7684;&#x5B57;&#x7B26;&#x4E32; - &#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;</a></p>
+<p><a href="https://leetcode.cn/problems/k-similar-strings/solution/-by-lcbin-snnw/" target="_blank">[Python3/Java/C++/Go] &#x4E00;&#x9898;&#x53CC;&#x89E3;&#xFF1A;&#x6734;&#x7D20; BFS + &#x542F;&#x53D1;&#x5F0F; A* &#x641C;&#x7D22; - &#x76F8;&#x4F3C;&#x5EA6;&#x4E3A; K &#x7684;&#x5B57;&#x7B26;&#x4E32; - &#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;</a></p>
 
                                 
                                 </section>
@@ -1961,12 +1960,12 @@ candidates &#x4E2D;&#x7684;&#x6570;&#x5B57;&#x53EF;&#x4EE5;&#x65E0;&#x9650;&#x52
 
             
                 
-                <a href="LeetCode37.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode37">
+                <a href="LeetCode780.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode780">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="LeetCode40.html" class="navigation navigation-next " aria-label="Next page: LeetCode40">
+                <a href="LeetCode974.html" class="navigation navigation-next " aria-label="Next page: LeetCode974">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1977,7 +1976,7 @@ candidates &#x4E2D;&#x7684;&#x6570;&#x5B57;&#x53EF;&#x4EE5;&#x65E0;&#x9650;&#x52
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LeetCode39","date":"2020-09-09T09:10:02.000Z","tags":["排列组合","回溯","dfs"],"level":"1.9.2.8","depth":3,"next":{"title":"LeetCode40","level":"1.9.2.9","depth":3,"path":"algorithms/LeetCode/LeetCode40.md","ref":"./algorithms/LeetCode/LeetCode40.md","articles":[]},"previous":{"title":"LeetCode37","level":"1.9.2.7","depth":3,"path":"algorithms/LeetCode/LeetCode37.md","ref":"./algorithms/LeetCode/LeetCode37.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode39.md","mtime":"2022-03-13T08:40:21.214Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-21T12:32:14.152Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LeetCode854","date":"2022-09-21T20:11:11.000Z","tags":["BFS"],"level":"1.9.2.51","depth":3,"next":{"title":"LeetCode974","level":"1.9.2.52","depth":3,"path":"algorithms/LeetCode/LeetCode974.md","ref":"./algorithms/LeetCode/LeetCode974.md","articles":[]},"previous":{"title":"LeetCode780","level":"1.9.2.50","depth":3,"path":"algorithms/LeetCode/LeetCode780.md","ref":"./algorithms/LeetCode/LeetCode780.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode854.md","mtime":"2022-09-21T12:30:19.774Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-09-21T12:32:14.152Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
