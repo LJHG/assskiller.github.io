@@ -73,8 +73,8 @@ class TagTable:
         for tag in self.table:
             files = ""
             for item in self.table[tag]:
-                files += '[{}]({}), '.format(item['title'],item['fileName'])
-            tableTransform.append((tag,files[0:-1]) )
+                files += '[{}]({}) <br />'.format(item['title'],item['fileName'])
+            tableTransform.append((tag,files) )
         text = "标签|题目\n-|-|\n"
         for item in tableTransform:
             text += "{}|{}\n".format(item[0],item[1])   
