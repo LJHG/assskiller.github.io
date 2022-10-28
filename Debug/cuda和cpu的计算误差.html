@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>折腾 · GitBook</title>
+        <title>cuda和cpu的计算误差 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="blog-archive.html" />
+    <link rel="next" href="../折腾/readme.html" />
     
     
-    <link rel="prev" href="../Debug/cuda和cpu的计算误差.html" />
+    <link rel="prev" href="pybind内存泄漏.html" />
     
 
     </head>
@@ -642,9 +642,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="../Debug/readme.html">
+        <li class="chapter " data-level="1.7" data-path="readme.html">
             
-                <a href="../Debug/readme.html">
+                <a href="readme.html">
             
                     
                     Debug日常
@@ -656,9 +656,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../Debug/pybind内存泄漏.html">
+        <li class="chapter " data-level="1.7.1" data-path="pybind内存泄漏.html">
             
-                <a href="../Debug/pybind内存泄漏.html">
+                <a href="pybind内存泄漏.html">
             
                     
                     pybind内存泄漏
@@ -669,9 +669,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../Debug/cuda和cpu的计算误差.html">
+        <li class="chapter active" data-level="1.7.2" data-path="cuda和cpu的计算误差.html">
             
-                <a href="../Debug/cuda和cpu的计算误差.html">
+                <a href="cuda和cpu的计算误差.html">
             
                     
                     cuda和cpu的计算误差
@@ -687,9 +687,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8" data-path="readme.html">
+        <li class="chapter " data-level="1.8" data-path="../折腾/readme.html">
             
-                <a href="readme.html">
+                <a href="../折腾/readme.html">
             
                     
                     折腾
@@ -701,9 +701,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="blog-archive.html">
+        <li class="chapter " data-level="1.8.1" data-path="../折腾/blog-archive.html">
             
-                <a href="blog-archive.html">
+                <a href="../折腾/blog-archive.html">
             
                     
                     给博客加了个归档页
@@ -1931,7 +1931,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >折腾</a>
+        <a href=".." >cuda和cpu的计算误差</a>
     </h1>
 </div>
 
@@ -1946,7 +1946,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>&#x6211;&#x7231;&#x6298;&#x817E;</p>
+                                <h1 id="&#x8BB0;&#x5F55;cuda&#x548C;cpu&#x7684;&#x8BA1;&#x7B97;&#x8BEF;&#x5DEE;&#x5E26;&#x6765;&#x7684;&#x5751;">&#x8BB0;&#x5F55;cuda&#x548C;cpu&#x7684;&#x8BA1;&#x7B97;&#x8BEF;&#x5DEE;&#x5E26;&#x6765;&#x7684;&#x5751;</h1>
+<blockquote>
+<p>&#x65E5;&#x671F;: 2022-10-28</p>
+</blockquote>
+<p>&#x6700;&#x8FD1;&#x5728;&#x7528;torchac&#x7CCA;demo&#xFF0C;&#x4E4B;&#x524D;&#x5149;&#x901F;&#x5199;&#x5B8C;&#x4E86;&#x7136;&#x540E;&#x4E00;&#x76F4;&#x53D1;&#x73B0;&#x7F16;&#x7801;&#x548C;&#x89E3;&#x7801;&#x7684;&#x70B9;&#x4E91;&#x5BF9;&#x5E94;&#x4E0D;&#x4E0A;&#xFF0C;&#x7136;&#x540E;&#x8FD9;&#x4E2A;bug&#x6211;de&#x4E86;&#x597D;&#x591A;&#x5929;&#x3002;</p>
+<p>&#x6700;&#x5F00;&#x59CB;&#x4EE5;&#x4E3A;&#x662F;&#x5E93;&#x7684;&#x7CBE;&#x5EA6;&#x95EE;&#x9898;&#x5E26;&#x6765;&#x7684;&#x8BEF;&#x5DEE;&#xFF0C;&#x7136;&#x540E;&#x6211;&#x628A;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x90FD;&#x6253;&#x51FA;&#x6765;&#x770B;&#x4E86;&#xFF0C;&#x53D1;&#x73B0;&#x7F16;&#x7801;&#x7AEF;&#x548C;&#x89E3;&#x7801;&#x7AEF;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x7684;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x8FD9;&#x8BA9;&#x6211;&#x975E;&#x5E38;&#x8FF7;&#x60D1;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x5B9E;&#x5728;&#x4E0D;&#x77E5;&#x9053;&#x5565;&#x60C5;&#x51B5;&#x4E86;&#xFF0C;&#x6211;&#x6253;&#x7B97;&#x628A;&#x8F93;&#x51FA;&#x8F93;&#x51FA;&#x7528;pickle&#x5B58;&#x5165;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x5355;&#x72EC;&#x5199;&#x4E00;&#x4E2A;py&#x6587;&#x4EF6;&#x6765;debug&#x3002;&#x7ED3;&#x679C;&#x53D1;&#x73B0;&#x7F16;&#x7801;&#x89E3;&#x7801;&#x7AEF;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x8F93;&#x51FA;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x5728;&#x5355;&#x72EC;&#x7684;&#x6587;&#x4EF6;&#x91CC;&#x505A;&#x7B97;&#x672F;&#x7F16;&#x89E3;&#x7801;&#x65F6;&#xFF0C;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x5C45;&#x7136;&#x90FD;&#x662F;&#x5BF9;&#x7684;&#x3002;</p>
+<p>&#x8FD9;&#x8BA9;&#x6211;&#x5F00;&#x59CB;&#x6000;&#x7591;&#x662F;&#x4E0D;&#x662F;&#x7F16;&#x7801;&#x7684;bytestream&#x51FA;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x4E8E;&#x662F;&#x6211;&#x5C06;&#x5B9E;&#x9645;&#x7F16;&#x7801;&#x4EE5;&#x53CA;&#x5355;&#x72EC;&#x6587;&#x4EF6;&#x91CC;&#x7F16;&#x7801;&#x7684;bytestream&#x6253;&#x51FA;&#x6765;&#x770B;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x53D1;&#x73B0;&#x5C45;&#x7136;&#x4E0D;&#x4E00;&#x6837;&#x3002;</p>
+<p>&#x8FD9;&#x8BA9;&#x6211;&#x975E;&#x5E38;&#x7684;&#x9707;&#x60CA;&#xFF0C;&#x660E;&#x660E;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x8F93;&#x5165;&#x90FD;&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x552F;&#x4E00;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#x4E00;&#x4E2A;&#x662F;&#x76F4;&#x63A5;&#x8DD1;&#x7684;&#xFF0C;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x662F;&#x88AB;&#x6211;&#x5B58;&#x8FDB;&#x4E86;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8BFB;&#x51FA;&#x6765;&#x518D;&#x8DD1;&#x7684;&#x3002;</p>
+<p>&#x6700;&#x540E;&#x53D1;&#x73B0;&#x5751;&#x5728;&#x4E8E;.cuda()&#x548C;.cpu()&#x3002;&#x539F;&#x672C;&#x6211;&#x6709;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x662F;&#x5B58;&#x5728;gpu&#x4E0A;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x4FDD;&#x5B58;&#x4E3A;&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x5C31;&#x9ED8;&#x8BA4;&#x4FDD;&#x5B58;&#x4E3A;.cpu()&#x683C;&#x5F0F;&#x4E86;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8BFB;&#x53D6;&#x65F6;&#x4E5F;&#x6CA1;&#x6709;&#x5C06;&#x5176;&#x8F6C;&#x4E3A;.cuda()&#x3002;</p>
+<p>&#x5177;&#x4F53;&#x7684;&#x95EE;&#x9898;&#x5462;&#x5E94;&#x8BE5;&#x662F;&#x51FA;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x8BD5;&#x4E86;&#x4E00;&#x4E0B;&#xFF0C;&#x8F93;&#x5165;&#x7684;pdf&#x5206;&#x522B;&#x662F;.cuda()&#x548C;.cpu()&#x65F6;&#xFF0C;&#x7ED3;&#x679C;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x3002;</p>
+<p>&#x884C;&#x5427;&#x3002;&#x3002;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">pdf2cdf</span><span class="hljs-params">(pdf)</span>:</span>
+    <span class="hljs-comment"># if symbols nums is N, need cdf of length of N+1</span>
+    <span class="hljs-comment">#     pdf       -&gt;     cdf</span>
+    <span class="hljs-comment">#  B * N * 256      B * N * 257</span>
+    <span class="hljs-comment"># https://blog.csdn.net/OrdinaryMatthew/article/details/125757080</span>
+    <span class="hljs-comment"># pdf = pdf/torch.sum(pdf,-1,keepdim=True) # normalize, &#x5982;&#x679C;&#x672C;&#x8EAB;&#x8F93;&#x5165;&#x7684;pdf&#x4E4B;&#x548C;&#x4E3A;1&#xFF0C;&#x5219;&#x4E0D;&#x9700;&#x8981;&#x8FD9;&#x884C;</span>
+    pdf = F.softmax(pdf,dim=<span class="hljs-number">-1</span>)
+    <span class="hljs-comment"># print(pdf)</span>
+    cdf = torch.cumsum(pdf, <span class="hljs-number">-1</span>)
+    cdf = torch.cat([torch.zeros_like(cdf[:,:,:<span class="hljs-number">1</span>]),cdf], <span class="hljs-number">-1</span>) <span class="hljs-comment">#  add zero in the front</span>
+    cdf = torch.cat([cdf[:,:,:<span class="hljs-number">-1</span>],torch.ones_like(cdf[:,:,:<span class="hljs-number">1</span>])], <span class="hljs-number">-1</span>) <span class="hljs-comment"># add one in the back (&#x5176;&#x5B9E;&#x6700;&#x540E;&#x662F;&#x6709;0&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x4F1A;&#x8D85;&#x8FC7;1&#x4E00;&#x70B9;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x76F4;&#x63A5;&#x628A;&#x6700;&#x540E;&#x7684;1.000&#x51E0;&#x51E0;&#x76F4;&#x63A5;&#x66FF;&#x6362;&#x4E3A;1)</span>
+    <span class="hljs-keyword">return</span> cdf
+</code></pre>
 
                                 
                                 </section>
@@ -1974,12 +1998,12 @@
 
             
                 
-                <a href="../Debug/cuda和cpu的计算误差.html" class="navigation navigation-prev " aria-label="Previous page: cuda和cpu的计算误差">
+                <a href="pybind内存泄漏.html" class="navigation navigation-prev " aria-label="Previous page: pybind内存泄漏">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="blog-archive.html" class="navigation navigation-next " aria-label="Next page: 给博客加了个归档页">
+                <a href="../折腾/readme.html" class="navigation navigation-next " aria-label="Next page: 折腾">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1990,7 +2014,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"折腾","level":"1.8","depth":1,"next":{"title":"给博客加了个归档页","level":"1.8.1","depth":2,"path":"折腾/blog-archive.md","ref":"折腾/blog-archive.md","articles":[]},"previous":{"title":"cuda和cpu的计算误差","level":"1.7.2","depth":2,"path":"Debug/cuda和cpu的计算误差.md","ref":"Debug/cuda和cpu的计算误差.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"折腾/readme.md","mtime":"2022-04-25T13:28:53.967Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-10-28T09:28:31.361Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"cuda和cpu的计算误差","date":"2022-10-28T17:07:05.000Z","tags":["cuda"],"level":"1.7.2","depth":2,"next":{"title":"折腾","level":"1.8","depth":1,"path":"折腾/readme.md","ref":"折腾/readme.md","articles":[{"title":"给博客加了个归档页","level":"1.8.1","depth":2,"path":"折腾/blog-archive.md","ref":"折腾/blog-archive.md","articles":[]}]},"previous":{"title":"pybind内存泄漏","level":"1.7.1","depth":2,"path":"Debug/pybind内存泄漏.md","ref":"Debug/pybind内存泄漏.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"Debug/cuda和cpu的计算误差.md","mtime":"2022-10-28T09:28:05.494Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-10-28T09:28:31.361Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
