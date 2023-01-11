@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>LeetCodejz-coins · GitBook</title>
+        <title>LeetCode236 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="LeetCode-weekly205.html" />
+    <link rel="next" href="LeetCode287.html" />
     
     
-    <link rel="prev" href="LeetCode-LCP13.html" />
+    <link rel="prev" href="LeetCode279.html" />
     
 
     </head>
@@ -1280,7 +1280,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.41" data-path="LeetCode236.html">
+        <li class="chapter active" data-level="1.9.2.41" data-path="LeetCode236.html">
             
                 <a href="LeetCode236.html">
             
@@ -1852,7 +1852,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2.85" data-path="LeetCode-coins.html">
+        <li class="chapter " data-level="1.9.2.85" data-path="LeetCode-coins.html">
             
                 <a href="LeetCode-coins.html">
             
@@ -1944,7 +1944,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >LeetCodejz-coins</a>
+        <a href="../.." >LeetCode236</a>
     </h1>
 </div>
 
@@ -1959,55 +1959,47 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;</h3>
-<p>&#x786C;&#x5E01;&#x3002;&#x7ED9;&#x5B9A;&#x6570;&#x91CF;&#x4E0D;&#x9650;&#x7684;&#x786C;&#x5E01;&#xFF0C;&#x5E01;&#x503C;&#x4E3A;25&#x5206;&#x3001;10&#x5206;&#x3001;5&#x5206;&#x548C;1&#x5206;&#xFF0C;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#x8BA1;&#x7B97;n&#x5206;&#x6709;&#x51E0;&#x79CD;&#x8868;&#x793A;&#x6CD5;&#x3002;(&#x7ED3;&#x679C;&#x53EF;&#x80FD;&#x4F1A;&#x5F88;&#x5927;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5C06;&#x7ED3;&#x679C;&#x6A21;&#x4E0A;1000000007)</p>
-<h3 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h3>
-<pre><code class="lang-cpp">&#x793A;&#x4F8B;<span class="hljs-number">1</span>:
-
- &#x8F93;&#x5165;: n = <span class="hljs-number">5</span>
- &#x8F93;&#x51FA;&#xFF1A;<span class="hljs-number">2</span>
- &#x89E3;&#x91CA;: &#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x51D1;&#x6210;&#x603B;&#x91D1;&#x989D;:
-<span class="hljs-number">5</span>=<span class="hljs-number">5</span>
-<span class="hljs-number">5</span>=<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>
-&#x793A;&#x4F8B;<span class="hljs-number">2</span>:
-
- &#x8F93;&#x5165;: n = <span class="hljs-number">10</span>
- &#x8F93;&#x51FA;&#xFF1A;<span class="hljs-number">4</span>
- &#x89E3;&#x91CA;: &#x6709;&#x56DB;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x51D1;&#x6210;&#x603B;&#x91D1;&#x989D;:
-<span class="hljs-number">10</span>=<span class="hljs-number">10</span>
-<span class="hljs-number">10</span>=<span class="hljs-number">5</span>+<span class="hljs-number">5</span>
-<span class="hljs-number">10</span>=<span class="hljs-number">5</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>
-<span class="hljs-number">10</span>=<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>+<span class="hljs-number">1</span>
-&#x8BF4;&#x660E;&#xFF1A;
-
-&#x6CE8;&#x610F;:
-
-&#x4F60;&#x53EF;&#x4EE5;&#x5047;&#x8BBE;&#xFF1A;
-
-<span class="hljs-number">0</span> &lt;= n (&#x603B;&#x91D1;&#x989D;) &lt;= <span class="hljs-number">1000000</span>
-</code></pre>
-<h3 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;:</h3>
-<p>&#x4E00;&#x4E0B;&#x5C31;&#x80FD;&#x770B;&#x51FA;&#x6765;&#x662F;dp,&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x4E24;&#x5C42;&#x5FAA;&#x73AF;&#x5E94;&#x8BE5;&#x8C01;&#x5199;&#x5916;&#x9762;&#x3002;<br>&#x6700;&#x5F00;&#x59CB;&#x5199;&#x7684;&#x662F; 1~n&#x7684;&#x5FAA;&#x73AF;&#x5728;&#x5916;&#x9762;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x4E00;&#x5C42;&#x5FAA;&#x73AF;&#x91CC;&#x5206;&#x522B;&#x53D6;&#x4E0D;&#x540C;&#x7684;&#x786C;&#x5E01;&#x6765;&#x76F8;&#x52A0;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x91CD;&#x590D;&#xFF0C;&#x6BD4;&#x5982;&#x5F53;n=6&#x65F6;&#xFF0C;&#x9009;&#x786C;&#x5E01;1 + dp[5] &#x548C; &#x9009;&#x786C;&#x5E01;5 + dp[1] &#x662F;&#x5305;&#x542B;&#x91CD;&#x590D;&#x7ED3;&#x679C;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;dp[5]&#x4E2D;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x4E86;&#x786C;&#x5E01;5&#x8FD9;&#x4E00;&#x79CD;&#x60C5;&#x51B5;&#x3002;<br>&#x89E3;&#x51B3;&#x65B9;&#x6CD5;&#x5C31;&#x662F;&#x5728;&#x9009;&#x786C;&#x5E01;1&#x65F6;&#xFF0C;&#x4E0D;&#x8981;&#x53BB;&#x8003;&#x8651;&#x66F4;&#x9AD8;&#x9762;&#x503C;&#x7684;&#x786C;&#x5E01;&#xFF0C;&#x5B9E;&#x9645;&#x5C31;&#x662F;&#x628A;&#x4E24;&#x5C42;&#x5FAA;&#x73AF;&#x6362;&#x4E00;&#x4E0B;&#x5373;&#x53EF;&#xFF08;&#x5999;&#x554A;&#xFF09;&#x3002;</p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+                                <h1 id="&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148;---leetcode236&#x540E;&#x5E8F;&#x904D;&#x5386;&#x5B9E;&#x73B0;&#x81EA;&#x5E95;&#x5411;&#x4E0A;&#x67E5;&#x627E;">&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148;---LeetCode236(&#x540E;&#x5E8F;&#x904D;&#x5386;&#x5B9E;&#x73B0;&#x81EA;&#x5E95;&#x5411;&#x4E0A;&#x67E5;&#x627E;)</h1>
+<blockquote>
+<p>&#x65E5;&#x671F;: 2023-01-11</p>
+</blockquote>
+<h2 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;</h2>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x4E8C;&#x53C9;&#x6811;, &#x627E;&#x5230;&#x8BE5;&#x6811;&#x4E2D;&#x4E24;&#x4E2A;&#x6307;&#x5B9A;&#x8282;&#x70B9;&#x7684;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148;&#x3002;</p>
+<p>&#x767E;&#x5EA6;&#x767E;&#x79D1;&#x4E2D;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148;&#x7684;&#x5B9A;&#x4E49;&#x4E3A;&#xFF1A;&#x201C;&#x5BF9;&#x4E8E;&#x6709;&#x6839;&#x6811; T &#x7684;&#x4E24;&#x4E2A;&#x8282;&#x70B9; p&#x3001;q&#xFF0C;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148;&#x8868;&#x793A;&#x4E3A;&#x4E00;&#x4E2A;&#x8282;&#x70B9; x&#xFF0C;&#x6EE1;&#x8DB3; x &#x662F; p&#x3001;q &#x7684;&#x7956;&#x5148;&#x4E14; x &#x7684;&#x6DF1;&#x5EA6;&#x5C3D;&#x53EF;&#x80FD;&#x5927;&#xFF08;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5B83;&#x81EA;&#x5DF1;&#x7684;&#x7956;&#x5148;&#xFF09;&#x3002;&#x201D;</p>
+<h2 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h2>
+<pre><code>&#x8F93;&#x5165;&#xFF1A;root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+&#x8F93;&#x51FA;&#xFF1A;3
+&#x89E3;&#x91CA;&#xFF1A;&#x8282;&#x70B9; 5 &#x548C;&#x8282;&#x70B9; 1 &#x7684;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148;&#x662F;&#x8282;&#x70B9; 3 &#x3002;
+</code></pre><pre><code>&#x8F93;&#x5165;&#xFF1A;root = [1,2], p = 1, q = 2
+&#x8F93;&#x51FA;&#xFF1A;1
+</code></pre><h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h2>
+<p>&#x8FD9;&#x9053;&#x9898;&#x4EE5;&#x524D;&#x6211;&#x5199;&#x8FC7;&#x4E00;&#x4E2A;&#x6700;&#x66B4;&#x529B;&#x7684;&#x601D;&#x8DEF;&#xFF0C;&#x5C31;&#x662F;&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x904D;&#x5386;&#xFF0C;&#x7136;&#x540E;&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x53BB;&#x5224;&#x65AD;&#x8BE5;&#x8282;&#x70B9;&#x662F;&#x5426;&#x4E3A;p &#x548C; q&#x7684;&#x7956;&#x5148;&#x8282;&#x70B9;&#xFF0C;&#x56E0;&#x4E3A;&#x592A;&#x8FC7;&#x66B4;&#x529B;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x591A;&#x8BF4;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8BF4;&#x4E00;&#x4E0B;&#x540E;&#x5E8F;&#x904D;&#x5386;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x56E0;&#x4E3A;&#x540E;&#x5E8F;&#x904D;&#x5386;&#x662F;<strong>&#x5DE6;&#x53F3;&#x4E2D;</strong>&#xFF0C;&#x6240;&#x4EE5;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x4E00;&#x79CD;&#x5BF9;&#x6574;&#x68F5;&#x6811;&#x81EA;&#x5E95;&#x5411;&#x4E0A;&#x904D;&#x5386;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */</span>
+<span class="hljs-keyword">class</span> Solution {
 <span class="hljs-keyword">public</span>:
-    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">waysToChange</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
-        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">1000001</span>];<span class="hljs-comment">//dp[i]&#x8868;&#x793A;&#x5F53;&#x94B1;&#x4E3A;i&#x662F;&#x7684;&#x9009;&#x62E9;&#x6570;</span>
-        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
-        <span class="hljs-keyword">int</span> coins[<span class="hljs-number">4</span>] = {<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">10</span>,<span class="hljs-number">25</span>};
-        dp[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)
-        {
-            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=coins[i];j&lt;=n;j++)
-            {
-                dp[j]  = (dp[j] + dp[j-coins[i]]) %<span class="hljs-number">1000000007</span> ;
-            }
-        }
-        <span class="hljs-keyword">return</span> dp[n];
+    <span class="hljs-function">TreeNode* <span class="hljs-title">lowestCommonAncestor</span><span class="hljs-params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>{
+        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;
+        <span class="hljs-keyword">if</span>(root == q || root == p) <span class="hljs-keyword">return</span> root;
+        TreeNode* left =  lowestCommonAncestor(root-&gt;left,p,q);
+        TreeNode* right = lowestCommonAncestor(root-&gt;right,p,q);
+        <span class="hljs-keyword">if</span>(left != <span class="hljs-literal">nullptr</span> &amp;&amp; right != <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> root;
+        <span class="hljs-keyword">if</span>(left != <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> left;
+        <span class="hljs-keyword">return</span> right;
     }
 };
 </code></pre>
-<h3 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;">&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;</h3>
-<p><a href="https://leetcode-cn.com/problems/coin-lcci/" target="_blank">https://leetcode-cn.com/problems/coin-lcci/</a></p>
+<p>&#x8FD8;&#x662F;&#x8981;&#x7A0D;&#x5FAE;&#x6CE8;&#x610F;&#x4E00;&#x4E0B;&#x5199;&#x6CD5;&#xFF0C;&#x4E0D;&#x7136;&#x5BB9;&#x6613;&#x628A;&#x81EA;&#x5DF1;&#x7ED5;&#x8FDB;&#x53BB;&#x3002;&#x6700;&#x5F00;&#x59CB;&#x51E0;&#x884C;&#x5C31;&#x662F;&#x9012;&#x5F52;&#x7684;&#x8FD4;&#x56DE;&#x6761;&#x4EF6;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x5DE6;&#x904D;&#x5386;&#xFF0C;&#x53F3;&#x904D;&#x5386;&#x548C;&#x4E2D;&#x95F4;&#x7684;&#x904D;&#x5386;&#x3002;</p>
+<h2 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;">&#x9898;&#x76EE;&#x94FE;&#x63A5;</h2>
+<p><a href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank">236. &#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6700;&#x8FD1;&#x516C;&#x5171;&#x7956;&#x5148; - &#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;</a></p>
 
                                 
                                 </section>
@@ -2035,12 +2027,12 @@
 
             
                 
-                <a href="LeetCode-LCP13.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode-LCP13">
+                <a href="LeetCode279.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode279">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="LeetCode-weekly205.html" class="navigation navigation-next " aria-label="Next page: LeetCode-weekly205">
+                <a href="LeetCode287.html" class="navigation navigation-next " aria-label="Next page: LeetCode287">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2051,7 +2043,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LeetCodejz-coins","date":"2020-04-23T15:12:22.000Z","tags":["dp","背包问题"],"level":"1.9.2.85","depth":3,"next":{"title":"LeetCode-weekly205","level":"1.9.2.86","depth":3,"path":"algorithms/LeetCode/LeetCode-weekly205.md","ref":"./algorithms/LeetCode/LeetCode-weekly205.md","articles":[]},"previous":{"title":"LeetCode-LCP13","level":"1.9.2.84","depth":3,"path":"algorithms/LeetCode/LeetCode-LCP13.md","ref":"./algorithms/LeetCode/LeetCode-LCP13.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode-coins.md","mtime":"2022-03-13T08:40:21.213Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-11T09:00:57.167Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LeetCode236","date":"2023-01-11T16:46:58.000Z","tags":["后序遍历","二叉树"],"level":"1.9.2.41","depth":3,"next":{"title":"LeetCode287","level":"1.9.2.42","depth":3,"path":"algorithms/LeetCode/LeetCode287.md","ref":"./algorithms/LeetCode/LeetCode287.md","articles":[]},"previous":{"title":"LeetCode279","level":"1.9.2.40","depth":3,"path":"algorithms/LeetCode/LeetCode279.md","ref":"./algorithms/LeetCode/LeetCode279.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode236.md","mtime":"2023-01-11T08:57:03.659Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-01-11T09:00:57.167Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
