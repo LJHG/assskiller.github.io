@@ -2412,6 +2412,66 @@ matrix[i][j] = &apos;.&apos; //&#x8FD8;&#x539F;
     }
 };
 </code></pre>
+<h3 id="&#x56DE;&#x6EAF;&#x677F;&#x5B50;&#x5199;&#x6CD5;">&#x56DE;&#x6EAF;&#x677F;&#x5B50;&#x5199;&#x6CD5;</h3>
+<p>&#x4E0A;&#x9762;&#x7684;&#x56DE;&#x6EAF;&#x5199;&#x5F97;&#x6BD4;&#x8F83;&#x6742;&#x7CC5;&#xFF0C;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x5199;&#x5F97;&#x6BD4;&#x8F83;&#x597D;&#x770B;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&gt; ans;
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; chessBoard;
+    <span class="hljs-keyword">int</span> N;
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isValid</span><span class="hljs-params">(<span class="hljs-keyword">int</span> row, <span class="hljs-keyword">int</span> col)</span></span>{
+        <span class="hljs-comment">//&#x4E0D;&#x9700;&#x8981;&#x68C0;&#x67E5;&#x884C;&#x4E86;</span>
+        <span class="hljs-comment">//&#x540C;&#x65F6;&#x53EA;&#x9700;&#x8981;&#x67E5;&#x8BE2;&#x5F53;&#x524D;&#x884C;&#x4EE5;&#x4E0A;&#x7684;&#x5143;&#x7D20;</span>
+
+        <span class="hljs-comment">//&#x5217;</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i&lt;row; i++){
+            <span class="hljs-keyword">if</span>(chessBoard[i][col] == <span class="hljs-string">&apos;Q&apos;</span>)
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+        <span class="hljs-comment">//&#x4E3B;&#x5BF9;&#x89D2;&#x7EBF;</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = row<span class="hljs-number">-1</span>, j = col<span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">0</span> &amp;&amp; j&gt;=<span class="hljs-number">0</span> ; i--,j--){
+            <span class="hljs-keyword">if</span>(chessBoard[i][j] == <span class="hljs-string">&apos;Q&apos;</span>)
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+
+        <span class="hljs-comment">//&#x6B21;&#x5BF9;&#x89D2;&#x7EBF;</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = row<span class="hljs-number">-1</span>, j = col+<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span> &amp;&amp; j&lt;N ; i--,j++){
+            <span class="hljs-keyword">if</span>(chessBoard[i][j] == <span class="hljs-string">&apos;Q&apos;</span>)
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> row)</span></span>{
+        <span class="hljs-keyword">if</span>(row == N){
+            ans.push_back(chessBoard);
+            <span class="hljs-keyword">return</span>;
+        }
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> col=<span class="hljs-number">0</span>;col&lt;N;col++){
+            <span class="hljs-keyword">if</span>(isValid(row,col)){
+                chessBoard[row][col] = <span class="hljs-string">&apos;Q&apos;</span>;
+                dfs(row+<span class="hljs-number">1</span>);
+                chessBoard[row][col] = <span class="hljs-string">&apos;.&apos;</span>;
+            }
+        }
+    }
+
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&gt; solveNQueens(<span class="hljs-keyword">int</span> n) {
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++){
+            <span class="hljs-built_in">string</span> tmp = <span class="hljs-string">&quot;&quot;</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++){
+                tmp += <span class="hljs-string">&quot;.&quot;</span>;
+            }
+            chessBoard.push_back(tmp);
+        }
+        N = n;
+        dfs(<span class="hljs-number">0</span>);
+        <span class="hljs-keyword">return</span> ans;
+    }
+};
+</code></pre>
 <h2 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;">&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;</h2>
 <p><a href="https://leetcode-cn.com/problems/n-queens/" target="_blank">https://leetcode-cn.com/problems/n-queens/</a>
 <a href="https://leetcode-cn.com/problems/n-queens/solution/nhuang-hou-jing-dian-hui-su-suan-fa-tu-wen-xiang-j/" target="_blank">&#x4E00;&#x4E2A;&#x8BB2;&#x7684;&#x4E0D;&#x9519;&#x7684;&#x9898;&#x89E3;</a></p>
@@ -2458,7 +2518,7 @@ matrix[i][j] = &apos;.&apos; //&#x8FD8;&#x539F;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LeetCode51","date":"2020-09-03T11:11:15.000Z","tags":["dfs","回溯"],"level":"1.9.2.16","depth":3,"next":{"title":"LeetCode60","level":"1.9.2.17","depth":3,"path":"algorithms/LeetCode/LeetCode60.md","ref":"./algorithms/LeetCode/LeetCode60.md","articles":[]},"previous":{"title":"LeetCode50","level":"1.9.2.15","depth":3,"path":"algorithms/LeetCode/LeetCode50.md","ref":"./algorithms/LeetCode/LeetCode50.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode51.md","mtime":"2022-03-13T08:40:21.209Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-10T09:05:58.598Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LeetCode51","date":"2020-09-03T11:11:15.000Z","tags":["dfs","回溯"],"level":"1.9.2.16","depth":3,"next":{"title":"LeetCode60","level":"1.9.2.17","depth":3,"path":"algorithms/LeetCode/LeetCode60.md","ref":"./algorithms/LeetCode/LeetCode60.md","articles":[]},"previous":{"title":"LeetCode50","level":"1.9.2.15","depth":3,"path":"algorithms/LeetCode/LeetCode50.md","ref":"./algorithms/LeetCode/LeetCode50.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode51.md","mtime":"2023-02-11T07:30:34.344Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-11T07:32:02.589Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
