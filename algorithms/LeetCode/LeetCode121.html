@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>LeetCode347 · GitBook</title>
+        <title>LeetCode121 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="LeetCode377.html" />
+    <link rel="next" href="LeetCode134.html" />
     
     
-    <link rel="prev" href="LeetCode337.html" />
+    <link rel="prev" href="LeetCode110.html" />
     
 
     </head>
@@ -1124,7 +1124,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.29" data-path="LeetCode121.html">
+        <li class="chapter active" data-level="1.9.2.29" data-path="LeetCode121.html">
             
                 <a href="LeetCode121.html">
             
@@ -1397,7 +1397,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2.50" data-path="LeetCode347.html">
+        <li class="chapter " data-level="1.9.2.50" data-path="LeetCode347.html">
             
                 <a href="LeetCode347.html">
             
@@ -2074,7 +2074,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >LeetCode347</a>
+        <a href="../.." >LeetCode121</a>
     </h1>
 </div>
 
@@ -2089,86 +2089,152 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;</h2>
-<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x975E;&#x7A7A;&#x7684;&#x6574;&#x6570;&#x6570;&#x7EC4;&#xFF0C;&#x8FD4;&#x56DE;&#x5176;&#x4E2D;&#x51FA;&#x73B0;&#x9891;&#x7387;&#x524D; k &#x9AD8;&#x7684;&#x5143;&#x7D20;&#x3002;</p>
-<h2 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h2>
-<pre><code class="lang-cpp">&#x793A;&#x4F8B; <span class="hljs-number">1</span>:
-&#x8F93;&#x5165;: nums = [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>], k = <span class="hljs-number">2</span>
-&#x8F93;&#x51FA;: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>]
+                                <h1 id="&#x4E70;&#x5356;&#x80A1;&#x7968;&#x7684;&#x6700;&#x4F73;&#x65F6;&#x673A;---leetcode121dp">&#x4E70;&#x5356;&#x80A1;&#x7968;&#x7684;&#x6700;&#x4F73;&#x65F6;&#x673A;---LeetCode121(dp)</h1>
+<blockquote>
+<p>&#x65E5;&#x671F;: 2023-02-26</p>
+</blockquote>
+<h2 id="&#x4E00;&#x6B21;&#x4E70;&#x5356;">&#x4E00;&#x6B21;&#x4E70;&#x5356;</h2>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4; prices &#xFF0C;&#x5B83;&#x7684;&#x7B2C; i &#x4E2A;&#x5143;&#x7D20; prices[i] &#x8868;&#x793A;&#x4E00;&#x652F;&#x7ED9;&#x5B9A;&#x80A1;&#x7968;&#x7B2C; i &#x5929;&#x7684;&#x4EF7;&#x683C;&#x3002;</p>
+<p>&#x4F60;&#x53EA;&#x80FD;&#x9009;&#x62E9; &#x67D0;&#x4E00;&#x5929; &#x4E70;&#x5165;&#x8FD9;&#x53EA;&#x80A1;&#x7968;&#xFF0C;&#x5E76;&#x9009;&#x62E9;&#x5728; &#x672A;&#x6765;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x65E5;&#x5B50; &#x5356;&#x51FA;&#x8BE5;&#x80A1;&#x7968;&#x3002;&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x6765;&#x8BA1;&#x7B97;&#x4F60;&#x6240;&#x80FD;&#x83B7;&#x53D6;&#x7684;&#x6700;&#x5927;&#x5229;&#x6DA6;&#x3002;</p>
+<p>&#x8FD4;&#x56DE;&#x4F60;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x7B14;&#x4EA4;&#x6613;&#x4E2D;&#x83B7;&#x53D6;&#x7684;&#x6700;&#x5927;&#x5229;&#x6DA6;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4E0D;&#x80FD;&#x83B7;&#x53D6;&#x4EFB;&#x4F55;&#x5229;&#x6DA6;&#xFF0C;&#x8FD4;&#x56DE; 0 &#x3002;</p>
+<h3 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h3>
+<pre><code>&#x8F93;&#x5165;&#xFF1A;[7,1,5,3,6,4]
+&#x8F93;&#x51FA;&#xFF1A;5
+&#x89E3;&#x91CA;&#xFF1A;&#x5728;&#x7B2C; 2 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 1&#xFF09;&#x7684;&#x65F6;&#x5019;&#x4E70;&#x5165;&#xFF0C;&#x5728;&#x7B2C; 5 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 6&#xFF09;&#x7684;&#x65F6;&#x5019;&#x5356;&#x51FA;&#xFF0C;&#x6700;&#x5927;&#x5229;&#x6DA6; = 6-1 = 5 &#x3002;
+     &#x6CE8;&#x610F;&#x5229;&#x6DA6;&#x4E0D;&#x80FD;&#x662F; 7-1 = 6, &#x56E0;&#x4E3A;&#x5356;&#x51FA;&#x4EF7;&#x683C;&#x9700;&#x8981;&#x5927;&#x4E8E;&#x4E70;&#x5165;&#x4EF7;&#x683C;&#xFF1B;&#x540C;&#x65F6;&#xFF0C;&#x4F60;&#x4E0D;&#x80FD;&#x5728;&#x4E70;&#x5165;&#x524D;&#x5356;&#x51FA;&#x80A1;&#x7968;&#x3002;
 
-&#x793A;&#x4F8B; <span class="hljs-number">2</span>:
-&#x8F93;&#x5165;: nums = [<span class="hljs-number">1</span>], k = <span class="hljs-number">1</span>
-&#x8F93;&#x51FA;: [<span class="hljs-number">1</span>]
-
-&#x63D0;&#x793A;&#xFF1A;
-&#x4F60;&#x53EF;&#x4EE5;&#x5047;&#x8BBE;&#x7ED9;&#x5B9A;&#x7684; k &#x603B;&#x662F;&#x5408;&#x7406;&#x7684;&#xFF0C;&#x4E14; <span class="hljs-number">1</span> &#x2264; k &#x2264; &#x6570;&#x7EC4;&#x4E2D;&#x4E0D;&#x76F8;&#x540C;&#x7684;&#x5143;&#x7D20;&#x7684;&#x4E2A;&#x6570;&#x3002;
-&#x4F60;&#x7684;&#x7B97;&#x6CD5;&#x7684;&#x65F6;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x5FC5;&#x987B;&#x4F18;&#x4E8E; O(n <span class="hljs-built_in">log</span> n) , n &#x662F;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x3002;
-&#x9898;&#x76EE;&#x6570;&#x636E;&#x4FDD;&#x8BC1;&#x7B54;&#x6848;&#x552F;&#x4E00;&#xFF0C;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x6570;&#x7EC4;&#x4E2D;&#x524D; k &#x4E2A;&#x9AD8;&#x9891;&#x5143;&#x7D20;&#x7684;&#x96C6;&#x5408;&#x662F;&#x552F;&#x4E00;&#x7684;&#x3002;
-&#x4F60;&#x53EF;&#x4EE5;&#x6309;&#x4EFB;&#x610F;&#x987A;&#x5E8F;&#x8FD4;&#x56DE;&#x7B54;&#x6848;&#x3002;
-</code></pre>
-<!-- more -->
-<h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;:</h2>
-<p>&#x9898;&#x76EE;&#x8981;&#x6C42;&#x7684;&#x901F;&#x5EA6;&#x662F;O(nlogn), &#x5148;&#x505A;&#x4E00;&#x904D;&#x7EDF;&#x8BA1;&#x662F;O(n),&#x5168;&#x90E8;push&#x6765;&#x4E00;&#x6B21;&#x5806;&#x6392;&#x5E8F;&#x662F;O(nlogn)&#xFF0C;&#x90A3;&#x4E0D;&#x6B63;&#x597D;&#x6EE1;&#x8DB3;&#x9898;&#x76EE;&#x8981;&#x6C42;&#x5417;&#xFF0C;&#x90A3;&#x76F4;&#x63A5;&#x4F18;&#x5148;&#x961F;&#x5217;&#x6CA1;&#x5F97;&#x8BF4;&#x3002;  </p>
-<h3 id="&#x9012;&#x51CF;&#x4F18;&#x5148;&#x961F;&#x5217;">&#x9012;&#x51CF;&#x4F18;&#x5148;&#x961F;&#x5217;</h3>
-<p>&#x56E0;&#x4E3A;&#x9898;&#x76EE;&#x662F;&#x8981;&#x6C42;&#x524D;K&#x5927;&#xFF0C;&#x90A3;&#x4E48;&#x5F88;&#x81EA;&#x7136;&#x5C31;&#x80FD;&#x60F3;&#x5230;&#x7528;&#x9012;&#x51CF;&#x7684;&#x4F18;&#x5148;&#x961F;&#x5217;&#x3002;&#x5168;&#x90E8;push&#x8FDB;&#x53BB;&#x7136;&#x540E;&#x53D6;&#x524D;&#x9762;k&#x4E2A;&#x4E0D;&#x4E45;&#x884C;&#x4E86;&#x3002;(&#x8FD9;&#x662F;&#x6CA1;&#x6709;&#x7075;&#x9B42;&#x7684;&#x5806;&#x6392;&#x5E8F;&#xFF0C;&#x8FD9;&#x4E2A;&#x548C;&#x666E;&#x901A;&#x6392;&#x5E8F;&#x6709;&#x5565;&#x533A;&#x522B;)  </p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+&#x6765;&#x6E90;&#xFF1A;&#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;
+&#x94FE;&#x63A5;&#xFF1A;https://leetcode.cn/problems/best-time-to-buy-and-sell-stock
+&#x8457;&#x4F5C;&#x6743;&#x5F52;&#x9886;&#x6263;&#x7F51;&#x7EDC;&#x6240;&#x6709;&#x3002;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x8054;&#x7CFB;&#x5B98;&#x65B9;&#x6388;&#x6743;&#xFF0C;&#x975E;&#x5546;&#x4E1A;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x51FA;&#x5904;&#x3002;
+</code></pre><h3 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h3>
+<p>&#x7528;dp&#x505A;&#xFF0C;&#x4E70;&#x5356;&#x80A1;&#x7968;&#x8FD9;&#x7C7B;&#x9898;&#x6700;&#x91CD;&#x8981;&#x7684;&#x5C31;&#x662F;&#x72B6;&#x6001;&#x7684;&#x9009;&#x62E9;&#xFF0C;&#x5305;&#x62EC;&#x540E;&#x9762;&#x7684;&#x5DEE;&#x522B;&#x5176;&#x5B9E;&#x5C31;&#x5728;&#x72B6;&#x6001;&#x6570;&#x91CF;&#x4E0A;&#xFF0C;&#x4EE5;&#x53CA;&#x72B6;&#x6001;&#x4E4B;&#x95F4;&#x662F;&#x5982;&#x4F55;&#x8F6C;&#x79FB;&#x7684;&#x3002;&#x8FD9;&#x9053;&#x9898;&#x7684;&#x5173;&#x952E;&#x5C31;&#x662F;&#x53EA;&#x6709;&#x4E00;&#x6B21;&#x4E70;&#x5356;&#xFF0C;&#x6240;&#x4EE5; <code>dp[i][1]</code> &#x5982;&#x679C;&#x662F;&#x5F53;&#x5929;&#x4E70;&#x7684;&#x8BDD;&#x90A3;&#x4E48;&#x5176;&#x5B9E;&#x5C31;&#x662F; <code>-prices[i]</code>&#x3002;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">class</span> Solution {
 <span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; topKFrequent(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k) {
-        <span class="hljs-comment">//&#x4F18;&#x5148;&#x961F;&#x5217;&#xFF1F;</span>
-        <span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt; record;
-        <span class="hljs-keyword">int</span> len = nums.size();
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++){
-            record[nums[i]]++;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; prices)</span> </span>{
+        <span class="hljs-keyword">int</span> len = prices.size();
+        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">100005</span>][<span class="hljs-number">2</span>]; <span class="hljs-comment">// dp[i][0] &#x8868;&#x793A;&#x7B2C;i&#x5929;&#x4E0D;&#x6301;&#x6709;&#x80A1;&#x7968;&#x65F6;&#x7684;&#x6700;&#x5927;&#x5229;&#x6DA6;, dp[i][i] &#x8868;&#x793A;&#x7B2C;i&#x5929;&#x4E0D;&#x6301;&#x6709;&#x80A1;&#x7968;&#x65F6;&#x7684;&#x6700;&#x5927;&#x5229;&#x6DA6;</span>
+        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
+        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+        dp[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = -prices[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;len;i++){
+            dp[i][<span class="hljs-number">0</span>] = max(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>] + prices[i]);  <span class="hljs-comment">//&#x7B2C;i&#x5929;&#x4E0D;&#x6301;&#x6709;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x4E4B;&#x524D;&#x5C31;&#x5356;&#x6389;&#x4E86;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x73B0;&#x5728;&#x5356;&#x6389;&#x4E86;</span>
+            dp[i][<span class="hljs-number">1</span>] = max(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>], - prices[i]);  <span class="hljs-comment">//&#x7B2C;i&#x5929;&#x6301;&#x6709;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x4E4B;&#x524D;&#x5C31;&#x6709;&#xFF0C;&#x4E5F;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x73B0;&#x5728;&#x624D;&#x4E70;&#x5165;</span>
         }
-        priority_queue&lt; pair&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;&gt; q;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> &amp;x:record){
-            q.push(make_pair(x.second,x.first));
-        }
-        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ans;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++){
-            ans.push_back(q.top().second);
-            q.pop();
-        }
-        <span class="hljs-keyword">return</span> ans;
+        <span class="hljs-keyword">return</span> dp[len<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>];
     }
 };
 </code></pre>
-<h3 id="&#x9012;&#x589E;&#x4F18;&#x5148;&#x961F;&#x5217;">&#x9012;&#x589E;&#x4F18;&#x5148;&#x961F;&#x5217;</h3>
-<p>&#x9898;&#x76EE;&#x8981;&#x6C42;&#x524D;k&#x4E2A;&#x6700;&#x5927;&#x7684;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;<strong>&#x7EF4;&#x62A4;&#x5927;&#x5C0F;&#x4E3A;k&#x7684;&#x6700;&#x5C0F;&#x5806;</strong>(&#x5806;&#x9876;&#x7684;&#x5143;&#x7D20;&#x662F;&#x6700;&#x5C0F;&#x7684;)&#xFF0C;&#x6BCF;&#x6B21;&#x8981;&#x63D2;&#x5165;&#x65F6;&#x548C;&#x5806;&#x9876;&#x5143;&#x7D20;&#x6BD4;&#xFF0C;&#x5982;&#x679C;&#x6BD4;&#x5806;&#x9876;&#x5143;&#x7D20;&#x5927;&#x624D;&#x63D2;&#x5165;&#xFF0C;&#x4E0D;&#x7136;&#x4E0D;&#x63D2;&#x5165;(&#x8FD9;&#x624D;&#x662F;&#x5806;&#x7684;&#x6B63;&#x786E;&#x7528;&#x6CD5;,&#x901F;&#x5EA6;&#x4F1A;&#x5FEB;&#x5F88;&#x591A;(&#x5728;&#x5143;&#x7D20;&#x5F88;&#x591A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;))<br>&#x8FD9;&#x91CC;&#x8981;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;&#xFF0C;&#x4F18;&#x5148;&#x961F;&#x5217;&#x662F;&#x9ED8;&#x8BA4;&#x7684;&#x6700;&#x5927;&#x5806;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x6539;&#x4E3A;&#x6700;&#x5C0F;&#x5806;&#xFF0C;&#x9700;&#x8981;&#x628A;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x6539;&#x4E3A;greater&lt;???&gt;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x5143;&#x7D20;&#x4E0A;&#x53D6;&#x4E2A;&#x8D1F;&#x6570;&#x3002;<br>&#x4F18;&#x5148;&#x961F;&#x5217;&#x662F;&#x6309;&#x7167;pair&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x4E3A;&#x4F9D;&#x636E;&#x6765;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x7684;&#x3002;<br>&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A; </p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+<h3 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;">&#x9898;&#x76EE;&#x94FE;&#x63A5;</h3>
+<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/" target="_blank">121. &#x4E70;&#x5356;&#x80A1;&#x7968;&#x7684;&#x6700;&#x4F73;&#x65F6;&#x673A; - &#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;</a></p>
+<h2 id="&#x591A;&#x6B21;&#x4E70;&#x5356;">&#x591A;&#x6B21;&#x4E70;&#x5356;</h2>
+<p>&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x6570;&#x7EC4; prices &#xFF0C;&#x5176;&#x4E2D; prices[i] &#x8868;&#x793A;&#x67D0;&#x652F;&#x80A1;&#x7968;&#x7B2C; i &#x5929;&#x7684;&#x4EF7;&#x683C;&#x3002;</p>
+<p>&#x5728;&#x6BCF;&#x4E00;&#x5929;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x8D2D;&#x4E70;&#x548C;/&#x6216;&#x51FA;&#x552E;&#x80A1;&#x7968;&#x3002;&#x4F60;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019; &#x6700;&#x591A; &#x53EA;&#x80FD;&#x6301;&#x6709; &#x4E00;&#x80A1; &#x80A1;&#x7968;&#x3002;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5148;&#x8D2D;&#x4E70;&#xFF0C;&#x7136;&#x540E;&#x5728; &#x540C;&#x4E00;&#x5929; &#x51FA;&#x552E;&#x3002;</p>
+<p>&#x8FD4;&#x56DE; &#x4F60;&#x80FD;&#x83B7;&#x5F97;&#x7684; &#x6700;&#x5927; &#x5229;&#x6DA6; &#x3002;</p>
+<h3 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h3>
+<pre><code>&#x8F93;&#x5165;&#xFF1A;prices = [7,1,5,3,6,4]
+&#x8F93;&#x51FA;&#xFF1A;7
+&#x89E3;&#x91CA;&#xFF1A;&#x5728;&#x7B2C; 2 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 1&#xFF09;&#x7684;&#x65F6;&#x5019;&#x4E70;&#x5165;&#xFF0C;&#x5728;&#x7B2C; 3 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 5&#xFF09;&#x7684;&#x65F6;&#x5019;&#x5356;&#x51FA;, &#x8FD9;&#x7B14;&#x4EA4;&#x6613;&#x6240;&#x80FD;&#x83B7;&#x5F97;&#x5229;&#x6DA6; = 5 - 1 = 4 &#x3002;
+     &#x968F;&#x540E;&#xFF0C;&#x5728;&#x7B2C; 4 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 3&#xFF09;&#x7684;&#x65F6;&#x5019;&#x4E70;&#x5165;&#xFF0C;&#x5728;&#x7B2C; 5 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 6&#xFF09;&#x7684;&#x65F6;&#x5019;&#x5356;&#x51FA;, &#x8FD9;&#x7B14;&#x4EA4;&#x6613;&#x6240;&#x80FD;&#x83B7;&#x5F97;&#x5229;&#x6DA6; = 6 - 3 = 3 &#x3002;
+     &#x603B;&#x5229;&#x6DA6;&#x4E3A; 4 + 3 = 7 &#x3002;
+</code></pre><h3 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h3>
+<p>&#x591A;&#x6B21;&#x4E70;&#x5356;&#x548C;&#x4E00;&#x6B21;&#x4E70;&#x5356;&#x7684;&#x552F;&#x4E00;&#x533A;&#x522B;&#x5C31;&#x662F;<code>dp[i][1]</code> &#x5982;&#x679C;&#x662F;&#x5F53;&#x5929;&#x4E70;&#x7684;&#x8BDD;&#x90A3;&#x4E48;&#x5176;&#x5B9E;&#x662F; <code>dp[i-1][0]-prices[i]</code>&#x3002;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">class</span> Solution {
 <span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; topKFrequent(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; nums, <span class="hljs-keyword">int</span> k) {
-        <span class="hljs-comment">//&#x4F18;&#x5148;&#x961F;&#x5217;</span>
-        <span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt; record;
-        <span class="hljs-keyword">int</span> len = nums.size();
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++){
-            record[nums[i]]++;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; prices)</span> </span>{
+        <span class="hljs-keyword">int</span> len = prices.size();
+        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">30005</span>][<span class="hljs-number">2</span>]; <span class="hljs-comment">//dp[i][0]&#x8868;&#x793A;&#x7B2C;i&#x5929;&#x4E0D;&#x6301;&#x6709;&#x80A1;&#x7968;&#x7684;&#x6700;&#x5927;&#x5229;&#x6DA6;, //dp[i][1]&#x8868;&#x793A;&#x7B2C;i&#x5929;&#x6301;&#x6709;&#x80A1;&#x7968;&#x7684;&#x6700;&#x5927;&#x5229;&#x6DA6;</span>
+        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
+        dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+        dp[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = -prices[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;len;i++){
+            dp[i][<span class="hljs-number">0</span>] = max(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>] + prices[i], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>]);
+            dp[i][<span class="hljs-number">1</span>] = max(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>] - prices[i], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>]);
         }
-        <span class="hljs-comment">//&#x628A;&#x9012;&#x51CF;&#x961F;&#x5217;&#x6539;&#x4E3A;&#x9012;&#x589E;&#x961F;&#x5217;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E0D;&#x7528;&#x5168;&#x90E8;push&#xFF0C;&#x800C;&#x662F;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;k&#x5927;&#x7684;&#x5806;</span>
-        priority_queue&lt;pair&lt;<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>&gt;&gt; q;
-        <span class="hljs-keyword">int</span> qlen = <span class="hljs-number">0</span>;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> &amp;x:record){
-            <span class="hljs-keyword">if</span>(qlen &lt; k){
-                q.push(make_pair(x.second*(<span class="hljs-number">-1</span>),x.first));
-                qlen++;
-            }<span class="hljs-keyword">else</span>{
-                <span class="hljs-keyword">if</span>(q.top().first*(<span class="hljs-number">-1</span>) &lt; x.second){
-                    q.pop();
-                    q.push(make_pair(x.second*(<span class="hljs-number">-1</span>),x.first));
+
+        <span class="hljs-keyword">return</span> dp[len<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>];
+    }
+};
+</code></pre>
+<h3 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;">&#x9898;&#x76EE;&#x94FE;&#x63A5;</h3>
+<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank">122. &#x4E70;&#x5356;&#x80A1;&#x7968;&#x7684;&#x6700;&#x4F73;&#x65F6;&#x673A; II - &#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;</a></p>
+<h2 id="&#x6700;&#x591A;&#x4E24;&#x6B21;&#x4E70;&#x5356;">&#x6700;&#x591A;&#x4E24;&#x6B21;&#x4E70;&#x5356;</h2>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x5B83;&#x7684;&#x7B2C; i &#x4E2A;&#x5143;&#x7D20;&#x662F;&#x4E00;&#x652F;&#x7ED9;&#x5B9A;&#x7684;&#x80A1;&#x7968;&#x5728;&#x7B2C; i &#x5929;&#x7684;&#x4EF7;&#x683C;&#x3002;</p>
+<p>&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x6765;&#x8BA1;&#x7B97;&#x4F60;&#x6240;&#x80FD;&#x83B7;&#x53D6;&#x7684;&#x6700;&#x5927;&#x5229;&#x6DA6;&#x3002;&#x4F60;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x5B8C;&#x6210; &#x4E24;&#x7B14; &#x4EA4;&#x6613;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4F60;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x53C2;&#x4E0E;&#x591A;&#x7B14;&#x4EA4;&#x6613;&#xFF08;&#x4F60;&#x5FC5;&#x987B;&#x5728;&#x518D;&#x6B21;&#x8D2D;&#x4E70;&#x524D;&#x51FA;&#x552E;&#x6389;&#x4E4B;&#x524D;&#x7684;&#x80A1;&#x7968;&#xFF09;&#x3002;</p>
+<h3 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h3>
+<pre><code>&#x8F93;&#x5165;&#xFF1A;prices = [3,3,5,0,0,3,1,4]
+&#x8F93;&#x51FA;&#xFF1A;6
+&#x89E3;&#x91CA;&#xFF1A;&#x5728;&#x7B2C; 4 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 0&#xFF09;&#x7684;&#x65F6;&#x5019;&#x4E70;&#x5165;&#xFF0C;&#x5728;&#x7B2C; 6 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 3&#xFF09;&#x7684;&#x65F6;&#x5019;&#x5356;&#x51FA;&#xFF0C;&#x8FD9;&#x7B14;&#x4EA4;&#x6613;&#x6240;&#x80FD;&#x83B7;&#x5F97;&#x5229;&#x6DA6; = 3-0 = 3 &#x3002;
+     &#x968F;&#x540E;&#xFF0C;&#x5728;&#x7B2C; 7 &#x5929;&#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 1&#xFF09;&#x7684;&#x65F6;&#x5019;&#x4E70;&#x5165;&#xFF0C;&#x5728;&#x7B2C; 8 &#x5929; &#xFF08;&#x80A1;&#x7968;&#x4EF7;&#x683C; = 4&#xFF09;&#x7684;&#x65F6;&#x5019;&#x5356;&#x51FA;&#xFF0C;&#x8FD9;&#x7B14;&#x4EA4;&#x6613;&#x6240;&#x80FD;&#x83B7;&#x5F97;&#x5229;&#x6DA6; = 4-1 = 3 &#x3002;
+</code></pre><h3 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h3>
+<p>&#x4E4B;&#x524D;&#x7684;&#x60C5;&#x51B5;&#x90FD;&#x662F;&#x53EA;&#x6709;&#x4E24;&#x79CD;&#x72B6;&#x6001;&#xFF0C;&#x6301;&#x6709;&#x548C;&#x4E0D;&#x6301;&#x6709;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x6709;&#x6700;&#x591A;&#x4E24;&#x7B14;&#x4EA4;&#x6613;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x8BBE;&#x7ACB;5&#x79CD;&#x72B6;&#x6001;&#xFF0C;&#x5177;&#x4F53;&#x770B;&#x4EE3;&#x7801;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; prices)</span> </span>{
+        <span class="hljs-keyword">int</span> len = prices.size();
+        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">100005</span>][<span class="hljs-number">5</span>]; 
+        <span class="hljs-comment">/**
+            dp[i][0]&#x8868;&#x793A;&#x7B2C;i&#x5929;&#x65F6;&#x8FD8;&#x6CA1;&#x6709;&#x8FDB;&#x884C;&#x4EFB;&#x4F55;&#x64CD;&#x4F5C;
+            dp[i][1]&#x8868;&#x793A;&#x7B2C;i&#x5929;&#x6301;&#x6709;&#x7B2C;&#x4E00;&#x4E2A;&#x80A1;&#x7968;&#x7684;&#x72B6;&#x6001;
+            dp[i][2]&#x8868;&#x793A;&#x7B2C;i&#x5929;&#x4E0D;&#x6301;&#x6709;&#x7B2C;&#x4E00;&#x4E2A;&#x80A1;&#x7968;&#x7684;&#x72B6;&#x6001;
+            dp[i][3]&#x8868;&#x793A;&#x7B2C;i&#x5929;&#x6301;&#x6709;&#x7B2C;&#x4E8C;&#x4E2A;&#x80A1;&#x7968;&#x7684;&#x72B6;&#x6001;
+            dp[i][4]&#x8868;&#x793A;&#x7B2C;i&#x5929;&#x4E0D;&#x6301;&#x6709;&#x7B2C;&#x4E8C;&#x4E2A;&#x80A1;&#x7968;&#x7684;&#x72B6;&#x6001;
+        */</span>
+        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
+        dp[<span class="hljs-number">0</span>][<span class="hljs-number">1</span>] = -prices[<span class="hljs-number">0</span>];
+        dp[<span class="hljs-number">0</span>][<span class="hljs-number">3</span>] = -prices[<span class="hljs-number">0</span>]; <span class="hljs-comment">//&#x8FD9;&#x91CC;&#x7684;&#x521D;&#x59CB;&#x5316;&#x5F88;&#x7EC6;</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;len;i++){
+            dp[i][<span class="hljs-number">0</span>] = dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>];
+            dp[i][<span class="hljs-number">1</span>] = max(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">0</span>] - prices[i]);
+            dp[i][<span class="hljs-number">2</span>] = max(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">2</span>], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">1</span>] + prices[i]);
+            dp[i][<span class="hljs-number">3</span>] = max(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">3</span>], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">2</span>] - prices[i]);
+            dp[i][<span class="hljs-number">4</span>] = max(dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">4</span>], dp[i<span class="hljs-number">-1</span>][<span class="hljs-number">3</span>] + prices[i]);
+        }
+        <span class="hljs-keyword">return</span> dp[len<span class="hljs-number">-1</span>][<span class="hljs-number">4</span>];
+    }
+};
+</code></pre>
+<h3 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;">&#x9898;&#x76EE;&#x94FE;&#x63A5;</h3>
+<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank">123. &#x4E70;&#x5356;&#x80A1;&#x7968;&#x7684;&#x6700;&#x4F73;&#x65F6;&#x673A; III - &#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;</a></p>
+<h2 id="&#x6700;&#x591A;k&#x7B14;&#x4EA4;&#x6613;">&#x6700;&#x591A;k&#x7B14;&#x4EA4;&#x6613;</h2>
+<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#x6570;&#x7EC4; prices &#xFF0C;&#x5B83;&#x7684;&#x7B2C; i &#x4E2A;&#x5143;&#x7D20; prices[i] &#x662F;&#x4E00;&#x652F;&#x7ED9;&#x5B9A;&#x7684;&#x80A1;&#x7968;&#x5728;&#x7B2C; i &#x5929;&#x7684;&#x4EF7;&#x683C;&#x3002;</p>
+<p>&#x8BBE;&#x8BA1;&#x4E00;&#x4E2A;&#x7B97;&#x6CD5;&#x6765;&#x8BA1;&#x7B97;&#x4F60;&#x6240;&#x80FD;&#x83B7;&#x53D6;&#x7684;&#x6700;&#x5927;&#x5229;&#x6DA6;&#x3002;&#x4F60;&#x6700;&#x591A;&#x53EF;&#x4EE5;&#x5B8C;&#x6210; k &#x7B14;&#x4EA4;&#x6613;&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x4F60;&#x4E0D;&#x80FD;&#x540C;&#x65F6;&#x53C2;&#x4E0E;&#x591A;&#x7B14;&#x4EA4;&#x6613;&#xFF08;&#x4F60;&#x5FC5;&#x987B;&#x5728;&#x518D;&#x6B21;&#x8D2D;&#x4E70;&#x524D;&#x51FA;&#x552E;&#x6389;&#x4E4B;&#x524D;&#x7684;&#x80A1;&#x7968;&#xFF09;&#x3002;</p>
+<h3 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h3>
+<pre><code>&#x8F93;&#x5165;&#xFF1A;k = 2, prices = [2,4,1]
+&#x8F93;&#x51FA;&#xFF1A;2
+&#x89E3;&#x91CA;&#xFF1A;&#x5728;&#x7B2C; 1 &#x5929; (&#x80A1;&#x7968;&#x4EF7;&#x683C; = 2) &#x7684;&#x65F6;&#x5019;&#x4E70;&#x5165;&#xFF0C;&#x5728;&#x7B2C; 2 &#x5929; (&#x80A1;&#x7968;&#x4EF7;&#x683C; = 4) &#x7684;&#x65F6;&#x5019;&#x5356;&#x51FA;&#xFF0C;&#x8FD9;&#x7B14;&#x4EA4;&#x6613;&#x6240;&#x80FD;&#x83B7;&#x5F97;&#x5229;&#x6DA6; = 4-2 = 2 &#x3002;
+</code></pre><h3 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h3>
+<p>&#x4E4B;&#x524D;&#x6700;&#x591A;&#x4EA4;&#x6613;&#x4E24;&#x6B21;&#x662F;5&#x79CD;&#x72B6;&#x6001;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x591A;&#x4EA4;&#x6613;k&#x6B21;&#x5C31;&#x662F;2*k+1&#x79CD;&#x72B6;&#x6001;&#x3002;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxProfit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; prices)</span> </span>{
+        <span class="hljs-keyword">int</span> len = prices.size();
+        <span class="hljs-keyword">int</span> dp[<span class="hljs-number">1010</span>][<span class="hljs-number">202</span>]; <span class="hljs-comment">//&#x6BCF;&#x4E00;&#x6B21;&#x4EA4;&#x6613;&#x4F1A;&#x589E;&#x52A0;&#x4E24;&#x79CD;&#x72B6;&#x6001;</span>
+        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">0</span>,<span class="hljs-keyword">sizeof</span>(dp));
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;k;j++){
+            dp[<span class="hljs-number">0</span>][j*<span class="hljs-number">2</span> + <span class="hljs-number">1</span>] = -prices[<span class="hljs-number">0</span>];
+        } 
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>;i&lt;len;i++){
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">2</span>*k+<span class="hljs-number">1</span>;j++){
+                <span class="hljs-keyword">if</span>(j == <span class="hljs-number">0</span>){
+                    dp[i][j] = dp[i<span class="hljs-number">-1</span>][j];
+                    <span class="hljs-keyword">continue</span>;
                 }
-            }   
+                <span class="hljs-keyword">if</span>(j % <span class="hljs-number">2</span>  == <span class="hljs-number">1</span>){
+                    dp[i][j] = max(dp[i<span class="hljs-number">-1</span>][j], dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] - prices[i]);
+                }<span class="hljs-keyword">else</span>{
+                    dp[i][j] = max(dp[i<span class="hljs-number">-1</span>][j], dp[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>] + prices[i]);
+                }
+            }
         }
-        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; ans;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;k;i++){
-            ans.push_back(q.top().second);
-            q.pop();
-        }
-        <span class="hljs-keyword">return</span> ans;
+        <span class="hljs-keyword">return</span> dp[len<span class="hljs-number">-1</span>][<span class="hljs-number">2</span>*k];
     }
 };
 </code></pre>
-<h2 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;">&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;</h2>
-<p><a href="https://leetcode-cn.com/problems/top-k-frequent-elements/" target="_blank">https://leetcode-cn.com/problems/top-k-frequent-elements/</a></p>
+<h3 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;">&#x9898;&#x76EE;&#x94FE;&#x63A5;</h3>
+<p><a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank">188. &#x4E70;&#x5356;&#x80A1;&#x7968;&#x7684;&#x6700;&#x4F73;&#x65F6;&#x673A; IV - &#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;</a></p>
 
                                 
                                 </section>
@@ -2196,12 +2262,12 @@
 
             
                 
-                <a href="LeetCode337.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode337">
+                <a href="LeetCode110.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode110">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="LeetCode377.html" class="navigation navigation-next " aria-label="Next page: LeetCode377">
+                <a href="LeetCode134.html" class="navigation navigation-next " aria-label="Next page: LeetCode134">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2212,7 +2278,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LeetCode347","date":"2020-09-07T15:04:18.000Z","tags":["优先队列","堆"],"level":"1.9.2.50","depth":3,"next":{"title":"LeetCode377","level":"1.9.2.51","depth":3,"path":"algorithms/LeetCode/LeetCode377.md","ref":"./algorithms/LeetCode/LeetCode377.md","articles":[]},"previous":{"title":"LeetCode337","level":"1.9.2.49","depth":3,"path":"algorithms/LeetCode/LeetCode337.md","ref":"./algorithms/LeetCode/LeetCode337.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode347.md","mtime":"2022-03-13T08:40:21.210Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-26T12:30:13.161Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LeetCode121","date":"2023-02-26T20:10:50.000Z","tags":["dp"],"level":"1.9.2.29","depth":3,"next":{"title":"LeetCode134","level":"1.9.2.30","depth":3,"path":"algorithms/LeetCode/LeetCode134.md","ref":"./algorithms/LeetCode/LeetCode134.md","articles":[]},"previous":{"title":"LeetCode110","level":"1.9.2.28","depth":3,"path":"algorithms/LeetCode/LeetCode110.md","ref":"./algorithms/LeetCode/LeetCode110.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode121.md","mtime":"2023-02-26T12:25:26.579Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-02-26T12:30:13.161Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
