@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>LeetCode39 · GitBook</title>
+        <title>LeetCode124 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="LeetCode40.html" />
+    <link rel="next" href="LeetCode134.html" />
     
     
-    <link rel="prev" href="LeetCode37.html" />
+    <link rel="prev" href="LeetCode121.html" />
     
 
     </head>
@@ -890,7 +890,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10.2.10" data-path="LeetCode39.html">
+        <li class="chapter " data-level="1.10.2.10" data-path="LeetCode39.html">
             
                 <a href="LeetCode39.html">
             
@@ -1150,7 +1150,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2.30" data-path="LeetCode124.html">
+        <li class="chapter active" data-level="1.10.2.30" data-path="LeetCode124.html">
             
                 <a href="LeetCode124.html">
             
@@ -2191,7 +2191,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >LeetCode39</a>
+        <a href="../.." >LeetCode124</a>
     </h1>
 </div>
 
@@ -2206,124 +2206,51 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;</h2>
-<p>&#x7ED9;&#x5B9A;&#x4E00;&#x4E2A;&#x65E0;&#x91CD;&#x590D;&#x5143;&#x7D20;&#x7684;&#x6570;&#x7EC4; candidates &#x548C;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x6570; target &#xFF0C;&#x627E;&#x51FA; candidates &#x4E2D;&#x6240;&#x6709;&#x53EF;&#x4EE5;&#x4F7F;&#x6570;&#x5B57;&#x548C;&#x4E3A; target &#x7684;&#x7EC4;&#x5408;&#x3002;
-candidates &#x4E2D;&#x7684;&#x6570;&#x5B57;&#x53EF;&#x4EE5;&#x65E0;&#x9650;&#x5236;&#x91CD;&#x590D;&#x88AB;&#x9009;&#x53D6;&#x3002;
-&#x8BF4;&#x660E;&#xFF1A;
-&#x6240;&#x6709;&#x6570;&#x5B57;&#xFF08;&#x5305;&#x62EC; target&#xFF09;&#x90FD;&#x662F;&#x6B63;&#x6574;&#x6570;&#x3002;
-&#x89E3;&#x96C6;&#x4E0D;&#x80FD;&#x5305;&#x542B;&#x91CD;&#x590D;&#x7684;&#x7EC4;&#x5408;&#x3002; </p>
-<!-- more -->
-<h2 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h2>
-<pre><code class="lang-cpp">&#x793A;&#x4F8B; <span class="hljs-number">1</span>&#xFF1A;
-&#x8F93;&#x5165;&#xFF1A;candidates = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>], target = <span class="hljs-number">7</span>,
-&#x6240;&#x6C42;&#x89E3;&#x96C6;&#x4E3A;&#xFF1A;
-[
-  [<span class="hljs-number">7</span>],
-  [<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
-]
-
-&#x793A;&#x4F8B; <span class="hljs-number">2</span>&#xFF1A;
-&#x8F93;&#x5165;&#xFF1A;candidates = [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>], target = <span class="hljs-number">8</span>,
-&#x6240;&#x6C42;&#x89E3;&#x96C6;&#x4E3A;&#xFF1A;
-[
-  [<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>],
-  [<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>],
-  [<span class="hljs-number">3</span>,<span class="hljs-number">5</span>]
-]
-</code></pre>
-<h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;:</h2>
-<p>&#x8FD9;&#x9053;&#x9898;&#x7684;&#x91CD;&#x70B9;&#x5C31;&#x662F;&#x5728;&#x4E8E;&#x53EF;&#x91CD;&#x590D;&#x5427;&#xFF0C;&#x9664;&#x4E86;&#x8FD9;&#x4E2A;&#x6CA1;&#x4EC0;&#x4E48;&#x597D;&#x8BF4;&#x7684;&#x3002;  </p>
-<h3 id="&#x9519;&#x8BEF;&#x793A;&#x8303;">&#x9519;&#x8BEF;&#x793A;&#x8303;</h3>
-<p>&#x6700;&#x5F00;&#x59CB;&#x6211;&#x6CA1;&#x770B;&#x5230;&#x53EF;&#x91CD;&#x590D;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x5199;&#x4E86;&#x4E00;&#x4E2A;&#x65E0;&#x91CD;&#x590D;&#x7248;&#x672C;&#x7684;&#xFF0C;&#x540E;&#x6765;&#x5C06;&#x5176;&#x6539;&#x4E3A;&#x4E86;&#x53EF;&#x4EE5;&#x6709;&#x91CD;&#x590D;&#x5143;&#x7D20;&#x7248;&#x672C;&#xFF0C;&#x53EF;&#x4EE5;&#x89C1;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;
-&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6211;&#x5728;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x8BE5;&#x5143;&#x7D20;&#x91CC;&#x9762;&#x5199;&#x4E86;&#x4E24;&#x4E2A;dfs(&#x5176;&#x5B9E;&#x662F;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;),&#x7C97;&#x7565;&#x4E00;&#x60F3;&#xFF0C;&#x9009;&#x62E9;&#x8BE5;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x53BB;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4E0D;&#x53BB;&#x561B;&#xFF1B;&#x4E0D;&#x9009;&#x62E9;&#x8BE5;&#x5143;&#x7D20;&#x65F6;&#xFF0C;&#x76F4;&#x63A5;&#x53BB;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x3002;&#x3002;&#x3002;&#x3002;&#x6CA1;&#x6BDB;&#x75C5;&#x3002;<br>&#x786E;&#x5B9E;&#x6CA1;&#x6BDB;&#x75C5;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x6837;&#x5199;&#x5C31;&#x4F1A;&#x6709;&#x91CD;&#x590D;&#x5143;&#x7D20;(&#x8FD9;&#x91CC;&#x4E0D;&#x8FC7;&#x591A;&#x89E3;&#x91CA;&#xFF0C;&#x7A0D;&#x5FAE;&#x753B;&#x4E00;&#x4E2A;&#x56FE;&#x5C31;&#x5F88;&#x6E05;&#x695A;&#x4E86;)&#x3002;<br>&#x6CA1;&#x529E;&#x6CD5;&#xFF0C;&#x53EA;&#x597D;&#x52A0;&#x4E00;&#x4E2A;set&#x53BB;&#x91CD;&#xFF0C;&#x9669;&#x8FC7;&#x3002;  </p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+                                <h1 id="&#x4E8C;&#x53C9;&#x6811;&#x91CC;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;">&#x4E8C;&#x53C9;&#x6811;&#x91CC;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;</h1>
+<blockquote>
+<p>&#x65E5;&#x671F;: 2023-08-05</p>
+</blockquote>
+<h2 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;</h2>
+<p>&#x4E8C;&#x53C9;&#x6811;&#x4E2D;&#x7684; &#x8DEF;&#x5F84; &#x88AB;&#x5B9A;&#x4E49;&#x4E3A;&#x4E00;&#x6761;&#x8282;&#x70B9;&#x5E8F;&#x5217;&#xFF0C;&#x5E8F;&#x5217;&#x4E2D;&#x6BCF;&#x5BF9;&#x76F8;&#x90BB;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x90FD;&#x5B58;&#x5728;&#x4E00;&#x6761;&#x8FB9;&#x3002;&#x540C;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5728;&#x4E00;&#x6761;&#x8DEF;&#x5F84;&#x5E8F;&#x5217;&#x4E2D; &#x81F3;&#x591A;&#x51FA;&#x73B0;&#x4E00;&#x6B21; &#x3002;&#x8BE5;&#x8DEF;&#x5F84; &#x81F3;&#x5C11;&#x5305;&#x542B;&#x4E00;&#x4E2A; &#x8282;&#x70B9;&#xFF0C;&#x4E14;&#x4E0D;&#x4E00;&#x5B9A;&#x7ECF;&#x8FC7;&#x6839;&#x8282;&#x70B9;&#x3002;
+&#x8DEF;&#x5F84;&#x548C; &#x662F;&#x8DEF;&#x5F84;&#x4E2D;&#x5404;&#x8282;&#x70B9;&#x503C;&#x7684;&#x603B;&#x548C;&#x3002;
+&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6839;&#x8282;&#x70B9; root &#xFF0C;&#x8FD4;&#x56DE;&#x5176; &#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C; &#x3002;</p>
+<h2 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h2>
+<p>&#x8F93;&#x5165;&#xFF1A;root = [1,2,3]
+&#x8F93;&#x51FA;&#xFF1A;6
+&#x89E3;&#x91CA;&#xFF1A;&#x6700;&#x4F18;&#x8DEF;&#x5F84;&#x662F; 2 -&gt; 1 -&gt; 3 &#xFF0C;&#x8DEF;&#x5F84;&#x548C;&#x4E3A; 2 + 1 + 3 = 6</p>
+<h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h2>
+<p>xhs&#x9762;&#x8BD5;&#x78B0;&#x5230;&#x4E86;&#xFF0C;&#x4E00;&#x9053;&#x4E0D;&#x7B97;hard&#x7684;hard&#x5427;&#x3002;&#x3002;&#x4F46;&#x662F;&#x6211;&#x5199;&#x6210;&#x4ECE;root&#x51FA;&#x53D1;&#x5230;&#x53F6;&#x5B50;&#x7684;&#x6700;&#x5927;&#x8DEF;&#x5F84;&#x548C;&#x4E86;QAQ&#xFF0C;&#x53CD;&#x5E94;&#x8FC7;&#x6765;&#x65F6;&#x5DF2;&#x7ECF;&#x6765;&#x4E0D;&#x53CA;&#x4E86;&#xFF0C;&#x54ED;&#x3002;
+&#x5C24;&#x5176;&#x662F;&#x4E8B;&#x540E;&#x53D1;&#x73B0;&#x8FD9;&#x9053;&#x9898;&#x6211;&#x505A;&#x8FC7;&#xFF0C;&#x800C;&#x4E14;&#x662F;LeetCode hot100&#xFF0C;&#x592A;&#x60B2;&#x4F24;&#x4E86;&#xFF0C;&#x5F15;&#x4EE5;&#x4E3A;&#x6212;&#x3002;</p>
+<p>&#x867D;&#x7136;&#x8FD9;&#x9053;&#x9898;&#x7B97;&#x4E0D;&#x4E0A;hard&#xFF0C;&#x4F46;&#x662F;&#x8FD8;&#x662F;&#x6709;&#x4E00;&#x4E9B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4;&#x5168;&#x5C40;&#x7B54;&#x6848;&#x7684;&#x66F4;&#x65B0;&#x548C;dfs&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x5176;&#x5B9E;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x8FD9;&#x91CC;&#x7684;dfs&#x7684;&#x8FD4;&#x56DE;&#x503C;&#x8868;&#x793A;&#x7684;&#x662F;&#x4ECE;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x5F80;&#x4E0B;&#x8D70;&#xFF0C;&#x4E0D;&#x8D70;&#x56DE;&#x5934;&#x8DEF;&#x7684;&#x6700;&#x5927;&#x503C;&#xFF0C;&#x6240;&#x4EE5;&#x5176;&#x5B9E;&#x53EA;&#x80FD;&#x9009;&#x62E9;&#x8D70;&#x5DE6;&#x8FB9;&#x6216;&#x8005;&#x8D70;&#x53F3;&#x8FB9;&#x3002;&#x4F46;&#x662F;&#x5728;&#x66F4;&#x65B0;ans&#x7684;&#x65F6;&#x5019;&#x5C31;&#x8981;&#x540C;&#x65F6;&#x52A0;&#x4E0A;&#x5DE6;&#x8FB9;&#x548C;&#x53F3;&#x8FB9;&#x5566;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */</span>
+<span class="hljs-keyword">class</span> Solution {
 <span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; ans;
-    <span class="hljs-keyword">int</span> len;
-    <span class="hljs-keyword">int</span> Target;
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; record;
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; candidates,<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> sum)</span></span>{
-        <span class="hljs-keyword">if</span>(pos &gt;= len){
-            <span class="hljs-keyword">if</span>(sum == Target){
-                ans.push_back(record);
-            }
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-keyword">if</span>(sum == Target) {
-            ans.push_back(record);
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-keyword">if</span>(sum &gt; Target){
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-comment">//&#x4E0D;&#x9009;&#x62E9;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
-        dfs(candidates,pos+<span class="hljs-number">1</span>,sum);
-
-        <span class="hljs-comment">//&#x9009;&#x62E9;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
-        record.push_back(candidates[pos]);
-        dfs(candidates,pos+<span class="hljs-number">1</span>,sum+candidates[pos]);
-        dfs(candidates,pos,sum+candidates[pos]);
-        record.pop_back();
+    <span class="hljs-keyword">int</span> ans = INT_MIN;
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode* root)</span></span>{
+        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">nullptr</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> leftMax = max(dfs(root-&gt;left), <span class="hljs-number">0</span>);
+        <span class="hljs-keyword">int</span> rightMax = max(dfs(root-&gt;right), <span class="hljs-number">0</span>);
+        ans = max(ans, leftMax + rightMax + root-&gt;val);
+        <span class="hljs-keyword">return</span> root-&gt;val + max(leftMax, rightMax);
     }
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; combinationSum(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; candidates, <span class="hljs-keyword">int</span> target) {
-        record.clear();
-        len = candidates.size();
-        Target = target;
-        dfs(candidates,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);
-        <span class="hljs-comment">//&#x62D9;&#x52A3;&#x7684;&#x53BB;&#x91CD;</span>
-        <span class="hljs-built_in">set</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; s;
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> x:ans){
-            s.insert(x);
-        }
-        ans.clear();
-        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> x:s){
-            ans.push_back(x);
-        }
+    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">maxPathSum</span><span class="hljs-params">(TreeNode* root)</span> </span>{
+        dfs(root);
         <span class="hljs-keyword">return</span> ans;
     }
 };
 </code></pre>
-<h3 id="&#x6B63;&#x786E;&#x793A;&#x8303;">&#x6B63;&#x786E;&#x793A;&#x8303;</h3>
-<p>&#x518D;&#x8F6C;&#x800C;&#x4E00;&#x60F3;(&#x4E00;&#x770B;&#x9898;&#x89E3;)&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#x4E0D;&#x9009;&#x8BE5;&#x5143;&#x7D20;-&gt;&#x53BB;&#x4E0B;&#x4E00;&#x4E2A;&#x8282;&#x70B9;&#xFF1B;&#x9009;&#x62E9;&#x8BE5;&#x5143;&#x7D20;-&gt;&#x539F;&#x5730;&#x4E0D;&#x52A8;&#x3002;&#x4E0D;&#x5C31;&#x884C;&#x4E86;&#x4E48;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x3002;&#x77AC;&#x95F4;&#x611F;&#x89C9;&#x81EA;&#x5DF1;&#x662F;&#x4E2A;zz&#x3002;  </p>
-<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; ans;
-    <span class="hljs-keyword">int</span> len;
-    <span class="hljs-keyword">int</span> Target;
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; record;
-    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; candidates,<span class="hljs-keyword">int</span> pos,<span class="hljs-keyword">int</span> sum)</span></span>{
-        <span class="hljs-keyword">if</span>(pos &gt;= len){
-            <span class="hljs-keyword">if</span>(sum == Target){
-                ans.push_back(record);
-            }
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-keyword">if</span>(sum == Target) {
-            ans.push_back(record);
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-keyword">if</span>(sum &gt; Target){
-            <span class="hljs-keyword">return</span>;
-        }
-        <span class="hljs-comment">//&#x4E0D;&#x9009;&#x62E9;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
-        dfs(candidates,pos+<span class="hljs-number">1</span>,sum);
-
-        <span class="hljs-comment">//&#x9009;&#x62E9;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;</span>
-        record.push_back(candidates[pos]);
-        dfs(candidates,pos,sum+candidates[pos]);
-        record.pop_back();
-    }
-    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&gt; combinationSum(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; candidates, <span class="hljs-keyword">int</span> target) {
-        record.clear();
-        len = candidates.size();
-        Target = target;
-        dfs(candidates,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);
-        <span class="hljs-keyword">return</span> ans;
-    }
-};
-</code></pre>
-<h2 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;">&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;</h2>
-<p><a href="https://leetcode-cn.com/problems/combination-sum/" target="_blank">https://leetcode-cn.com/problems/combination-sum/</a></p>
+<h2 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;">&#x9898;&#x76EE;&#x94FE;&#x63A5;</h2>
+<p><a href="https://leetcode.cn/problems/binary-tree-maximum-path-sum/" target="_blank">https://leetcode.cn/problems/binary-tree-maximum-path-sum/</a></p>
 
                                 
                                 </section>
@@ -2351,12 +2278,12 @@ candidates &#x4E2D;&#x7684;&#x6570;&#x5B57;&#x53EF;&#x4EE5;&#x65E0;&#x9650;&#x52
 
             
                 
-                <a href="LeetCode37.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode37">
+                <a href="LeetCode121.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode121">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="LeetCode40.html" class="navigation navigation-next " aria-label="Next page: LeetCode40">
+                <a href="LeetCode134.html" class="navigation navigation-next " aria-label="Next page: LeetCode134">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2367,7 +2294,7 @@ candidates &#x4E2D;&#x7684;&#x6570;&#x5B57;&#x53EF;&#x4EE5;&#x65E0;&#x9650;&#x52
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LeetCode39","date":"2020-09-09T09:10:02.000Z","tags":["排列组合","回溯","dfs"],"level":"1.10.2.10","depth":3,"next":{"title":"LeetCode40","level":"1.10.2.11","depth":3,"path":"algorithms/LeetCode/LeetCode40.md","ref":"./algorithms/LeetCode/LeetCode40.md","articles":[]},"previous":{"title":"LeetCode37","level":"1.10.2.9","depth":3,"path":"algorithms/LeetCode/LeetCode37.md","ref":"./algorithms/LeetCode/LeetCode37.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode39.md","mtime":"2022-03-13T08:40:21.214Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-05T09:23:18.596Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LeetCode124","date":"2023-08-05T17:13:22.000Z","tags":["二叉树","树形dp"],"level":"1.10.2.30","depth":3,"next":{"title":"LeetCode134","level":"1.10.2.31","depth":3,"path":"algorithms/LeetCode/LeetCode134.md","ref":"./algorithms/LeetCode/LeetCode134.md","articles":[]},"previous":{"title":"LeetCode121","level":"1.10.2.29","depth":3,"path":"algorithms/LeetCode/LeetCode121.md","ref":"./algorithms/LeetCode/LeetCode121.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode124.md","mtime":"2023-08-05T09:19:16.784Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-05T09:23:18.596Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
