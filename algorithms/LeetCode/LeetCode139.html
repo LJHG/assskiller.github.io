@@ -2224,6 +2224,38 @@
 </code></pre><pre><code>&#x8F93;&#x5165;: s = &quot;catsandog&quot;, wordDict = [&quot;cats&quot;, &quot;dog&quot;, &quot;sand&quot;, &quot;and&quot;, &quot;cat&quot;]
 &#x8F93;&#x51FA;: false
 </code></pre><h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h2>
+<h3 id="&#x5907;&#x5FD8;&#x5F55;&#x601D;&#x8DEF;">&#x5907;&#x5FD8;&#x5F55;&#x601D;&#x8DEF;</h3>
+<p>&#x4E2A;&#x4EBA;&#x611F;&#x89C9;&#x4F7F;&#x7528;dfs + &#x5907;&#x5FD8;&#x5F55;&#x7684;&#x65B9;&#x5F0F;&#x4F1A;&#x66F4;&#x52A0;&#x6E05;&#x6670;&#xFF0C;&#x6240;&#x4EE5;&#x628A;&#x8FD9;&#x4E2A;&#x9898;&#x89E3;&#x653E;&#x5728;&#x524D;&#x9762;&#x3002;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-comment">// dfs + &#x5907;&#x5FD8;&#x5F55;&#x5199;&#x6CD5;</span>
+    <span class="hljs-built_in">map</span>&lt;pair&lt;<span class="hljs-built_in">string</span>,<span class="hljs-keyword">int</span>&gt;, <span class="hljs-keyword">bool</span>&gt; m;
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-built_in">string</span>&amp; s, <span class="hljs-keyword">int</span> idx, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; wordDict)</span></span>{
+        <span class="hljs-keyword">if</span>(idx == s.size()) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        <span class="hljs-keyword">if</span>(m.count(make_pair(s,idx))) <span class="hljs-keyword">return</span> m[make_pair(s,idx)];
+        <span class="hljs-keyword">bool</span> ans = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">string</span>&amp; word:wordDict){
+            <span class="hljs-keyword">if</span>(s.size() - idx &lt; word.size()) <span class="hljs-keyword">continue</span>;
+            <span class="hljs-keyword">bool</span> valid = <span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;word.size();i++){
+                <span class="hljs-keyword">if</span>(s[idx+i] != word[i]){
+                    valid = <span class="hljs-literal">false</span>;
+                    <span class="hljs-keyword">break</span>;
+                }
+            }
+            <span class="hljs-keyword">if</span>(valid){
+                ans |= dfs(s, idx+word.size(), wordDict);
+            }
+        }
+        m[make_pair(s,idx)] = ans;
+        <span class="hljs-keyword">return</span> ans;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">wordBreak</span><span class="hljs-params">(<span class="hljs-built_in">string</span> s, <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt;&amp; wordDict)</span> </span>{
+        <span class="hljs-keyword">return</span> dfs(s, <span class="hljs-number">0</span>, wordDict);
+    }
+};
+</code></pre>
+<h3 id="&#x80CC;&#x5305;&#x601D;&#x8DEF;">&#x80CC;&#x5305;&#x601D;&#x8DEF;</h3>
 <p>&#x9996;&#x5148;&#xFF0C;&#x53EF;&#x4EE5;&#x91CD;&#x590D;&#x4F7F;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x5224;&#x65AD;&#x4E3A;&#x5B8C;&#x5168;&#x80CC;&#x5305;&#x3002;</p>
 <p>&#x56E0;&#x4E3A;&#x987A;&#x5E8F;&#x662F;&#x5F88;&#x91CD;&#x8981;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x8BF4; leetcode &#x662F; &#x7531; leet &#x548C; code &#x7EC4;&#x6210;&#x7684;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7531; code &#x548C; leet &#x7EC4;&#x6210;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x5B8C;&#x5168;&#x80CC;&#x5305;&#x5E94;&#x8BE5;&#x5148;&#x904D;&#x5386;&#x5BB9;&#x91CF;&#xFF0C;&#x518D;&#x904D;&#x5386;&#x7269;&#x54C1;&#x3002;</p>
 <p>&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;dp&#x4E86;</p>
@@ -2294,7 +2326,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LeetCode139","date":"2023-02-20T11:22:04.000Z","tags":["dp"],"level":"1.10.2.32","depth":3,"next":{"title":"LeetCode144","level":"1.10.2.33","depth":3,"path":"algorithms/LeetCode/LeetCode144.md","ref":"./algorithms/LeetCode/LeetCode144.md","articles":[]},"previous":{"title":"LeetCode134","level":"1.10.2.31","depth":3,"path":"algorithms/LeetCode/LeetCode134.md","ref":"./algorithms/LeetCode/LeetCode134.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode139.md","mtime":"2023-02-20T03:26:12.033Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-08-05T15:15:37.429Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LeetCode139","date":"2023-02-20T11:22:04.000Z","tags":["dp"],"level":"1.10.2.32","depth":3,"next":{"title":"LeetCode144","level":"1.10.2.33","depth":3,"path":"algorithms/LeetCode/LeetCode144.md","ref":"./algorithms/LeetCode/LeetCode144.md","articles":[]},"previous":{"title":"LeetCode134","level":"1.10.2.31","depth":3,"path":"algorithms/LeetCode/LeetCode134.md","ref":"./algorithms/LeetCode/LeetCode134.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode139.md","mtime":"2023-09-13T08:16:55.465Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-13T08:18:03.436Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
