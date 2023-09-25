@@ -2253,6 +2253,95 @@
 &#x8F93;&#x5165;&#xFF1A;s = &quot;)(&quot;
 &#x8F93;&#x51FA;&#xFF1A;[&quot;&quot;]
 </code></pre><h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h2>
+<h3 id="&#x56DE;&#x6EAF;--&#x526A;&#x679D;">&#x56DE;&#x6EAF; + &#x526A;&#x679D;</h3>
+<blockquote>
+<p>update on 2023.9.25</p>
+</blockquote>
+<p>&#x4E2A;&#x4EBA;&#x611F;&#x89C9;&#x56DE;&#x6EAF;&#x52A0;&#x526A;&#x679D;&#x7684;&#x65B9;&#x5F0F;&#x6BD4;&#x8F83;&#x597D;&#x60F3;&#x4E5F;&#x6BD4;&#x8F83;&#x597D;&#x5199;&#xFF0C;&#x552F;&#x4E00;&#x4E0D;&#x592A;&#x597D;&#x5199;&#x7684;&#x5730;&#x65B9;&#x5728;&#x4E8E;&#x526A;&#x679D;&#x3002;</p>
+<p>&#x672C;&#x6765;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x662F;&#x8D70;&#x5230;s&#x7684;&#x672B;&#x5C3E;&#x518D;&#x53BB;&#x5224;&#x65AD;tmp&#x662F;&#x5426;valid&#xFF0C;&#x5982;&#x679C;&#x662F;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x52A0;&#x5165;&#x7B54;&#x6848;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x8FD9;&#x9053;&#x9898;&#x4E0D;&#x526A;&#x679D;&#x8FC7;&#x4E0D;&#x4E86;&#xFF0C;&#x5E94;&#x8BE5;&#x7B97;&#x662F;&#x88AB;&#x5361;&#x5E38;&#x6570;&#x4E86;&#xFF0C;&#x867D;&#x7136;2^25&#x53EA;&#x6709;3000&#x4E07;&#xFF0C;&#x4F46;&#x662F;&#x6BCF;&#x4E00;&#x6B21;&#x5224;&#x65AD;&#x4E00;&#x4E0B;&#xFF0C;&#x5DEE;&#x4E0D;&#x591A;&#x662F;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A;30&#x7684;&#x904D;&#x5386;&#x5C31;&#x5230;1e9&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x6709;&#x53EF;&#x80FD;&#x8FC7;&#x4E0D;&#x4E86;&#x7684;&#x3002;</p>
+<pre><code>&gt;&gt;&gt; 2 ** 25
+33554432
+&gt;&gt;&gt; 33554432 * 30
+1006632960
+</code></pre><p>&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x8981;&#x526A;&#x679D;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;<code>isPossibleValid</code>&#x51FD;&#x6570;&#x6765;&#x770B;&#x5F53;&#x524D;&#x7684;&#x7B54;&#x6848;&#x662F;&#x5426;&#x8FD8;&#x6709;&#x53EF;&#x80FD;&#x5408;&#x6CD5;&#xFF0C;&#x56E0;&#x4E3A;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x60C5;&#x51B5;&#x4F7F;&#x5F97;&#x5B83;&#x80AF;&#x5B9A;&#x4F1A;&#x4E0D;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<ol>
+<li>&#x5F53;&#x524D;&#x7684;&#x53F3;&#x62EC;&#x53F7;&#x6570;&#x91CF;&#x6BD4;&#x5DE6;&#x62EC;&#x53F7;&#x591A;: ), )()</li>
+<li>&#x5F53;&#x524D;&#x7684;&#x5DE6;&#x62EC;&#x53F7;&#x6570;&#x91CF;&#x5DF2;&#x7ECF;&#x5927;&#x4E8E;&#x540E;&#x7EED;&#x8FD8;&#x6CA1;&#x6709;&#x5904;&#x7406;&#x7684;&#x5B57;&#x7B26;&#x6570;&#x91CF;&#xFF0C;&#x65E0;&#x6CD5;&#x6709;&#x8DB3;&#x591F;&#x591A;&#x7684;&#x53F3;&#x62EC;&#x53F7;&#x4E0E;&#x4E4B;&#x5339;&#x914D;(&#x8FD9;&#x4E2A;&#x526A;&#x679D;&#x5F88;&#x91CD;&#x8981;&#xFF0C;&#x4E0D;&#x52A0;&#x8FD9;&#x4E2A;&#x5C31;&#x8FC7;&#x4E0D;&#x4E86;)&#xFF0C;&#x4F8B;&#x5982; ((((((((((((((((((((((aaaaaa</li>
+</ol>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">int</span> totalSize;
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isValid</span><span class="hljs-params">(<span class="hljs-built_in">string</span>&amp; s)</span></span>{
+        <span class="hljs-keyword">int</span> curLeft = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c:s){
+            <span class="hljs-keyword">if</span>(c == <span class="hljs-string">&apos;(&apos;</span>) curLeft += <span class="hljs-number">1</span>;
+            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(c == <span class="hljs-string">&apos;)&apos;</span>){
+                <span class="hljs-keyword">if</span>(curLeft == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+                <span class="hljs-keyword">else</span> curLeft -= <span class="hljs-number">1</span>;
+            }
+        }
+        <span class="hljs-keyword">return</span> curLeft == <span class="hljs-number">0</span>;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isPossibleValid</span><span class="hljs-params">(<span class="hljs-built_in">string</span> &amp;s, <span class="hljs-keyword">int</span> idx)</span></span>{
+        <span class="hljs-keyword">int</span> curLeft = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> curRight = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c:s){
+            <span class="hljs-keyword">if</span>(c == <span class="hljs-string">&apos;(&apos;</span>){
+                curLeft += <span class="hljs-number">1</span>;
+            }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(c == <span class="hljs-string">&apos;)&apos;</span>){
+                curRight += <span class="hljs-number">1</span>;
+            }
+        }
+        <span class="hljs-keyword">if</span>(curLeft &lt; curRight) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x526A;&#x679D;&#x5F88;&#x6709;&#x7528;</span>
+        <span class="hljs-keyword">if</span>(curLeft - curRight &gt; totalSize - idx ) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">return</span> curLeft &gt;= curRight;
+    }
+
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; ans;
+    <span class="hljs-built_in">unordered_set</span>&lt;<span class="hljs-built_in">string</span>&gt; st;
+    <span class="hljs-built_in">string</span> tmp;
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-built_in">string</span>&amp; s, <span class="hljs-keyword">int</span> idx)</span></span>{
+        <span class="hljs-comment">// &#x526A;&#x679D;</span>
+        <span class="hljs-keyword">if</span>(!isPossibleValid(tmp, idx)) <span class="hljs-keyword">return</span>;
+        <span class="hljs-keyword">if</span>(idx == s.size()){
+            <span class="hljs-keyword">if</span>(isValid(tmp) &amp;&amp; st.count(tmp) == <span class="hljs-number">0</span>){
+                ans.push_back(tmp);
+                st.insert(tmp);
+            }
+            <span class="hljs-keyword">return</span>;
+        }
+        tmp += s[idx];
+        dfs(s, idx+<span class="hljs-number">1</span>);
+        tmp.pop_back();
+        dfs(s, idx+<span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-built_in">string</span>&amp; a, <span class="hljs-built_in">string</span>&amp; b)</span></span>{
+        <span class="hljs-keyword">return</span> a.size() &gt; b.size();
+    }
+
+    <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; removeInvalidParentheses(<span class="hljs-built_in">string</span> s) {
+        totalSize = s.size();
+        dfs(s, <span class="hljs-number">0</span>);
+        sort(ans.begin(), ans.end(), cmp);
+        <span class="hljs-keyword">int</span> len = ans[<span class="hljs-number">0</span>].size();
+        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-built_in">string</span>&gt; _ans;
+        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">string</span>&amp; x:ans){
+            <span class="hljs-keyword">if</span>(x.size() == len){
+                _ans.push_back(x);
+            }<span class="hljs-keyword">else</span>{
+                <span class="hljs-keyword">break</span>;
+            }
+        }
+        <span class="hljs-keyword">return</span> _ans;
+    }
+};
+</code></pre>
+<h3 id="bfs">bfs</h3>
 <p>&#x611F;&#x89C9;&#x9010;&#x6E10;&#x638C;&#x63E1;BFS&#xFF0C;&#x8FD9;&#x9053;&#x9898;&#x8981;&#x6C42;&#x7684;&#x662F;&#x5220;&#x9664;<strong>&#x6700;&#x5C0F;&#x6570;&#x91CF;</strong>&#x7684;&#x62EC;&#x53F7;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;BFS&#x7684;&#x65B9;&#x5F0F;&#x4E00;&#x70B9;&#x4E00;&#x70B9;&#x5730;&#x628A;&#x7ED3;&#x679C;&#x6784;&#x9020;&#x51FA;&#x6765;&#x3002;</p>
 <p>&#x8FD9;&#x9053;&#x9898;&#x6700;&#x540E;&#x505A;&#x51FA;&#x6765;&#x65F6;&#x95F4;&#x52C9;&#x5F3A;&#x98D8;&#x8FC7;&#xFF0C;&#x611F;&#x89C9;&#x65F6;&#x95F4;&#x5361;&#x7684;&#x4E0D;&#x662F;&#x5F88;&#x6B7B;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x9891;&#x7E41;&#x7684;int&#x8F6C;string&#x5E94;&#x8BE5;&#x4F1A;&#x8BA9;&#x6027;&#x80FD;&#x635F;&#x5931;&#x5F88;&#x591A;&#xFF0C;&#x4E0D;&#x8FC7;&#x5E94;&#x8BE5;&#x662F;&#x6709;&#x65B9;&#x6CD5;&#x76F4;&#x63A5;&#x5728;int&#x4E0A;&#x505A;valid&#x7684;&#x5224;&#x65AD;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x4E0D;&#x7528;int&#x5168;&#x7528;string&#xFF1F;</p>
 <p>&#x56E0;&#x4E3A;&#x8FD9;&#x9053;&#x9898;&#x6211;&#x7684;&#x5224;&#x91CD;&#x662F;&#x5728;string&#x4E0A;&#x505A;&#x7684;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#x5F00;&#x4E00;&#x4E2A;30000000&#x5927;&#x7684;&#x4E00;&#x7EF4;&#x6570;&#x7EC4;&#x4F1A;&#x5D29;&#xFF0C;&#x53E6;&#x5916;&#x5C31;&#x662F;&#x56E0;&#x4E3A;&#x4E24;&#x4E2A;&#x4E0D;&#x4E00;&#x6837;&#x7684;int(&#x9009;&#x62E9;&#x65B9;&#x6848;)&#x53EF;&#x80FD;&#x4F1A;&#x5BFC;&#x81F4;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x867D;&#x7136;&#x8FD9;&#x4E2A;&#x53EF;&#x4EE5;&#x5728;ans&#x8FDB;&#x884C;&#x4E00;&#x4E2A;&#x5224;&#x91CD;&#x5C31;&#x662F;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x8FD8;&#x662F;&#x4E0D;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#x5F00;&#x4E00;&#x4E2A;30000000&#x5927;&#x7684;&#x6570;&#x7EC4;&#x4F1A;&#x5D29;&#x3002;</p>
@@ -2379,7 +2468,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LeetCode301","date":"2022-09-23T19:36:07.000Z","tags":["BFS"],"level":"1.10.2.49","depth":3,"next":{"title":"LeetCode312","level":"1.10.2.50","depth":3,"path":"algorithms/LeetCode/LeetCode312.md","ref":"./algorithms/LeetCode/LeetCode312.md","articles":[]},"previous":{"title":"LeetCode287","level":"1.10.2.48","depth":3,"path":"algorithms/LeetCode/LeetCode287.md","ref":"./algorithms/LeetCode/LeetCode287.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode301.md","mtime":"2022-09-23T11:43:32.726Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-19T15:10:49.830Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LeetCode301","date":"2022-09-23T19:36:07.000Z","tags":["BFS"],"level":"1.10.2.49","depth":3,"next":{"title":"LeetCode312","level":"1.10.2.50","depth":3,"path":"algorithms/LeetCode/LeetCode312.md","ref":"./algorithms/LeetCode/LeetCode312.md","articles":[]},"previous":{"title":"LeetCode287","level":"1.10.2.48","depth":3,"path":"algorithms/LeetCode/LeetCode287.md","ref":"./algorithms/LeetCode/LeetCode287.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode301.md","mtime":"2023-09-25T07:25:51.180Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-25T07:26:14.375Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
