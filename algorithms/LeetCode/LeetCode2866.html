@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>LeetCode50 · GitBook</title>
+        <title>LeetCode2866 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -69,10 +69,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="LeetCode51.html" />
+    <link rel="next" href="LeetCode5393.html" />
     
     
-    <link rel="prev" href="LeetCode47.html" />
+    <link rel="prev" href="LeetCode2581.html" />
     
 
     </head>
@@ -968,7 +968,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.10.2.15" data-path="LeetCode50.html">
+        <li class="chapter " data-level="1.10.2.15" data-path="LeetCode50.html">
             
                 <a href="LeetCode50.html">
             
@@ -1891,7 +1891,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2.86" data-path="LeetCode2866.html">
+        <li class="chapter active" data-level="1.10.2.86" data-path="LeetCode2866.html">
             
                 <a href="LeetCode2866.html">
             
@@ -2230,7 +2230,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >LeetCode50</a>
+        <a href="../.." >LeetCode2866</a>
     </h1>
 </div>
 
@@ -2245,35 +2245,138 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;&#xFF1A;</h3>
-<p>&#x5B9E;&#x73B0; pow(x, n) &#xFF0C;&#x5373;&#x8BA1;&#x7B97; x &#x7684; n &#x6B21;&#x5E42;&#x51FD;&#x6570;&#x3002;</p>
-<!-- more -->
-<h3 id="&#x793A;&#x4F8B;&#xFF1A;">&#x793A;&#x4F8B;&#xFF1A;</h3>
-<pre><code class="lang-cpp">&#x793A;&#x4F8B; <span class="hljs-number">1</span>:
-&#x8F93;&#x5165;: <span class="hljs-number">2.00000</span>, <span class="hljs-number">10</span>
-&#x8F93;&#x51FA;: <span class="hljs-number">1024.00000</span>
+                                <h1 id="&#x7F8E;&#x4E3D;&#x5854;---leetcode2866&#x5355;&#x8C03;&#x6808;">&#x7F8E;&#x4E3D;&#x5854;---LeetCode2866(&#x5355;&#x8C03;&#x6808;)</h1>
+<blockquote>
+<p>&#x65E5;&#x671F;: 2023-09-26</p>
+</blockquote>
+<h2 id="&#x9898;&#x76EE;&#x63CF;&#x8FF0;">&#x9898;&#x76EE;&#x63CF;&#x8FF0;</h2>
+<p>&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x957F;&#x5EA6;&#x4E3A; <code>n</code> &#x4E0B;&#x6807;&#x4ECE; <strong>0</strong> &#x5F00;&#x59CB;&#x7684;&#x6574;&#x6570;&#x6570;&#x7EC4; <code>maxHeights</code> &#x3002;</p>
+<p>&#x4F60;&#x7684;&#x4EFB;&#x52A1;&#x662F;&#x5728;&#x5750;&#x6807;&#x8F74;&#x4E0A;&#x5EFA; <code>n</code> &#x5EA7;&#x5854;&#x3002;&#x7B2C; <code>i</code> &#x5EA7;&#x5854;&#x7684;&#x4E0B;&#x6807;&#x4E3A; <code>i</code> &#xFF0C;&#x9AD8;&#x5EA6;&#x4E3A; <code>heights[i]</code> &#x3002;</p>
+<p>&#x5982;&#x679C;&#x4EE5;&#x4E0B;&#x6761;&#x4EF6;&#x6EE1;&#x8DB3;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x8FD9;&#x4E9B;&#x5854;&#x662F; <strong>&#x7F8E;&#x4E3D;</strong> &#x7684;&#xFF1A;</p>
+<ol>
+<li><code>1 &lt;= heights[i] &lt;= maxHeights[i]</code></li>
+<li><code>heights</code> &#x662F;&#x4E00;&#x4E2A; <strong>&#x5C71;&#x72B6;</strong> &#x6570;&#x7EC4;&#x3002;</li>
+</ol>
+<p>&#x5982;&#x679C;&#x5B58;&#x5728;&#x4E0B;&#x6807; <code>i</code> &#x6EE1;&#x8DB3;&#x4EE5;&#x4E0B;&#x6761;&#x4EF6;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x79F0;&#x6570;&#x7EC4; <code>heights</code> &#x662F;&#x4E00;&#x4E2A; <strong>&#x5C71;&#x72B6;</strong> &#x6570;&#x7EC4;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x6240;&#x6709; <code>0 &lt; j &lt;= i</code> &#xFF0C;&#x90FD;&#x6709; <code>heights[j - 1] &lt;= heights[j]</code></li>
+<li>&#x5BF9;&#x4E8E;&#x6240;&#x6709; <code>i &lt;= k &lt; n - 1</code> &#xFF0C;&#x90FD;&#x6709; <code>heights[k + 1] &lt;= heights[k]</code></li>
+</ul>
+<p>&#x8BF7;&#x4F60;&#x8FD4;&#x56DE;&#x6EE1;&#x8DB3; <strong>&#x7F8E;&#x4E3D;&#x5854;</strong> &#x8981;&#x6C42;&#x7684;&#x65B9;&#x6848;&#x4E2D;&#xFF0C;<strong>&#x9AD8;&#x5EA6;&#x548C;&#x7684;&#x6700;&#x5927;&#x503C;</strong> &#x3002;</p>
+<h2 id="&#x793A;&#x4F8B;">&#x793A;&#x4F8B;</h2>
+<pre><code>&#x8F93;&#x5165;&#xFF1A;maxHeights = [5,3,4,1,1]
+&#x8F93;&#x51FA;&#xFF1A;13
+&#x89E3;&#x91CA;&#xFF1A;&#x548C;&#x6700;&#x5927;&#x7684;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#x4E3A; heights = [5,3,3,1,1] &#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#xFF0C;&#x56E0;&#x4E3A;&#xFF1A;
+- 1 &lt;= heights[i] &lt;= maxHeights[i]  
+- heights &#x662F;&#x4E2A;&#x5C71;&#x72B6;&#x6570;&#x7EC4;&#xFF0C;&#x5CF0;&#x503C;&#x5728; i = 0 &#x5904;&#x3002;
+13 &#x662F;&#x6240;&#x6709;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#x4E2D;&#x7684;&#x6700;&#x5927;&#x9AD8;&#x5EA6;&#x548C;&#x3002;
+</code></pre><pre><code class="lang-cpp">&#x8F93;&#x5165;&#xFF1A;maxHeights = [<span class="hljs-number">6</span>,<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">9</span>,<span class="hljs-number">2</span>,<span class="hljs-number">7</span>]
+&#x8F93;&#x51FA;&#xFF1A;<span class="hljs-number">22</span>
+&#x89E3;&#x91CA;&#xFF1A; &#x548C;&#x6700;&#x5927;&#x7684;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#x4E3A; heights = [<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">9</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>] &#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#xFF0C;&#x56E0;&#x4E3A;&#xFF1A;
+- <span class="hljs-number">1</span> &lt;= heights[i] &lt;= maxHeights[i]
+- heights &#x662F;&#x4E2A;&#x5C71;&#x72B6;&#x6570;&#x7EC4;&#xFF0C;&#x5CF0;&#x503C;&#x5728; i = <span class="hljs-number">3</span> &#x5904;&#x3002;
+<span class="hljs-number">22</span> &#x662F;&#x6240;&#x6709;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#x4E2D;&#x7684;&#x6700;&#x5927;&#x9AD8;&#x5EA6;&#x548C;&#x3002;
 </code></pre>
-<h3 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;:</h3>
-<p>&#x5C31;&#x662F;&#x5FEB;&#x901F;&#x5E42;&#x3002;&#x5FEB;&#x901F;&#x5E42;&#x7684;&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x5C31;&#x662F;&#xFF0C;&#x901A;&#x8FC7;&#x628A;&#x6307;&#x6570;&#x51CF;&#x534A;&#xFF0C;&#x5E95;&#x6570;&#x5E73;&#x65B9;&#x6765;&#x4F7F;&#x5F97;&#x5FAA;&#x73AF;&#x6B21;&#x6570;&#x5C3D;&#x53EF;&#x80FD;&#x51CF;&#x5C11;&#x3002;</p>
-<pre><code class="lang-cpp"><span class="hljs-comment">//&#x5982;&#x679C;&#x6307;&#x6570;&#x4E3A;&#x5947;&#x6570;&#xFF0C;&#x5E95;&#x6570;&#x4E0E;&#x7ED3;&#x679C;&#x76F8;&#x4E58;&#x3002;&#x7136;&#x540E;&#x5E95;&#x6570; = &#x5E95;&#x6570;*&#x5E95;&#x6570; &#xFF0C;&#x6307;&#x6570; = &#x6307;&#x6570;/2&#x3002;&#x8FD9;&#x91CC;&#x5176;&#x5B9E;&#x662F;&#x62FF;&#x4E86;&#x4E00;&#x4E2A;&#x5E95;&#x6570;^1&#x4E0E;&#x7ED3;&#x679C;&#x76F8;&#x4E58;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x5F53;&#x6210;&#x5076;&#x6307;&#x6570;&#x60C5;&#x51B5;&#x53D8;&#x6362;&#x3002;</span>
-<span class="hljs-comment">//&#x5982;&#x679C;&#x6307;&#x6570;&#x4E3A;&#x5076;&#x6570;&#xFF0C;&#x76F4;&#x63A5; &#x5E95;&#x6570; = &#x5E95;&#x6570;*&#x5E95;&#x6570; &#xFF0C;&#x6307;&#x6570; = &#x6307;&#x6570;/2</span>
-<span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">fastPow</span><span class="hljs-params">(<span class="hljs-keyword">double</span> x,<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> n)</span>
-</span>{
-    <span class="hljs-keyword">double</span> res =<span class="hljs-number">1</span>;
-    <span class="hljs-keyword">while</span>(n&gt;<span class="hljs-number">0</span>)
-    {
-        <span class="hljs-keyword">if</span>(n&amp;<span class="hljs-number">1</span>)<span class="hljs-comment">//&#x5982;&#x679C;n&#x4E3A;&#x5947;&#x6570;</span>
-        {
-            res = res*x;
+<pre><code>&#x8F93;&#x5165;&#xFF1A;maxHeights = [3,2,5,5,2,3]
+&#x8F93;&#x51FA;&#xFF1A;18
+&#x89E3;&#x91CA;&#xFF1A;&#x548C;&#x6700;&#x5927;&#x7684;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#x4E3A; heights = [2,2,5,5,2,2] &#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#xFF0C;&#x56E0;&#x4E3A;&#xFF1A;
+- 1 &lt;= heights[i] &lt;= maxHeights[i]
+- heights &#x662F;&#x4E2A;&#x5C71;&#x72B6;&#x6570;&#x7EC4;&#xFF0C;&#x6700;&#x5927;&#x503C;&#x5728; i = 2 &#x5904;&#x3002;
+&#x6CE8;&#x610F;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x65B9;&#x6848;&#x4E2D;&#xFF0C;i = 3 &#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x5CF0;&#x503C;&#x3002;
+18 &#x662F;&#x6240;&#x6709;&#x7F8E;&#x4E3D;&#x5854;&#x65B9;&#x6848;&#x4E2D;&#x7684;&#x6700;&#x5927;&#x9AD8;&#x5EA6;&#x548C;&#x3002;
+</code></pre><h2 id="&#x89E3;&#x9898;&#x601D;&#x8DEF;">&#x89E3;&#x9898;&#x601D;&#x8DEF;</h2>
+<h3 id="&#x66B4;&#x529B;&#x679A;&#x4E3E;">&#x66B4;&#x529B;&#x679A;&#x4E3E;</h3>
+<p>&#x5F53;&#x6570;&#x636E;&#x8303;&#x56F4;&#x6BD4;&#x8F83;&#x5C0F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F8B;&#x5982;1e3&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x679A;&#x4E3E;&#x9876;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x5F80;&#x4E24;&#x8FB9;&#x8D70;&#xFF0C;&#x4E00;&#x76F4;&#x6A21;&#x62DF;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<p>n^2&#x7684;&#x590D;&#x6742;&#x5EA6;</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">maximumSumOfHeights</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; maxHeights)</span> </span>{
+        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> n = maxHeights.size();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++){
+            <span class="hljs-keyword">int</span> top = maxHeights[i];
+            <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> sum = top;
+            <span class="hljs-keyword">int</span> cur = top;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i<span class="hljs-number">-1</span>;j&gt;=<span class="hljs-number">0</span>;j--){
+                <span class="hljs-keyword">if</span>(maxHeights[j] &gt;= cur){
+                    sum += cur;
+                }<span class="hljs-keyword">else</span>{
+                    sum += maxHeights[j];
+                    cur = maxHeights[j];
+                }
+            }
+            cur = top;
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=i+<span class="hljs-number">1</span>;j&lt;n;j++){
+                <span class="hljs-keyword">if</span>(maxHeights[j] &gt;= cur){
+                    sum += cur;
+                }<span class="hljs-keyword">else</span>{
+                    sum += maxHeights[j];
+                    cur = maxHeights[j];
+                }
+            }
+            ans = max(ans, sum);
         }
-        x = x*x;
-        n = n&gt;&gt;<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">return</span> ans;
     }
-    <span class="hljs-keyword">return</span> res;
-}
+};
 </code></pre>
-<h3 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;">&#x9898;&#x76EE;&#x94FE;&#x63A5;&#xFF1A;</h3>
-<p><a href="https://leetcode-cn.com/problems/powx-n/" target="_blank">https://leetcode-cn.com/problems/powx-n/</a><br><a href="https://blog.csdn.net/qq_19782019/article/details/85621386" target="_blank">&#x4E00;&#x4E2A;&#x8BB2;&#x5FEB;&#x901F;&#x5E42;&#x8BB2;&#x7684;&#x5F88;&#x597D;&#x7684;&#x535A;&#x5BA2;</a></p>
+<h3 id="&#x5355;&#x8C03;&#x6808;">&#x5355;&#x8C03;&#x6808;</h3>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x5176;&#x5B9E;&#x679A;&#x4E3E;&#x9876;&#x70B9;&#x7684;&#x65B9;&#x5F0F;&#x5176;&#x5B9E;&#x4E0A;&#x7B97;&#x7684;&#x5C31;&#x662F;&#x524D;&#x7F00;&#x7684;&#x4E0A;&#x5347;&#x5E8F;&#x5217;&#x4EE5;&#x53CA;&#x4E00;&#x4E2A;&#x540E;&#x7F00;&#x7684;&#x4E0B;&#x964D;&#x5E8F;&#x5217;&#xFF0C;&#x4E0A;&#x9762;&#x7684;&#x505A;&#x6CD5;&#x5176;&#x5B9E;&#x6709;&#x5F88;&#x591A;&#x7684;&#x91CD;&#x590D;&#x8BA1;&#x7B97;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x628A;&#x8FD9;&#x4E2A;&#x524D;&#x7F00;&#x7684;&#x4E0A;&#x5347;&#x5E8F;&#x5217;&#x4EE5;&#x53CA;&#x8FD9;&#x4E2A;&#x540E;&#x7F00;&#x7684;&#x4E0B;&#x964D;&#x5E8F;&#x5217;&#x9884;&#x8BA1;&#x7B97;&#x51FA;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x5B58;&#x4E0B;&#x6765;&#x3002;</p>
+<p>&#x8BA1;&#x7B97;&#x7684;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5355;&#x8C03;&#x6808;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8BA1;&#x7B97;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x5047;&#x5982;&#x6211;&#x4EEC;&#x8BA1;&#x7B97;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x4E0A;&#x5347;&#x7684;&#x524D;&#x7F00;</p>
+<p>&#x5047;&#x8BBE;&#x524D;&#x9762;&#x7684;&#x6570;&#x5B57;&#x662F; 13333332&#xFF0C;&#x90A3;&#x4E48;&#x5F53;2&#x8FDB;&#x6765;&#x65F6;&#xFF0C;&#x524D;&#x9762;&#x7684;3&#x90FD;&#x8981;&#x88AB;&#x66FF;&#x6362;&#x4E3A;2&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x8BF4;&#x8FD9;&#x4E2A;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x5355;&#x8C03;&#x6808;&#x53BB;&#x8BB0;&#x5F55;&#x6700;&#x5DE6;&#x8FB9;&#x7684;idx&#xFF0C;&#x5F53;&#x5904;&#x7406;&#x6BCF;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x65F6;&#xFF0C;&#x4E00;&#x76F4;pop&#x76F4;&#x5230;&#x6808;&#x9876;&#x5143;&#x7D20;&#x6BD4;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x5C0F;&#xFF0C;&#x6BD4;&#x5982;&#x5F53;2&#x8FDB;&#x6765;&#x65F6;&#xFF0C;curSum&#x7684;&#x66F4;&#x65B0;&#x5E94;&#x8BE5;&#x4E3A; -6&#x2716;&#xFE0F;3 + 7 &#x2716;&#xFE0F;2</p>
+<blockquote>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5F80;&#x6808;&#x91CC;&#x9762;push -1 &#x6765;&#x5728;&#x6784;&#x9020;pre&#x65F6;&#x5019;&#x6765;&#x6807;&#x8BC6;&#x8D77;&#x70B9;&#xFF0C;&#x5F80;&#x6808;&#x91CC;&#x9762;push len &#x6765;&#x5728;&#x6784;&#x9020;pre&#x65F6;&#x5019;&#x6765;&#x6807;&#x8BC6;&#x5C3E;&#x5DF4;&#x3002;</p>
+<p>&#x4F7F;&#x7528;st.size() &gt; 1&#x6765;&#x6807;&#x8BC6;&#x6808;&#x7A7A;</p>
+</blockquote>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Solution {
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> <span class="hljs-title">maximumSumOfHeights</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; maxHeights)</span> </span>{
+        <span class="hljs-keyword">int</span> len = maxHeights.size();
+        <span class="hljs-built_in">stack</span>&lt;<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>&gt; st;
+        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>&gt; suf(len,<span class="hljs-number">0</span>);
+        <span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>&gt; pre(len,<span class="hljs-number">0</span>);
+        st.push(len);
+        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> curSum = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=len<span class="hljs-number">-1</span>; i&gt;=<span class="hljs-number">0</span>; i--){
+            <span class="hljs-keyword">while</span>(st.size() &gt; <span class="hljs-number">1</span> &amp;&amp; maxHeights[i] &lt;= maxHeights[st.top()]){
+                <span class="hljs-keyword">int</span> left = st.top();
+                st.pop();
+                <span class="hljs-keyword">int</span> right = st.top();
+                curSum -= <span class="hljs-number">1l</span>l * (right-left) * maxHeights[left];
+            }
+            curSum += <span class="hljs-number">1l</span>l * (st.top() - i ) * maxHeights[i];
+            suf[i] = curSum;
+            st.push(i);
+        }
+        curSum = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(!st.empty()) st.pop();
+        st.push(<span class="hljs-number">-1</span>);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;len; i++){
+            <span class="hljs-keyword">while</span>(st.size() &gt; <span class="hljs-number">1</span> &amp;&amp; maxHeights[i] &lt;= maxHeights[st.top()]){
+                <span class="hljs-keyword">int</span> right = st.top();
+                st.pop();
+                <span class="hljs-keyword">int</span> left = st.top();
+                curSum -= <span class="hljs-number">1l</span>l * (right-left) * maxHeights[right];
+            }
+            curSum += <span class="hljs-number">1l</span>l * (i - st.top()) * maxHeights[i];
+            pre[i] = curSum;
+            st.push(i);
+        }
+        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> ans = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++){
+            <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> val = pre[i];
+            <span class="hljs-keyword">if</span>(i+<span class="hljs-number">1</span> &lt; len) val += suf[i+<span class="hljs-number">1</span>];
+            ans = max(ans ,val);
+        }
+
+        <span class="hljs-keyword">return</span> ans;
+    }
+};
+</code></pre>
+<h2 id="&#x9898;&#x76EE;&#x94FE;&#x63A5;">&#x9898;&#x76EE;&#x94FE;&#x63A5;</h2>
+<p><a href="https://leetcode.cn/problems/beautiful-towers-ii/description/" target="_blank">2866. &#x7F8E;&#x4E3D;&#x5854; II - &#x529B;&#x6263;&#xFF08;LeetCode&#xFF09;</a></p>
 
                                 
                                 </section>
@@ -2301,12 +2404,12 @@
 
             
                 
-                <a href="LeetCode47.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode47">
+                <a href="LeetCode2581.html" class="navigation navigation-prev " aria-label="Previous page: LeetCode2581">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="LeetCode51.html" class="navigation navigation-next " aria-label="Next page: LeetCode51">
+                <a href="LeetCode5393.html" class="navigation navigation-next " aria-label="Next page: LeetCode5393">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2317,7 +2420,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"LeetCode50","date":"2020-05-11T14:32:42.000Z","tags":["快速幂"],"level":"1.10.2.15","depth":3,"next":{"title":"LeetCode51","level":"1.10.2.16","depth":3,"path":"algorithms/LeetCode/LeetCode51.md","ref":"./algorithms/LeetCode/LeetCode51.md","articles":[]},"previous":{"title":"LeetCode47","level":"1.10.2.14","depth":3,"path":"algorithms/LeetCode/LeetCode47.md","ref":"./algorithms/LeetCode/LeetCode47.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode50.md","mtime":"2022-03-13T08:40:21.214Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-26T11:23:36.560Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"LeetCode2866","date":"2023-09-26T17:08:28.000Z","tags":["单调栈"],"level":"1.10.2.86","depth":3,"next":{"title":"LeetCode5393","level":"1.10.2.87","depth":3,"path":"algorithms/LeetCode/LeetCode5393.md","ref":"./algorithms/LeetCode/LeetCode5393.md","articles":[]},"previous":{"title":"LeetCode2581","level":"1.10.2.85","depth":3,"path":"algorithms/LeetCode/LeetCode2581.md","ref":"./algorithms/LeetCode/LeetCode2581.md","articles":[]},"dir":"ltr"},"config":{"plugins":["livereload","github","expandable-chapters-small","katex","intopic-toc"],"styles":{"website":"styles/website.css","ebook":"styles/ebook.css","pdf":"styles/pdf.css","mobi":"styles/mobi.css","epub":"styles/epub.css"},"pluginsConfig":{"github":{"url":"https://github.com/LJHG"},"intopic-toc":{"isCollapsed":true,"isScrollspyActive":true,"label":"In this article","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"expandable-chapters-small":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sidebar":{"主页":"http://www.ljhblog.top","GitHub":"https://github.com/LJHG"}},"gitbook":"*"},"file":{"path":"algorithms/LeetCode/LeetCode2866.md","mtime":"2023-09-26T11:23:10.332Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-09-26T11:23:36.560Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
